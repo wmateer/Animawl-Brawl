@@ -1,10 +1,13 @@
 //imports
 import java.util.*;
+import java.io.*;
+import java.lang.*;
+import java.lang.System.*;
 
 public class Animal {
 //Animal Class Protected Variables
 protected String name;
-protected int lvl;	//animals level
+protected double lvl;	//animals level
 protected int expTot;	//exp earned since last lvl up
 protected int expToLvl; //exp before next lvl up
 protected int expErnd; //exp earned during current battle before applied to animal 
@@ -63,12 +66,17 @@ public String getName(){
 }
 
 //for LVL
-public int getLvl() {
+public double getLvl() {
 	return 	lvl;
 }
 
-	public void addLvl(double hpScaler , double hpBonus, double apScaler, double apBonus,double attScaler, double attBonus, double defScaler, double defBonus, double evdScaler, double evdBonus){
+public void addLvl(double hpScaler , double hpBonus, double apScaler, double apBonus,double attScaler, double attBonus, double defScaler, double defBonus, double evdScaler, double evdBonus){
 		lvl++;
+		
+		if((lvl/5) == (int)(lvl/5)){
+			selectStatModifier();	
+		}
+	
 		System.out.print("\n \n");
 		System.out.print(name);
 		System.out.print(" is now lvl ");
@@ -225,7 +233,71 @@ public int getDef() {
 public int getEvd() {
 	return 	evd;
 }
+
+
+//Stat Modifier 
+public void selectStatModifier(){
+	System.out.print("You've gained a permenant stat modifier.\n This will Effect the way your charicter levels up throughout the rest of gameplay. \n Enter H (Hp) A (AP) T (att) D (def) or E (evd)  "); 
+	char inChar = 0;
+	
+	char go= 't';
+	//loop that gets input until a valid input is found
+	do{
+		//get input from user
+		try {
+			inChar=(char)System.in.read();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	switch (inChar){
+	case 'H' : 
+		modHp();
+		go='f';
+		break;
+	case 'A' : 
+		modAp();
+		go='f';
+		break;
+	case 'T' : 
+		modAtt();
+		go='f';
+		break;
+	case 'D' : 
+		modDef();
+		go='f';
+		break;
+	case 'E' : 
+		modEvd();
+		go='f';
+		break;
+	default :  
+		System.out.print("please enter a valid input");
+		break;
+	}
+	
+	}while( go=='t');
 }
 
+//stat booster functions that modify how your animal grows by altering their lvl up bonuses
+public void modHp(){
+	double r=rand.nextDouble();
+	hpBonus = hpBonus+((r*.35)/hpScaler);
+}
+public void modAp(){
+	double r=rand.nextDouble();
+	apBonus = apBonus+((r*.35)/apScaler);
+}
+public void modAtt(){
+	double r=rand.nextDouble();
+	attBonus = attBonus+((r*.35)/attScaler);	
+}
+public void modDef(){
+	double r=rand.nextDouble();
+	defBonus = defBonus+((r*.35)/defScaler);	
+}
+public void modEvd(){
+	double r=rand.nextDouble();
+	evdBonus = evdBonus+((r*.35)/evdScaler);	
+}
 
-
+}

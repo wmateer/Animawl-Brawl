@@ -1,15 +1,14 @@
-import java.util.Random;
-
 
 public class Bear extends Animal {
 
 	public Bear(String name) {
 		super(name);
-		//lvl 1 stat set for bear
+		// stat set for bear
+		this.name=name;
 		lvl=1;
 		expTot=0;
 		expErnd=0;
-		expToLvl=120;
+		expToLvl=1200;
 		hpTot=1150;
 		hpRem=1150;
 		apTot=110;

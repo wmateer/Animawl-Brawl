@@ -56,12 +56,25 @@ System.out.print(willis.getEvd());
 
 
 //test bear lvl up systme
-while (willis.getLvl()<10){
+while (willis.getLvl()<100){
 willis.addExpErnd(100);
 willis.addExpTot(willis.getExpErnd());
 }
 }
+}
+/*
 
+//test bird lvl up systmem
+Bird Sam = new Bird("Sam");
+
+while (Sam.getLvl()<10){
+Sam.addExpErnd(100);
+Sam.addExpTot(Sam.getExpErnd());
 }
 
+animationTest test = new animationTest();
+test.creatWindow();
+}
 
+}
+*/
