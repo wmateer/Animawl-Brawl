@@ -13,25 +13,30 @@ public class Choose extends BasicGameState {
 			throws SlickException {
 		// Prompt
 		g.setColor(new Color(0, 255, 150));
-		g.drawString("Please Select Two Animawls", 200, 50);
+		g.drawString("Please Select Two Animawls", 280, 70);
 
 		// select button
 		Image Select = new Image("res/select.png");
-		Select.draw(80, 200, 75, 35);
-		Select.draw(280, 200, 75, 35);
-		Select.draw(470, 200, 75, 35);
-		Select.draw(80, 400, 75, 35);
-		Select.draw(280, 400, 75, 35);
-		Select.draw(470, 400, 75, 35);
+		Select.draw(110, 250, 75, 35);
+		Select.draw(350, 250, 75, 35);
+		Select.draw(615, 250, 75, 35);
+		Select.draw(110, 500, 75, 35);
+		Select.draw(350, 500, 75, 35);
+		Select.draw(615, 500, 75, 35);
+		
+		//logout button.
+		Image logout = new Image("res/logout.png");
+		logout.draw(680, 30, 100, 35);
 
-		// exit button
+		/* exit button
 		g.setColor(Color.yellow);
 		g.drawRect(575, 30, 40, 40);
 		g.fillRect(575, 30, 40, 40);
-
+		
 		g.setColor(Color.black);
 		g.drawLine(575, 30, 615, 70);
 		g.drawLine(615, 30, 575, 70);
+		*/
 
 		Image bear = new Image("res/pedobear.png");
 		Image bird = new Image("res/bird.png");
@@ -39,12 +44,12 @@ public class Choose extends BasicGameState {
 		Image gaucho = new Image("res/gaucho.png");
 		Image patrick = new Image("res/patrick.png");
 		Image pika = new Image("res/pika.png");
-		bear.draw(60, 80, 115, 110);
-		bird.draw(260, 80, 115, 110);
-		cosmo.draw(450, 80, 115, 110);
-		gaucho.draw(60, 280, 115, 110);
-		patrick.draw(260, 280, 115, 110);
-		pika.draw(450, 280, 115, 110);
+		bear.draw(80, 110, 150, 140);
+		bird.draw(330,110, 115, 140);
+		cosmo.draw(600,110, 115, 140);
+		gaucho.draw(70, 340, 150, 140);
+		patrick.draw(320, 340, 150, 140);
+		pika.draw(580, 340, 150, 140);
 
 	}
 
@@ -67,11 +72,11 @@ public class Choose extends BasicGameState {
 	public void update(GameContainer gc, StateBasedGame sbg, int delta)
 			throws SlickException {
 		int posX = Mouse.getX();
-		int posY = 480 - Mouse.getY();
+		int posY = 600 - Mouse.getY();
 
-		if ((posX > 575 && posX < 615) && (posY > 30 && posY < 70)
+		if ((posX > 680 && posX < 780) && (posY > 30 && posY < 65)
 				&& (Mouse.isButtonDown(0))) {
-			System.exit(0);
+			sbg.enterState(0);
 		}
 	}
 
