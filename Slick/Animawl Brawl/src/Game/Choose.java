@@ -13,21 +13,21 @@ public class Choose extends BasicGameState {
 			throws SlickException {
 		// Prompt
 		g.setColor(new Color(0, 255, 150));
-		g.drawString("Please Select Two Animawls", 200, 50);
+		g.drawString("Please Select Two Animawls", 270, 50);
 
 		// select button
 		Image Select = new Image("res/select.png");
-		Select.draw(80, 200, 75, 35);
-		Select.draw(280, 200, 75, 35);
-		Select.draw(470, 200, 75, 35);
-		Select.draw(80, 400, 75, 35);
-		Select.draw(280, 400, 75, 35);
-		Select.draw(470, 400, 75, 35);
+		Select.draw(100, 250, 75, 35);
+		Select.draw(360, 250, 75, 35);
+		Select.draw(620, 250, 75, 35);
+		Select.draw(100, 490, 75, 35);
+		Select.draw(360, 490, 75, 35);
+		Select.draw(620, 490, 75, 35);
 
-		// exit button
-		g.setColor(Color.yellow);
-		g.drawRect(575, 30, 40, 40);
-		g.fillRect(575, 30, 40, 40);
+		// logout button
+		Image logout = new Image("res/logout.png");
+		logout.draw(620, 50, 125, 35);
+
 
 		g.setColor(Color.black);
 		g.drawLine(575, 30, 615, 70);
@@ -39,12 +39,12 @@ public class Choose extends BasicGameState {
 		Image gaucho = new Image("res/gaucho.png");
 		Image patrick = new Image("res/patrick.png");
 		Image pika = new Image("res/pika.png");
-		bear.draw(60, 80, 115, 110);
-		bird.draw(260, 80, 115, 110);
-		cosmo.draw(450, 80, 115, 110);
-		gaucho.draw(60, 280, 115, 110);
-		patrick.draw(260, 280, 115, 110);
-		pika.draw(450, 280, 115, 110);
+		bear.draw(90, 110, 115, 130);
+		bird.draw(340, 110, 125, 130);
+		cosmo.draw(600,110, 115, 130);
+		gaucho.draw(75, 330, 125, 130);
+		patrick.draw(340, 330, 125, 130);
+		pika.draw(585, 330, 135, 130);
 
 	}
 
@@ -67,12 +67,13 @@ public class Choose extends BasicGameState {
 	public void update(GameContainer gc, StateBasedGame sbg, int delta)
 			throws SlickException {
 		int posX = Mouse.getX();
-		int posY = 480 - Mouse.getY();
+		int posY = 600 - Mouse.getY();
 
-		if ((posX > 575 && posX < 615) && (posY > 30 && posY < 70)
+		if ((posX > 620 && posX < 745) && (posY > 50 && posY < 85)
 				&& (Mouse.isButtonDown(0))) {
-			System.exit(0);
+			sbg.enterState(0);
 		}
+		
 	}
 
 	public int getID() {

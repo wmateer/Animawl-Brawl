@@ -42,7 +42,7 @@ public class Login extends BasicGameState {
 			sbg.enterState(1);
 		}
 		//register
-		if ((posX > 385 && posX < 3) && (posY > 320 && posY < 375)
+		if ((posX > 385 && posX < 575) && (posY > 320 && posY < 367)
 				&& (Mouse.isButtonDown(0))) {
 			sbg.enterState(2);
 		}
