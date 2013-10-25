@@ -29,9 +29,6 @@ public class Choose extends BasicGameState {
 		logout.draw(620, 50, 125, 35);
 
 
-		g.setColor(Color.black);
-		g.drawLine(575, 30, 615, 70);
-		g.drawLine(615, 30, 575, 70);
 
 		Image bear = new Image("res/pedobear.png");
 		Image bird = new Image("res/bird.png");

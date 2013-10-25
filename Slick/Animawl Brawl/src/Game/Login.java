@@ -15,6 +15,7 @@ public class Login extends BasicGameState {
 
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g)
 			throws SlickException {
+		 g.setBackground(Color.gray);
 		// login button
 		Image Login = new Image("res/login.png");
 		Login.draw(200, 320, 190, 55);
