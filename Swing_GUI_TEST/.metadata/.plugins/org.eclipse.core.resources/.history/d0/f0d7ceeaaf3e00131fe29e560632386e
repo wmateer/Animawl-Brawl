@@ -1,0 +1,14 @@
+package gui_WindowBuilder_TEST.GUI;
+
+import javax.swing.JPanel;
+
+public class Title_Screen extends JPanel {
+
+	/**
+	 * Create the panel.
+	 */
+	public Title_Screen() {
+
+	}
+
+}

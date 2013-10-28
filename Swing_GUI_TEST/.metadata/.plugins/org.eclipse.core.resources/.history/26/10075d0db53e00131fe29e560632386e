@@ -1,0 +1,50 @@
+package gui_WindowBuilder_TEST.GUI;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+public class INIT_GUI{ //extends JFrame {
+
+	protected JFrame masterFrame;
+	private JPanel current_Screen;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					//INIT_GUI frame = new INIT_GUI();
+					//frame.setVisible(true);
+					//frame.setResizable(false);
+					new INIT_GUI();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public INIT_GUI() {
+		//INIT_GUI frame = new INIT_GUI();
+		masterFrame = new JFrame();
+		masterFrame.setVisible(true);
+		masterFrame.setResizable(false);
+		INIT_GUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//setBounds(100, 100, 450, 300);
+		setBounds(400, 250, 450, 320);
+		current_Screen = new Title_Screen();
+		current_Screen.setBorder(new EmptyBorder(5, 5, 5, 5));
+		current_Screen.setLayout(new BorderLayout(0, 0));
+		setContentPane(current_Screen);
+	}
+
+}

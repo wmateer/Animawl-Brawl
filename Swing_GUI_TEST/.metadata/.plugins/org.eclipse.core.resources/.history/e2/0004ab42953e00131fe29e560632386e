@@ -1,0 +1,10 @@
+package gui_WindowBuilder_TEST.GUI;
+
+public class Title_Screen {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

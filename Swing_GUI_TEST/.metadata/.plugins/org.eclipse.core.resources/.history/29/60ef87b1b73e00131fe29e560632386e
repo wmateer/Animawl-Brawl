@@ -1,0 +1,64 @@
+package gui_WindowBuilder_TEST.GUI;
+
+import javax.swing.*;
+import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Color;
+
+public class Login_Screen extends JPanel {
+	private JPasswordField passwordField;
+	private JTextField userName_field;
+	private JFrame parentFrame;
+
+	/**
+	 * Create the panel.
+	 */
+	public Login_Screen(JFrame masterFrame) {
+		setBackground(new Color(135, 206, 235));
+		setLayout(null);
+		
+		passwordField = new JPasswordField();
+		passwordField.setBounds(233, 167, 134, 28);
+		add(passwordField);
+		
+		userName_field = new JTextField();
+		userName_field.setBounds(233, 127, 134, 28);
+		add(userName_field);
+		userName_field.setColumns(10);
+		
+		JLabel user_Label = new JLabel("USERNAME");
+		user_Label.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+		user_Label.setBounds(69, 133, 134, 16);
+		add(user_Label);
+		
+		JLabel password_Label = new JLabel("PASSWORD");
+		password_Label.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+		password_Label.setBounds(69, 173, 134, 16);
+		add(password_Label);
+		
+		JButton login_Button = new JButton("LOGIN");
+		login_Button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//CHECK OLD LOIN SCREEN FOR LOGIN HANDLING...SHOULD GO TO MAINMENU SCREEN
+			}
+		});
+		login_Button.setBounds(69, 246, 117, 29);
+		add(login_Button);
+		
+		JButton newUser_button = new JButton("NEW USER");
+		newUser_button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//REVIEW OLD LOGIN SCREEN FOR NEW USER HANDLING...SHOULD TAKE TO REGISTER SCREEN
+			}
+		});
+		newUser_button.setBounds(250, 246, 117, 29);
+		add(newUser_button);
+		
+		JLabel title_Label = new JLabel("ANIMAWL BRAWL LOGIN");
+		title_Label.setFont(new Font("Mona Lisa Solid ITC TT", Font.PLAIN, 30));
+		title_Label.setBounds(66, 23, 318, 75);
+		add(title_Label);
+
+	}
+}

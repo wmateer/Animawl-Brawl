@@ -1,0 +1,74 @@
+package gui_WindowBuilder_TEST.GUI;
+
+
+import javax.swing.*;
+import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Color;
+
+public class Register_Screen extends JPanel {
+	private JPasswordField passwordField;
+	private JPasswordField passwordField_1;
+	private JTextField textField;
+
+	/**
+	 * Create the panel.
+	 */
+	public Register_Screen() {
+		setBackground(new Color(106, 90, 205));
+		setForeground(new Color(0, 0, 0));
+		setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("NEW USER REGISTRATION");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("Rockwell Extra Bold", Font.PLAIN, 20));
+		lblNewLabel.setBounds(68, 31, 313, 44);
+		add(lblNewLabel);
+		
+		passwordField = new JPasswordField();
+		passwordField.setBounds(247, 147, 134, 28);
+		add(passwordField);
+		
+		passwordField_1 = new JPasswordField();
+		passwordField_1.setBounds(247, 187, 134, 28);
+		add(passwordField_1);
+		
+		textField = new JTextField();
+		textField.setBounds(247, 106, 134, 28);
+		add(textField);
+		textField.setColumns(10);
+		
+		JLabel lblNewLabel_1 = new JLabel("USERNAME");
+		lblNewLabel_1.setBounds(91, 112, 104, 16);
+		add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("PASSWORD");
+		lblNewLabel_2.setBounds(91, 153, 104, 16);
+		add(lblNewLabel_2);
+		
+		JLabel lblNewLabel_3 = new JLabel("RETYPE PASSWORD");
+		lblNewLabel_3.setBounds(91, 193, 126, 16);
+		add(lblNewLabel_3);
+		
+		JButton btnNewButton = new JButton("CONFIRM NEW USER");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//CONFIRMS NEW USER CRENDTIALS, CHECK OLD GUI IMPLEMENT
+			}
+		});
+		btnNewButton.setBounds(47, 244, 157, 29);
+		add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("BACK TO LOGIN");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//CANCELS LOGIN, GOES BACK TO MAIN MENU
+			}
+		});
+		btnNewButton_1.setBounds(251, 244, 150, 29);
+		add(btnNewButton_1);
+
+	}
+
+}

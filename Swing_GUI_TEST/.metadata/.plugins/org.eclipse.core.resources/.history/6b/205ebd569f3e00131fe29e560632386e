@@ -1,0 +1,57 @@
+package gui_WindowBuilder_TEST.GUI;
+
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.JButton;
+import java.awt.Font;
+import javax.swing.SwingConstants;
+import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class MultiplayerMenu_Screen extends JPanel {
+
+	/**
+	 * Create the panel.
+	 */
+	public MultiplayerMenu_Screen() {
+		setBackground(new Color(128, 0, 0));
+		setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("MULTIPLAYER MENU");
+		lblNewLabel.setForeground(new Color(255, 255, 255));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("Monospaced", Font.BOLD | Font.ITALIC, 23));
+		lblNewLabel.setBounds(84, 6, 282, 57);
+		add(lblNewLabel);
+		
+		JButton btnNewButton = new JButton("FIND DUEL");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//GO TO THE DISPLAY AVAILABLE DUELS OR SHOW "TYPE IN IP DESTINATION"???
+			}
+		});
+		btnNewButton.setBounds(166, 106, 117, 29);
+		add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("CREATE DUEL");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//START A MULTIPLAYER SESSION THAT WAITS UNTIL A PLAYER JOINS
+				//FOR TESTING IT WILL JUST START A LOCAL GAME!!!
+			}
+		});
+		btnNewButton_1.setBounds(166, 173, 117, 29);
+		add(btnNewButton_1);
+		
+		JButton btnNewButton_2 = new JButton("LOGOUT");
+		btnNewButton_2.setBounds(56, 236, 117, 29);
+		add(btnNewButton_2);
+		
+		JButton btnNewButton_3 = new JButton("GO TO MAIN MENU");
+		btnNewButton_3.setBounds(229, 236, 164, 29);
+		add(btnNewButton_3);
+
+	}
+
+}
