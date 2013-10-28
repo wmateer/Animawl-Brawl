@@ -1,0 +1,44 @@
+package gui_WindowBuilder_TEST.GUI;
+
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import java.awt.Font;
+import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+public class Title_Screen extends JPanel {
+
+	/**
+	 * Create the panel.
+	 */
+	public Title_Screen() {
+		addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				//WHAT HAPPENS IF CLICKED, USE BUTTON FOR TIME BEING UP TO US
+			}
+		});
+		setBackground(new Color(0, 191, 255));
+		setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("ANIMAWL BRAWL!!!");
+		lblNewLabel.setFont(new Font("Lithos Pro", Font.PLAIN, 25));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(73, 24, 303, 59);
+		add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("CLICK ANYWHERE TO CONTINUE");
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1.setBounds(95, 252, 260, 16);
+		add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("PICTURE PLACEHOLDER???");
+		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_2.setBounds(81, 77, 288, 148);
+		add(lblNewLabel_2);
+
+	}
+
+}

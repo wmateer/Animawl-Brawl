@@ -1,0 +1,55 @@
+package gui_WindowBuilder_TEST.GUI;
+
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.JButton;
+import java.awt.Font;
+import javax.swing.SwingConstants;
+import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class MainMenu_Screen extends JPanel {
+
+	/**
+	 * Create the panel.
+	 */
+	public MainMenu_Screen() {
+		setBackground(new Color(218, 165, 32));
+		setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("PLAY ANIMAWL BRAWL!!!");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("KufiStandardGK", Font.PLAIN, 23));
+		lblNewLabel.setBounds(49, 6, 351, 79);
+		add(lblNewLabel);
+		
+		JButton btnNewButton = new JButton("SINGLE PLAYER (TBA)");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//DOES NOT WORK RIGHT NOW, BUT MIGHT BE FOR SINGLE PLAYER IMPLEMENTATION
+			}
+		});
+		btnNewButton.setBounds(138, 97, 174, 38);
+		add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("MULTIPLAYER");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//GOES TO THE MULTIPLAYER MENU SCREEN
+			}
+		});
+		btnNewButton_1.setBounds(138, 154, 174, 38);
+		add(btnNewButton_1);
+		
+		JButton btnNewButton_2 = new JButton("LOGOUT");
+		btnNewButton_2.setBounds(76, 249, 117, 29);
+		add(btnNewButton_2);
+		
+		JButton btnNewButton_3 = new JButton("OPTIONS???");
+		btnNewButton_3.setBounds(275, 249, 117, 29);
+		add(btnNewButton_3);
+
+	}
+
+}

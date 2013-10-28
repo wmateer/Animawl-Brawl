@@ -1,9 +1,12 @@
+import java.util.ArrayList;
+
 
 public class Bear extends Animal {
 
 	public Bear(String name) {
 		super(name);
 		// stat set for bear
+		type="Bear";
 		this.name=name;
 		lvl=1;
 		expTot=0;
@@ -16,6 +19,11 @@ public class Bear extends Animal {
 		att=175;
 		def=220;
 		evd=50;	
+		
+		//set attack array for bear
+		attacksAvail=new ArrayList<Attack>();
+		Maul Attack0 = new Maul();
+		attacksAvail.add(Attack0);
 		//lvl up statistics for bear
 		hpScaler=8;
 		hpBonus=.25;
@@ -27,6 +35,7 @@ public class Bear extends Animal {
 		defBonus=.2;
 		evdScaler=10;
 		evdBonus=-.05;
+	
 		
 	}
 }

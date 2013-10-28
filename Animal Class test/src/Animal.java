@@ -1,23 +1,22 @@
 //imports
 import java.util.*;
 import java.io.*;
-import java.lang.*;
-import java.lang.System.*;
 
 public class Animal {
 //Animal Class Protected Variables
 protected String name;
+public String type;
 protected double lvl;	//animals level
-protected int expTot;	//exp earned since last lvl up
-protected int expToLvl; //exp before next lvl up
-protected int expErnd; //exp earned during current battle before applied to animal 
-protected int hpTot;	//total hp animal can have
-protected int hpRem;	//hp animal has remaining
-protected int apTot;	//total ap animal can have
-protected int apRem;	//ap animal has remaining
-protected int att;	//animal's attack strength
-protected int def;	//animals defense strength
-protected int evd;	//animals evasiveness 
+protected double expTot;	//exp earned since last lvl up
+protected double expToLvl; //exp before next lvl up
+protected double expErnd; //exp earned during current battle before applied to animal 
+protected double hpTot;	//total hp animal can have
+protected double hpRem;	//hp animal has remaining
+protected double apTot;	//total ap animal can have
+protected double apRem;	//ap animal has remaining
+protected double att;	//animal's attack strength
+protected double def;	//animals defense strength
+protected double evd;	//animals evasiveness 
 //lvl up statistics 
 protected double hpScaler;
 protected double hpBonus;
@@ -29,7 +28,10 @@ protected double defScaler;
 protected double defBonus;
 protected double evdScaler;
 protected double evdBonus;
-
+//attacks unlocked
+public ArrayList<Attack> attacksAvail;
+//all attacks a type can have
+protected ArrayList<Attack> allAttacks;
 Random rand= new Random();
 
 //constructor
@@ -134,7 +136,7 @@ public void addLvl(double hpScaler , double hpBonus, double apScaler, double apB
 	}
 
 //for expTot
-public int getExp() {
+public double getExp() {
 	return 	expTot;
 }
 public void addExpTot(int amount ) {
@@ -153,17 +155,17 @@ public void addExpTot(int amount ) {
 }
 
 //for expToLvl
-public int expToLvlReset() {
+public double expToLvlReset() {
 	expToLvl=expToLvl*2;
 	return expToLvl;
 	
 }
-public int getExpToLvl(){
+public double getExpToLvl(){
 	return expToLvl;
 }
 
 //for expErnd
-public int getExpErnd(){
+public double getExpErnd(){
 	return expErnd;
 }
 public void addExpErnd(int amount){
@@ -172,7 +174,7 @@ public void addExpErnd(int amount){
 
 
 //for hpTot
-public int getHpTot(){
+public double getHpTot(){
 	return hpTot;
 }
 public void addHpTot(int amount){
@@ -181,7 +183,7 @@ public void addHpTot(int amount){
 }
 
 //for hpRem
-public int getHpRem(){
+public double getHpRem(){
 	return hpRem;
 }
 
@@ -189,6 +191,8 @@ public void subHpRem(int amount){
 	hpRem=hpRem-amount;
 	if (hpRem<=0){
 		System.out.print("\nyour ");
+		System.out.print(type);
+		System.out.print(" ");
 		System.out.print(name);
 		System.out.print(" is dead");
 	}
@@ -200,7 +204,7 @@ public void addHpRem(int amount){
 
 
 //for apTot
-public int getApTot(){
+public double getApTot(){
 	return apTot;
 }
 public void addApTot(int amount){
@@ -208,7 +212,7 @@ public void addApTot(int amount){
 	
 }
 //for apRem
-public int getApRem(){
+public double getApRem(){
 	return apRem;
 }
 
@@ -220,17 +224,17 @@ public void addApRem(int amount){
 	apRem=apRem+amount;	
 }
 //for att
-public int getAtt() {
+public double getAtt() {
 	return 	att;
 }
 
 //for def
-public int getDef() {
+public double getDef() {
 	return 	def;
 }
 
 //for evd
-public int getEvd() {
+public double getEvd() {
 	return 	evd;
 }
 
@@ -301,3 +305,6 @@ public void modEvd(){
 }
 
 }
+
+	
+

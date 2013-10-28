@@ -8,7 +8,11 @@ public class Game extends StateBasedGame {
 	public static final String gamename = "Animawl Brawl";
 	public static final int login = 0;
 	public static final int choose = 1;
+<<<<<<< HEAD
 	public static final int register =2;
+=======
+	public static final int register = 2;
+>>>>>>> upstream/master
 
 	public Game(String gamename) {
 		super(gamename);

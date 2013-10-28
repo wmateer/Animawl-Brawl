@@ -1,0 +1,66 @@
+package gui_WindowBuilder_TEST.GUI;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import java.awt.Color;
+import javax.swing.SwingConstants;
+import java.awt.Font;
+
+public class Title_Screen extends JFrame {
+
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Title_Screen frame = new Title_Screen();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Title_Screen() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
+		
+		JPanel titleScreen_Panel = new JPanel();
+		titleScreen_Panel.setBackground(new Color(176, 224, 230));
+		contentPane.add(titleScreen_Panel, BorderLayout.CENTER);
+		titleScreen_Panel.setLayout(null);
+		
+		JLabel title_label = new JLabel("ANIMAWL BRAWL");
+		title_label.setFont(new Font("Letter Gothic Std", Font.BOLD, 30));
+		title_label.setHorizontalAlignment(SwingConstants.CENTER);
+		title_label.setBounds(59, 23, 322, 43);
+		titleScreen_Panel.add(title_label);
+		
+		JLabel titlePicture_Label = new JLabel("SVG PICTURE PLACEHOLDER");
+		titlePicture_Label.setBounds(88, 78, 263, 136);
+		titleScreen_Panel.add(titlePicture_Label);
+		
+		JLabel clickAnyWhere_Label = new JLabel("CLICK ANY BUTTON TO CONTINUE");
+		clickAnyWhere_Label.setHorizontalAlignment(SwingConstants.CENTER);
+		clickAnyWhere_Label.setBounds(88, 226, 263, 22);
+		titleScreen_Panel.add(clickAnyWhere_Label);
+	}
+
+}
