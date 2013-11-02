@@ -3,6 +3,9 @@ package gui_WindowBuilder_TEST.GUI;
 
 import javax.swing.*;
 
+import GameEngine.Player;
+import GameEngine.User;
+
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -26,6 +29,7 @@ public class Register_Screen extends JPanel {
 	 */
 	public Register_Screen(JFrame masterFrame) {
 		//LoadTable
+		
 		LoadTable();
 		setBackground(new Color(106, 90, 205));
 		setForeground(new Color(0, 0, 0));
@@ -138,9 +142,13 @@ public class Register_Screen extends JPanel {
 	//Saves new Users
 	private void SaveNewUser(String newusername, String newpassword)
 	{
-	Hashtable<String,String> data = new Hashtable<String,String>();
+	Hashtable<String,User> data = new Hashtable<String,User>();
+	
 	LoadTable(); // puts the existing users in the hashtable.
-	data.put(newusername, newpassword);
+	User user = new User(newusername,newpassword);
+
+	
+	data.put(newusername, user);
 	
 	try{
 	FileOutputStream fileOut = new FileOutputStream("Savefiles/Saved_users_passwords.ser");
@@ -170,8 +178,17 @@ public class Register_Screen extends JPanel {
 		}
 		catch(FileNotFoundException e){
 			e.printStackTrace();
+			makefile();
 		}
 		catch(IOException e){
+			e.printStackTrace();
+		}
+	}
+	
+	private static void makefile(){
+		try{
+			File tmp = new File("Savefiles/Saved_users_passwords.ser");
+		}catch(Exception e){
 			e.printStackTrace();
 		}
 	}
