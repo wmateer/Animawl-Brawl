@@ -1,11 +1,20 @@
-import java.io.Serializable;
+package Animals;
+
+//import Animal;
+//import Attack;
+//import Peck;
+
 import java.util.ArrayList;
 
+import Attacks.Attack;
+import Attacks.Peck;
+
 public class Bird extends Animal {
-	public Bird() {
+	public Bird(String name) {
+		super(name);
 // stat set for bird
 		type="Bird";
-		name="Bird";
+		this.name=name;
 		lvl=1;
 		expTot=0;
 		expErnd=0;
@@ -14,7 +23,7 @@ public class Bird extends Animal {
 		hpRem=750;
 		apTot=100;
 		apRem=100;
-		att=120;
+		att=95;
 		def=100;
 		evd=300;	
 //set up attacks for bird
@@ -36,3 +45,4 @@ public class Bird extends Animal {
 	}
 	
 }
+

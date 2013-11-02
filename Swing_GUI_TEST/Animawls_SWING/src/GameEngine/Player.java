@@ -1,5 +1,8 @@
+package GameEngine;
+
 //imports
 import java.util.*;
+import Animals.*;
 import java.io.*;
 
 public class Player {
@@ -11,7 +14,7 @@ public class Player {
 	
 //constructors
 
-Player(String input, Animal animal0,Animal animal1, Animal animal2){
+public Player(String input, Animal animal0,Animal animal1, Animal animal2){
 	setName(input);
 	animalsCur=new ArrayList<Animal>();
 	animalsCur.add(animal0);

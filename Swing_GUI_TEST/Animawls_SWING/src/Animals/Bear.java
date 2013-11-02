@@ -1,13 +1,21 @@
-import java.io.Serializable;
+package Animals;
+
+//import Animal;
+//import Attack;
+//import Maul;
+
 import java.util.ArrayList;
+import Attacks.*;
+import Attacks.Maul;
 
 
-public class Bear extends Animal{
+public class Bear extends Animal {
 
-	public Bear() {
+	public Bear(String name) {
+		super(name);
 		// stat set for bear
 		type="Bear";
-		name="Bear";
+		this.name=name;
 		lvl=1;
 		expTot=0;
 		expErnd=0;

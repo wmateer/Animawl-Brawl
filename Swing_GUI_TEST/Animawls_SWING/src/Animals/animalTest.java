@@ -1,11 +1,21 @@
-//import java.util.*;
+package Animals;
+
+//import Bear;
+//import Bird;
+//import Game;
+//import Player;
+
+import java.util.*;
 //import java.lang.*;
-//import java.lang.System.*;
+import java.lang.System.*;
+
+import GameEngine.Game;
+import GameEngine.Player;
 public class animalTest {
 
 public static void main (String[] args) {
 //test constructor
-/*
+
 Animal dog = new Animal("dog");	
 System.out.print("your animal is named ");
 System.out.print(dog.getName());
@@ -72,7 +82,7 @@ willis.addExpTot(willis.getExpErnd());
 
 
 //test bird lvl up systmem
-
+/*
 while (Sam.getLvl()<10){
 Sam.addExpErnd(100);
 Sam.addExpTot(Sam.getExpErnd());
@@ -81,22 +91,17 @@ Sam.addExpTot(Sam.getExpErnd());
 animationTest test = new animationTest();
 test.creatWindow();
 }
-
-}
 */
-	Bear Willis= new Bear();
-	Willis.setName("Willis");
-	Bear Frank = new Bear();
-	Frank.setName("Frank");
-	Bear Cindy = new Bear();
-	Cindy.setName("Cindy");
+
+
+	Bear Willis= new Bear("Willis");
+	Bear Frank = new Bear("Frank");
+	Bear Cindy = new Bear("Cindy");
 	
-	Bird Kyle = new Bird();
-	Kyle.setName("Kyle");
-	Bird Mindy= new Bird();
-	Mindy.setName("Mindy");
-	Bird Alex= new Bird();
-	Alex.setName("Alex");
+	Bird Kyle = new Bird("Kyle");
+	Bird Mindy= new Bird("Mindy");
+	Bird Alex= new Bird("Alex");
+	
 	
 	Player playerOne= new Player("Henry", Willis, Frank, Cindy);
 	Player playerTwo= new Player("Billy",Kyle,Mindy,Alex);
@@ -104,7 +109,4 @@ test.creatWindow();
 	System.out.println(gOne.play().getName());
 	System.out.print(" Wins!");
 	
-
-
-}
-}
+}}

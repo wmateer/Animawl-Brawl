@@ -1,10 +1,15 @@
+package Attacks;
+
+
+//import Attack;
+
 
 public class Peck extends Attack{
 	
-Peck(){
+public Peck(){
 	this.setName("Peck");	
-	this.setDmg(50);
-	this.setConsist(.95);
+	this.setDmg(25);
+	this.setConsist(.90);
 	this.setAcc(.98);
 	this.setCritHitChance(.07);
 	this.setApCost(20);	
