@@ -94,12 +94,12 @@ attacker.subApRem(apCost);
 double r=rand.nextDouble();
 
 //see if attack hits
-double missChance=(1-acc);
-missChance=missChance/(target.getEvd()/1000);
+double hitChance=(target.getEvd()/(acc*1000));
 
 
 //if random number is > than miss chance attacks hits
-if(r>=missChance){
+System.out.println(r);
+if(r>=hitChance){
 	double dmg=calcDmg(attacker.getAtt());
 	
 	//scale r  

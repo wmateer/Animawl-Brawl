@@ -84,14 +84,19 @@ test.creatWindow();
 
 }
 */
-	Bear Willis= new Bear("Willis");
-	Bear Frank = new Bear("Frank");
-	Bear Cindy = new Bear("Cindy");
+	Bear Willis= new Bear();
+	Willis.setName("Willis");
+	Bear Frank = new Bear();
+	Frank.setName("Frank");
+	Bear Cindy = new Bear();
+	Cindy.setName("Cindy");
 	
-	Bird Kyle = new Bird("Kyle");
-	Bird Mindy= new Bird("Mindy");
-	Bird Alex= new Bird("Alex");
-	
+	Bird Kyle = new Bird();
+	Kyle.setName("Kyle");
+	Bird Mindy= new Bird();
+	Mindy.setName("Mindy");
+	Bird Alex= new Bird();
+	Alex.setName("Alex");
 	
 	Player playerOne= new Player("Henry", Willis, Frank, Cindy);
 	Player playerTwo= new Player("Billy",Kyle,Mindy,Alex);

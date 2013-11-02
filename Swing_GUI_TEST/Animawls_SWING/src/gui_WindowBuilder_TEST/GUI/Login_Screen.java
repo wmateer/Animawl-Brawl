@@ -1,20 +1,33 @@
 package gui_WindowBuilder_TEST.GUI;
 
 import javax.swing.*;
+
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.util.*;
+
 
 public class Login_Screen extends JPanel {
 	private JPasswordField passwordField;
 	private JTextField userName_field;
 	private JFrame parentFrame;
+	private String user;
+	private String inpassword;
+	private static Hashtable data;
+
+	
 
 	/**
 	 * Create the panel.
 	 */
 	public Login_Screen(JFrame masterFrame) {
+
 		parentFrame = masterFrame;
 		
 		setBackground(new Color(135, 206, 235));
@@ -39,31 +52,32 @@ public class Login_Screen extends JPanel {
 		password_Label.setBounds(69, 173, 134, 16);
 		add(password_Label);
 		
-		JButton login_Button = new JButton("LOGIN");
+/////////////////////Login button actions
+		
+		JButton login_Button = new JButton("LOGIN");		
 		login_Button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				//CHECK OLD LOGIN SCREEN FOR LOGIN HANDLING...SHOULD GO TO MAINMENU SCREEN
-				//parentFrame.removeAll();
-				//parentFrame.setVisible(false);
-				JPanel tmp_Screen = new MainMenu_Screen(parentFrame);
-				//tmp_Screen.setBorder(new EmptyBorder(5, 5, 5, 5));
-				//tmp_Screen.setLayout(new BorderLayout(0, 0));
-				parentFrame.setContentPane(tmp_Screen);
+		public void actionPerformed(ActionEvent e) {
+			
+			user = new String(userName_field.getText());
+			inpassword = new String(passwordField.getPassword());
+			LoadTable();
+			CheckLogin(user, inpassword);
 				
-				parentFrame.setVisible(true);
-				parentFrame.setResizable(false);
 			}
 		});
 		login_Button.setBounds(69, 246, 117, 29);
 		add(login_Button);
 		
+/////////////// New User button actions		
 		JButton newUser_button = new JButton("NEW USER");
 		newUser_button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		public void actionPerformed(ActionEvent e) {
 				//REVIEW OLD LOGIN SCREEN FOR NEW USER HANDLING...SHOULD TAKE TO REGISTER SCREEN
 				//parentFrame.removeAll();
 				//parentFrame.setVisible(false);
 				JPanel tmp_Screen = new Register_Screen(parentFrame);
+				
+		
 				parentFrame.setContentPane(tmp_Screen);
 				
 				parentFrame.setVisible(true);
@@ -72,11 +86,55 @@ public class Login_Screen extends JPanel {
 		});
 		newUser_button.setBounds(250, 246, 117, 29);
 		add(newUser_button);
-		
+		// 
 		JLabel title_Label = new JLabel("ANIMAWL BRAWL LOGIN");
 		title_Label.setFont(new Font("Mona Lisa Solid ITC TT", Font.PLAIN, 30));
 		title_Label.setBounds(66, 23, 318, 75);
 		add(title_Label);
+	}
+		
+	
+//////Checklogin
+		public void CheckLogin(String user, String inpassword){
+			if (user.isEmpty() || inpassword.isEmpty()){
+				JOptionPane.showMessageDialog(null, "One or more boxes are empty","Error", JOptionPane.ERROR_MESSAGE);
+				return;
+			}
+			if (data.containsKey(user) && data.get(user).equals(inpassword)){
+				JOptionPane.showMessageDialog(null, "Login successfull","Success", JOptionPane.INFORMATION_MESSAGE);
+				JPanel tmp_Screen = new MainMenu_Screen(parentFrame);
+				parentFrame.setContentPane(tmp_Screen);
+				parentFrame.setVisible(true);
+				parentFrame.setResizable(false);
+				
+			}else{
+				JOptionPane.showMessageDialog(null, "incorrect login/password","Error", JOptionPane.ERROR_MESSAGE);
+			}
+				
+			
 
+		}
+	
+
+/////Load the saved usernames
+	private static void LoadTable(){
+		try{
+			FileInputStream fileIn = new FileInputStream("Savefiles/Saved_users_passwords.ser");
+			ObjectInputStream in = new ObjectInputStream(fileIn);
+			data = (Hashtable)in.readObject();
+			in.close();
+			fileIn.close();
+		}
+		catch(ClassNotFoundException e){
+			e.printStackTrace();
+		}
+		catch(FileNotFoundException e){
+			e.printStackTrace();
+		}
+		catch(IOException e){
+			e.printStackTrace();
+		}
 	}
 }
+
+

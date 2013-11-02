@@ -1,13 +1,13 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
-public class Bear extends Animal {
+public class Bear extends Animal{
 
-	public Bear(String name) {
-		super(name);
+	public Bear() {
 		// stat set for bear
 		type="Bear";
-		this.name=name;
+		name="Bear";
 		lvl=1;
 		expTot=0;
 		expErnd=0;

@@ -9,6 +9,10 @@ import java.awt.event.ActionEvent;
 public class MainMenu_Screen extends JPanel {
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
 	 * Create the panel.
 	 */
 	private JFrame parentFrame;

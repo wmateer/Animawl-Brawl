@@ -17,6 +17,12 @@ public class CharacterSelect_Screen extends JPanel {
 	private JList availCharChoices_List;
 	
 	public CharacterSelect_Screen(JFrame masterFrame) {
+		/*Player player1 = null;
+		Player player2 = null;
+		player1.setName("Player 1");
+		player2.setName("Player 2");
+		*/
+		
 		setBackground(Color.MAGENTA);
 		setLayout(null);
 		parentFrame = masterFrame;
@@ -55,6 +61,7 @@ public class CharacterSelect_Screen extends JPanel {
 				//int index = list.getSelectedIndex();
 				String tmp = (String) availCharChoices_List.getSelectedValue();
 				selectedCharSelectInfo_TextArea.setText(tmp);
+			
 				
 			}
 		});
@@ -81,6 +88,12 @@ public class CharacterSelect_Screen extends JPanel {
 		});
 		confirmCharChoice_Button.setBounds(107, 248, 237, 29);
 		add(confirmCharChoice_Button);
+		
+		JLabel lblBear = new JLabel("Bear");
+		lblBear.setHorizontalAlignment(SwingConstants.CENTER);
+		lblBear.setForeground(Color.GREEN);
+		lblBear.setBounds(348, 66, 96, 21);
+		add(lblBear);
 
 	}
 }

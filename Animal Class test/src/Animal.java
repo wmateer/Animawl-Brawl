@@ -2,7 +2,11 @@
 import java.util.*;
 import java.io.*;
 
-public class Animal {
+import org.eclipse.swt.graphics.Path;
+
+//TODO incorperate image source 
+
+public class Animal implements Serializable {
 //Animal Class Protected Variables
 protected String name;
 public String type;
@@ -17,6 +21,7 @@ protected double apRem;	//ap animal has remaining
 protected double att;	//animal's attack strength
 protected double def;	//animals defense strength
 protected double evd;	//animals evasiveness 
+
 //lvl up statistics 
 protected double hpScaler;
 protected double hpBonus;
@@ -28,16 +33,18 @@ protected double defScaler;
 protected double defBonus;
 protected double evdScaler;
 protected double evdBonus;
+
 //attacks unlocked
 public ArrayList<Attack> attacksAvail;
 //all attacks a type can have
 protected ArrayList<Attack> allAttacks;
 Random rand= new Random();
 
+public Path mainGraphic;
+
 //constructor
-public Animal(String name){
+public Animal(){
 //basic animal stats
-this.name=name;
 lvl=1;
 expTot=0;
 expErnd=0;
@@ -60,13 +67,18 @@ defScaler=10;
 defBonus=0;
 evdScaler=10;
 evdBonus=0;
+
+//graphics
+Path animalImage;
 }
 
 //getters and setter
 public String getName(){
 	return name;	
 }
-
+public void setName(String name){
+	this.name= name;	
+}
 //for LVL
 public double getLvl() {
 	return 	lvl;

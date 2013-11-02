@@ -1,11 +1,11 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Bird extends Animal {
-	public Bird(String name) {
-		super(name);
+	public Bird() {
 // stat set for bird
 		type="Bird";
-		this.name=name;
+		name="Bird";
 		lvl=1;
 		expTot=0;
 		expErnd=0;
@@ -14,7 +14,7 @@ public class Bird extends Animal {
 		hpRem=750;
 		apTot=100;
 		apRem=100;
-		att=95;
+		att=120;
 		def=100;
 		evd=300;	
 //set up attacks for bird

@@ -19,6 +19,7 @@ Player(String input, Animal animal0,Animal animal1, Animal animal2){
 	animalsCur.add(animal2);
 	active=animalsCur.get(0);
 }
+//create hashmap of animals
 
 //getters and setter
 public Animal getActive(){
@@ -43,6 +44,7 @@ public String getName(){
 public Animal chooseAnimal() {
 	System.out.print("Current animawls available are  ");
 	int animalNumb=0;
+	
 	//loop through array of animals printing out their type and number
 	while(animalNumb<= animalsAvail.size()){
 		
