@@ -14,16 +14,18 @@ private int wins;
 private int losses;
 
 //new user constructor
-User(String inName,String inPass){
+public User(String inName,String inPass){
 	name=inName;
 	password=inPass;
 	wins=0;
 	losses=0;
 	animalMap=new HashMap<String, Animal>();
+	/*
 	Bear Bear = new Bear("bear");
 	Bird Bird = new Bird("bird");
 	animalMap.put("Bird", Bird);
 	animalMap.put("Bear", Bear);
+	*/
 }
 
 

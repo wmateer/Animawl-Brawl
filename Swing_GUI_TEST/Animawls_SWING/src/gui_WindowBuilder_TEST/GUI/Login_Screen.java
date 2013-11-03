@@ -2,10 +2,13 @@ package gui_WindowBuilder_TEST.GUI;
 
 import javax.swing.*;
 
+import GameEngine.User;
+
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -100,7 +103,10 @@ public class Login_Screen extends JPanel {
 				JOptionPane.showMessageDialog(null, "One or more boxes are empty","Error", JOptionPane.ERROR_MESSAGE);
 				return;
 			}
-			if (data.containsKey(user) && data.get(user).equals(inpassword)){
+			Object player = data.get(user);
+			String password = ((User) player).getPassword();
+			
+			if (data.containsKey(user) && password.equals(inpassword)){
 				JOptionPane.showMessageDialog(null, "Login successfull","Success", JOptionPane.INFORMATION_MESSAGE);
 				JPanel tmp_Screen = new MainMenu_Screen(parentFrame);
 				parentFrame.setContentPane(tmp_Screen);
@@ -130,8 +136,17 @@ public class Login_Screen extends JPanel {
 		}
 		catch(FileNotFoundException e){
 			e.printStackTrace();
+			makefile();
 		}
 		catch(IOException e){
+			e.printStackTrace();
+		}
+	}
+	
+	private static void makefile(){
+		try{
+			File tmp = new File("Savefiles/Saved_users_passwords.ser");
+		}catch(Exception e){
 			e.printStackTrace();
 		}
 	}
