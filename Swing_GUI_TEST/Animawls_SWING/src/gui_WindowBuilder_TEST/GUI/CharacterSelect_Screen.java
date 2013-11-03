@@ -1,12 +1,25 @@
 package gui_WindowBuilder_TEST.GUI;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+
 import java.awt.Color;
 import java.awt.Font;
+
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.ListSelectionEvent;
+
+import Animals.Animal;
+import Animals.Bear;
+import Animals.Bird;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.image.BufferedImage;
+import java.util.HashMap;
+
+import java.io.*;
+
 
 public class CharacterSelect_Screen extends JPanel {
 
@@ -15,6 +28,7 @@ public class CharacterSelect_Screen extends JPanel {
 	 */
 	private JFrame parentFrame;
 	private JList availCharChoices_List;
+	private HashMap <String,Animal> TmpList;
 	
 	public CharacterSelect_Screen(JFrame masterFrame) {
 		/*Player player1 = null;
@@ -27,7 +41,7 @@ public class CharacterSelect_Screen extends JPanel {
 		setLayout(null);
 		parentFrame = masterFrame;
 		
-		JLabel selectedCharPict_Label = new JLabel("CHARACTER PICTURE");
+		final JLabel selectedCharPict_Label = new JLabel("CHARACTER PICTURE");
 		selectedCharPict_Label.setFont(new Font("Lucida Grande", Font.BOLD | Font.ITALIC, 15));
 		selectedCharPict_Label.setForeground(new Color(255, 255, 0));
 		selectedCharPict_Label.setBackground(Color.WHITE);
@@ -42,17 +56,25 @@ public class CharacterSelect_Screen extends JPanel {
 		
 		//tmp pop in list
 		
-		DefaultListModel listModel = new DefaultListModel();
+		/*DefaultListModel listModel = new DefaultListModel();
         listModel.addElement("BEAR");
         listModel.addElement("CAT");
         listModel.addElement("RHINO");
         listModel.addElement("SHARK");
         listModel.addElement("FALCON");
-        listModel.addElement("SQUID");
+        listModel.addElement("SQUID");*/
+		//availCharChoices_List = new JList(listModel);
 		
-        
-        
+		DefaultListModel listModel = new DefaultListModel();
+		
+		Choose_Lister_Passer();
+		
+		for(String key : TmpList.keySet()){
+			listModel.addElement(key);
+		}
+		
 		availCharChoices_List = new JList(listModel);
+		
 		availCharChoices_List.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent arg0) {
 				//WHEN LIST SELECTION IS MADE, REFLECT CHANGES IN CHAR PICT AND CHAR INFO
@@ -60,9 +82,25 @@ public class CharacterSelect_Screen extends JPanel {
 				//TMP
 				//int index = list.getSelectedIndex();
 				String tmp = (String) availCharChoices_List.getSelectedValue();
-				selectedCharSelectInfo_TextArea.setText(tmp);
-			
 				
+				Animal tmpAnimal = TmpList.get(tmp);
+				//SET IMAGE
+				
+				//SET DESCRIPTION
+				selectedCharSelectInfo_TextArea.setText(tmpAnimal.Description);
+				try{
+					//JLabel selectedCharPict_Label = new JLabel("TESTER");
+					BufferedImage AnimalPicture = ImageIO.read(new File(tmpAnimal.imgPath));
+					//BufferedImage AnimalPicture = ImageIO.read(new File("/Users/whm-ii/Desktop/WORKING_ANIMAL_DIR/Animawl-Brawl/Swing_GUI_TEST/Animawls_SWING/src/gui_WindowBuilder_TEST/GUI/bear.jpg"));
+					selectedCharPict_Label.setIcon(new ImageIcon(AnimalPicture));
+					//selectedCharPict_Label.setBounds(5, 66, 170, 170);
+					//add(selectedCharPict_Label);
+				}
+				catch(Exception ex){
+					ex.printStackTrace();
+				}
+				
+					
 			}
 		});
 		//need to link to animawl list
@@ -95,5 +133,14 @@ public class CharacterSelect_Screen extends JPanel {
 		lblBear.setBounds(348, 66, 96, 21);
 		add(lblBear);
 
+	}	
+		
+		
+	//public HashMap <String,Animal> Choose_Lister_Passer() {
+	public void Choose_Lister_Passer() {
+		//must be updated when new animawls are to be added			
+		TmpList = new HashMap<String,Animal>();
+		TmpList.put("Bear", new Bear("Bear"));
+		TmpList.put("Bird", new Bird("Bird"));
 	}
 }

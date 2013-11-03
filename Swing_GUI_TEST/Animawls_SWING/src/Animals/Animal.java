@@ -38,6 +38,11 @@ public ArrayList<Attack> attacksAvail;
 protected ArrayList<Attack> allAttacks;
 Random rand= new Random();
 
+//PICTURE PATH
+public String imgPath;
+//DESCRIPTION
+public String Description;
+
 //constructor
 public Animal(String name){
 //basic animal stats
@@ -64,6 +69,9 @@ defScaler=10;
 defBonus=0;
 evdScaler=10;
 evdBonus=0;
+
+imgPath = "tmp";
+Description = "tmp";
 }
 
 //getters and setter
