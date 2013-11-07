@@ -103,18 +103,24 @@ public class Login_Screen extends JPanel {
 				JOptionPane.showMessageDialog(null, "One or more boxes are empty","Error", JOptionPane.ERROR_MESSAGE);
 				return;
 			}
-			Object player = data.get(user);
-			String password = ((User) player).getPassword();
 			
-			if (data.containsKey(user) && password.equals(inpassword)){
-				JOptionPane.showMessageDialog(null, "Login successfull","Success", JOptionPane.INFORMATION_MESSAGE);
-				JPanel tmp_Screen = new MainMenu_Screen(parentFrame);
-				parentFrame.setContentPane(tmp_Screen);
-				parentFrame.setVisible(true);
-				parentFrame.setResizable(false);
+			if(data.containsKey(user)){
+				
+				Object player = data.get(user);
+				String password = ((User) player).getPassword();
+				
+				if (data.containsKey(user) && password.equals(inpassword)){
+					JOptionPane.showMessageDialog(null, "Login successfull","Success", JOptionPane.INFORMATION_MESSAGE);
+					JPanel tmp_Screen = new MainMenu_Screen(parentFrame);
+					parentFrame.setContentPane(tmp_Screen);
+					parentFrame.setVisible(true);
+					parentFrame.setResizable(false);
+				}else{
+					JOptionPane.showMessageDialog(null, "incorrect password","Error", JOptionPane.ERROR_MESSAGE);
+				}
 				
 			}else{
-				JOptionPane.showMessageDialog(null, "incorrect login/password","Error", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Username does not exist","Error", JOptionPane.ERROR_MESSAGE);
 			}
 				
 			

@@ -43,7 +43,7 @@ public class Bird extends Animal {
 		evdScaler=7.5;
 		evdBonus=.45;
 		
-		imgPath = "/Users/whm-ii/Desktop/WORKING_ANIMAL_DIR/Animawl-Brawl/Swing_GUI_TEST/Animawls_SWING/src/gui_WindowBuilder_TEST/GUI/bird.jpg";
+		imgPath = "IMAGES/CHAR_PICTS/bird.jpg";
 		Description = "A HAPPY LITTLE BIRD. ABSOLUETELY USELESS";
 	}
 	
