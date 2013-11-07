@@ -151,18 +151,34 @@ public void addLvl(double hpScaler , double hpBonus, double apScaler, double apB
 public double getExp() {
 	return 	expTot;
 }
+
 public void addExpTot(double amount ) {
 	expTot=expTot+amount;
+	//print info to screen
+	System.out.println(name);
+	System.out.print(" gained ");
+	System.out.print(amount);
+	System.out.print("/");
+	System.out.print(expToLvl);
+	System.out.print("\n");
+
 	//reset expErnd earned bc it has been applied to expTot
 	expErnd=0; 
 	//check to see if animal lvled up
+	
 	if(expTot>=expToLvl){
+		
 		//call addLvl function using animals animals lvl up statistics 
 		addLvl(hpScaler,  hpBonus,  apScaler,  apBonus, attScaler, attBonus, defScaler, defBonus, evdScaler, evdBonus);
 		//reset exp
 		expTot=expTot-expToLvl;
 		//set new amount for next lvl
 		expToLvlReset();
+		//print to screen
+		System.out.println(name);
+		System.out.print(" gained a lvl ");
+		System.out.print(lvl);
+		System.out.print("\n");
 	}
 }
 
@@ -183,7 +199,6 @@ public double getExpErnd(){
 public void addExpErnd(int amount){
 	expErnd= expErnd+amount;
 }
-
 
 //for hpTot
 public double getHpTot(){

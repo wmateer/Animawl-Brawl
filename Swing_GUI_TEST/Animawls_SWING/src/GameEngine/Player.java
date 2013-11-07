@@ -28,6 +28,9 @@ public Player(String input, Animal animal0,Animal animal1, Animal animal2){
 public Animal getActive(){
 	return active;
 }
+public ArrayList<Animal> getAnimalsCur(){
+	return animalsCur;
+}
 
 public void setOpp(Player opponent){
 		opp=opponent;
@@ -42,7 +45,8 @@ public String getName(){
 	return name;        
 	}
 	
-			
+
+//TODO move choose animals to USER CLASS and remove animals avail list
 //choose animal functions. 
 public Animal chooseAnimal() {
 	System.out.print("Current animawls available are  ");
@@ -76,22 +80,27 @@ public Animal chooseAnimal() {
 
 // function to switch animals	
 public void switchAnimal() {
-	int inInt=500;
+	Scanner in = new Scanner(System.in);
+	//read input
+	System.out.print("Which animal would you like to use ?");
 	//make sure input is valid
-	while(inInt<0 | inInt>(animalsCur.size())){
-	try {
-		inInt=(char)System.in.read();
-	} catch (IOException e) {
-		e.printStackTrace();
-		if(inInt<0 | inInt>(animalsCur.size())){
-			System.out.println("Please enter a Valid Animal Number ");
-		}
-		}
+	int inInt=0;
+	inInt=in.nextInt();
+
+	while(0>inInt | (inInt-1)>(animalsCur.size())){
+			System.out.println("is not a valid option. Please enter a valid option:" );
+			inInt=in.nextInt();	
 	}
+	
 	//set active animal to users choice
 	active=animalsCur.get(inInt);
+	System.out.println(active.getName());
 }
 	
+public String setActive(Animal input){
+	active=input;
+	return active.getName();
+}
 
 
 public void chooseAttack(){
@@ -125,8 +134,21 @@ public void chooseAttack(){
 	
 	//perform chosen attack on active animal
 	
-	active.attacksAvail.get(inInt).useAttack(active , opp.getActive());
+	active.addExpErnd(active.attacksAvail.get(inInt).useAttack(active , opp.getActive()));
+	;
 	
+}
+
+//check if all animals are dead
+protected int checkLoss(){
+if(animalsCur.get(0).getHpRem()<=0 & animalsCur.get(1).getHpRem()<=0 & animalsCur.get(2).getHpRem()<=0){
+	return 0;
+}
+else{
+	return 1;
+}
+
+
 }
 }	
 	
