@@ -15,7 +15,7 @@ public class animalTest {
 
 public static void main (String[] args) {
 //test constructor
-
+/*
 Animal dog = new Animal("dog");	
 System.out.print("your animal is named ");
 System.out.print(dog.getName());
@@ -105,8 +105,14 @@ test.creatWindow();
 	
 	Player playerOne= new Player("Henry", Willis, Frank, Cindy);
 	Player playerTwo= new Player("Billy",Kyle,Mindy,Alex);
-	Game gOne =  new Game(playerOne,playerTwo);
-	System.out.println(gOne.play().getName());
+	/*int i =0;
+	while(i==0)		{
+	playerOne.switchAnimal();
+	}
+	*/
+	Game gOne =  new Game(playerOne,playerTwo,0);
+	System.out.println(gOne.systemTest().getName());
 	System.out.print(" Wins!");
 	
-}}
+}
+}

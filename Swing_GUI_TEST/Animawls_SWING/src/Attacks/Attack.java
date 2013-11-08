@@ -93,7 +93,7 @@ return dmgDone;
 }
 
 
-public void useAttack(Animal attacker, Animal target){
+public int useAttack(Animal attacker, Animal target){
 //subrtact ap
 attacker.subApRem(apCost);
 
@@ -119,12 +119,13 @@ if(r>=missChance){
 	System.out.println("Your attack did ");
 	System.out.println(dmg);
 	System.out.print("\n");
-
+	return (int) Math.round(dmg);
 }
 //otherwise attack misses
 else{
 	System.out.print("\n");
 	System.out.println("Your Attack Missed");
+	return 0;
 }
 
 }
