@@ -41,17 +41,20 @@ public class CharacterSelect_Screen extends JPanel {
 		setLayout(null);
 		parentFrame = masterFrame;
 		
-		final JLabel selectedCharPict_Label = new JLabel("CHARACTER PICTURE");
+		final JLabel selectedCharPict_Label = new JLabel("\n");
 		selectedCharPict_Label.setFont(new Font("Lucida Grande", Font.BOLD | Font.ITALIC, 15));
 		selectedCharPict_Label.setForeground(new Color(255, 255, 0));
 		selectedCharPict_Label.setBackground(Color.WHITE);
-		selectedCharPict_Label.setBounds(5, 66, 170, 170);
+		selectedCharPict_Label.setBounds(141, 105, 345, 277);
 		add(selectedCharPict_Label);
 		
 		final JTextArea selectedCharSelectInfo_TextArea = new JTextArea();
+		selectedCharSelectInfo_TextArea.setWrapStyleWord(true);
 		selectedCharSelectInfo_TextArea.setLineWrap(true);
+		selectedCharSelectInfo_TextArea.setEditable(false);
+		selectedCharSelectInfo_TextArea.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
 		selectedCharSelectInfo_TextArea.setText("SELECTED CHARACTER DESCRIPTION");
-		selectedCharSelectInfo_TextArea.setBounds(180, 66, 156, 170);
+		selectedCharSelectInfo_TextArea.setBounds(18, 409, 552, 147);
 		add(selectedCharSelectInfo_TextArea);
 		
 		//tmp pop in list
@@ -74,6 +77,7 @@ public class CharacterSelect_Screen extends JPanel {
 		}
 		
 		availCharChoices_List = new JList(listModel);
+		availCharChoices_List.setFont(new Font("Engravers MT", Font.PLAIN, 20));
 		
 		availCharChoices_List.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent arg0) {
@@ -105,14 +109,14 @@ public class CharacterSelect_Screen extends JPanel {
 		});
 		//need to link to animawl list
 		availCharChoices_List.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		availCharChoices_List.setBounds(341, 66, 103, 170);
+		availCharChoices_List.setBounds(617, 116, 255, 345);
 		add(availCharChoices_List);
 		
 		JLabel title_Label = new JLabel("CHARACTER SELECTION");
 		title_Label.setHorizontalAlignment(SwingConstants.CENTER);
-		title_Label.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+		title_Label.setFont(new Font("Lucida Grande", Font.PLAIN, 30));
 		title_Label.setForeground(new Color(0, 0, 255));
-		title_Label.setBounds(98, 20, 255, 34);
+		title_Label.setBounds(199, 0, 501, 72);
 		add(title_Label);
 		
 		JButton confirmCharChoice_Button = new JButton("CONFIRM CHARACTER CHOICE");
@@ -127,14 +131,8 @@ public class CharacterSelect_Screen extends JPanel {
 			
 			}
 		});
-		confirmCharChoice_Button.setBounds(107, 248, 237, 29);
+		confirmCharChoice_Button.setBounds(582, 508, 290, 48);
 		add(confirmCharChoice_Button);
-		
-		JLabel lblBear = new JLabel("Bear");
-		lblBear.setHorizontalAlignment(SwingConstants.CENTER);
-		lblBear.setForeground(Color.GREEN);
-		lblBear.setBounds(348, 66, 96, 21);
-		add(lblBear);
 		
 		parentFrame.setSize(900, 600);
 		parentFrame.setLocationRelativeTo(null);
