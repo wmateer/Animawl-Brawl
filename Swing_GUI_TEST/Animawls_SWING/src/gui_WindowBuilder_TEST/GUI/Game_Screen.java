@@ -6,8 +6,7 @@ package gui_WindowBuilder_TEST.GUI;
 import javax.swing.*;
 
 import Animals.*;
-import GameEngine.Player;
-import GameEngine.User;
+import GameEngine.*;
 
 import java.awt.Font;
 import java.awt.Color;
@@ -16,14 +15,19 @@ import java.awt.event.ActionEvent;
 
 
 public class Game_Screen extends JPanel {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	//public Game_Screen(JFrame masterFrame, User user1, User user2) {
+	
+	private Tmp_Player pone;
+	private Tmp_Player ptwo;
+	
+	public void setPone(Tmp_Player player1){
+		pone = player1;
+	}
+	
+	public void setPtwo(Tmp_Player player2){
+		pone = player2;
+	}
+	
 	public Game_Screen(JFrame masterFrame) {
-		//setBounds(500, 500, 500, 500);
 		setBackground(Color.DARK_GRAY);
 		setLayout(null);
 		
@@ -68,7 +72,7 @@ public class Game_Screen extends JPanel {
 		JLabel lblNewLabel = new JLabel(pone.getName());
 		lblNewLabel.setBounds(93, 35, 80, 16);
 		add(lblNewLabel);
-//---------------------------------		
+	
 		
 		
 //ANIMAL 1--------------------------------------------	
@@ -80,29 +84,32 @@ public class Game_Screen extends JPanel {
 		
 		
 
-		JLabel lblHp = new JLabel("HP ");
-		lblHp.setBounds(186, 410, 28, 16);
-		add(lblHp);
+		JLabel Hp = new JLabel("HP ");
+		Hp.setBounds(186, 410, 28, 16);
+		add(Hp);
 		
-		JLabel lblAp = new JLabel("AP");
-		lblAp.setBounds(186, 433, 22, 16);
-		add(lblAp);
+		JLabel Ap = new JLabel("AP");
+		Ap.setBounds(186, 433, 22, 16);
+		add(Ap);
 		
-		JLabel lblHp_1 = new JLabel("HP");
-		lblHp_1.setBounds(399, 410, 22, 16);
-		add(lblHp_1);
+		JLabel Hpr = new JLabel("HP");
+		Hpr.setBounds(399, 410, 22, 16);
+		add(Hpr);
 		
-		JLabel lblAp_1 = new JLabel("AP");
-		lblAp_1.setBounds(399, 433, 22, 16);
-		add(lblAp_1);
+		JLabel Apr = new JLabel("AP");
+		Apr.setBounds(399, 433, 22, 16);
+		add(Apr);
 		
-		JLabel lblNewLabel_1 = new JLabel("New label");
-		lblNewLabel_1.setBounds(93, 121, 66, 125);
-		add(lblNewLabel_1);
 		
-		JLabel label_1 = new JLabel("New label");
-		label_1.setBounds(454, 121, 80, 76);
-		add(label_1);
+		JLabel pic = new JLabel("Picture Here");
+		pic.setBounds(93, 121, 66, 125);
+		add(pic);
+		
+		
+		JLabel picr = new JLabel("Picture Here");
+		picr.setBounds(454, 121, 80, 76);
+		add(picr);
+		
 		
 //ANIMAL 1 --------------------------------------------
 		
