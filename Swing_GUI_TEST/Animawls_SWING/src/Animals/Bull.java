@@ -2,44 +2,45 @@ package Animals;
 
 //import Animal;
 //import Attack;
-//import Maul;
+//import Rest;
+//import Trunkslap;
+//import Watergun;
 
 import java.util.ArrayList;
 import Attacks.*;
-import Attacks.Maul;
 
 
-public class Bear extends Animal {
+public class Bull extends Animal {
 
-	public Bear(String name) {
+	public Bull(String name) {
 		super(name);
-		// stat set for bear
-		type="Bear";
+		// stat set for elephant
+		type="Bull";
 		this.name=name;
 		lvl=1;
 		expTot=0;
 		expErnd=0;
 		expToLvl=1200;
-		hpTot=650;
-		hpRem=650;
+		hpTot=500;
+		hpRem=500;
 		apTot=110;
 		apRem=110;
-		att=125;
-		def=150;
-		evd=25;
+		att=140;
+		def=80;
+		evd=80;
 		poisoned=0;
 		
-		//set attack array for bear
+		//set attack array for elephant
 		attacksAvail=new ArrayList<Attack>();
-		Maul Attack0 = new Maul();
+		Headbutt Attack0 = new Headbutt();
 		attacksAvail.add(Attack0);
 		
-		Claw Attack1 = new Claw();
+		attacksAvail=new ArrayList<Attack>();
+		Charge Attack1 = new Charge();
 		attacksAvail.add(Attack1);
 		
-		Knockdown Attack2 = new Knockdown();
-		attacksAvail.add(Attack2);
-		//lvl up statistics for bear
+
+		//lvl up statistics for elephant
 		hpScaler=8;
 		hpBonus=.25;
 		apScaler=10;
@@ -51,7 +52,7 @@ public class Bear extends Animal {
 		evdScaler=10;
 		evdBonus=-.05;
 		
-		imgPath = "IMAGES/CHAR_PICTS/bear.jpg";
+		imgPath = "/Users/whm-ii/Desktop/WORKING_ANIMAL_DIR/Animawl-Brawl/Swing_GUI_TEST/Animawls_SWING/src/gui_WindowBuilder_TEST/GUI/bear.jpg";
 		Description = "A TERRIFYING BEAR, HELLBENT ON DESTRUCTION!!!";
 	}
 }

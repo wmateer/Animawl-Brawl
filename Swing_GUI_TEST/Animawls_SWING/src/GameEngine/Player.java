@@ -64,7 +64,7 @@ public Animal chooseAnimal() {
 	
 	System.out.println("Please choose your animawl:");
 	int inInt=500;
-	while(inInt<0 | inInt>(animalsAvail.size())){
+	while(animalNumb<= animalsAvail.size()){
 	try {
 		inInt=(char)System.in.read();
 	} catch (IOException e) {
