@@ -50,7 +50,7 @@ public class CharacterSelect_Screen extends JPanel {
 		selectedCharPict_Label.setFont(new Font("Lucida Grande", Font.BOLD | Font.ITALIC, 15));
 		selectedCharPict_Label.setForeground(new Color(255, 255, 0));
 		selectedCharPict_Label.setBackground(Color.WHITE);
-		selectedCharPict_Label.setBounds(141, 105, 345, 277);
+		selectedCharPict_Label.setBounds(18, 200, 200, 200);
 		add(selectedCharPict_Label);
 		
 		final JTextArea selectedCharSelectInfo_TextArea = new JTextArea();
@@ -138,6 +138,70 @@ public class CharacterSelect_Screen extends JPanel {
 		});
 		confirmCharChoice_Button.setBounds(582, 508, 290, 48);
 		add(confirmCharChoice_Button);
+		
+		JLabel LEVEL_LABEL = new JLabel("LEVEL");
+		LEVEL_LABEL.setBounds(230, 192, 48, 16);
+		add(LEVEL_LABEL);
+		
+		JLabel EXP_EARNED_LABEL = new JLabel("EXP EARNED");
+		EXP_EARNED_LABEL.setBounds(230, 220, 94, 16);
+		add(EXP_EARNED_LABEL);
+		
+		JLabel EXP_TO_NEXT_LVL_LABEL = new JLabel("EXP TO LEVEL");
+		EXP_TO_NEXT_LVL_LABEL.setBounds(230, 248, 94, 16);
+		add(EXP_TO_NEXT_LVL_LABEL);
+		
+		JLabel HP_TOTAL = new JLabel("HP TOTAL");
+		HP_TOTAL.setBounds(230, 276, 74, 16);
+		add(HP_TOTAL);
+		
+		JLabel AP_TOTAL = new JLabel("AP TOTAL");
+		AP_TOTAL.setBounds(230, 304, 74, 16);
+		add(AP_TOTAL);
+		
+		JLabel ATTACK = new JLabel("ATTACk");
+		ATTACK.setBounds(230, 328, 61, 16);
+		add(ATTACK);
+		
+		JLabel DEFENSE = new JLabel("DEFENSE");
+		DEFENSE.setBounds(230, 356, 61, 16);
+		add(DEFENSE);
+		
+		JLabel EVADE = new JLabel("EVADE");
+		EVADE.setBounds(230, 384, 61, 16);
+		add(EVADE);
+		
+		JTextArea LEVEL_AREA = new JTextArea();
+		LEVEL_AREA.setBounds(376, 192, 54, 16);
+		add(LEVEL_AREA);
+		
+		JTextArea EXP_EARNED_AREA = new JTextArea();
+		EXP_EARNED_AREA.setBounds(376, 220, 54, 16);
+		add(EXP_EARNED_AREA);
+		
+		JTextArea EXP_TO_LEVEL_AREA = new JTextArea();
+		EXP_TO_LEVEL_AREA.setBounds(376, 248, 54, 16);
+		add(EXP_TO_LEVEL_AREA);
+		
+		JTextArea HP_TOTAL_AREA = new JTextArea();
+		HP_TOTAL_AREA.setBounds(376, 276, 54, 16);
+		add(HP_TOTAL_AREA);
+		
+		JTextArea AP_TOTAL_AREA = new JTextArea();
+		AP_TOTAL_AREA.setBounds(376, 304, 54, 16);
+		add(AP_TOTAL_AREA);
+		
+		JTextArea ATTACK_AREA = new JTextArea();
+		ATTACK_AREA.setBounds(376, 328, 54, 16);
+		add(ATTACK_AREA);
+		
+		JTextArea DEFENSE_AREA = new JTextArea();
+		DEFENSE_AREA.setBounds(376, 356, 54, 16);
+		add(DEFENSE_AREA);
+		
+		JTextArea EVADE_AREA = new JTextArea();
+		EVADE_AREA.setBounds(376, 384, 54, 16);
+		add(EVADE_AREA);
 		
 		parentFrame.setSize(900, 600);
 		parentFrame.setLocationRelativeTo(null);
