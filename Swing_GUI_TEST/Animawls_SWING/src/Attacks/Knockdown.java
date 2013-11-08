@@ -6,7 +6,7 @@ package Attacks;
 
 public class Knockdown extends Attack {
  public Knockdown(){
-	this.setName("Claw");	
+	this.setName("Knockdown");	
 	this.setDmg(150);
 	this.setConsist(.9);
 	this.setAcc(.3);
