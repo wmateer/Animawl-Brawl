@@ -5,7 +5,6 @@ package gui_WindowBuilder_TEST.GUI;
 
 import javax.swing.*;
 
-
 import Animals.*;
 import GameEngine.*;
 
@@ -184,7 +183,7 @@ public class Game_Screen extends JPanel {
 			
 		    attack0 = new JRadioButton(pZero.getActive().attacksAvail.get(0).getName());
 			attack0.setBounds(84, 324, 141, 23);
-		
+			
 			add(attack0);
 			attack0.setVisible(false);
 
@@ -395,18 +394,10 @@ public class Game_Screen extends JPanel {
 	//Start Implimentation
 public void showpZero(boolean input){
 	if(input == true){
-		attack.setEnabled(true);
-		special.setEnabled(true);
-		defend.setEnabled(true);
-		switchAnimal.setEnabled(true);
-	}else{
-		attack.setEnabled(false);
-		special.setEnabled(false);
-		defend.setEnabled(false);
-		switchAnimal.setEnabled(false);
-		attack2.setEnabled(false);
-		attack1.setEnabled(false);
-		attack0.setEnabled(false);
+		attack.setVisible(true);
+		special.setVisible(true);
+		defend.setVisible(true);
+		switchAnimal.setVisible(true);
 		
 		attack.setSelected(false);
 		special.setSelected(false);
@@ -416,23 +407,37 @@ public void showpZero(boolean input){
 		attack1.setSelected(false);
 		attack0.setSelected(false);
 		
+		}
+	if(input == false){
+		
+		attack.setSelected(false);
+		special.setSelected(false);
+		defend.setSelected(false);
+		switchAnimal.setSelected(false);
+		attack2.setSelected(false);
+		attack1.setSelected(false);
+		attack0.setSelected(false);
+		
+		attack.setVisible(false);
+		special.setVisible(false);
+		defend.setVisible(false);
+		switchAnimal.setVisible(false);
+		attack2.setVisible(false);
+		attack1.setVisible(false);
+		attack0.setVisible(false);
+		
+		
+		
 		
 	}
 	
 }
 public void showpOne(boolean input){
 	if(input == true){
-		attackr.setEnabled(true);
-		specialr.setEnabled(true);
-		defendr.setEnabled(true);
-		switchAnimalr.setEnabled(true);
-	}else{
-		attackr.setEnabled(false);
-		specialr.setEnabled(false);
-		defendr.setEnabled(false);
-		switchAnimalr.setEnabled(false);
-		attack2r.setEnabled(false);
-		attack1r.setEnabled(false);	
+		attackr.setVisible(true);
+		specialr.setVisible(true);
+		defendr.setVisible(true);
+		switchAnimalr.setVisible(true);
 		
 		attackr.setSelected(false);
 		specialr.setSelected(false);
@@ -441,6 +446,25 @@ public void showpOne(boolean input){
 		attack2r.setSelected(false);
 		attack1r.setSelected(false);
 		attack0r.setSelected(false);
+		}
+	if(input == false)
+	{
+
+		attackr.setSelected(false);
+		specialr.setSelected(false);
+		defendr.setSelected(false);
+		switchAnimalr.setSelected(false);
+		attack2r.setSelected(false);
+		attack1r.setSelected(false);
+		attack0r.setSelected(false);
+		
+		attackr.setVisible(false);
+		specialr.setVisible(false);
+		defendr.setVisible(false);
+		switchAnimalr.setVisible(false);
+		attack2r.setVisible(false);
+		attack1r.setVisible(false);	
+		
 	}
 	
 }
@@ -468,18 +492,19 @@ public boolean checkNoneSelected(){
 	//will fill for other buttons
 
 public void endTurn(){
-
-if(whoseTurn==0){
+if(whoseTurn==1){
+		round++;
+		whoseTurn=0;
+		showpOne(false);
+		showpZero(true);
+}
+	
+else if(whoseTurn==0){
 	whoseTurn++;
 	showpZero(false);
 	showpOne(true);
 }
-if(whoseTurn==1){
-	round++;
-	whoseTurn=0;
-	showpOne(false);
-	showpZero(true);
-}
+
 tmp=active;
 active=inactive;
 inactive=tmp;
@@ -493,11 +518,20 @@ if(attack0.isSelected()){
 
 public class confirmListner implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
+	//TODO need to check if active animal is dead and if so present only switch animals buttons
 		
 		if(checkNoneSelected()==false){
 			performSelected();
 			}
+		//checks for inactive player loss after active attacks. have not yet tested but should work fine
+		if (inactive.checkLoss()==0){
+			String temp =active.getName() + "Wins!";
+			prompt.setText(temp);
+		}
+		
+		
 	endTurn();
+	
 	}
 	}
 
