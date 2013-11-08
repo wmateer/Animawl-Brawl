@@ -432,13 +432,13 @@ public void showpZero(boolean input){
 		}
 	if(input == false){
 		
-		attack.setSelected(false);
-		special.setSelected(false);
-		defend.setSelected(false);
-		switchAnimal.setSelected(false);
-		attack2.setSelected(false);
-		attack1.setSelected(false);
-		attack0.setSelected(false);
+		attackr.setSelected(false);
+		specialr.setSelected(false);
+		defendr.setSelected(false);
+		switchAnimalr.setSelected(false);
+		attack2r.setSelected(false);
+		attack1r.setSelected(false);
+		attack0r.setSelected(false);
 		
 		attack.setVisible(false);
 		special.setVisible(false);
@@ -472,13 +472,13 @@ public void showpOne(boolean input){
 	if(input == false)
 	{
 
-		attackr.setSelected(false);
-		specialr.setSelected(false);
-		defendr.setSelected(false);
-		switchAnimalr.setSelected(false);
-		attack2r.setSelected(false);
-		attack1r.setSelected(false);
-		attack0r.setSelected(false);
+		attack.setSelected(false);
+		special.setSelected(false);
+		defend.setSelected(false);
+		switchAnimal.setSelected(false);
+		attack2.setSelected(false);
+		attack1.setSelected(false);
+		attack0.setSelected(false);
 		
 		attackr.setVisible(false);
 		specialr.setVisible(false);
@@ -522,7 +522,7 @@ public boolean checkNoneSelectedr(){
 		}
 	}
 	
-	if(!(attack.isSelected()) && !(special.isSelected()) && !(defend.isSelected()) & !(switchAnimal.isSelected())) {
+	if(!(attackr.isSelected()) && !(specialr.isSelected()) && !(defendr.isSelected()) & !(switchAnimalr.isSelected())) {
 		return true;
 	}else{
 		return false;
@@ -557,20 +557,22 @@ inactive=tmp;
 
 public void performSelected(){
 	if(attack0.isSelected()){
-		active.getActive().addExpErnd(active.getActive().attacksAvail.get(0).useAttack(active.getActive(), inactive.getActive()));
+		//active.getActive().addExpErnd(active.getActive().attacksAvail.get(0).useAttack(active.getActive(), inactive.getActive()));
 		inactive.getActive().subHpRem(active.getActive().attacksAvail.get(0).useAttack(active.getActive(), inactive.getActive()));
 		active.getActive().subApRem((int)active.getActive().attacksAvail.get(0).getApCost());
 		hpBarr.setValue((int)inactive.getActive().getHpRem());
 		apBar.setValue((int)active.getActive().getApRem());
+		return;
 		
     }
 	
 	if(attack0r.isSelected()){
-		active.getActive().addExpErnd(active.getActive().attacksAvail.get(0).useAttack(active.getActive(), inactive.getActive()));
+		//active.getActive().addExpErnd(active.getActive().attacksAvail.get(0).useAttack(active.getActive(), inactive.getActive()));
 		inactive.getActive().subHpRem(active.getActive().attacksAvail.get(0).useAttack(active.getActive(), inactive.getActive()));
 		active.getActive().subApRem((int)active.getActive().attacksAvail.get(0).getApCost());
 		hpBar.setValue((int)inactive.getActive().getHpRem());
 		apBarr.setValue((int)active.getActive().getApRem());
+		return;
 	}
 }
 
@@ -581,6 +583,8 @@ public class confirmListner implements ActionListener {
 			if(checkNoneSelected()==false){
 				performSelected();
 				
+				}else{
+					return;
 				}
 		}
 		
@@ -588,6 +592,8 @@ public class confirmListner implements ActionListener {
 			if(checkNoneSelectedr()==false){
 				performSelected();
 			
+				}else{
+					return;
 				}
 		}
 		
