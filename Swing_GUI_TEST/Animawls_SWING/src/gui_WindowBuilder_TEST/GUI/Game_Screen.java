@@ -5,6 +5,7 @@ package gui_WindowBuilder_TEST.GUI;
 
 import javax.swing.*;
 
+
 import Animals.*;
 import GameEngine.*;
 
@@ -15,21 +16,60 @@ import java.awt.event.ActionEvent;
 
 
 public class Game_Screen extends JPanel {
+	//game info
+	private Player pZero;
+	private Player pOne;
+	private Player active;
+	private Player inactive;
+	private Player tmp;
+	private int round=0;
+	private int  play=1;
+	private int whoseTurn=0;
 	
-	//private Tmp_Player pone;
-	//private Tmp_Player ptwo;
 	
-	/*public void setPone(Tmp_Player player1){
-		pone = player1;
-	}
 	
-	public void setPtwo(Tmp_Player player2){
-		pone = player2;
-	}*/
+	private JLabel prompt;
 	
+	
+	//left player info
+		//left player gui info
+	private JLabel usernameZero;
+	private JLabel animalNameZero;
+	private JLabel animalZeroGraphic;
+	private JRadioButton attack;
+	private JRadioButton attack0;
+	private JRadioButton attack1;
+	private JRadioButton attack2;
+	private	JRadioButton attack3;
+	private JRadioButton special;
+	private JRadioButton defend;
+	private JRadioButton switchAnimal;
+	private JProgressBar hpBar;
+	private JProgressBar apBar;
+	
+	//left player info
+			//left player gui info
+		private JLabel userNameOne;
+		private JLabel animalNameOne;
+		private JLabel animalZeroOne;
+		private JRadioButton attackr;
+		private JRadioButton attack0r;
+		private JRadioButton attack1r;
+		private JRadioButton attack2r;
+		private	JRadioButton attack3r;
+		private JRadioButton specialr;
+		private JRadioButton defendr;
+		private JRadioButton switchAnimalr;
+		private JProgressBar hpBarr;
+		private JProgressBar apBarr;
+
 	public Game_Screen(JFrame masterFrame) {
 		setBackground(Color.DARK_GRAY);
 		setLayout(null);
+		
+//prompt header
+		JLabel prompt = new JLabel();
+		prompt.setBounds(290, 94, 288, 30);
 		
 //----------------------------------
 		
@@ -44,11 +84,44 @@ public class Game_Screen extends JPanel {
 		
 		
 		
-		Player pone = new Player("bill",Willis, Frank, Cindy);
-		Player ptwo = new Player("bob",Kyle, Mindy, Alex);
+		final Player pZero = new Player("bill",Willis, Frank, Cindy);
+		active = pZero;
+		final Player pOne = new Player("bob",Kyle, Mindy, Alex);
+		inactive=pOne;
 //---------------------------------------		
 		
 		
+		//initialize constant screen objects
+
+		JLabel Hp = new JLabel("HP ");
+		Hp.setForeground(Color.RED);
+		Hp.setBounds(232, 324, 28, 16);
+		add(Hp);
+		
+		JLabel Ap = new JLabel("AP");
+		Ap.setForeground(Color.blue);
+		Ap.setBounds(238, 356, 22, 16);
+		add(Ap);
+		
+		JLabel Hpr = new JLabel("HP");
+		Hpr.setForeground(Color.RED);
+		Hpr.setBounds(635, 331, 22, 16);
+		add(Hpr);
+		
+		JLabel Apr = new JLabel("AP");
+		Apr.setForeground(Color.blue);
+		Apr.setBounds(635, 356, 22, 16);
+		add(Apr);
+		
+		
+		JLabel pic = new JLabel("Picture Here");
+		pic.setBounds(208, 126, 132, 126);
+		add(pic);
+		
+		
+		JLabel picr = new JLabel("Picture Here");
+		picr.setBounds(555, 126, 132, 126);
+		add(picr);
 		
 		JLabel playAnimawl_title = new JLabel("BATTLE");
 		playAnimawl_title.setHorizontalAlignment(SwingConstants.CENTER);
@@ -66,321 +139,371 @@ public class Game_Screen extends JPanel {
 		toggleButton.setBackground(Color.YELLOW);
 		toggleButton.setBounds(797, 36, 72, 16);
 		add(toggleButton);
+		
+	//Confirm Button-------------------------------------		
+			JButton confirm = new JButton("Confirm");
+			confirm.addActionListener(new confirmListner());
+			confirm.setBounds(391, 428, 117, 29);
+			add(confirm);
 
-/// USER 1````````````````````````
+			masterFrame.setSize(900, 600);
+			masterFrame.setLocationRelativeTo(null);
+			
+			
+/// USER 0````````````````````````
 		
-		JLabel lblNewLabel = new JLabel(pone.getName());
-		lblNewLabel.setBounds(130, 70, 80, 16);
-		add(lblNewLabel);
-	
+		usernameZero = new JLabel(pZero.getName());
+		usernameZero.setBounds(130, 70, 80, 16);
+		add(usernameZero);
+		//ANIMAL 0 --------------------------------------------
 		
-		
-//ANIMAL 1--------------------------------------------	
-		
-		JLabel lblUserName = new JLabel(ptwo.getActive().getName());
-		lblUserName.setBounds(577, 98, 80, 16);
-		add(lblUserName);
-//---------------------------------------------------		
-		
-		
+			animalNameZero = new JLabel(pZero.getActive().getName());
+			animalNameZero.setBounds(198, 98, 80, 16);
+			add(animalNameZero);
+		//HP 0 ------------------------------------------------------------
+			
+			hpBar = new JProgressBar(0,(int)pZero.getActive().getHpTot());
+			hpBar.setStringPainted(true);
+			hpBar.setForeground(Color.red);
+			hpBar.setValue((int)pZero.getActive().getHpRem());
+			hpBar.setBounds(262, 324, 120, 20);
+			add(hpBar);		
 
-		JLabel Hp = new JLabel("HP ");
-		Hp.setBounds(232, 324, 28, 16);
-		add(Hp);
+		//AP 0 ------------------------------------------------------------	
 		
-		JLabel Ap = new JLabel("AP");
-		Ap.setBounds(238, 356, 22, 16);
-		add(Ap);
+			//UIManager.put("ProgressBar.selectionForeground", Color.blue);
+		    apBar = new JProgressBar(0,(int)pZero.getActive().getApTot());
+			apBar.setValue((int)pZero.getActive().getApRem());
+			apBar.setForeground(Color.blue);
+			apBar.setStringPainted(true);
+			apBar.setBounds(262, 352, 120, 20);
+			add(apBar);
+		//BUTTONS 0!!------------------------------------------------------		
+			
+			
+			
+		    attack0 = new JRadioButton(pZero.getActive().attacksAvail.get(0).getName());
+			attack0.setBounds(84, 324, 141, 23);
 		
-		JLabel Hpr = new JLabel("HP");
-		Hpr.setBounds(635, 331, 22, 16);
-		add(Hpr);
-		
-		JLabel Apr = new JLabel("AP");
-		Apr.setBounds(635, 356, 22, 16);
-		add(Apr);
-		
-		
-		JLabel pic = new JLabel("Picture Here");
-		pic.setBounds(208, 126, 132, 126);
-		add(pic);
-		
-		
-		JLabel picr = new JLabel("Picture Here");
-		picr.setBounds(555, 126, 132, 126);
-		add(picr);
-		
-		
-//ANIMAL 1 --------------------------------------------
-		
-		JLabel lblAnimal = new JLabel(pone.getActive().getName());
-		lblAnimal.setBounds(198, 98, 80, 16);
-		add(lblAnimal);
-//--------------------------------------------			
-		
-		
-//USER 2----------------------------------------------		
-		
-		JLabel label_3 = new JLabel(ptwo.getName());
-		label_3.setBounds(728, 64, 80, 16);
-		add(label_3);
-//-----------------------------------------------------		
-		
-		
-		
-		UIManager.put("ProgressBar.background", Color.black);
-		UIManager.put("ProgressBar.foreground", Color.black);
-		UIManager.put("ProgressBar.selectionBackground", Color.black);
-		UIManager.put("ProgressBar.selectionForeground", Color.red);
-		
-		
-		
-//HP 1 ------------------------------------------------------------
-		JProgressBar progressBar = new JProgressBar(0,(int)pone.getActive().getHpTot());
-		progressBar.setStringPainted(true);
-		progressBar.setForeground(Color.red);
-		progressBar.setValue((int)pone.getActive().getHpRem());
-		
-		progressBar.setBackground(Color.RED);
-		progressBar.setBounds(262, 324, 100, 20);
-		add(progressBar);
-//------------------------------------------------------------	
-	
+			add(attack0);
+			attack0.setVisible(false);
 
-//AP 1 ------------------------------------------------------------		
-		UIManager.put("ProgressBar.selectionForeground", Color.blue);
-		JProgressBar progressBar_1 = new JProgressBar(0,(int)pone.getActive().getApTot());
-		progressBar_1.setValue((int)pone.getActive().getApRem());
-		progressBar_1.setStringPainted(true);
-		progressBar_1.setBackground(Color.RED);
-		progressBar_1.setBounds(262, 352, 102, 20);
-		add(progressBar_1);
-// ------------------------------------------------------------			
-		
-	
-//HP 1 ------------------------------------------------------------	
-		UIManager.put("ProgressBar.selectionForeground", Color.red);
-		JProgressBar progressBar_2 = new JProgressBar(0,(int)ptwo.getActive().getHpTot());
-		progressBar_2.setValue((int)ptwo.getActive().getHpRem());
-		progressBar_2.setStringPainted(true);
-		progressBar_2.setBackground(Color.RED);
-		progressBar_2.setBounds(535, 327, 100, 20);
-		add(progressBar_2);
-// ------------------------------------------------------------				
-	
-		
-//AP 2 ------------------------------------------------------------				
-		UIManager.put("ProgressBar.selectionForeground", Color.blue);
-		JProgressBar progressBar_3 = new JProgressBar(0,(int)ptwo.getActive().getApTot());
-		progressBar_3.setValue((int)ptwo.getActive().getApRem());
-		progressBar_3.setStringPainted(true);
-		progressBar_3.setBackground(Color.RED);
-		progressBar_3.setBounds(535, 352, 100, 20);
-		add(progressBar_3);
-// ------------------------------------------------------------			
-		
-//BUTTONS 1!!------------------------------------------------------		
-	
-		
-		
-		final JRadioButton attack1 = new JRadioButton("Maul");
-		attack1.setBounds(84, 324, 141, 23);
-	
-		add(attack1);
-		attack1.setVisible(false);
+			
+			attack1 = new JRadioButton("Attack2");
+			attack1.setBounds(83, 359, 141, 23);
 
-		
-		final JRadioButton attack2 = new JRadioButton("Attack2");
-		attack2.setBounds(83, 359, 141, 23);
+			add(attack1);
+			attack1.setVisible(false);
+			
+			
+			attack2 = new JRadioButton("Attack3");
+			attack2.setBounds(84, 394, 141, 23);
 
-		add(attack2);
-		attack2.setVisible(false);
-		
-		
-		final JRadioButton attack3 = new JRadioButton("Attack3");
-		attack3.setBounds(84, 394, 141, 23);
-
-		add(attack3);
-		attack3.setVisible(false);
-		
-		JRadioButton special = new JRadioButton("Special");
-		special.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				attack3.setVisible(false);
-				attack2.setVisible(false);
-				attack1.setVisible(false);	
-			}
-		});
-		special.setBounds(42, 429, 141, 23);
-		add(special);
-		
-		JRadioButton defend = new JRadioButton("Defend");
-		defend.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				attack3.setVisible(false);
-				attack2.setVisible(false);
-				attack1.setVisible(false);	
-			}
-		});
-		defend.setBounds(42, 479, 141, 23);
-		add(defend);
-		
-		JRadioButton switchb = new JRadioButton("Switch Animal");
-		switchb.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				attack3.setVisible(false);
-				attack2.setVisible(false);
-				attack1.setVisible(false);	
-			}
-		});
-		switchb.setBounds(42, 545, 141, 23);
-		add(switchb);
-		
-
-		final JRadioButton attack = new JRadioButton("Attack");
-		
-		attack.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if(attack.isSelected()){
-				attack3.setVisible(true);
-				attack2.setVisible(true);
-				attack1.setVisible(true);	
-				}
-				if(!attack.isSelected()){
-					attack3.setVisible(false);
+			add(attack2);
+			attack2.setVisible(false);
+			
+			special = new JRadioButton("Special");
+			special.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
 					attack2.setVisible(false);
-					attack1.setVisible(false);		
+					attack1.setVisible(false);
+					attack0.setVisible(false);	
 				}
-			}
-		});
-		attack.setBounds(42, 289, 141, 23);
+			});
+			special.setBounds(42, 429, 141, 23);
+			add(special);
+			// ------------------------------------------------------------		
+			defend = new JRadioButton("Defend");
+			defend.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					attack2.setVisible(false);
+					attack1.setVisible(false);
+					attack0.setVisible(false);	
+				}
+			});
+			defend.setBounds(42, 479, 141, 23);
+			add(defend);
+			
+			switchAnimal = new JRadioButton("Switch Animal");
+			switchAnimal.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					attack2.setVisible(false);
+					attack1.setVisible(false);
+					attack0.setVisible(false);	
+				}
+			});
+			switchAnimal.setBounds(42, 545, 141, 23);
+			add(switchAnimal);
+			
+			attack = new JRadioButton("Attack");
+			
+			attack.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					if(attack.isSelected()){
+					attack2.setVisible(true);
+					attack1.setVisible(true);
+					attack0.setVisible(true);	
+					}
+					if(!attack.isSelected()){
+						attack2.setVisible(false);
+						attack1.setVisible(false);
+						attack0.setVisible(false);		
+					}
+				}
+			});
+			attack.setBounds(42, 289, 141, 23);
+			add(attack);
+			
+			//Buttongroup stufff for pZero ------------------
+			ButtonGroup buttonGroup = new ButtonGroup();
+			ButtonGroup buttonGroupB = new ButtonGroup();
+			
+			buttonGroup.add(attack0);
+			buttonGroup.add(attack1);
+			buttonGroup.add(attack2);
+			buttonGroup.add(defend);
+			buttonGroup.add(special);
+			buttonGroup.add(switchAnimal);
+			
+			buttonGroupB.add(attack);
+			buttonGroupB.add(switchAnimal);
+			buttonGroupB.add(defend);
+			buttonGroupB.add(special);
+			
+		
+		
+//USER 1----------------------------------------------		
+		
+		userNameOne = new JLabel(pOne.getName());
+		userNameOne.setBounds(728, 64, 80, 16);
+		add(userNameOne);		
+		//ANIMAL 1--------------------------------------------	
+		
+			animalNameOne = new JLabel(pOne.getActive().getName());
+			animalNameOne.setBounds(577, 98, 80, 16);
+			add(animalNameOne);
+			
+		//HP 1 ------------------------------------------------------------	
+			//UIManager.put("ProgressBar.selectionBackground", Color.red);
+				hpBarr= new JProgressBar(0,(int)pOne.getActive().getHpTot());
+				hpBarr.setValue((int)pOne.getActive().getHpRem());
+				hpBarr.setForeground(Color.red);
+				hpBarr.setStringPainted(true);
+				hpBarr.setBackground(Color.RED);
+				hpBarr.setBounds(515, 324, 120, 20);
+				add(hpBarr);
 
-		add(attack);
+		//AP 1 ------------------------------------------------------------				
+				//UIManager.put("ProgressBar.selectionBackground", Color.blue);
+				apBarr = new JProgressBar(0,(int)pOne.getActive().getApTot());
+				apBarr.setValue((int)pOne.getActive().getApRem());
+				apBarr.setForeground(Color.blue);
+				apBarr.setStringPainted(true);
+				apBarr.setBackground(Color.RED);
+				apBarr.setBounds(515, 352, 120, 20);
+				add(apBarr);
+	    //  Right Side buttons		
 		
 		
-//Buttongroup stufff ------------------
-		ButtonGroup buttonGroup = new ButtonGroup();
-		ButtonGroup buttonGroupB = new ButtonGroup();
+		attack0r = new JRadioButton("Attack0r");
+		attack0r.setBounds(774, 327, 141, 23);
+		add(attack0r);
 		
-		buttonGroup.add(attack1);
-		buttonGroup.add(attack2);
-		buttonGroup.add(attack3);
-		buttonGroup.add(defend);
-		buttonGroup.add(special);
-		buttonGroup.add(switchb);
-		
-		buttonGroupB.add(attack);
-		buttonGroupB.add(switchb);
-		buttonGroupB.add(defend);
-		buttonGroupB.add(special);
-		
-		
-//Confirm Button-------------------------------------		
-		JButton confirm = new JButton("Confirm");
-		confirm.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				if(attack1.isSelected())
-				{
-				
-				}
-				
-			}
-		});
-		confirm.setBounds(391, 428, 117, 29);
-		add(confirm);
-		
-//  Right Side buttons		
-		
-		
-		final JRadioButton attack1r = new JRadioButton("Attack1r");
-		attack1r.setBounds(774, 327, 141, 23);
+		attack1r= new JRadioButton("Attack1r");
+		attack1r.setBounds(774, 359, 141, 23);
 		add(attack1r);
 		
-		final JRadioButton attack2r= new JRadioButton("Attack2r");
-		attack2r.setBounds(774, 359, 141, 23);
+		attack2r = new JRadioButton("Attack2r");
+		attack2r.setBounds(774, 394, 141, 23);
 		add(attack2r);
 		
-		final JRadioButton attack3r = new JRadioButton("Attack3r");
-		attack3r.setBounds(774, 394, 141, 23);
-		add(attack3r);
-		
+		attack0r.setVisible(false);
 		attack1r.setVisible(false);
 		attack2r.setVisible(false);
-		attack3r.setVisible(false);
 		
-		JRadioButton specialr = new JRadioButton("Special");
+		specialr = new JRadioButton("Special");
 		specialr.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				attack3r.setVisible(false);
 				attack2r.setVisible(false);
 				attack1r.setVisible(false);
+				attack0r.setVisible(false);
 			}
 		});
 		specialr.setBounds(728, 429, 141, 23);
 		add(specialr);
 		
-		JRadioButton defendr = new JRadioButton("Defend");
+	    defendr = new JRadioButton("Defend");
 		defendr.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				attack3r.setVisible(false);
 				attack2r.setVisible(false);
 				attack1r.setVisible(false);
+				attack0r.setVisible(false);
 			}
 		});
 		defendr.setBounds(728, 479, 141, 23);
 		add(defendr);
 		
-		JRadioButton switchbr = new JRadioButton("Switch");
-		switchbr.addActionListener(new ActionListener() {
+		switchAnimalr = new JRadioButton("Switch");
+		switchAnimalr.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				attack3r.setVisible(false);
 				attack2r.setVisible(false);
 				attack1r.setVisible(false);
+				attack0r.setVisible(false);
 			}
 		});
-		switchbr.setBounds(728, 545, 141, 23);
-		add(switchbr);
+		switchAnimalr.setBounds(728, 545, 141, 23);
+		add(switchAnimalr);
 		
-		final JRadioButton attackr = new JRadioButton("Attackr");
+		attackr = new JRadioButton("Attack");
 		attackr.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(attackr.isSelected()){
-					attack3r.setVisible(true);
 					attack2r.setVisible(true);
-					attack1r.setVisible(true);	
+					attack1r.setVisible(true);
+					attack0r.setVisible(true);	
 					}
 				if(!attackr.isSelected()){
-						attack3r.setVisible(false);
 						attack2r.setVisible(false);
-						attack1r.setVisible(false);		
+						attack1r.setVisible(false);
+						attack0r.setVisible(false);		
 					}
 			}
 		});
 		attackr.setBounds(728, 289, 141, 23);
 		add(attackr);
 		
-// Right side button group stuff
+		// Right side button group stuff
 		
-		ButtonGroup buttonGroupr = new ButtonGroup();
-		ButtonGroup buttonGroupBr = new ButtonGroup();
-		
-		buttonGroupr.add(attack1r);
-		buttonGroupr.add(attack2r);
-		buttonGroupr.add(attack3r);
-		buttonGroupr.add(defendr);
-		buttonGroupr.add(specialr);
-		buttonGroupr.add(switchbr);
-		
-		buttonGroupBr.add(attackr);
-		buttonGroupBr.add(switchbr);
-		buttonGroupBr.add(defendr);
-		buttonGroupBr.add(specialr);
-		
-		masterFrame.setSize(900, 600);
-		masterFrame.setLocationRelativeTo(null);
+			ButtonGroup buttonGroupr = new ButtonGroup();
+			ButtonGroup buttonGroupBr = new ButtonGroup();
+			
+			buttonGroupr.add(attack1r);
+			buttonGroupr.add(attack2r);
+			buttonGroupr.add(attack3r);
+			buttonGroupr.add(defendr);
+			buttonGroupr.add(specialr);
+			buttonGroupr.add(switchAnimalr);
+			
+			buttonGroupBr.add(attackr);
+			buttonGroupBr.add(switchAnimalr);
+			buttonGroupBr.add(defendr);
+			buttonGroupBr.add(specialr);
+		showpOne(false);
+	
 	}
+//------------------------------------------------------------------ 
+	//Start Implimentation
+public void showpZero(boolean input){
+	if(input == true){
+		attack.setEnabled(true);
+		special.setEnabled(true);
+		defend.setEnabled(true);
+		switchAnimal.setEnabled(true);
+	}else{
+		attack.setEnabled(false);
+		special.setEnabled(false);
+		defend.setEnabled(false);
+		switchAnimal.setEnabled(false);
+		attack2.setEnabled(false);
+		attack1.setEnabled(false);
+		attack0.setEnabled(false);
+		
+		attack.setSelected(false);
+		special.setSelected(false);
+		defend.setSelected(false);
+		switchAnimal.setSelected(false);
+		attack2.setSelected(false);
+		attack1.setSelected(false);
+		attack0.setSelected(false);
+		
+		
+	}
+	
 }
+public void showpOne(boolean input){
+	if(input == true){
+		attackr.setEnabled(true);
+		specialr.setEnabled(true);
+		defendr.setEnabled(true);
+		switchAnimalr.setEnabled(true);
+	}else{
+		attackr.setEnabled(false);
+		specialr.setEnabled(false);
+		defendr.setEnabled(false);
+		switchAnimalr.setEnabled(false);
+		attack2r.setEnabled(false);
+		attack1r.setEnabled(false);	
+		
+		attackr.setSelected(false);
+		specialr.setSelected(false);
+		defendr.setSelected(false);
+		switchAnimalr.setSelected(false);
+		attack2r.setSelected(false);
+		attack1r.setSelected(false);
+		attack0r.setSelected(false);
+	}
+	
+}
+
+public boolean checkNoneSelected(){
+	//false means player has selected a move.
+	if(attack.isSelected()){
+		if( !(attack0.isSelected()) && !(attack1.isSelected()) && !(attack2.isSelected())){
+			return true;
+		}else{
+			return false;
+		}
+	
+	}
+	
+	if(!(attack.isSelected()) && !(special.isSelected()) && !(defend.isSelected()) & !(switchAnimal.isSelected())) {
+		return true;
+	}else
+		return false;
+}
+
+
+
+
+	//will fill for other buttons
+
+public void endTurn(){
+
+if(whoseTurn==0){
+	whoseTurn++;
+	showpZero(false);
+	showpOne(true);
+}
+if(whoseTurn==1){
+	round++;
+	whoseTurn=0;
+	showpOne(false);
+	showpZero(true);
+}
+tmp=active;
+active=inactive;
+inactive=tmp;
+}
+
+public void performSelected(){
+if(attack0.isSelected()){
+	active.getActive().addExpErnd(active.getActive().attacksAvail.get(0).useAttack(active.getActive(), inactive.getActive()));
+}
+}
+
+public class confirmListner implements ActionListener {
+	public void actionPerformed(ActionEvent e) {
+		
+		if(checkNoneSelected()==false){
+			performSelected();
+			}
+	endTurn();
+	}
+	}
+
+
+}
+
 		
 		
 		
