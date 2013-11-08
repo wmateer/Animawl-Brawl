@@ -39,7 +39,8 @@ public class INIT_GUI{ //extends JFrame {
 		
 		masterFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//setBounds(100, 100, 450, 300);
-		masterFrame.setBounds(400, 250, 450, 320);
+		//masterFrame.setBounds(400, 250, 450, 320);
+		masterFrame.setBounds(200, 150, 900, 600);
 		current_Screen = new Title_Screen(masterFrame);
 		current_Screen.setBorder(new EmptyBorder(5, 5, 5, 5));
 		current_Screen.setLayout(new BorderLayout(0, 0));

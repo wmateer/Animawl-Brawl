@@ -16,16 +16,16 @@ import java.awt.event.ActionEvent;
 
 public class Game_Screen extends JPanel {
 	
-	private Tmp_Player pone;
-	private Tmp_Player ptwo;
+	//private Tmp_Player pone;
+	//private Tmp_Player ptwo;
 	
-	public void setPone(Tmp_Player player1){
+	/*public void setPone(Tmp_Player player1){
 		pone = player1;
 	}
 	
 	public void setPtwo(Tmp_Player player2){
 		pone = player2;
-	}
+	}*/
 	
 	public Game_Screen(JFrame masterFrame) {
 		setBackground(Color.DARK_GRAY);
@@ -377,6 +377,8 @@ public class Game_Screen extends JPanel {
 		buttonGroupBr.add(defendr);
 		buttonGroupBr.add(specialr);
 		
+		masterFrame.setSize(900, 600);
+		masterFrame.setLocationRelativeTo(null);
 	}
 }
 		

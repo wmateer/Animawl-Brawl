@@ -135,7 +135,9 @@ public class CharacterSelect_Screen extends JPanel {
 		lblBear.setForeground(Color.GREEN);
 		lblBear.setBounds(348, 66, 96, 21);
 		add(lblBear);
-
+		
+		parentFrame.setSize(900, 600);
+		parentFrame.setLocationRelativeTo(null);
 	}	
 		
 		
