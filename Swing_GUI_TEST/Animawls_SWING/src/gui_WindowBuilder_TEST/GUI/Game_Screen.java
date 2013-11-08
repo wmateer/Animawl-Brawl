@@ -3,6 +3,7 @@
 
 package gui_WindowBuilder_TEST.GUI;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import Animals.*;
@@ -12,6 +13,9 @@ import java.awt.Font;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 
 public class Game_Screen extends JPanel {
@@ -113,12 +117,27 @@ public class Game_Screen extends JPanel {
 		add(Apr);
 		
 		
+		
 		JLabel pic = new JLabel("Picture Here");
+		try {
+			BufferedImage AnimalPicture1 = ImageIO.read(new File(pZero.getActive().imgPath));
+			pic.setIcon(new ImageIcon(AnimalPicture1));
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		pic.setBounds(208, 126, 132, 126);
 		add(pic);
 		
 		
 		JLabel picr = new JLabel("Picture Here");
+		try {
+			BufferedImage AnimalPicture2 = ImageIO.read(new File(pOne.getActive().imgPath));
+			picr.setIcon(new ImageIcon(AnimalPicture2));
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		picr.setBounds(555, 126, 132, 126);
 		add(picr);
 		
