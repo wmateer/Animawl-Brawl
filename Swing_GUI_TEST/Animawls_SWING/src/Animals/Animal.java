@@ -21,6 +21,8 @@ protected double apRem;	//ap animal has remaining
 protected double att;	//animal's attack strength
 protected double def;	//animals defense strength
 protected double evd;	//animals evasiveness 
+protected int poisoned;  //determines if animal is poisoned
+
 //lvl up statistics 
 protected double hpScaler;
 protected double hpBonus;
@@ -58,6 +60,8 @@ apRem=1000;
 att=1;
 def=1;
 evd=1;	
+poisoned=0;
+
 //basic lvl up stats
 hpScaler=10;
 hpBonus=0;
@@ -265,6 +269,14 @@ public double getEvd() {
 	return 	evd;
 }
 
+//for poisoned
+public int getPoisoned() {
+	return poisoned;
+}
+
+public void setPoisoned(int amount) {
+	poisoned = amount;
+}
 
 //Stat Modifier 
 public void selectStatModifier(){

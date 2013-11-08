@@ -4,10 +4,10 @@ package Attacks;
 //import Attack;
 
 
-public class Peck extends Attack{
+public class Jumppunch extends Attack{
 	
-public Peck(){
-	this.setName("Peck");	
+public Jumppunch(){
+	this.setName("Jumppunch");	
 	this.setDmg(30);
 	this.setConsist(.9);
 	this.setAcc(.98);

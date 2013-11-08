@@ -2,44 +2,38 @@ package Animals;
 
 //import Animal;
 //import Attack;
-//import Maul;
+//import Bite;
 
 import java.util.ArrayList;
 import Attacks.*;
-import Attacks.Maul;
+import Attacks.Bite;
 
 
-public class Bear extends Animal {
+public class Dog extends Animal {
 
-	public Bear(String name) {
+	public Dog(String name) {
 		super(name);
 		// stat set for bear
-		type="Bear";
+		type="Dog";
 		this.name=name;
 		lvl=1;
 		expTot=0;
 		expErnd=0;
 		expToLvl=1200;
-		hpTot=650;
-		hpRem=650;
+		hpTot=500;
+		hpRem=500;
 		apTot=110;
 		apRem=110;
-		att=125;
-		def=150;
-		evd=25;
-		poisoned=0;
+		att=100;
+		def=100;
+		evd=100;
+		poisoned = 0;
 		
-		//set attack array for bear
+		//set attack array for dog
 		attacksAvail=new ArrayList<Attack>();
-		Maul Attack0 = new Maul();
+		Bite Attack0 = new Bite();
 		attacksAvail.add(Attack0);
-		
-		Claw Attack1 = new Claw();
-		attacksAvail.add(Attack1);
-		
-		Knockdown Attack2 = new Knockdown();
-		attacksAvail.add(Attack2);
-		//lvl up statistics for bear
+		//lvl up statistics for dog
 		hpScaler=8;
 		hpBonus=.25;
 		apScaler=10;
@@ -51,7 +45,7 @@ public class Bear extends Animal {
 		evdScaler=10;
 		evdBonus=-.05;
 		
-		imgPath = "IMAGES/CHAR_PICTS/bear.jpg";
+		imgPath = "/Users/whm-ii/Desktop/WORKING_ANIMAL_DIR/Animawl-Brawl/Swing_GUI_TEST/Animawls_SWING/src/gui_WindowBuilder_TEST/GUI/bear.jpg";
 		Description = "A TERRIFYING BEAR, HELLBENT ON DESTRUCTION!!!";
 	}
 }
