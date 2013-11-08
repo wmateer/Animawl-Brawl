@@ -45,8 +45,8 @@ public class Dog extends Animal {
 		evdScaler=10;
 		evdBonus=-.05;
 		
-		imgPath = "/Users/whm-ii/Desktop/WORKING_ANIMAL_DIR/Animawl-Brawl/Swing_GUI_TEST/Animawls_SWING/src/gui_WindowBuilder_TEST/GUI/bear.jpg";
-		Description = "A TERRIFYING BEAR, HELLBENT ON DESTRUCTION!!!";
+		imgPath = "IMAGES/CHAR_PICTS/Dog.jpg";
+		Description = "A LOVELY CORGI!!!  KILLS WITH CUTENESS";
 	}
 }
 	

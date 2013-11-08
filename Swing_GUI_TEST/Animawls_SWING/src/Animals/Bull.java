@@ -52,8 +52,8 @@ public class Bull extends Animal {
 		evdScaler=10;
 		evdBonus=-.05;
 		
-		imgPath = "/Users/whm-ii/Desktop/WORKING_ANIMAL_DIR/Animawl-Brawl/Swing_GUI_TEST/Animawls_SWING/src/gui_WindowBuilder_TEST/GUI/bear.jpg";
-		Description = "A TERRIFYING BEAR, HELLBENT ON DESTRUCTION!!!";
+		imgPath = "IMAGES/CHAR_PICTS/Bull.jpg";
+		Description = "A RAMPAGING BULL!!! YEARNS FOR BLOOD ON HIS HEELS AND FLESH IN HIS MOUTH!!!";
 	}
 }
 	
