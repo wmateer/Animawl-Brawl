@@ -22,7 +22,7 @@ public class Login_Screen extends JPanel {
 	private JFrame parentFrame;
 	private String user;
 	private String inpassword;
-	private static Hashtable data;
+	//private static Hashtable data;
 
 	
 
@@ -63,8 +63,9 @@ public class Login_Screen extends JPanel {
 			
 			user = new String(userName_field.getText());
 			inpassword = new String(passwordField.getPassword());
-			LoadTable();
-			CheckLogin(user, inpassword);
+			Hashtable data = null;
+			data = LoadTable(data);
+			CheckLogin(user, inpassword, data);
 				
 			}
 		});
@@ -97,8 +98,8 @@ public class Login_Screen extends JPanel {
 	}
 		
 	
-//////Checklogin
-		public void CheckLogin(String user, String inpassword){
+//////Checklogin------------------------
+		public void CheckLogin(String user, String inpassword, Hashtable<String,User> data){
 			if (user.isEmpty() || inpassword.isEmpty()){
 				JOptionPane.showMessageDialog(null, "One or more boxes are empty","Error", JOptionPane.ERROR_MESSAGE);
 				return;
@@ -128,27 +129,29 @@ public class Login_Screen extends JPanel {
 		}
 	
 
-/////Load the saved usernames
-	private static void LoadTable(){
+//LoadTable() ---------------------------------
+	private static Hashtable LoadTable(Hashtable data){
 		try{
 			FileInputStream fileIn = new FileInputStream("Savefiles/Saved_users_passwords.ser");
 			ObjectInputStream in = new ObjectInputStream(fileIn);
 			data = (Hashtable)in.readObject();
 			in.close();
 			fileIn.close();
+	
 		}
 		catch(ClassNotFoundException e){
 			e.printStackTrace();
 		}
 		catch(FileNotFoundException e){
 			e.printStackTrace();
-			makefile();
+			//makefile();
 		}
 		catch(IOException e){
 			e.printStackTrace();
 		}
+		return data;
 	}
-	
+//makefile() ------------------------------	
 	private static void makefile(){
 		try{
 			File tmp = new File("Savefiles/Saved_users_passwords.ser");

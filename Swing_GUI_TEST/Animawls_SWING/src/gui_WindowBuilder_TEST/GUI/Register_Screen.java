@@ -21,16 +21,14 @@ public class Register_Screen extends JPanel {
 	private String newusername;
 	private String newpassword1;
 	private String newpassword2;
-	private static Hashtable data;
+	//private static Hashtable data;
 	
 	
 	/**
 	 * Create the panel.
 	 */
 	public Register_Screen(JFrame masterFrame) {
-		//LoadTable
-		
-		LoadTable();
+	
 		setBackground(new Color(106, 90, 205));
 		setForeground(new Color(0, 0, 0));
 		setLayout(null);
@@ -71,16 +69,17 @@ public class Register_Screen extends JPanel {
 
 		
 		
-///////////// confirm button actions
+//confirm button actions ----------------------
 		JButton confirmNewUser_button = new JButton("CONFIRM NEW USER");
 		confirmNewUser_button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				newusername = new String(userName_field.getText());
 				newpassword1 = new String(passwordField_ONE.getPassword());
 				newpassword2 = new String(passwordField_TWO.getPassword());
-				//empty strings check
-				
-				register(newusername, newpassword1, newpassword2);
+				//LoadTable
+				Hashtable<String, User> data = null;
+				data = LoadTable(data);
+				register(newusername, newpassword1, newpassword2, data);
 				
 				//call register method
 				/*JPanel tmp_Screen = new Login_Screen(parentFrame);
@@ -93,6 +92,7 @@ public class Register_Screen extends JPanel {
 		confirmNewUser_button.setBounds(47, 244, 157, 29);
 		add(confirmNewUser_button);
 		
+// BacktoLogin button -------------------		
 		JButton backToLogin_button = new JButton("BACK TO LOGIN");
 		backToLogin_button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -111,7 +111,8 @@ public class Register_Screen extends JPanel {
 		
 
 	}
-	public void register(String newusername, String newpassword1, String newpassword2)
+// register() --------------------------------	
+	public void register(String newusername, String newpassword1, String newpassword2, Hashtable<String, User> data)
 	{
 		//empty strings check
 		if ( newusername.isEmpty() || newpassword1.isEmpty() || newpassword2.isEmpty())
@@ -125,11 +126,12 @@ public class Register_Screen extends JPanel {
 		}
 		// check for existing username and give message
 		
-		if (checkExisting(newusername)){
+		if (checkExisting(newusername, data)){
 			JOptionPane.showMessageDialog(null, "User already exist","Error", JOptionPane.ERROR_MESSAGE);
 		}else{
+		
 			JOptionPane.showMessageDialog(null, "Registration complete","Successfull", JOptionPane.INFORMATION_MESSAGE);
-			SaveNewUser(newusername, newpassword1);
+			SaveNewUser(newusername, newpassword1, data);
 			JPanel tmp_Screen = new Login_Screen(parentFrame);
 			parentFrame.setContentPane(tmp_Screen);
 			parentFrame.setVisible(true);
@@ -139,15 +141,11 @@ public class Register_Screen extends JPanel {
 			
 	}
 	
-	//Saves new Users
-	private void SaveNewUser(String newusername, String newpassword)
+//Saves new Users ---------------------
+	private void SaveNewUser(String newusername, String newpassword, Hashtable<String, User> data)
 	{
-	Hashtable<String,User> data = new Hashtable<String,User>();
 	
-	LoadTable(); // puts the existing users in the hashtable.
 	User user = new User(newusername,newpassword);
-
-	
 	data.put(newusername, user);
 	
 	try{
@@ -164,12 +162,13 @@ public class Register_Screen extends JPanel {
 	}
 	}
 	
-	//Loads the .ser file into the hash table
-	private static void LoadTable(){
+// Loads the .ser file into the hash table
+	private static Hashtable<String, User> LoadTable(Hashtable<String, User> data){
+		
 		try{
 			FileInputStream fileIn = new FileInputStream("Savefiles/Saved_users_passwords.ser");
 			ObjectInputStream in = new ObjectInputStream(fileIn);
-			data = (Hashtable)in.readObject();
+			data = (Hashtable<String, User>)in.readObject();
 			in.close();
 			fileIn.close();
 		}
@@ -178,11 +177,13 @@ public class Register_Screen extends JPanel {
 		}
 		catch(FileNotFoundException e){
 			e.printStackTrace();
-			makefile();
+			//makefile();
 		}
 		catch(IOException e){
 			e.printStackTrace();
 		}
+		return data;
+		
 	}
 	
 	private static void makefile(){
@@ -194,14 +195,12 @@ public class Register_Screen extends JPanel {
 	}
 
 	//check for existing users
-	private static boolean checkExisting(String newusername)
-	{
-		if ((data.containsKey(newusername)))
-		{
+	private static boolean checkExisting(String newusername, Hashtable<String, User> data)
+	{	
+		if ((data.containsKey(newusername))){
 			return true;
-		}else
-		{
+		}else{
 			return false;
-		}		
+		}	
 	}
 }

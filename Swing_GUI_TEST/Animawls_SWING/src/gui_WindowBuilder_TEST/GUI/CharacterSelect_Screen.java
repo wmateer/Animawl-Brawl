@@ -120,8 +120,11 @@ public class CharacterSelect_Screen extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				//WHEN BUTTON IS PRESSED SAVE THE CURRENTLY CHOSEN CHAR AND CONTINUE TO THE NEXT JPANEL
 				//WILL LEAD TO GAME ACTUALLY STARTINGGGGGGGGGGG
-				//
-				//
+				JPanel tmp_Screen = new Game_Screen(parentFrame);
+				parentFrame.setContentPane(tmp_Screen);
+				parentFrame.setVisible(true);
+				parentFrame.setResizable(true);
+			
 			}
 		});
 		confirmCharChoice_Button.setBounds(107, 248, 237, 29);
@@ -132,7 +135,9 @@ public class CharacterSelect_Screen extends JPanel {
 		lblBear.setForeground(Color.GREEN);
 		lblBear.setBounds(348, 66, 96, 21);
 		add(lblBear);
-
+		
+		parentFrame.setSize(900, 600);
+		parentFrame.setLocationRelativeTo(null);
 	}	
 		
 		

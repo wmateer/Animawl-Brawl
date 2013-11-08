@@ -80,6 +80,10 @@ public class Title_Screen extends JPanel {
 		Placeholder_Button.setBounds(0, 265, 117, 29);
 		add(Placeholder_Button);
 
+		//parentFrame.pack();
+		parentFrame.setSize(450, 320);
+		parentFrame.setLocationRelativeTo(null);
+		parentFrame.setVisible(true);
 	}
 
 }
