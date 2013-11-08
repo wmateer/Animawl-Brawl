@@ -140,7 +140,7 @@ public void chooseAttack(){
 }
 
 //check if all animals are dead
-protected int checkLoss(){
+public int checkLoss(){
 if(animalsCur.get(0).getHpRem()<=0 & animalsCur.get(1).getHpRem()<=0 & animalsCur.get(2).getHpRem()<=0){
 	return 0;
 }
