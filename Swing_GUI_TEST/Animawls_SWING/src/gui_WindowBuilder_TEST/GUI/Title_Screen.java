@@ -1,5 +1,6 @@
 package gui_WindowBuilder_TEST.GUI;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import java.awt.BorderLayout;
@@ -18,6 +19,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseWheelListener;
 import java.awt.event.MouseWheelEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.Random;
 
 public class Title_Screen extends JPanel {
@@ -28,12 +32,13 @@ public class Title_Screen extends JPanel {
 	private JFrame parentFrame;
 	
 	public Title_Screen(JFrame masterFrame) {
-		addMouseWheelListener(new MouseWheelListener() {
+		/*addMouseWheelListener(new MouseWheelListener() {
 			public void mouseWheelMoved(MouseWheelEvent arg0) {
 				Random tmpTest = new Random();
 				setBackground(new Color(tmpTest.nextInt(256),tmpTest.nextInt(256),tmpTest.nextInt(256)));
 			}
-		});
+		});*/
+		setBackground(Color.gray);
 		//super();
 		//this.addMouseListener(new MouseAdapter() {
 			//@Override
@@ -43,23 +48,28 @@ public class Title_Screen extends JPanel {
 		//});
 		parentFrame = masterFrame;
 		
-		setBackground(new Color(0, 191, 255));
+		//setBackground(new Color(0, 191, 255));
 		setLayout(null);
 		
 		JLabel Title_Label = new JLabel("ANIMAWL BRAWL!!!");
 		Title_Label.setFont(new Font("Lithos Pro", Font.PLAIN, 25));
 		Title_Label.setHorizontalAlignment(SwingConstants.CENTER);
-		Title_Label.setBounds(73, 24, 303, 59);
+		Title_Label.setBounds(298, 24, 303, 59);
 		add(Title_Label);
 		
-		JLabel ClickAnywhere_Label = new JLabel("CLICK ANYWHERE TO CONTINUE");
-		ClickAnywhere_Label.setHorizontalAlignment(SwingConstants.CENTER);
-		ClickAnywhere_Label.setBounds(95, 252, 260, 16);
-		add(ClickAnywhere_Label);
 		
-		JLabel PicturePlaceholder_Label = new JLabel("PICTURE PLACEHOLDER???");
+		
+		JLabel PicturePlaceholder_Label = new JLabel();
 		PicturePlaceholder_Label.setHorizontalAlignment(SwingConstants.CENTER);
-		PicturePlaceholder_Label.setBounds(81, 77, 288, 148);
+		PicturePlaceholder_Label.setBounds(28, 76, 866, 447);
+		BufferedImage Logo = null;
+		try {
+			Logo = ImageIO.read(new File("IMAGES/ABlogo.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		PicturePlaceholder_Label.setIcon(new ImageIcon(Logo));
 		add(PicturePlaceholder_Label);
 		
 		JButton Placeholder_Button = new JButton("PLACEHOLDER");
@@ -77,12 +87,14 @@ public class Title_Screen extends JPanel {
 				parentFrame.setResizable(false);
 			}
 		});
-		Placeholder_Button.setBounds(0, 265, 117, 29);
+		Placeholder_Button.setBounds(381, 533, 117, 29);
 		add(Placeholder_Button);
 
 		//parentFrame.pack();
-		parentFrame.setSize(450, 320);
+		//parentFrame.setSize(450, 320);
 		parentFrame.setLocationRelativeTo(null);
+		parentFrame.setSize(900, 600);
+		//parentFrame.setLocationRelativeTo(null);
 		parentFrame.setVisible(true);
 	}
 

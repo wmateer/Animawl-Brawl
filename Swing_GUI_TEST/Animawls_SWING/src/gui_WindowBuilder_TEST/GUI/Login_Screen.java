@@ -33,6 +33,7 @@ public class Login_Screen extends JPanel {
 
 		parentFrame = masterFrame;
 		
+		parentFrame.setSize(450, 320);
 		setBackground(new Color(135, 206, 235));
 		setLayout(null);
 		
@@ -159,6 +160,8 @@ public class Login_Screen extends JPanel {
 			e.printStackTrace();
 		}
 	}
+	
+	//parentFrame.setSize(450, 320);
 }
 
 
