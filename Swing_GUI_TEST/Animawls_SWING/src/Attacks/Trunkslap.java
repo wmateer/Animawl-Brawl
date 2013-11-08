@@ -4,10 +4,10 @@ package Attacks;
 //import Attack;
 
 
-public class Peck extends Attack{
+public class Trunkslap extends Attack{
 	
-public Peck(){
-	this.setName("Peck");	
+public Trunkslap(){
+	this.setName("Trunkslap");	
 	this.setDmg(30);
 	this.setConsist(.9);
 	this.setAcc(.98);
@@ -16,3 +16,4 @@ public Peck(){
 	this.setHeal(0);
 }
 }
+

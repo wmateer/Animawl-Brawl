@@ -53,7 +53,7 @@ public class Game_Screen extends JPanel {
 		JLabel playAnimawl_title = new JLabel("BATTLE");
 		playAnimawl_title.setHorizontalAlignment(SwingConstants.CENTER);
 		playAnimawl_title.setFont(new Font("Zapf Dingbats", Font.PLAIN, 23));
-		playAnimawl_title.setBounds(238, 25, 197, 33);
+		playAnimawl_title.setBounds(351, 25, 197, 33);
 		add(playAnimawl_title);
 		
 		JToggleButton toggleButton = new JToggleButton("Music");
@@ -64,13 +64,13 @@ public class Game_Screen extends JPanel {
 		toggleButton.setSelected(true);
 		toggleButton.setForeground(Color.BLACK);
 		toggleButton.setBackground(Color.YELLOW);
-		toggleButton.setBounds(497, 17, 72, 17);
+		toggleButton.setBounds(797, 36, 72, 16);
 		add(toggleButton);
 
 /// USER 1````````````````````````
 		
 		JLabel lblNewLabel = new JLabel(pone.getName());
-		lblNewLabel.setBounds(93, 35, 80, 16);
+		lblNewLabel.setBounds(130, 70, 80, 16);
 		add(lblNewLabel);
 	
 		
@@ -78,43 +78,43 @@ public class Game_Screen extends JPanel {
 //ANIMAL 1--------------------------------------------	
 		
 		JLabel lblUserName = new JLabel(ptwo.getActive().getName());
-		lblUserName.setBounds(489, 98, 80, 16);
+		lblUserName.setBounds(577, 98, 80, 16);
 		add(lblUserName);
 //---------------------------------------------------		
 		
 		
 
 		JLabel Hp = new JLabel("HP ");
-		Hp.setBounds(186, 410, 28, 16);
+		Hp.setBounds(232, 324, 28, 16);
 		add(Hp);
 		
 		JLabel Ap = new JLabel("AP");
-		Ap.setBounds(186, 433, 22, 16);
+		Ap.setBounds(238, 356, 22, 16);
 		add(Ap);
 		
 		JLabel Hpr = new JLabel("HP");
-		Hpr.setBounds(399, 410, 22, 16);
+		Hpr.setBounds(635, 331, 22, 16);
 		add(Hpr);
 		
 		JLabel Apr = new JLabel("AP");
-		Apr.setBounds(399, 433, 22, 16);
+		Apr.setBounds(635, 356, 22, 16);
 		add(Apr);
 		
 		
 		JLabel pic = new JLabel("Picture Here");
-		pic.setBounds(93, 121, 66, 125);
+		pic.setBounds(208, 126, 132, 126);
 		add(pic);
 		
 		
 		JLabel picr = new JLabel("Picture Here");
-		picr.setBounds(454, 121, 80, 76);
+		picr.setBounds(555, 126, 132, 126);
 		add(picr);
 		
 		
 //ANIMAL 1 --------------------------------------------
 		
 		JLabel lblAnimal = new JLabel(pone.getActive().getName());
-		lblAnimal.setBounds(83, 98, 80, 16);
+		lblAnimal.setBounds(198, 98, 80, 16);
 		add(lblAnimal);
 //--------------------------------------------			
 		
@@ -122,7 +122,7 @@ public class Game_Screen extends JPanel {
 //USER 2----------------------------------------------		
 		
 		JLabel label_3 = new JLabel(ptwo.getName());
-		label_3.setBounds(471, 35, 80, 16);
+		label_3.setBounds(728, 64, 80, 16);
 		add(label_3);
 //-----------------------------------------------------		
 		
@@ -142,7 +142,7 @@ public class Game_Screen extends JPanel {
 		progressBar.setValue((int)pone.getActive().getHpRem());
 		
 		progressBar.setBackground(Color.RED);
-		progressBar.setBounds(210, 406, 60, 20);
+		progressBar.setBounds(262, 324, 100, 20);
 		add(progressBar);
 //------------------------------------------------------------	
 	
@@ -153,7 +153,7 @@ public class Game_Screen extends JPanel {
 		progressBar_1.setValue((int)pone.getActive().getApRem());
 		progressBar_1.setStringPainted(true);
 		progressBar_1.setBackground(Color.RED);
-		progressBar_1.setBounds(210, 429, 60, 20);
+		progressBar_1.setBounds(262, 352, 102, 20);
 		add(progressBar_1);
 // ------------------------------------------------------------			
 		
@@ -164,7 +164,7 @@ public class Game_Screen extends JPanel {
 		progressBar_2.setValue((int)ptwo.getActive().getHpRem());
 		progressBar_2.setStringPainted(true);
 		progressBar_2.setBackground(Color.RED);
-		progressBar_2.setBounds(329, 406, 60, 20);
+		progressBar_2.setBounds(535, 327, 100, 20);
 		add(progressBar_2);
 // ------------------------------------------------------------				
 	
@@ -175,7 +175,7 @@ public class Game_Screen extends JPanel {
 		progressBar_3.setValue((int)ptwo.getActive().getApRem());
 		progressBar_3.setStringPainted(true);
 		progressBar_3.setBackground(Color.RED);
-		progressBar_3.setBounds(329, 429, 60, 20);
+		progressBar_3.setBounds(535, 352, 100, 20);
 		add(progressBar_3);
 // ------------------------------------------------------------			
 		
@@ -184,21 +184,21 @@ public class Game_Screen extends JPanel {
 		
 		
 		final JRadioButton attack1 = new JRadioButton("Maul");
-		attack1.setBounds(73, 258, 141, 23);
+		attack1.setBounds(84, 324, 141, 23);
 	
 		add(attack1);
 		attack1.setVisible(false);
 
 		
 		final JRadioButton attack2 = new JRadioButton("Attack2");
-		attack2.setBounds(73, 280, 141, 23);
+		attack2.setBounds(83, 359, 141, 23);
 
 		add(attack2);
 		attack2.setVisible(false);
 		
 		
 		final JRadioButton attack3 = new JRadioButton("Attack3");
-		attack3.setBounds(73, 302, 141, 23);
+		attack3.setBounds(84, 394, 141, 23);
 
 		add(attack3);
 		attack3.setVisible(false);
@@ -211,7 +211,7 @@ public class Game_Screen extends JPanel {
 				attack1.setVisible(false);	
 			}
 		});
-		special.setBounds(32, 337, 141, 23);
+		special.setBounds(42, 429, 141, 23);
 		add(special);
 		
 		JRadioButton defend = new JRadioButton("Defend");
@@ -222,7 +222,7 @@ public class Game_Screen extends JPanel {
 				attack1.setVisible(false);	
 			}
 		});
-		defend.setBounds(32, 383, 141, 23);
+		defend.setBounds(42, 479, 141, 23);
 		add(defend);
 		
 		JRadioButton switchb = new JRadioButton("Switch Animal");
@@ -233,7 +233,7 @@ public class Game_Screen extends JPanel {
 				attack1.setVisible(false);	
 			}
 		});
-		switchb.setBounds(32, 429, 141, 23);
+		switchb.setBounds(42, 545, 141, 23);
 		add(switchb);
 		
 
@@ -253,7 +253,7 @@ public class Game_Screen extends JPanel {
 				}
 			}
 		});
-		attack.setBounds(32, 232, 141, 23);
+		attack.setBounds(42, 289, 141, 23);
 
 		add(attack);
 		
@@ -287,22 +287,22 @@ public class Game_Screen extends JPanel {
 				
 			}
 		});
-		confirm.setBounds(238, 318, 117, 29);
+		confirm.setBounds(391, 428, 117, 29);
 		add(confirm);
 		
 //  Right Side buttons		
 		
 		
 		final JRadioButton attack1r = new JRadioButton("Attack1r");
-		attack1r.setBounds(453, 258, 141, 23);
+		attack1r.setBounds(774, 327, 141, 23);
 		add(attack1r);
 		
 		final JRadioButton attack2r= new JRadioButton("Attack2r");
-		attack2r.setBounds(453, 280, 141, 23);
+		attack2r.setBounds(774, 359, 141, 23);
 		add(attack2r);
 		
 		final JRadioButton attack3r = new JRadioButton("Attack3r");
-		attack3r.setBounds(454, 302, 141, 23);
+		attack3r.setBounds(774, 394, 141, 23);
 		add(attack3r);
 		
 		attack1r.setVisible(false);
@@ -317,7 +317,7 @@ public class Game_Screen extends JPanel {
 				attack1r.setVisible(false);
 			}
 		});
-		specialr.setBounds(428, 337, 141, 23);
+		specialr.setBounds(728, 429, 141, 23);
 		add(specialr);
 		
 		JRadioButton defendr = new JRadioButton("Defend");
@@ -328,7 +328,7 @@ public class Game_Screen extends JPanel {
 				attack1r.setVisible(false);
 			}
 		});
-		defendr.setBounds(428, 383, 141, 23);
+		defendr.setBounds(728, 479, 141, 23);
 		add(defendr);
 		
 		JRadioButton switchbr = new JRadioButton("Switch");
@@ -339,7 +339,7 @@ public class Game_Screen extends JPanel {
 				attack1r.setVisible(false);
 			}
 		});
-		switchbr.setBounds(428, 429, 141, 23);
+		switchbr.setBounds(728, 545, 141, 23);
 		add(switchbr);
 		
 		final JRadioButton attackr = new JRadioButton("Attackr");
@@ -357,7 +357,7 @@ public class Game_Screen extends JPanel {
 					}
 			}
 		});
-		attackr.setBounds(428, 232, 141, 23);
+		attackr.setBounds(728, 289, 141, 23);
 		add(attackr);
 		
 // Right side button group stuff

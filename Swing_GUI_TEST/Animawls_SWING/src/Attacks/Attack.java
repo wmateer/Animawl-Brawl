@@ -24,6 +24,12 @@ public class Attack {
 
 	//chance of crit hit
 	protected double critHitChance;
+	
+	//used for some healing moves
+	protected double heal;
+	
+	//used for poisoning
+	protected double poisonchance;
 
 	//ap cost
 	protected int apCost;
@@ -68,66 +74,97 @@ public class Attack {
 	public void setName(String input){
 		 name=input;
 	}
-	
-//attack functions
-public int calcDmg(double att){
-	
-double r= rand.nextDouble();
-double r2= rand.nextDouble();
-int dmgDone= (int) Math.round((dmg)*(att));
-double percentDamage= r+consist;
-//check to see what percent of total damage will land, maxing out at 100
-if(r+consist>1){
-	percentDamage=1;
-}
-//if critical hit damage gets up to 30% boost
-if((1-percentDamage)>=critHitChance){
-	percentDamage=percentDamage+percentDamage*((r2/2)+.5);
-	System.out.print("Critical Hit");
-}
+	public double getPoisonchance(){
+		return poisonchance;
+	}
+	public void setPoisonchance(double input){
+		 poisonchance=input;
+	}
+	public double getHeal(){
+		return heal;
+	}
+	public void setHeal(double input){
+		heal=input;
+	}
 
-//calc damage done
-dmgDone=(int)Math.round(dmgDone*percentDamage);
+	//attack functions
+	public int calcDmg(double att, double def){
+		
+	double r= Math.random();
+	double r2=Math.random();
 
-return dmgDone;	
-}
+	int dmgDone= (int) Math.round((dmg)+(att)-(def*(.5+(.3*r))));
+
+	double percentDamage= consist + ((1-consist)*r2);
+
+	if(dmgDone>5){
+	//if critical hit damage gets up to 30% boost
+		if((1-percentDamage)<=critHitChance & (r<.3)){
+			//percentDamage=percentDamage+(.3*r);
+			percentDamage= .3 + percentDamage;
+			System.out.print("Critical Hit");
+		}
+	}
+
+	//calc damage done
+	dmgDone=(int)Math.round(dmgDone*percentDamage);
+
+	return dmgDone;	
+	}
 
 
-public int useAttack(Animal attacker, Animal target){
-//subrtact ap
-attacker.subApRem(apCost);
+	public int useAttack(Animal attacker, Animal target){
+	//subrtact ap
+	attacker.subApRem(apCost);
 
-double r=rand.nextDouble();
+	if(heal>0){
+		attacker.addHpRem((int) (heal*4));
+	}
 
-//see if attack hits
-double missChance=(1-acc);
-missChance=missChance/(target.getEvd()/1000);
+	else if (poisonchance == 1) {
+		if(target.getPoisoned() == 1)
+			System.out.print("Enemy is already poisoned. No effect.");
+		else
+			target.setPoisoned(1);
+	}
+
+	else{
+		double r=Math.random();
+
+		//see if attack hits
+		double missChance=(1-acc);
+		missChance=missChance+((target.getEvd()*2)/1000);
 
 
-//if random number is > than miss chance attacks hits
-if(r>=missChance){
-	double dmg=calcDmg(attacker.getAtt());
-	
-	//scale r  
-	r=rand.nextDouble();
-	r=r/2;
-	r=(1-r);
-	
-	dmg=(dmg/(target.getDef()*r));
-	target.subHpRem((int) Math.round(dmg));
-	System.out.print("\n");
-	System.out.println("Your attack did ");
-	System.out.println(dmg);
-	System.out.print("\n");
-	return (int) Math.round(dmg);
-}
-//otherwise attack misses
-else{
-	System.out.print("\n");
-	System.out.println("Your Attack Missed");
-	return 0;
-}
+		//if random number is > than miss chance attacks hits
+		if(r>=missChance){
+			double dmg=calcDmg(attacker.getAtt(), target.getDef());
+		
+			//scale r  
 
-}
+			if(dmg<2){
+				System.out.print("Attack completely blocked.\n");
+				dmg = 0;
+			}
+			else{
+				target.subHpRem((int) Math.round(dmg));
+				System.out.print("\n");
+				System.out.println("Your attack did ");
+				System.out.println(dmg);
+				System.out.print("\n");
+			}
+		}
+		//otherwise attack misses
+		else{
+			System.out.print("\n");
+			System.out.println("Your Attack Missed");
+			dmg = 0;
+		}
 
-}
+		}
+	if(attacker.getPoisoned()==1) {
+		attacker.subHpRem(20);
+	}
+	return (int) Math.round(dmg);	
+	}
+	}
