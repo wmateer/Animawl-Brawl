@@ -78,6 +78,7 @@ public class Title_Screen extends JPanel {
 				//IN CASE MOUSE ACTION DOES NOT WORK, USE THIS BUTTON AS PLACEHOLDER FOR GOING BETWEEN STATES
 				//parentFrame.setVisible(false);
 				//parentFrame.removeAll();
+				parentFrame.setVisible(false);
 				JPanel tmp_Screen = new Login_Screen(parentFrame);
 				tmp_Screen.setBorder(new EmptyBorder(5, 5, 5, 5));
 				tmp_Screen.setLayout(new BorderLayout(0, 0));
