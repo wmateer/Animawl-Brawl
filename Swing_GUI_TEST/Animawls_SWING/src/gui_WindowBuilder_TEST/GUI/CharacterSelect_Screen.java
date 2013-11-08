@@ -18,6 +18,7 @@ import Animals.Dog;
 import Animals.Elephant;
 import Animals.FightingFrog;
 import Animals.Snake;
+import GameEngine.User;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -35,7 +36,7 @@ public class CharacterSelect_Screen extends JPanel {
 	private JList availCharChoices_List;
 	private HashMap <String,Animal> TmpList;
 	
-	public CharacterSelect_Screen(JFrame masterFrame) {
+	public CharacterSelect_Screen(JFrame masterFrame, User currentUser) {
 		/*Player player1 = null;
 		Player player2 = null;
 		player1.setName("Player 1");
@@ -45,6 +46,8 @@ public class CharacterSelect_Screen extends JPanel {
 		setBackground(new Color(60, 179, 113));
 		setLayout(null);
 		parentFrame = masterFrame;
+		
+		final User tmpUser = currentUser;
 		
 		final JLabel selectedCharPict_Label = new JLabel("\n");
 		selectedCharPict_Label.setFont(new Font("Lucida Grande", Font.BOLD | Font.ITALIC, 15));
@@ -155,7 +158,6 @@ public class CharacterSelect_Screen extends JPanel {
 				//TMP
 				//int index = list.getSelectedIndex();
 				String tmp = (String) availCharChoices_List.getSelectedValue();
-				
 				Animal tmpAnimal = TmpList.get(tmp);
 				//SET IMAGE
 				
@@ -189,7 +191,7 @@ public class CharacterSelect_Screen extends JPanel {
 		title_Label.setHorizontalAlignment(SwingConstants.CENTER);
 		title_Label.setFont(new Font("Modern No. 20", Font.BOLD, 40));
 		title_Label.setForeground(new Color(0, 0, 0));
-		title_Label.setBounds(199, 0, 501, 93);
+		title_Label.setBounds(199, 0, 501, 74);
 		add(title_Label);
 		
 		JButton confirmCharChoice_Button = new JButton("CONFIRM CHARACTER CHOICE");
@@ -197,17 +199,82 @@ public class CharacterSelect_Screen extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				//WHEN BUTTON IS PRESSED SAVE THE CURRENTLY CHOSEN CHAR AND CONTINUE TO THE NEXT JPANEL
 				//WILL LEAD TO GAME ACTUALLY STARTINGGGGGGGGGGG
-				JPanel tmp_Screen = new Game_Screen(parentFrame);
-				parentFrame.setContentPane(tmp_Screen);
-				parentFrame.setVisible(true);
-				parentFrame.setResizable(true);
+				//if chosen animals is = to three then goes to the game screen
+				int i=0;
+				for(String key : tmpUser.getChosen().keySet()){
+					i++;
+				}
+				
+				if(i<=2){
+					String tmp = (String) availCharChoices_List.getSelectedValue();
+					Animal tmpAnimal = TmpList.get(tmp);
+					
+					if(tmpUser.HasNotChosenAlready(tmpAnimal)){
+						tmpUser.addToChosen(tmp, tmpAnimal);
+						i++;
+					}
+					else{
+						JOptionPane.showMessageDialog(null, "PLEASE CHOOSE ANOTHER ANIMAL. YOU ALREADY HAVE CHOSEN THIS ANIMAL BEFORE","Error", JOptionPane.ERROR_MESSAGE);
+					}
+					
+					if(i<3){
+						JPanel tmp_Screen = new CharacterSelect_Screen(parentFrame,tmpUser);
+						parentFrame.setContentPane(tmp_Screen);
+						parentFrame.setVisible(true);
+						parentFrame.setResizable(true);
+					}
+				}
+				if(i==3){
+					//if not then it goes to another version of the choose screen
+					//must choose 3 different animals
+					JPanel tmp_Screen = new Game_Screen(parentFrame);
+					parentFrame.setContentPane(tmp_Screen);
+					parentFrame.setVisible(true);
+					parentFrame.setResizable(true);
+				}
 			
 			}
 		});
 		confirmCharChoice_Button.setBounds(582, 508, 290, 48);
 		add(confirmCharChoice_Button);
 		
+		JLabel Animal1_label = new JLabel("Chosen Animal 1");
+		Animal1_label.setBounds(42, 77, 118, 16);
+		add(Animal1_label);
 		
+		JLabel Animal2_label = new JLabel("Chosen Animal 2");
+		Animal2_label.setBounds(42, 105, 107, 16);
+		add(Animal2_label);
+		
+		JLabel Animal3_label = new JLabel("Chosen Animal 3");
+		Animal3_label.setBounds(42, 131, 107, 16);
+		add(Animal3_label);
+		
+		JTextArea Animal1_AREA = new JTextArea();
+		Animal1_AREA.setBounds(172, 77, 74, 16);
+		add(Animal1_AREA);
+		
+		JTextArea Animal2_AREA = new JTextArea();
+		Animal2_AREA.setBounds(172, 103, 74, 16);
+		add(Animal2_AREA);
+		
+		JTextArea Animal3_AREA = new JTextArea();
+		Animal3_AREA.setBounds(172, 131, 73, 16);
+		add(Animal3_AREA);
+		
+		int k=0;
+		for(String key : tmpUser.getChosen().keySet()){
+			k++;
+			if(k==1){
+				Animal1_AREA.setText(key);
+			}
+			if(k==2){
+				Animal2_AREA.setText(key);
+			}
+			if(k==3){
+				Animal3_AREA.setText(key);
+			}
+		}
 		
 		parentFrame.setSize(900, 600);
 		parentFrame.setLocationRelativeTo(null);

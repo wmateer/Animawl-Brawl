@@ -10,6 +10,7 @@ public class User implements Serializable {
 private String name;
 private String password;
 private HashMap<String, Animal> animalMap;
+private HashMap<String, Animal> chosenAnimals;
 private int wins;
 private int losses;
 
@@ -20,12 +21,7 @@ public User(String inName,String inPass){
 	wins=0;
 	losses=0;
 	animalMap=new HashMap<String, Animal>();
-	/*
-	Bear Bear = new Bear("bear");
-	Bird Bird = new Bird("bird");
-	animalMap.put("Bird", Bird);
-	animalMap.put("Bear", Bear);
-	*/
+	chosenAnimals=new HashMap<String, Animal>();
 	
 	//IF ANIMAL MAP EMPTY NEED TO REPOPULATE IT LATER
 	
@@ -41,6 +37,31 @@ public User(String inName,String inPass){
 
 
 //setters and getters
+public Boolean HasNotChosenAlready(Animal chosenAnimal){
+	if(chosenAnimals.containsValue(chosenAnimal)){
+		return false;
+	}
+	else{
+		return true;
+	}
+}
+
+public HashMap<String,Animal> getChosen(){
+	return chosenAnimals;
+}
+
+public void addToChosen(String name, Animal chosenAnimal){
+	chosenAnimals.put(name, chosenAnimal);
+}
+
+public void removeAllChosen(){
+	chosenAnimals.clear();
+}
+
+public HashMap<String,Animal> getSavedAnimals(){
+	return animalMap;
+}
+
 public int getWins() {
 	return wins;
 }
