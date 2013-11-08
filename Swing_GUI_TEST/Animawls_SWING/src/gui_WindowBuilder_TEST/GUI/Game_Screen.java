@@ -28,7 +28,7 @@ public class Game_Screen extends JPanel {
 	private int round=0;
 	private int  play=1;
 	private int whoseTurn=0;
-	
+	public String newprompt;
 	
 	
 	private JLabel prompt;
@@ -65,14 +65,17 @@ public class Game_Screen extends JPanel {
 		private JRadioButton switchAnimalr;
 		private JProgressBar hpBarr;
 		private JProgressBar apBarr;
+		private JRadioButton subAnimal1;
+		private JRadioButton subAnimal2;
+		private JRadioButton subAnimal1r;
+		private JRadioButton subAnimal2r;
+		
 
 	public Game_Screen(JFrame masterFrame) {
 		setBackground(Color.DARK_GRAY);
 		setLayout(null);
 		
-//prompt header
-		JLabel prompt = new JLabel();
-		prompt.setBounds(290, 94, 288, 30);
+
 		
 //----------------------------------
 		
@@ -168,10 +171,12 @@ public class Game_Screen extends JPanel {
 			masterFrame.setLocationRelativeTo(null);
 			
 			
+			
+			
 /// USER 0````````````````````````
 		
 		usernameZero = new JLabel(pZero.getName());
-		usernameZero.setBounds(130, 70, 80, 16);
+		usernameZero.setBounds(130, 70, 130, 29);
 		add(usernameZero);
 		//ANIMAL 0 --------------------------------------------
 		
@@ -227,7 +232,9 @@ public class Game_Screen extends JPanel {
 				public void actionPerformed(ActionEvent e) {
 					attack2.setVisible(false);
 					attack1.setVisible(false);
-					attack0.setVisible(false);	
+					attack0.setVisible(false);
+					subAnimal1.setVisible(false);
+					subAnimal2.setVisible(false);
 				}
 			});
 			special.setBounds(42, 429, 141, 23);
@@ -238,7 +245,9 @@ public class Game_Screen extends JPanel {
 				public void actionPerformed(ActionEvent e) {
 					attack2.setVisible(false);
 					attack1.setVisible(false);
-					attack0.setVisible(false);	
+					attack0.setVisible(false);
+					subAnimal1.setVisible(false);
+					subAnimal2.setVisible(false);
 				}
 			});
 			defend.setBounds(42, 479, 141, 23);
@@ -249,26 +258,36 @@ public class Game_Screen extends JPanel {
 				public void actionPerformed(ActionEvent e) {
 					attack2.setVisible(false);
 					attack1.setVisible(false);
-					attack0.setVisible(false);	
+					attack0.setVisible(false);
+					subAnimal1.setVisible(true);
+					subAnimal2.setVisible(true);
 				}
 			});
-			switchAnimal.setBounds(42, 545, 141, 23);
+			switchAnimal.setBounds(42, 514, 141, 23);
 			add(switchAnimal);
 			
-			attack = new JRadioButton("Attack");
+			subAnimal1 = new JRadioButton(pZero.animalsCur.get(1).getName());
+			subAnimal1.setBounds(130, 536, 141, 23);
+			add(subAnimal1);
+			subAnimal1.setVisible(false);
 			
+			subAnimal2 = new JRadioButton(pZero.animalsCur.get(2).getName());
+			subAnimal2.setBounds(130, 560, 141, 23);
+			add(subAnimal2);
+			subAnimal2.setVisible(false);
+			
+			attack = new JRadioButton("Attack");	
 			attack.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					if(attack.isSelected()){
 					attack2.setVisible(true);
 					attack1.setVisible(true);
-					attack0.setVisible(true);	
+					attack0.setVisible(true);
+					subAnimal1.setVisible(false);
+					subAnimal2.setVisible(false);
 					}
-					if(!attack.isSelected()){
-						attack2.setVisible(false);
-						attack1.setVisible(false);
-						attack0.setVisible(false);		
-					}
+						
+					
 				}
 			});
 			attack.setBounds(42, 289, 141, 23);
@@ -277,6 +296,7 @@ public class Game_Screen extends JPanel {
 			//Buttongroup stufff for pZero ------------------
 			ButtonGroup buttonGroup = new ButtonGroup();
 			ButtonGroup buttonGroupB = new ButtonGroup();
+			ButtonGroup buttonGroupC = new ButtonGroup();
 			
 			buttonGroup.add(attack0);
 			buttonGroup.add(attack1);
@@ -290,12 +310,15 @@ public class Game_Screen extends JPanel {
 			buttonGroupB.add(defend);
 			buttonGroupB.add(special);
 			
+			buttonGroupC.add(subAnimal1);
+			buttonGroupC.add(subAnimal2);
+			
 		
 		
 //USER 1----------------------------------------------		
 		
 		userNameOne = new JLabel(pOne.getName());
-		userNameOne.setBounds(728, 64, 80, 16);
+		userNameOne.setBounds(669, 64, 139, 35);
 		add(userNameOne);		
 		//ANIMAL 1--------------------------------------------	
 		
@@ -327,15 +350,15 @@ public class Game_Screen extends JPanel {
 		
 		
 		attack0r = new JRadioButton("Attack0r");
-		attack0r.setBounds(774, 327, 141, 23);
+		attack0r.setBounds(753, 327, 141, 23);
 		add(attack0r);
 		
 		attack1r= new JRadioButton("Attack1r");
-		attack1r.setBounds(774, 359, 141, 23);
+		attack1r.setBounds(753, 359, 141, 23);
 		add(attack1r);
 		
 		attack2r = new JRadioButton("Attack2r");
-		attack2r.setBounds(774, 394, 141, 23);
+		attack2r.setBounds(753, 394, 141, 23);
 		add(attack2r);
 		
 		attack0r.setVisible(false);
@@ -348,9 +371,11 @@ public class Game_Screen extends JPanel {
 				attack2r.setVisible(false);
 				attack1r.setVisible(false);
 				attack0r.setVisible(false);
+				subAnimal1r.setVisible(false);
+				subAnimal2r.setVisible(false);
 			}
 		});
-		specialr.setBounds(728, 429, 141, 23);
+		specialr.setBounds(712, 429, 141, 23);
 		add(specialr);
 		
 	    defendr = new JRadioButton("Defend");
@@ -359,21 +384,40 @@ public class Game_Screen extends JPanel {
 				attack2r.setVisible(false);
 				attack1r.setVisible(false);
 				attack0r.setVisible(false);
+				subAnimal1r.setVisible(false);
+				subAnimal2r.setVisible(false);
 			}
 		});
-		defendr.setBounds(728, 479, 141, 23);
+		defendr.setBounds(712, 479, 141, 23);
 		add(defendr);
 		
-		switchAnimalr = new JRadioButton("Switch");
+		switchAnimalr = new JRadioButton("Switch Animal");
 		switchAnimalr.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				attack2r.setVisible(false);
 				attack1r.setVisible(false);
 				attack0r.setVisible(false);
+				
+				if(switchAnimalr.isSelected()){
+					subAnimal1r.setVisible(true);
+					subAnimal2r.setVisible(true);
+				}
+				
 			}
 		});
-		switchAnimalr.setBounds(728, 545, 141, 23);
+		switchAnimalr.setBounds(712, 514, 141, 23);
 		add(switchAnimalr);
+		
+		subAnimal1r = new JRadioButton(pOne.animalsCur.get(1).getName());
+		subAnimal1r.setBounds(788, 536, 141, 23);
+		add(subAnimal1r);
+		subAnimal1r.setVisible(false);
+		
+		subAnimal2r = new JRadioButton(pOne.animalsCur.get(2).getName());
+		subAnimal2r.setBounds(788, 560, 141, 23);
+		add(subAnimal2r);
+		subAnimal2r.setVisible(false);
+		
 		
 		attackr = new JRadioButton("Attack");
 		attackr.addActionListener(new ActionListener() {
@@ -382,21 +426,20 @@ public class Game_Screen extends JPanel {
 					attack2r.setVisible(true);
 					attack1r.setVisible(true);
 					attack0r.setVisible(true);	
+					subAnimal1r.setVisible(false);
+					subAnimal2r.setVisible(false);
 					}
-				if(!attackr.isSelected()){
-						attack2r.setVisible(false);
-						attack1r.setVisible(false);
-						attack0r.setVisible(false);		
-					}
+				
 			}
 		});
-		attackr.setBounds(728, 289, 141, 23);
+		attackr.setBounds(712, 289, 141, 23);
 		add(attackr);
 		
 		// Right side button group stuff
 		
 			ButtonGroup buttonGroupr = new ButtonGroup();
 			ButtonGroup buttonGroupBr = new ButtonGroup();
+			ButtonGroup buttonGroupCr = new ButtonGroup();
 			
 			buttonGroupr.add(attack1r);
 			buttonGroupr.add(attack2r);
@@ -409,6 +452,13 @@ public class Game_Screen extends JPanel {
 			buttonGroupBr.add(switchAnimalr);
 			buttonGroupBr.add(defendr);
 			buttonGroupBr.add(specialr);
+			
+			buttonGroupCr.add(subAnimal1r);
+			buttonGroupCr.add(subAnimal2r);
+			
+			
+			
+
 		showpOne(false);
 	
 	}
@@ -439,6 +489,8 @@ public void showpZero(boolean input){
 		attack2r.setSelected(false);
 		attack1r.setSelected(false);
 		attack0r.setSelected(false);
+		subAnimal1r.setSelected(false);
+		subAnimal2r.setSelected(false);
 		
 		attack.setVisible(false);
 		special.setVisible(false);
@@ -447,6 +499,8 @@ public void showpZero(boolean input){
 		attack2.setVisible(false);
 		attack1.setVisible(false);
 		attack0.setVisible(false);
+		subAnimal1.setVisible(false);
+		subAnimal2.setVisible(false);
 		
 		
 		
@@ -468,6 +522,8 @@ public void showpOne(boolean input){
 		attack2r.setSelected(false);
 		attack1r.setSelected(false);
 		attack0r.setSelected(false);
+		subAnimal1r.setSelected(false);
+		subAnimal2r.setSelected(false);
 		}
 	if(input == false)
 	{
@@ -487,6 +543,8 @@ public void showpOne(boolean input){
 		attack2r.setVisible(false);
 		attack1r.setVisible(false);
 		attack0r.setVisible(false);
+		subAnimal1r.setVisible(false);
+		subAnimal2r.setVisible(false);
 		
 	}
 	
@@ -558,9 +616,15 @@ inactive=tmp;
 public void performSelected(){
 	if(attack0.isSelected()){
 		//active.getActive().addExpErnd(active.getActive().attacksAvail.get(0).useAttack(active.getActive(), inactive.getActive()));
-		inactive.getActive().subHpRem(active.getActive().attacksAvail.get(0).useAttack(active.getActive(), inactive.getActive()));
+		int dmg = active.getActive().attacksAvail.get(0).useAttack(active.getActive(), inactive.getActive());
+		if (dmg == 0){
+			newprompt="Your attack has missed";
+			
+		}
+		//inactive.getActive().subHpRem(dmg);
+		int hp = hpBarr.getValue(); 
 		active.getActive().subApRem((int)active.getActive().attacksAvail.get(0).getApCost());
-		hpBarr.setValue((int)inactive.getActive().getHpRem());
+		hpBarr.setValue(hp-dmg);
 		apBar.setValue((int)active.getActive().getApRem());
 		return;
 		
@@ -568,13 +632,16 @@ public void performSelected(){
 	
 	if(attack0r.isSelected()){
 		//active.getActive().addExpErnd(active.getActive().attacksAvail.get(0).useAttack(active.getActive(), inactive.getActive()));
-		inactive.getActive().subHpRem(active.getActive().attacksAvail.get(0).useAttack(active.getActive(), inactive.getActive()));
+		int dmg = active.getActive().attacksAvail.get(0).useAttack(active.getActive(), inactive.getActive());
+		//inactive.getActive().subHpRem(active.getActive().attacksAvail.get(0).useAttack(active.getActive(), inactive.getActive()));
+		int hp = hpBar.getValue();
 		active.getActive().subApRem((int)active.getActive().attacksAvail.get(0).getApCost());
-		hpBar.setValue((int)inactive.getActive().getHpRem());
+		hpBar.setValue(hp-dmg);
 		apBarr.setValue((int)active.getActive().getApRem());
 		return;
 	}
 }
+
 
 public class confirmListner implements ActionListener {
 	public void actionPerformed(ActionEvent e) {

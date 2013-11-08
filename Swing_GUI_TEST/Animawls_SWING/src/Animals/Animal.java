@@ -6,7 +6,8 @@ import java.io.*;
 
 import Attacks.Attack;
 
-public class Animal {
+public class Animal implements Serializable {
+
 //Animal Class Protected Variables
 protected String name;
 public String type;

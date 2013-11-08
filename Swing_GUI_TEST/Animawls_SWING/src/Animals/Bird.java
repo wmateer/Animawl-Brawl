@@ -4,13 +4,15 @@ package Animals;
 //import Attack;
 //import Peck;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import Attacks.Attack;
 import Attacks.Peck;
 import Attacks.Wingattack;
 
-public class Bird extends Animal {
+public class Bird extends Animal implements Serializable {
+
 	public Bird(String name) {
 		super(name);
 // stat set for bird

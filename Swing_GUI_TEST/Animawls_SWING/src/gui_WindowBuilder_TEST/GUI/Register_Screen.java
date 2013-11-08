@@ -77,8 +77,8 @@ public class Register_Screen extends JPanel {
 				newpassword1 = new String(passwordField_ONE.getPassword());
 				newpassword2 = new String(passwordField_TWO.getPassword());
 				//LoadTable
-				Hashtable<String, User> data = null;
-				data = LoadTable(data);
+				Hashtable<String, User> data = new Hashtable<String,User>();
+				//data = LoadTable(data);
 				register(newusername, newpassword1, newpassword2, data);
 				
 				//call register method
@@ -177,7 +177,7 @@ public class Register_Screen extends JPanel {
 		}
 		catch(FileNotFoundException e){
 			e.printStackTrace();
-			//makefile();
+			makefile();
 		}
 		catch(IOException e){
 			e.printStackTrace();
@@ -188,7 +188,8 @@ public class Register_Screen extends JPanel {
 	
 	private static void makefile(){
 		try{
-			File tmp = new File("Savefiles/Saved_users_passwords.ser");
+			FileOutputStream fileOut = new FileOutputStream("Savefiles/Saved_users_passwords.ser");
+			fileOut.close();
 		}catch(Exception e){
 			e.printStackTrace();
 		}
