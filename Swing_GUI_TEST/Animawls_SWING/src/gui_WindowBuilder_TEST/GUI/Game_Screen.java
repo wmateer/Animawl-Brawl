@@ -181,8 +181,9 @@ public class Game_Screen extends JPanel {
 		//HP 0 ------------------------------------------------------------
 			
 			hpBar = new JProgressBar(0,(int)pZero.getActive().getHpTot());
-			hpBar.setStringPainted(true);
 			hpBar.setForeground(Color.red);
+			hpBar.setStringPainted(true);
+			hpBar.setBackground(Color.white);
 			hpBar.setValue((int)pZero.getActive().getHpRem());
 			hpBar.setBounds(262, 324, 120, 20);
 			add(hpBar);		
@@ -194,6 +195,7 @@ public class Game_Screen extends JPanel {
 			apBar.setValue((int)pZero.getActive().getApRem());
 			apBar.setForeground(Color.blue);
 			apBar.setStringPainted(true);
+			apBar.setBackground(Color.white);
 			apBar.setBounds(262, 352, 120, 20);
 			add(apBar);
 		//BUTTONS 0!!------------------------------------------------------		
@@ -306,8 +308,9 @@ public class Game_Screen extends JPanel {
 				hpBarr= new JProgressBar(0,(int)pOne.getActive().getHpTot());
 				hpBarr.setValue((int)pOne.getActive().getHpRem());
 				hpBarr.setForeground(Color.red);
+				hpBarr.setBackground(Color.white);
 				hpBarr.setStringPainted(true);
-				hpBarr.setBackground(Color.RED);
+				
 				hpBarr.setBounds(515, 324, 120, 20);
 				add(hpBarr);
 
@@ -317,7 +320,7 @@ public class Game_Screen extends JPanel {
 				apBarr.setValue((int)pOne.getActive().getApRem());
 				apBarr.setForeground(Color.blue);
 				apBarr.setStringPainted(true);
-				apBarr.setBackground(Color.RED);
+				apBarr.setBackground(Color.white);
 				apBarr.setBounds(515, 352, 120, 20);
 				add(apBarr);
 	    //  Right Side buttons		
@@ -482,7 +485,8 @@ public void showpOne(boolean input){
 		defendr.setVisible(false);
 		switchAnimalr.setVisible(false);
 		attack2r.setVisible(false);
-		attack1r.setVisible(false);	
+		attack1r.setVisible(false);
+		attack0r.setVisible(false);
 		
 	}
 	
@@ -490,19 +494,41 @@ public void showpOne(boolean input){
 
 public boolean checkNoneSelected(){
 	//false means player has selected a move.
+	// check for player 1 side buttons
 	if(attack.isSelected()){
 		if( !(attack0.isSelected()) && !(attack1.isSelected()) && !(attack2.isSelected())){
 			return true;
 		}else{
 			return false;
 		}
-	
 	}
 	
 	if(!(attack.isSelected()) && !(special.isSelected()) && !(defend.isSelected()) & !(switchAnimal.isSelected())) {
 		return true;
-	}else
+	}else{
 		return false;
+	}
+
+}
+
+public boolean checkNoneSelectedr(){
+	//false means player has selected a move
+	// check for player 2 side buttons
+	if(attackr.isSelected()){
+		if( !(attack0r.isSelected()) && !(attack1r.isSelected()) && !(attack2r.isSelected())){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
+	if(!(attack.isSelected()) && !(special.isSelected()) && !(defend.isSelected()) & !(switchAnimal.isSelected())) {
+		return true;
+	}else{
+		return false;
+	}
+	
+	
 }
 
 
@@ -530,18 +556,42 @@ inactive=tmp;
 }
 
 public void performSelected(){
-if(attack0.isSelected()){
-	active.getActive().addExpErnd(active.getActive().attacksAvail.get(0).useAttack(active.getActive(), inactive.getActive()));
-}
+	if(attack0.isSelected()){
+		active.getActive().addExpErnd(active.getActive().attacksAvail.get(0).useAttack(active.getActive(), inactive.getActive()));
+		inactive.getActive().subHpRem(active.getActive().attacksAvail.get(0).useAttack(active.getActive(), inactive.getActive()));
+		active.getActive().subApRem((int)active.getActive().attacksAvail.get(0).getApCost());
+		hpBarr.setValue((int)inactive.getActive().getHpRem());
+		apBar.setValue((int)active.getActive().getApRem());
+		
+    }
+	
+	if(attack0r.isSelected()){
+		active.getActive().addExpErnd(active.getActive().attacksAvail.get(0).useAttack(active.getActive(), inactive.getActive()));
+		inactive.getActive().subHpRem(active.getActive().attacksAvail.get(0).useAttack(active.getActive(), inactive.getActive()));
+		active.getActive().subApRem((int)active.getActive().attacksAvail.get(0).getApCost());
+		hpBar.setValue((int)inactive.getActive().getHpRem());
+		apBarr.setValue((int)active.getActive().getApRem());
+	}
 }
 
 public class confirmListner implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 	//TODO need to check if active animal is dead and if so present only switch animals buttons
+		if(whoseTurn == 0){
+			if(checkNoneSelected()==false){
+				performSelected();
+				
+				}
+		}
 		
-		if(checkNoneSelected()==false){
-			performSelected();
-			}
+		if(whoseTurn == 1){
+			if(checkNoneSelectedr()==false){
+				performSelected();
+			
+				}
+		}
+		
+		endTurn();
 		//checks for inactive player loss after active attacks. have not yet tested but should work fine
 		if (inactive.checkLoss()==0){
 			String temp =active.getName() + "Wins!";
@@ -549,7 +599,7 @@ public class confirmListner implements ActionListener {
 		}
 		
 		
-	endTurn();
+
 	
 	}
 	}
