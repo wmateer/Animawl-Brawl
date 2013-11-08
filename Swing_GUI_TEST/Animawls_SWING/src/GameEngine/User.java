@@ -26,6 +26,17 @@ public User(String inName,String inPass){
 	animalMap.put("Bird", Bird);
 	animalMap.put("Bear", Bear);
 	*/
+	
+	//IF ANIMAL MAP EMPTY NEED TO REPOPULATE IT LATER
+	
+	animalMap.put("Bear", new Bear("Bear"));
+	animalMap.put("Bird", new Bird("Bird"));
+	animalMap.put("Bat", new Bat("Bat"));
+	animalMap.put("Bull", new Bull("Bird"));
+	animalMap.put("Dog", new Dog("Bird"));
+	animalMap.put("Elephant", new Elephant("Bird"));
+	animalMap.put("Fighting Frog", new FightingFrog("Bird"));
+	animalMap.put("Snake", new Snake("Snake"));
 }
 
 

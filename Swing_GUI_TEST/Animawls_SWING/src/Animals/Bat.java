@@ -51,7 +51,7 @@ public class Bat extends Animal {
 		evdScaler=10;
 		evdBonus=-.05;
 		
-		imgPath = "IMAGES/CHAR_PICTS/bat.jpg";
+		imgPath = "IMAGES/CHAR_PICTS/Bat.jpg";
 		Description = "A STEALTHY NOTCTURNAL AIRBOURNE BEAST!!!";
 	}
 }

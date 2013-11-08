@@ -49,7 +49,7 @@ public class Bird extends Animal {
 		evdScaler=7.5;
 		evdBonus=.45;
 		
-		imgPath = "IMAGES/CHAR_PICTS/bird.jpg";
+		imgPath = "IMAGES/CHAR_PICTS/Bird.jpg";
 		Description = "A HAPPY LITTLE BIRD. ABSOLUETELY USELESS";
 	}
 	

@@ -51,7 +51,7 @@ public class Bear extends Animal {
 		evdScaler=10;
 		evdBonus=-.05;
 		
-		imgPath = "IMAGES/CHAR_PICTS/bear.jpg";
+		imgPath = "IMAGES/CHAR_PICTS/Bear.jpg";
 		Description = "A TERRIFYING BEAR, HELLBENT ON DESTRUCTION!!!";
 	}
 }
