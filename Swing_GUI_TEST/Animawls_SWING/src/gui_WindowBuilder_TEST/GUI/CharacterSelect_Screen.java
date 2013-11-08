@@ -10,14 +10,19 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.event.ListSelectionEvent;
 
 import Animals.Animal;
+import Animals.Bat;
 import Animals.Bear;
 import Animals.Bird;
+import Animals.Bull;
+import Animals.Dog;
+import Animals.Elephant;
+import Animals.FightingFrog;
+import Animals.Snake;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
 import java.util.HashMap;
-
 import java.io.*;
 
 
@@ -138,12 +143,17 @@ public class CharacterSelect_Screen extends JPanel {
 		parentFrame.setLocationRelativeTo(null);
 	}	
 		
-		
 	//public HashMap <String,Animal> Choose_Lister_Passer() {
 	public void Choose_Lister_Passer() {
 		//must be updated when new animawls are to be added			
 		TmpList = new HashMap<String,Animal>();
 		TmpList.put("Bear", new Bear("Bear"));
 		TmpList.put("Bird", new Bird("Bird"));
+		TmpList.put("Bat", new Bat("Bat"));
+		TmpList.put("Bull", new Bull("Bird"));
+		TmpList.put("Dog", new Dog("Bird"));
+		TmpList.put("Elephant", new Elephant("Bird"));
+		TmpList.put("Fighting Frog", new FightingFrog("Bird"));
+		TmpList.put("Snake", new Snake("Snake"));
 	}
 }

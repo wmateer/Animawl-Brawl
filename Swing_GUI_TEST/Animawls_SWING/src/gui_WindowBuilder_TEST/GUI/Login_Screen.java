@@ -96,6 +96,8 @@ public class Login_Screen extends JPanel {
 		title_Label.setFont(new Font("Mona Lisa Solid ITC TT", Font.PLAIN, 30));
 		title_Label.setBounds(66, 23, 318, 75);
 		add(title_Label);
+		
+		parentFrame.setLocationRelativeTo(null);
 	}
 		
 	
