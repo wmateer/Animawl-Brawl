@@ -93,18 +93,22 @@ public class Game_Screen extends JPanel {
 		//initialize constant screen objects
 
 		JLabel Hp = new JLabel("HP ");
+		Hp.setForeground(Color.RED);
 		Hp.setBounds(232, 324, 28, 16);
 		add(Hp);
 		
 		JLabel Ap = new JLabel("AP");
+		Ap.setForeground(Color.blue);
 		Ap.setBounds(238, 356, 22, 16);
 		add(Ap);
 		
 		JLabel Hpr = new JLabel("HP");
+		Hpr.setForeground(Color.RED);
 		Hpr.setBounds(635, 331, 22, 16);
 		add(Hpr);
 		
 		JLabel Apr = new JLabel("AP");
+		Apr.setForeground(Color.blue);
 		Apr.setBounds(635, 356, 22, 16);
 		add(Apr);
 		
@@ -156,26 +160,22 @@ public class Game_Screen extends JPanel {
 			animalNameZero.setBounds(198, 98, 80, 16);
 			add(animalNameZero);
 		//HP 0 ------------------------------------------------------------
-			UIManager.put("ProgressBar.background", Color.red);
-			UIManager.put("ProgressBar.foreground", Color.white);
-			UIManager.put("ProgressBar.selectionBackground", Color.red);
-			//UIManager.put("ProgressBar.selectionForeground", Color.red);
+			
 			hpBar = new JProgressBar(0,(int)pZero.getActive().getHpTot());
 			hpBar.setStringPainted(true);
 			hpBar.setForeground(Color.red);
 			hpBar.setValue((int)pZero.getActive().getHpRem());
-			hpBar.setBackground(Color.RED);
-			hpBar.setBounds(262, 324, 100, 20);
+			hpBar.setBounds(262, 324, 120, 20);
 			add(hpBar);		
 
 		//AP 0 ------------------------------------------------------------	
-			
-			UIManager.put("ProgressBar.selectionForeground", Color.blue);
+		
+			//UIManager.put("ProgressBar.selectionForeground", Color.blue);
 		    apBar = new JProgressBar(0,(int)pZero.getActive().getApTot());
 			apBar.setValue((int)pZero.getActive().getApRem());
+			apBar.setForeground(Color.blue);
 			apBar.setStringPainted(true);
-			apBar.setBackground(Color.RED);
-			apBar.setBounds(262, 352, 102, 20);
+			apBar.setBounds(262, 352, 120, 20);
 			add(apBar);
 		//BUTTONS 0!!------------------------------------------------------		
 			
@@ -283,21 +283,23 @@ public class Game_Screen extends JPanel {
 			add(animalNameOne);
 			
 		//HP 1 ------------------------------------------------------------	
-				UIManager.put("ProgressBar.selectionForeground", Color.red);
+			//UIManager.put("ProgressBar.selectionBackground", Color.red);
 				hpBarr= new JProgressBar(0,(int)pOne.getActive().getHpTot());
 				hpBarr.setValue((int)pOne.getActive().getHpRem());
+				hpBarr.setForeground(Color.red);
 				hpBarr.setStringPainted(true);
 				hpBarr.setBackground(Color.RED);
-				hpBarr.setBounds(535, 327, 100, 20);
+				hpBarr.setBounds(515, 324, 120, 20);
 				add(hpBarr);
 
 		//AP 1 ------------------------------------------------------------				
-				UIManager.put("ProgressBar.selectionForeground", Color.blue);
+				//UIManager.put("ProgressBar.selectionBackground", Color.blue);
 				apBarr = new JProgressBar(0,(int)pOne.getActive().getApTot());
 				apBarr.setValue((int)pOne.getActive().getApRem());
+				apBarr.setForeground(Color.blue);
 				apBarr.setStringPainted(true);
 				apBarr.setBackground(Color.RED);
-				apBarr.setBounds(535, 352, 100, 20);
+				apBarr.setBounds(515, 352, 120, 20);
 				add(apBarr);
 	    //  Right Side buttons		
 		

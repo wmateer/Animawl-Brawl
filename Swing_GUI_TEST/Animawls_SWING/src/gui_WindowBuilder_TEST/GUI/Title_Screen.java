@@ -63,13 +63,13 @@ public class Title_Screen extends JPanel {
 		PicturePlaceholder_Label.setHorizontalAlignment(SwingConstants.CENTER);
 		PicturePlaceholder_Label.setBounds(28, 76, 866, 447);
 		BufferedImage Logo = null;
-		//try {
-			//Logo = ImageIO.read(new File("IMAGES/ABlogo.png"));
-		//} catch (IOException e) {
-		//	// TODO Auto-generated catch block
-		//	e.printStackTrace();
-		//}
-		//PicturePlaceholder_Label.setIcon(new ImageIcon(Logo));
+		try {
+			Logo = ImageIO.read(new File("IMAGES/ABLogo.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		PicturePlaceholder_Label.setIcon(new ImageIcon(Logo));
 		add(PicturePlaceholder_Label);
 		
 		JButton Placeholder_Button = new JButton("PLACEHOLDER");
