@@ -115,7 +115,7 @@ public class Login_Screen extends JPanel {
 				
 				if (data.containsKey(user) && password.equals(inpassword)){
 					JOptionPane.showMessageDialog(null, "Login successfull","Success", JOptionPane.INFORMATION_MESSAGE);
-					JPanel tmp_Screen = new MainMenu_Screen(parentFrame);
+					JPanel tmp_Screen = new MainMenu_Screen(parentFrame, (User) player);
 					parentFrame.setContentPane(tmp_Screen);
 					parentFrame.setVisible(true);
 					parentFrame.setResizable(false);

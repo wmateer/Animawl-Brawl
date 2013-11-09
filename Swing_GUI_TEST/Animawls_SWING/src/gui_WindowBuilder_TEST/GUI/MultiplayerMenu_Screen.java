@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import GameEngine.User;
 
 public class MultiplayerMenu_Screen extends JPanel {
 
@@ -13,11 +14,12 @@ public class MultiplayerMenu_Screen extends JPanel {
 	 */
 	private JFrame parentFrame;
 	
-	public MultiplayerMenu_Screen(JFrame masterFrame) {
+	public MultiplayerMenu_Screen(JFrame masterFrame, User currentUser) {
 		setBackground(new Color(128, 0, 0));
 		setLayout(null);
 		
 		parentFrame = masterFrame;
+		final User tmpUser = currentUser;
 		
 		JLabel multiplayerTitle_label = new JLabel("MULTIPLAYER MENU");
 		multiplayerTitle_label.setForeground(new Color(255, 255, 255));
@@ -43,7 +45,7 @@ public class MultiplayerMenu_Screen extends JPanel {
 				//FOR TESTING IT WILL JUST START A LOCAL GAME!!!
 				//parentFrame.removeAll();
 				parentFrame.setVisible(false);
-				JPanel tmp_Screen = new CharacterSelect_Screen(parentFrame);
+				JPanel tmp_Screen = new CharacterSelect_Screen(parentFrame,tmpUser);
 				parentFrame.setContentPane(tmp_Screen);
 				parentFrame.setVisible(true);
 				parentFrame.setResizable(false);
@@ -72,7 +74,7 @@ public class MultiplayerMenu_Screen extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				//parentFrame.removeAll();
 				//parentFrame.setVisible(false);
-				JPanel tmp_Screen = new MainMenu_Screen(parentFrame);
+				JPanel tmp_Screen = new MainMenu_Screen(parentFrame, tmpUser);
 				parentFrame.setContentPane(tmp_Screen);
 				parentFrame.setVisible(true);
 				parentFrame.setResizable(false);

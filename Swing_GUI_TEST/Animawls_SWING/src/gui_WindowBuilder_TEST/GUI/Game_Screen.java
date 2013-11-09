@@ -71,7 +71,7 @@ public class Game_Screen extends JPanel {
 		private JRadioButton subAnimal2r;
 		
 
-	public Game_Screen(JFrame masterFrame) {
+	public Game_Screen(JFrame masterFrame, User user1) {
 		setBackground(Color.DARK_GRAY);
 		setLayout(null);
 		
@@ -90,7 +90,7 @@ public class Game_Screen extends JPanel {
 		
 		
 		
-		final Player pZero = new Player("bill",Willis, Frank, Cindy);
+		final Player pZero = new Player(user1.getName(),user1.chosenAnimals.get(0), user1.chosenAnimals.get(1), user1.chosenAnimals.get(2));
 		active = pZero;
 		final Player pOne = new Player("bob",Kyle, Mindy, Alex);
 		inactive=pOne;
@@ -121,12 +121,12 @@ public class Game_Screen extends JPanel {
 		
 		
 		
-		JLabel pic = new JLabel("Picture Here");
+		JLabel pic = new JLabel(pZero.getActive().getName());
 		try {
-			BufferedImage AnimalPicture1 = ImageIO.read(new File(pZero.getActive().imgPath));
+			BufferedImage AnimalPicture1 = ImageIO.read(new File(user1.chosenAnimals.get(0).imgPath));
 			pic.setIcon(new ImageIcon(AnimalPicture1));
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
+			 //TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		pic.setBounds(208, 126, 132, 126);
@@ -176,7 +176,8 @@ public class Game_Screen extends JPanel {
 /// USER 0````````````````````````
 		
 		usernameZero = new JLabel(pZero.getName());
-		usernameZero.setBounds(130, 70, 130, 29);
+		usernameZero.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
+		usernameZero.setBounds(83, 55, 213, 44);
 		add(usernameZero);
 		//ANIMAL 0 --------------------------------------------
 		

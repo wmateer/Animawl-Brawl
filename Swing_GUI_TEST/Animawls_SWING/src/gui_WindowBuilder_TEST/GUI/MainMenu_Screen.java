@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import GameEngine.User;
 
 public class MainMenu_Screen extends JPanel {
 
@@ -17,9 +18,11 @@ public class MainMenu_Screen extends JPanel {
 	 */
 	private JFrame parentFrame;
 	
-	public MainMenu_Screen(JFrame masterFrame) {
+	public MainMenu_Screen(JFrame masterFrame,User currentUser) {
 		setBackground(new Color(218, 165, 32));
 		setLayout(null);
+		
+		final User tmpUser = currentUser;
 		
 		parentFrame = masterFrame;
 		
@@ -45,7 +48,7 @@ public class MainMenu_Screen extends JPanel {
 				//GOES TO THE MULTIPLAYER MENU SCREEN
 				//parentFrame.removeAll();
 				//parentFrame.setVisible(false);
-				JPanel tmp_Screen = new MultiplayerMenu_Screen(parentFrame);
+				JPanel tmp_Screen = new MultiplayerMenu_Screen(parentFrame,tmpUser);
 				parentFrame.setContentPane(tmp_Screen);
 				parentFrame.setVisible(true);
 				parentFrame.setResizable(false);
