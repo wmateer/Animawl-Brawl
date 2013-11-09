@@ -37,18 +37,16 @@ public class CharacterSelect_Screen extends JPanel {
 	private HashMap <String,Animal> TmpList;
 	
 	public CharacterSelect_Screen(JFrame masterFrame, User currentUser) {
-		/*Player player1 = null;
-		Player player2 = null;
-		player1.setName("Player 1");
-		player2.setName("Player 2");
-		*/
 		
+		//set up frame
 		setBackground(new Color(60, 179, 113));
 		setLayout(null);
 		parentFrame = masterFrame;
 		
+		//set tmpUser so we can pass animals to it
 		final User tmpUser = currentUser;
 		
+		//set up various labels and textarea components
 		final JLabel selectedCharPict_Label = new JLabel("\n");
 		selectedCharPict_Label.setFont(new Font("Lucida Grande", Font.BOLD | Font.ITALIC, 15));
 		selectedCharPict_Label.setForeground(new Color(255, 255, 0));
@@ -129,21 +127,12 @@ public class CharacterSelect_Screen extends JPanel {
 		EVADE_AREA.setBounds(376, 384, 54, 16);
 		add(EVADE_AREA);
 		
-		//tmp pop in list
-		
-		/*DefaultListModel listModel = new DefaultListModel();
-        listModel.addElement("BEAR");
-        listModel.addElement("CAT");
-        listModel.addElement("RHINO");
-        listModel.addElement("SHARK");
-        listModel.addElement("FALCON");
-        listModel.addElement("SQUID");*/
-		//availCharChoices_List = new JList(listModel);
-		
+		//Set up list to show available character choices for the user.
 		DefaultListModel listModel = new DefaultListModel();
-		
+		//Set up the available characters
 		Choose_Lister_Passer();
 		
+		//iterate to add elements to the visual list
 		for(String key : TmpList.keySet()){
 			listModel.addElement(key);
 		}
@@ -151,21 +140,20 @@ public class CharacterSelect_Screen extends JPanel {
 		availCharChoices_List = new JList(listModel);
 		availCharChoices_List.setFont(new Font("Engravers MT", Font.PLAIN, 20));
 		
+		//define the listener for the list of choices of the animals.
+		//currently it displays the stats and picture/description of the chosen animal
 		availCharChoices_List.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent arg0) {
-				//WHEN LIST SELECTION IS MADE, REFLECT CHANGES IN CHAR PICT AND CHAR INFO
-				//need to link list selection with changes on pict char
-				//TMP
-				//int index = list.getSelectedIndex();
 				String tmp = (String) availCharChoices_List.getSelectedValue();
 				Animal tmpAnimal = TmpList.get(tmp);
-				//SET IMAGE
-				
+
 				//SET DESCRIPTION
 				selectedCharSelectInfo_TextArea.setText(tmpAnimal.Description);
 				try{
+					//SET PICTURE
 					BufferedImage AnimalPicture = ImageIO.read(new File(tmpAnimal.imgPath));
 					selectedCharPict_Label.setIcon(new ImageIcon(AnimalPicture));
+					//SET ANIMAL STATS
 					LEVEL_AREA.setText(""+tmpAnimal.getLvl());
 					EXP_EARNED_AREA.setText(""+tmpAnimal.getExp());
 					EXP_TO_LEVEL_AREA.setText(""+tmpAnimal.getExpToLvl());
