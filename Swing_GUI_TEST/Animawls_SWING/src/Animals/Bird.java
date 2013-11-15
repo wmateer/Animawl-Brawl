@@ -7,6 +7,8 @@ package Animals;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import javax.swing.JProgressBar;
+
 import Attacks.Attack;
 import Attacks.Peck;
 import Attacks.Wingattack;
@@ -53,6 +55,8 @@ public class Bird extends Animal implements Serializable {
 		
 		imgPath = "IMAGES/CHAR_PICTS/Bird.jpg";
 		Description = "A HAPPY LITTLE BIRD. ABSOLUETELY USELESS";
+		hpBar = new JProgressBar(0,(int)Math.round(getHpTot()));
+		hpBar.setValue((int)Math.round(getHpTot()));
 	}
 	
 }

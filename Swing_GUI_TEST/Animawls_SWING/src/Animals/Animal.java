@@ -4,6 +4,8 @@ package Animals;
 import java.util.*;
 import java.io.*;
 
+import javax.swing.JProgressBar;
+
 import Attacks.Attack;
 
 public class Animal implements Serializable {
@@ -23,6 +25,8 @@ protected double att;	//animal's attack strength
 protected double def;	//animals defense strength
 protected double evd;	//animals evasiveness 
 protected int poisoned;  //determines if animal is poisoned
+protected JProgressBar hpBar;
+protected JProgressBar apBar;
 
 //lvl up statistics 
 protected double hpScaler;
@@ -63,6 +67,8 @@ def=1;
 evd=1;	
 poisoned=0;
 
+hpBar = new JProgressBar(0,(int)Math.round(getHpTot()));
+hpBar.setValue((int)Math.round(getHpTot()));
 //basic lvl up stats
 hpScaler=10;
 hpBonus=0;
@@ -80,6 +86,12 @@ Description = "tmp";
 }
 
 //getters and setter
+public JProgressBar getHpBar(){
+	return hpBar;
+}
+public void  setHpBar(int input){
+	hpBar.setValue(input);
+}
 public String getName(){
 	return name;	
 }

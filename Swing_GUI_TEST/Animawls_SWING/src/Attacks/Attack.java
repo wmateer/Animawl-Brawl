@@ -148,6 +148,7 @@ public class Attack {
 			}
 			else{
 				target.subHpRem((int) Math.round(dmg));
+				target.setHpBar((int) Math.round(target.getHpRem()));
 				System.out.print("\n");
 				System.out.println("Your attack did ");
 				System.out.println(dmg);

@@ -5,8 +5,10 @@ package Animals;
 //import Maul;
 
 import java.util.ArrayList;
+
+import javax.swing.JProgressBar;
+
 import Attacks.*;
-import Attacks.Maul;
 
 
 public class Bear extends Animal {
@@ -53,6 +55,8 @@ public class Bear extends Animal {
 		
 		imgPath = "IMAGES/CHAR_PICTS/Bear.jpg";
 		Description = "A TERRIFYING BEAR, HELLBENT ON DESTRUCTION!!!";
+		hpBar = new JProgressBar(0,(int)Math.round(getHpTot()));
+		hpBar.setValue((int)Math.round(getHpTot()));
 	}
 }
 	

@@ -186,16 +186,21 @@ public class Game_Screen extends JPanel {
 			add(animalNameZero);
 		//HP 0 ------------------------------------------------------------
 			
-			hpBar = new JProgressBar(0,(int)pZero.getActive().getHpTot());
+		/*	hpBar = new JProgressBar(0,(int)pZero.getActive().getHpTot());
 			hpBar.setForeground(Color.red);
 			hpBar.setStringPainted(true);
 			hpBar.setBackground(Color.white);
 			hpBar.setValue((int)pZero.getActive().getHpRem());
 			hpBar.setBounds(262, 324, 120, 20);
 			add(hpBar);		
-
+		*/
+			pZero.getActive().getHpBar().setForeground(Color.red);
+			pZero.getActive().getHpBar().setStringPainted(true);
+			pZero.getActive().getHpBar().setBackground(Color.white);
+			pZero.getActive().getHpBar().setBounds(262, 324, 120, 20);
+			add(pZero.getActive().getHpBar());
 		//AP 0 ------------------------------------------------------------	
-		
+		/*
 			//UIManager.put("ProgressBar.selectionForeground", Color.blue);
 		    apBar = new JProgressBar(0,(int)pZero.getActive().getApTot());
 			apBar.setValue((int)pZero.getActive().getApRem());
@@ -204,6 +209,8 @@ public class Game_Screen extends JPanel {
 			apBar.setBackground(Color.white);
 			apBar.setBounds(262, 352, 120, 20);
 			add(apBar);
+		*/	
+			
 		//BUTTONS 0!!------------------------------------------------------		
 			
 			
@@ -329,24 +336,23 @@ public class Game_Screen extends JPanel {
 			
 		//HP 1 ------------------------------------------------------------	
 			//UIManager.put("ProgressBar.selectionBackground", Color.red);
-				hpBarr= new JProgressBar(0,(int)pOne.getActive().getHpTot());
-				hpBarr.setValue((int)pOne.getActive().getHpRem());
-				hpBarr.setForeground(Color.red);
-				hpBarr.setBackground(Color.white);
-				hpBarr.setStringPainted(true);
 				
-				hpBarr.setBounds(515, 324, 120, 20);
-				add(hpBarr);
+			pOne.getActive().getHpBar().setForeground(Color.red);
+			pOne.getActive().getHpBar().setStringPainted(true);
+			pOne.getActive().getHpBar().setBackground(Color.white);
+			pOne.getActive().getHpBar().setBounds(515, 345, 120, 20);
+			add(pOne.getActive().getHpBar());
 
 		//AP 1 ------------------------------------------------------------				
 				//UIManager.put("ProgressBar.selectionBackground", Color.blue);
-				apBarr = new JProgressBar(0,(int)pOne.getActive().getApTot());
+		/*		apBarr = new JProgressBar(0,(int)pOne.getActive().getApTot());
 				apBarr.setValue((int)pOne.getActive().getApRem());
 				apBarr.setForeground(Color.blue);
 				apBarr.setStringPainted(true);
 				apBarr.setBackground(Color.white);
 				apBarr.setBounds(515, 352, 120, 20);
 				add(apBarr);
+				*/
 	    //  Right Side buttons		
 		
 		
@@ -612,33 +618,34 @@ else if(whoseTurn==0){
 tmp=active;
 active=inactive;
 inactive=tmp;
+
 }
 
 public void performSelected(){
 	if(attack0.isSelected()){
-		//active.getActive().addExpErnd(active.getActive().attacksAvail.get(0).useAttack(active.getActive(), inactive.getActive()));
-		int dmg = active.getActive().attacksAvail.get(0).useAttack(active.getActive(), inactive.getActive());
-		if (dmg == 0){
-			newprompt="Your attack has missed";
-			
-		}
-		//inactive.getActive().subHpRem(dmg);
-		int hp = hpBarr.getValue(); 
-		active.getActive().subApRem((int)active.getActive().attacksAvail.get(0).getApCost());
-		hpBarr.setValue(hp-dmg);
-		apBar.setValue((int)active.getActive().getApRem());
+		int ammount = active.getActive().attacksAvail.get(0).useAttack(active.getActive(), inactive.getActive());
+		active.getActive().addExpErnd(ammount);
+	
+
+		//int ammount = pZero.getActive().attacksAvail.get(0).useAttack(pZero.getActive(), pOne.getActive());
+		//pZero.getActive().addExpErnd(ammount);
+		//hpBarr.setValue((int)inactive.getActive().getHpRem());
+		//apBar.setValue((int)active.getActive().getApRem());
+		
 		return;
 		
     }
 	
 	if(attack0r.isSelected()){
-		//active.getActive().addExpErnd(active.getActive().attacksAvail.get(0).useAttack(active.getActive(), inactive.getActive()));
-		int dmg = active.getActive().attacksAvail.get(0).useAttack(active.getActive(), inactive.getActive());
-		//inactive.getActive().subHpRem(active.getActive().attacksAvail.get(0).useAttack(active.getActive(), inactive.getActive()));
-		int hp = hpBar.getValue();
-		active.getActive().subApRem((int)active.getActive().attacksAvail.get(0).getApCost());
-		hpBar.setValue(hp-dmg);
-		apBarr.setValue((int)active.getActive().getApRem());
+		int ammount = active.getActive().attacksAvail.get(0).useAttack(active.getActive(), inactive.getActive());
+		active.getActive().addExpErnd(ammount);
+		
+
+		//int ammount = pOne.getActive().attacksAvail.get(0).useAttack(pOne.getActive(), pZero.getActive());
+		//pOne.getActive().addExpErnd(ammount);
+		//hpBar.setValue((int)inactive.getActive().getHpRem());
+		//apBarr.setValue((int)active.getActive().getApRem());
+		
 		return;
 	}
 }
@@ -647,22 +654,8 @@ public void performSelected(){
 public class confirmListner implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 	//TODO need to check if active animal is dead and if so present only switch animals buttons
-		if(whoseTurn == 0){
 			if(checkNoneSelected()==false){
 				performSelected();
-				
-				}else{
-					return;
-				}
-		}
-		
-		if(whoseTurn == 1){
-			if(checkNoneSelectedr()==false){
-				performSelected();
-			
-				}else{
-					return;
-				}
 		}
 		
 		endTurn();

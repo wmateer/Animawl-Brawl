@@ -2,13 +2,19 @@ package GameEngine;
 
 //imports
 import java.util.*;
+
 import Animals.*;
+
+import java.awt.Color;
 import java.io.*;
+
+import javax.swing.JProgressBar;
 
 public class Player {
 	protected String name;
 	protected Animal active;
 	protected Player opp;
+
 	protected ArrayList<Animal> animalsAvail;
 	public ArrayList<Animal> animalsCur;
 	
@@ -21,6 +27,7 @@ public Player(String input, Animal animal0,Animal animal1, Animal animal2){
 	animalsCur.add(animal1);
 	animalsCur.add(animal2);
 	active=animalsCur.get(0);
+	
 }
 //create hashmap of animals
 
@@ -28,6 +35,7 @@ public Player(String input, Animal animal0,Animal animal1, Animal animal2){
 public Animal getActive(){
 	return active;
 }
+
 public ArrayList<Animal> getAnimalsCur(){
 	return animalsCur;
 }
