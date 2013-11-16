@@ -84,9 +84,9 @@ public class Game_Screen extends JPanel {
 		Bear Frank = new Bear("Frank");
 		Bear Cindy = new Bear("Cindy");
 		
-		Bird Kyle = new Bird("Kyle");
-		Bird Mindy= new Bird("Mindy");
-		Bird Alex= new Bird("Alex");
+		Bear Kyle = new Bear("Kyle");
+		Bear Mindy= new Bear("Mindy");
+		Bear Alex= new Bear("Alex");
 		
 		
 		
@@ -101,12 +101,12 @@ public class Game_Screen extends JPanel {
 
 		JLabel Hp = new JLabel("HP ");
 		Hp.setForeground(Color.RED);
-		Hp.setBounds(232, 324, 28, 16);
+		Hp.setBounds(248, 331, 28, 16);
 		add(Hp);
 		
 		JLabel Ap = new JLabel("AP");
 		Ap.setForeground(Color.blue);
-		Ap.setBounds(238, 356, 22, 16);
+		Ap.setBounds(248, 356, 22, 16);
 		add(Ap);
 		
 		JLabel Hpr = new JLabel("HP");
@@ -197,7 +197,7 @@ public class Game_Screen extends JPanel {
 			pZero.getActive().getHpBar().setForeground(Color.red);
 			pZero.getActive().getHpBar().setStringPainted(true);
 			pZero.getActive().getHpBar().setBackground(Color.white);
-			pZero.getActive().getHpBar().setBounds(262, 324, 120, 20);
+			pZero.getActive().getHpBar().setBounds(270, 331, 135, 20);
 			add(pZero.getActive().getHpBar());
 		//AP 0 ------------------------------------------------------------	
 		/*
@@ -222,14 +222,14 @@ public class Game_Screen extends JPanel {
 			attack0.setVisible(false);
 
 			
-			attack1 = new JRadioButton("Attack2");
+			attack1 = new JRadioButton(pZero.getActive().attacksAvail.get(1).getName());
 			attack1.setBounds(83, 359, 141, 23);
 
 			add(attack1);
 			attack1.setVisible(false);
 			
 			
-			attack2 = new JRadioButton("Attack3");
+			attack2 = new JRadioButton(pZero.getActive().attacksAvail.get(2).getName());
 			attack2.setBounds(84, 394, 141, 23);
 
 			add(attack2);
@@ -340,7 +340,7 @@ public class Game_Screen extends JPanel {
 			pOne.getActive().getHpBar().setForeground(Color.red);
 			pOne.getActive().getHpBar().setStringPainted(true);
 			pOne.getActive().getHpBar().setBackground(Color.white);
-			pOne.getActive().getHpBar().setBounds(515, 345, 120, 20);
+			pOne.getActive().getHpBar().setBounds(500, 331, 135, 20);
 			add(pOne.getActive().getHpBar());
 
 		//AP 1 ------------------------------------------------------------				
@@ -356,15 +356,15 @@ public class Game_Screen extends JPanel {
 	    //  Right Side buttons		
 		
 		
-		attack0r = new JRadioButton("Attack0r");
+		attack0r = new JRadioButton(pOne.getActive().attacksAvail.get(0).getName());
 		attack0r.setBounds(753, 327, 141, 23);
 		add(attack0r);
 		
-		attack1r= new JRadioButton("Attack1r");
+		attack1r= new JRadioButton(pOne.getActive().attacksAvail.get(1).getName());
 		attack1r.setBounds(753, 359, 141, 23);
 		add(attack1r);
 		
-		attack2r = new JRadioButton("Attack2r");
+		attack2r = new JRadioButton("attack3");
 		attack2r.setBounds(753, 394, 141, 23);
 		add(attack2r);
 		
