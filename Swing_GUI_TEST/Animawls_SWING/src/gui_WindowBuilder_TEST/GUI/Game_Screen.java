@@ -78,22 +78,22 @@ public class Game_Screen extends JPanel {
 
 		JLabel Hp = new JLabel("HP ");
 		Hp.setForeground(Color.RED);
-		Hp.setBounds(232, 324, 28, 16);
+		Hp.setBounds(244, 324, 28, 16);
 		add(Hp);
 		
 		JLabel Ap = new JLabel("AP");
 		Ap.setForeground(Color.blue);
-		Ap.setBounds(238, 356, 22, 16);
+		Ap.setBounds(244, 356, 22, 16);
 		add(Ap);
 		
 		JLabel Hpr = new JLabel("HP");
 		Hpr.setForeground(Color.RED);
-		Hpr.setBounds(635, 331, 22, 16);
+		Hpr.setBounds(650, 324, 22, 16);
 		add(Hpr);
 		
 		JLabel Apr = new JLabel("AP");
 		Apr.setForeground(Color.blue);
-		Apr.setBounds(635, 356, 22, 16);
+		Apr.setBounds(650, 356, 22, 16);
 		add(Apr);
 		
 		
@@ -168,9 +168,15 @@ public class Game_Screen extends JPanel {
 			pZero.getActive().getHpBar().setForeground(Color.red);
 			pZero.getActive().getHpBar().setStringPainted(true);
 			pZero.getActive().getHpBar().setBackground(Color.white);
-			pZero.getActive().getHpBar().setBounds(262, 324, 120, 20);
+			pZero.getActive().getHpBar().setBounds(262, 324, 135, 20);
 			add(pZero.getActive().getHpBar());
-		//AP 0 ------------------------------------------------------------	
+		//AP 0 ------------------------------------------------------------
+	
+			pZero.getActive().getApBar().setForeground(Color.blue);
+			pZero.getActive().getApBar().setStringPainted(true);
+			pZero.getActive().getApBar().setBackground(Color.white);
+			pZero.getActive().getApBar().setBounds(262, 356, 135, 20);
+			add(pZero.getActive().getApBar());
 		/*
 			//UIManager.put("ProgressBar.selectionForeground", Color.blue);
 		    apBar = new JProgressBar(0,(int)pZero.getActive().getApTot());
@@ -217,7 +223,7 @@ public class Game_Screen extends JPanel {
 			pOne.getActive().getHpBar().setForeground(Color.red);
 			pOne.getActive().getHpBar().setStringPainted(true);
 			pOne.getActive().getHpBar().setBackground(Color.white);
-			pOne.getActive().getHpBar().setBounds(515, 345, 120, 20);
+			pOne.getActive().getHpBar().setBounds(515, 324, 135, 20);
 			add(pOne.getActive().getHpBar());
 
 		//AP 1 ------------------------------------------------------------				
@@ -230,6 +236,12 @@ public class Game_Screen extends JPanel {
 				apBarr.setBounds(515, 352, 120, 20);
 				add(apBarr);
 				*/
+			
+			pOne.getActive().getApBar().setForeground(Color.blue);
+			pOne.getActive().getApBar().setStringPainted(true);
+			pOne.getActive().getApBar().setBackground(Color.white);
+			pOne.getActive().getApBar().setBounds(515, 356, 135, 20);
+			add(pOne.getActive().getApBar());
 	    //  Right Side buttons		
 		
 			pOne.UI.placePone();

@@ -92,6 +92,14 @@ public JProgressBar getHpBar(){
 public void  setHpBar(int input){
 	hpBar.setValue(input);
 }
+
+public JProgressBar getApBar(){
+	return apBar;
+}
+
+public void setApBar(int input){
+	apBar.setValue(input);
+}
 public String getName(){
 	return name;	
 }

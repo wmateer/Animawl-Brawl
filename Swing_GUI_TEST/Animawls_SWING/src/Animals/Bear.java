@@ -58,6 +58,8 @@ public class Bear extends Animal {
 		Description = "A TERRIFYING BEAR, HELLBENT ON DESTRUCTION!!!";
 		hpBar = new JProgressBar(0,(int)Math.round(getHpTot()));
 		hpBar.setValue((int)Math.round(getHpTot()));
+		apBar = new JProgressBar(0,(int)Math.round(getApTot()));
+		apBar.setValue((int)Math.round(getApTot()));
 	}
 }
 	
