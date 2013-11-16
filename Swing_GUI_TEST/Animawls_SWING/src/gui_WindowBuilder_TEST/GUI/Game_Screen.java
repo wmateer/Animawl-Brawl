@@ -220,27 +220,6 @@ public class Game_Screen extends JPanel {
 			add(pZero.UI.animalTwo);
 		
 			
-			
-			//Buttongroup stufff for pZero ------------------
-			ButtonGroup buttonGroup = new ButtonGroup();
-			ButtonGroup buttonGroupB = new ButtonGroup();
-			ButtonGroup buttonGroupC = new ButtonGroup();
-			
-			buttonGroup.add(attack0);
-			buttonGroup.add(attack1);
-			buttonGroup.add(attack2);
-			buttonGroup.add(defend);
-			buttonGroup.add(special);
-			buttonGroup.add(switchAnimal);
-			
-			buttonGroupB.add(attack);
-			buttonGroupB.add(switchAnimal);
-			buttonGroupB.add(defend);
-			buttonGroupB.add(special);
-			
-			buttonGroupC.add(subAnimal1);
-			buttonGroupC.add(subAnimal2);
-			
 		
 		
 //USER 1----------------------------------------------		
@@ -275,118 +254,20 @@ public class Game_Screen extends JPanel {
 				*/
 	    //  Right Side buttons		
 		
+			pOne.UI.placePone();
+			add(pOne.UI.attackButton);
+			add(pOne.UI.specialButton);
+			add(pOne.UI.defendButton);
+			add(pOne.UI.switchButton);
+			add(pOne.UI.attackZero);
+			add(pOne.UI.attackOne);
+			add(pOne.UI.attackTwo);
+			add(pOne.UI.animalZero);
+			add(pOne.UI.animalOne);
+			add(pOne.UI.animalTwo);
 		
-		attack0r = new JRadioButton("Attack0r");
-		attack0r.setBounds(753, 327, 141, 23);
-		add(attack0r);
+	
 		
-		attack1r= new JRadioButton("Attack1r");
-		attack1r.setBounds(753, 359, 141, 23);
-		add(attack1r);
-		
-		attack2r = new JRadioButton("Attack2r");
-		attack2r.setBounds(753, 394, 141, 23);
-		add(attack2r);
-		
-		attack0r.setVisible(false);
-		attack1r.setVisible(false);
-		attack2r.setVisible(false);
-		
-		specialr = new JRadioButton("Special");
-		specialr.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				attack2r.setVisible(false);
-				attack1r.setVisible(false);
-				attack0r.setVisible(false);
-				subAnimal1r.setVisible(false);
-				subAnimal2r.setVisible(false);
-			}
-		});
-		specialr.setBounds(712, 429, 141, 23);
-		add(specialr);
-		
-	    defendr = new JRadioButton("Defend");
-		defendr.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				attack2r.setVisible(false);
-				attack1r.setVisible(false);
-				attack0r.setVisible(false);
-				subAnimal1r.setVisible(false);
-				subAnimal2r.setVisible(false);
-			}
-		});
-		defendr.setBounds(712, 479, 141, 23);
-		add(defendr);
-		
-		switchAnimalr = new JRadioButton("Switch Animal");
-		switchAnimalr.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				attack2r.setVisible(false);
-				attack1r.setVisible(false);
-				attack0r.setVisible(false);
-				
-				if(switchAnimalr.isSelected()){
-					subAnimal1r.setVisible(true);
-					subAnimal2r.setVisible(true);
-				}
-				
-			}
-		});
-		switchAnimalr.setBounds(712, 514, 141, 23);
-		add(switchAnimalr);
-		
-		subAnimal1r = new JRadioButton(pOne.animalsCur.get(1).getName());
-		subAnimal1r.setBounds(788, 536, 141, 23);
-		add(subAnimal1r);
-		subAnimal1r.setVisible(false);
-		
-		subAnimal2r = new JRadioButton(pOne.animalsCur.get(2).getName());
-		subAnimal2r.setBounds(788, 560, 141, 23);
-		add(subAnimal2r);
-		subAnimal2r.setVisible(false);
-		
-		
-		attackr = new JRadioButton("Attack");
-		attackr.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if(attackr.isSelected()){
-					attack2r.setVisible(true);
-					attack1r.setVisible(true);
-					attack0r.setVisible(true);	
-					subAnimal1r.setVisible(false);
-					subAnimal2r.setVisible(false);
-					}
-				
-			}
-		});
-		attackr.setBounds(712, 289, 141, 23);
-		add(attackr);
-		
-		// Right side button group stuff
-		
-			ButtonGroup buttonGroupr = new ButtonGroup();
-			ButtonGroup buttonGroupBr = new ButtonGroup();
-			ButtonGroup buttonGroupCr = new ButtonGroup();
-			
-			buttonGroupr.add(attack1r);
-			buttonGroupr.add(attack2r);
-			buttonGroupr.add(attack3r);
-			buttonGroupr.add(defendr);
-			buttonGroupr.add(specialr);
-			buttonGroupr.add(switchAnimalr);
-			
-			buttonGroupBr.add(attackr);
-			buttonGroupBr.add(switchAnimalr);
-			buttonGroupBr.add(defendr);
-			buttonGroupBr.add(specialr);
-			
-			buttonGroupCr.add(subAnimal1r);
-			buttonGroupCr.add(subAnimal2r);
-			
-			
-			
-
-		//showpOne(false);
 	
 	}
 //------------------------------------------------------------------ 
@@ -435,86 +316,6 @@ public void showpZero(boolean input){
 	}
 	
 }
-/*public void showpOne(boolean input){
-	if(input == true){
-		attackr.setVisible(true);
-		specialr.setVisible(true);
-		defendr.setVisible(true);
-		switchAnimalr.setVisible(true);
-		
-		attackr.setSelected(false);
-		specialr.setSelected(false);
-		defendr.setSelected(false);
-		switchAnimalr.setSelected(false);
-		attack2r.setSelected(false);
-		attack1r.setSelected(false);
-		attack0r.setSelected(false);
-		subAnimal1r.setSelected(false);
-		subAnimal2r.setSelected(false);
-		}
-	if(input == false)
-	{
-
-		attack.setSelected(false);
-		special.setSelected(false);
-		defend.setSelected(false);
-		switchAnimal.setSelected(false);
-		attack2.setSelected(false);
-		attack1.setSelected(false);
-		attack0.setSelected(false);
-		
-		attackr.setVisible(false);
-		specialr.setVisible(false);
-		defendr.setVisible(false);
-		switchAnimalr.setVisible(false);
-		attack2r.setVisible(false);
-		attack1r.setVisible(false);
-		attack0r.setVisible(false);
-		subAnimal1r.setVisible(false);
-		subAnimal2r.setVisible(false);
-		
-	}
-	
-}
-*/
-public boolean checkNoneSelected(){
-	//false means player has selected a move.
-	// check for player 1 side buttons
-	if(attack.isSelected()){
-		if( !(attack0.isSelected()) && !(attack1.isSelected()) && !(attack2.isSelected())){
-			return true;
-		}else{
-			return false;
-		}
-	}
-	
-	if(!(attack.isSelected()) && !(special.isSelected()) && !(defend.isSelected()) & !(switchAnimal.isSelected())) {
-		return true;
-	}else{
-		return false;
-	}
-
-}
-
-public boolean checkNoneSelectedr(){
-	//false means player has selected a move
-	// check for player 2 side buttons
-	if(attackr.isSelected()){
-		if( !(attack0r.isSelected()) && !(attack1r.isSelected()) && !(attack2r.isSelected())){
-			return true;
-		}else{
-			return false;
-		}
-	}
-	
-	if(!(attackr.isSelected()) && !(specialr.isSelected()) && !(defendr.isSelected()) & !(switchAnimalr.isSelected())) {
-		return true;
-	}else{
-		return false;
-	}
-	
-	
-}
 
 
 
@@ -525,19 +326,16 @@ public void endTurn(){
 if(whoseTurn==1){
 		round++;
 		whoseTurn=0;
-//		showpOne(false);
-	//	showpZero(true);
 }
 	
 else if(whoseTurn==0){
 	whoseTurn++;
-//	showpZero(false);
-	//showpOne(true);
 }
-
+active.UI.hideAll();
 tmp=active;
 active=inactive;
 inactive=tmp;
+active.UI.showButtons(true);
 
 }
 
@@ -556,20 +354,16 @@ public class confirmListner implements ActionListener {
 	//TODO need to check if active animal is dead and if so present only switch animals buttons
 			if(active.UI.moveSelected()==false){
 				System.out.println("Please Select a Valid Move");
-				return;
 			}
 			if(active.UI.attackZero.isSelected()==true){
 				active.getActive().addExpErnd(active.getActive().attacksAvail.get(0).useAttack(active.getActive(), inactive.getActive()));
-				return;
 			}
 			if(active.UI.attackOne.isSelected()==true){
 				active.getActive().addExpErnd(active.getActive().attacksAvail.get(1).useAttack(active.getActive(), inactive.getActive()));
-				return;
 			}
 			
 			if(active.UI.attackTwo.isSelected()==true){
 				active.getActive().addExpErnd(active.getActive().attacksAvail.get(2).useAttack(active.getActive(), inactive.getActive()));
-				return;
 			}
 
 			
