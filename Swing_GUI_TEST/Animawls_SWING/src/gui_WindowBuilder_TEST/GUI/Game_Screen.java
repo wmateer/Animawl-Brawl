@@ -84,9 +84,9 @@ public class Game_Screen extends JPanel {
 		Bear Frank = new Bear("Frank");
 		Bear Cindy = new Bear("Cindy");
 		
-		Bird Kyle = new Bird("Kyle");
-		Bird Mindy= new Bird("Mindy");
-		Bird Alex= new Bird("Alex");
+		Bear Kyle = new Bear("Kyle");
+		Bear Mindy= new Bear("Mindy");
+		Bear Alex= new Bear("Alex");
 		
 		
 		
@@ -186,14 +186,7 @@ public class Game_Screen extends JPanel {
 			add(animalNameZero);
 		//HP 0 ------------------------------------------------------------
 			
-		/*	hpBar = new JProgressBar(0,(int)pZero.getActive().getHpTot());
-			hpBar.setForeground(Color.red);
-			hpBar.setStringPainted(true);
-			hpBar.setBackground(Color.white);
-			hpBar.setValue((int)pZero.getActive().getHpRem());
-			hpBar.setBounds(262, 324, 120, 20);
-			add(hpBar);		
-		*/
+	
 			pZero.getActive().getHpBar().setForeground(Color.red);
 			pZero.getActive().getHpBar().setStringPainted(true);
 			pZero.getActive().getHpBar().setBackground(Color.white);
@@ -213,93 +206,20 @@ public class Game_Screen extends JPanel {
 			
 		//BUTTONS 0!!------------------------------------------------------		
 			
+			//add pZero's buttons to GUI screen
+			pZero.UI.placePzero();
+			add(pZero.UI.attackButton);
+			add(pZero.UI.specialButton);
+			add(pZero.UI.defendButton);
+			add(pZero.UI.switchButton);
+			add(pZero.UI.attackZero);
+			add(pZero.UI.attackOne);
+			add(pZero.UI.attackTwo);
+			add(pZero.UI.animalZero);
+			add(pZero.UI.animalOne);
+			add(pZero.UI.animalTwo);
+		
 			
-			
-		    attack0 = new JRadioButton(pZero.getActive().attacksAvail.get(0).getName());
-			attack0.setBounds(84, 324, 141, 23);
-			
-			add(attack0);
-			attack0.setVisible(false);
-
-			
-			attack1 = new JRadioButton("Attack2");
-			attack1.setBounds(83, 359, 141, 23);
-
-			add(attack1);
-			attack1.setVisible(false);
-			
-			
-			attack2 = new JRadioButton("Attack3");
-			attack2.setBounds(84, 394, 141, 23);
-
-			add(attack2);
-			attack2.setVisible(false);
-			
-			special = new JRadioButton("Special");
-			special.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					attack2.setVisible(false);
-					attack1.setVisible(false);
-					attack0.setVisible(false);
-					subAnimal1.setVisible(false);
-					subAnimal2.setVisible(false);
-				}
-			});
-			special.setBounds(42, 429, 141, 23);
-			add(special);
-			// ------------------------------------------------------------		
-			defend = new JRadioButton("Defend");
-			defend.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					attack2.setVisible(false);
-					attack1.setVisible(false);
-					attack0.setVisible(false);
-					subAnimal1.setVisible(false);
-					subAnimal2.setVisible(false);
-				}
-			});
-			defend.setBounds(42, 479, 141, 23);
-			add(defend);
-			
-			switchAnimal = new JRadioButton("Switch Animal");
-			switchAnimal.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					attack2.setVisible(false);
-					attack1.setVisible(false);
-					attack0.setVisible(false);
-					subAnimal1.setVisible(true);
-					subAnimal2.setVisible(true);
-				}
-			});
-			switchAnimal.setBounds(42, 514, 141, 23);
-			add(switchAnimal);
-			
-			subAnimal1 = new JRadioButton(pZero.animalsCur.get(1).getName());
-			subAnimal1.setBounds(130, 536, 141, 23);
-			add(subAnimal1);
-			subAnimal1.setVisible(false);
-			
-			subAnimal2 = new JRadioButton(pZero.animalsCur.get(2).getName());
-			subAnimal2.setBounds(130, 560, 141, 23);
-			add(subAnimal2);
-			subAnimal2.setVisible(false);
-			
-			attack = new JRadioButton("Attack");	
-			attack.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					if(attack.isSelected()){
-					attack2.setVisible(true);
-					attack1.setVisible(true);
-					attack0.setVisible(true);
-					subAnimal1.setVisible(false);
-					subAnimal2.setVisible(false);
-					}
-						
-					
-				}
-			});
-			attack.setBounds(42, 289, 141, 23);
-			add(attack);
 			
 			//Buttongroup stufff for pZero ------------------
 			ButtonGroup buttonGroup = new ButtonGroup();
@@ -466,7 +386,7 @@ public class Game_Screen extends JPanel {
 			
 			
 
-		showpOne(false);
+		//showpOne(false);
 	
 	}
 //------------------------------------------------------------------ 
@@ -515,7 +435,7 @@ public void showpZero(boolean input){
 	}
 	
 }
-public void showpOne(boolean input){
+/*public void showpOne(boolean input){
 	if(input == true){
 		attackr.setVisible(true);
 		specialr.setVisible(true);
@@ -556,7 +476,7 @@ public void showpOne(boolean input){
 	}
 	
 }
-
+*/
 public boolean checkNoneSelected(){
 	//false means player has selected a move.
 	// check for player 1 side buttons
@@ -605,14 +525,14 @@ public void endTurn(){
 if(whoseTurn==1){
 		round++;
 		whoseTurn=0;
-		showpOne(false);
-		showpZero(true);
+//		showpOne(false);
+	//	showpZero(true);
 }
 	
 else if(whoseTurn==0){
 	whoseTurn++;
-	showpZero(false);
-	showpOne(true);
+//	showpZero(false);
+	//showpOne(true);
 }
 
 tmp=active;

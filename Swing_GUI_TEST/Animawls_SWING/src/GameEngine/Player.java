@@ -31,6 +31,7 @@ public Player(String input, Animal animal0,Animal animal1, Animal animal2){
 	animalsCur.add(animal1);
 	animalsCur.add(animal2);
 	active=animalsCur.get(0);
+	UI= new playerButtons(this);
 	
 }
 //create hashmap of animals
