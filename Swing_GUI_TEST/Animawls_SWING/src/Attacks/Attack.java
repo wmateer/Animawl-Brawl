@@ -153,6 +153,8 @@ public class Attack {
 				System.out.println("Your attack did ");
 				System.out.println(dmg);
 				System.out.print("\n");
+				//TODO remove this return statement and figure out why dmg is changing between here and return
+				return (int)Math.round(dmg);	
 			}
 		}
 		//otherwise attack misses
@@ -166,6 +168,6 @@ public class Attack {
 	if(attacker.getPoisoned()==1) {
 		attacker.subHpRem(20);
 	}
-	return (int) Math.round(dmg);	
+	return (int)Math.round(dmg);	
 	}
 	}

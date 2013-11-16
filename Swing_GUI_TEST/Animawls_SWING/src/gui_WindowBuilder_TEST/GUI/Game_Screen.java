@@ -32,43 +32,20 @@ public class Game_Screen extends JPanel {
 	
 	
 	private JLabel prompt;
+	private String text;
 	
 	
-	//left player info
-		//left player gui info
+
+	//TODO incorperate as variables in player class
 	private JLabel usernameZero;
 	private JLabel animalNameZero;
 	private JLabel animalZeroGraphic;
-	private JRadioButton attack;
-	private JRadioButton attack0;
-	private JRadioButton attack1;
-	private JRadioButton attack2;
-	private	JRadioButton attack3;
-	private JRadioButton special;
-	private JRadioButton defend;
-	private JRadioButton switchAnimal;
-	private JProgressBar hpBar;
 	private JProgressBar apBar;
-	
-	//left player info
-			//left player gui info
-		private JLabel userNameOne;
-		private JLabel animalNameOne;
-		private JLabel animalZeroOne;
-		private JRadioButton attackr;
-		private JRadioButton attack0r;
-		private JRadioButton attack1r;
-		private JRadioButton attack2r;
-		private	JRadioButton attack3r;
-		private JRadioButton specialr;
-		private JRadioButton defendr;
-		private JRadioButton switchAnimalr;
-		private JProgressBar hpBarr;
-		private JProgressBar apBarr;
-		private JRadioButton subAnimal1;
-		private JRadioButton subAnimal2;
-		private JRadioButton subAnimal1r;
-		private JRadioButton subAnimal2r;
+	private JLabel userNameOne;
+	private JLabel animalNameOne;
+	private JLabel animalZeroOne;
+	private JProgressBar apBarr;
+
 		
 
 	public Game_Screen(JFrame masterFrame, User user1) {
@@ -267,55 +244,17 @@ public class Game_Screen extends JPanel {
 			add(pOne.UI.animalTwo);
 		
 	
-		
+		inactive.hideUI();
+		active.UI.showButtons(true);
+		prompt=new JLabel("Begin!");
+		prompt.setBounds(375, 100, 200, 20);
+		add(prompt);
 	
 	}
 //------------------------------------------------------------------ 
 	//Start Implimentation
-public void showpZero(boolean input){
-	if(input == true){
-		attack.setVisible(true);
-		special.setVisible(true);
-		defend.setVisible(true);
-		switchAnimal.setVisible(true);
-		
-		attack.setSelected(false);
-		special.setSelected(false);
-		defend.setSelected(false);
-		switchAnimal.setSelected(false);
-		attack2.setSelected(false);
-		attack1.setSelected(false);
-		attack0.setSelected(false);
-		
-		}
-	if(input == false){
-		
-		attackr.setSelected(false);
-		specialr.setSelected(false);
-		defendr.setSelected(false);
-		switchAnimalr.setSelected(false);
-		attack2r.setSelected(false);
-		attack1r.setSelected(false);
-		attack0r.setSelected(false);
-		subAnimal1r.setSelected(false);
-		subAnimal2r.setSelected(false);
-		
-		attack.setVisible(false);
-		special.setVisible(false);
-		defend.setVisible(false);
-		switchAnimal.setVisible(false);
-		attack2.setVisible(false);
-		attack1.setVisible(false);
-		attack0.setVisible(false);
-		subAnimal1.setVisible(false);
-		subAnimal2.setVisible(false);
-		
-		
-		
-		
-	}
-	
-}
+
+
 
 
 
@@ -331,7 +270,7 @@ if(whoseTurn==1){
 else if(whoseTurn==0){
 	whoseTurn++;
 }
-active.UI.hideAll();
+active.hideUI();
 tmp=active;
 active=inactive;
 inactive=tmp;
@@ -356,15 +295,33 @@ public class confirmListner implements ActionListener {
 				System.out.println("Please Select a Valid Move");
 			}
 			if(active.UI.attackZero.isSelected()==true){
-				active.getActive().addExpErnd(active.getActive().attacksAvail.get(0).useAttack(active.getActive(), inactive.getActive()));
+				int dmg=0;
+				dmg= active.getActive().attacksAvail.get(0).useAttack(active.getActive(), inactive.getActive());
+				active.getActive().addExpErnd(dmg);
+				text="Your attack did "+dmg;
+				prompt.setText(text);
+				
 			}
-			if(active.UI.attackOne.isSelected()==true){
-				active.getActive().addExpErnd(active.getActive().attacksAvail.get(1).useAttack(active.getActive(), inactive.getActive()));
+			else if(active.UI.attackOne.isSelected()==true){
+				int dmg=0;
+				dmg= active.getActive().attacksAvail.get(1).useAttack(active.getActive(), inactive.getActive());
+				active.getActive().addExpErnd(dmg);
+				text="Your attack did "+dmg;
+				prompt.setText(text);
 			}
 			
-			if(active.UI.attackTwo.isSelected()==true){
-				active.getActive().addExpErnd(active.getActive().attacksAvail.get(2).useAttack(active.getActive(), inactive.getActive()));
+			else if(active.UI.attackTwo.isSelected()==true){
+				int dmg=0;
+				dmg= active.getActive().attacksAvail.get(2).useAttack(active.getActive(), inactive.getActive());
+				active.getActive().addExpErnd(dmg);
+				text="Your attack did "+dmg;
+				prompt.setText(text);
 			}
+			else if(active.UI.animalZero.isSelected()==true){
+				active.setActive(active.animalsCur.get(0));
+				updateScreen();
+			}
+
 
 			
 		endTurn();
@@ -379,6 +336,12 @@ public class confirmListner implements ActionListener {
 	
 	}
 	}
+
+
+
+public void updateScreen() {
+//TODO update bars, animal names, attack buttons, disable current animal in switch button group	
+}
 
 
 }
