@@ -3,7 +3,6 @@ package gui_WindowBuilder_TEST.GUI;
 
 import javax.swing.*;
 
-import GameEngine.Player;
 import GameEngine.User;
 
 import java.awt.Font;
@@ -72,6 +71,7 @@ public class Register_Screen extends JPanel {
 //confirm button actions ----------------------
 		JButton confirmNewUser_button = new JButton("CONFIRM NEW USER");
 		confirmNewUser_button.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				newusername = new String(userName_field.getText());
 				newpassword1 = new String(passwordField_ONE.getPassword());
@@ -95,6 +95,7 @@ public class Register_Screen extends JPanel {
 // BacktoLogin button -------------------		
 		JButton backToLogin_button = new JButton("BACK TO LOGIN");
 		backToLogin_button.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				//CANCELS LOGIN, GOES BACK TO MAIN MENU
 				//parentFrame.removeAll();

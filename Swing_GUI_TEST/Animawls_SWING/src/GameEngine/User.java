@@ -2,8 +2,6 @@ package GameEngine;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashMap;
-
 import Animals.*;
 
 

@@ -1,9 +1,5 @@
 package GameEngine;
 
-import java.util.ArrayList;
-
-import Animals.Animal;
-
 //import Player;
 
 
@@ -130,6 +126,6 @@ public Player play(){
 		pZero.getAnimalsCur().get(i).addExpTot(pZero.getAnimalsCur().get(i).getExpErnd());
 		pOne.getAnimalsCur().get(i).addExpTot(pOne.getAnimalsCur().get(i).getExpErnd());
 	}
-return inactive;
+	return inactive;
 }
 }

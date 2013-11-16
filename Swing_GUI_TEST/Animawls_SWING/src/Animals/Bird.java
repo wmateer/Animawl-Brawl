@@ -40,6 +40,14 @@ public class Bird extends Animal implements Serializable {
 		attacksAvail=new ArrayList<Attack>();
 		Wingattack Attack1 = new Wingattack();
 		attacksAvail.add(Attack1);
+		
+		/*	
+		attacksAvail=new ArrayList<Attack>();
+		Whirlwind Attack2 = new Whirlwind();
+		attacksAvail.add(Attack0);
+		*/
+		
+		
 
 //lvl up statistics for bird
 		hpScaler=11;

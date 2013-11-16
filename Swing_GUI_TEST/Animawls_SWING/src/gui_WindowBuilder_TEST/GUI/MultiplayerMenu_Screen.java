@@ -30,6 +30,7 @@ public class MultiplayerMenu_Screen extends JPanel {
 		
 		JButton findDuel_Button = new JButton("FIND DUEL");
 		findDuel_Button.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				//GO TO THE DISPLAY AVAILABLE DUELS OR SHOW "TYPE IN IP DESTINATION"???
 				//*****DOES NOTHING
@@ -40,6 +41,7 @@ public class MultiplayerMenu_Screen extends JPanel {
 		
 		JButton createDuel_Button = new JButton("CREATE DUEL");
 		createDuel_Button.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				//START A MULTIPLAYER SESSION THAT WAITS UNTIL A PLAYER JOINS
 				//FOR TESTING IT WILL JUST START A LOCAL GAME!!!
@@ -56,6 +58,7 @@ public class MultiplayerMenu_Screen extends JPanel {
 		
 		JButton logout_Button = new JButton("LOGOUT");
 		logout_Button.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				//GOES TO THE LOGIN SCREEN AND ERASES CURRENT USER INPUTS??
 				//parentFrame.removeAll();
@@ -71,6 +74,7 @@ public class MultiplayerMenu_Screen extends JPanel {
 		
 		JButton goToMainMenu_Button = new JButton("GO TO MAIN MENU");
 		goToMainMenu_Button.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				//parentFrame.removeAll();
 				//parentFrame.setVisible(false);

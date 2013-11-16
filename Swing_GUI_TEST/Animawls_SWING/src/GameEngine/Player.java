@@ -7,11 +7,7 @@ import java.util.*;
 
 import Animals.*;
 
-import java.awt.Color;
 import java.io.*;
-
-import javax.swing.ButtonGroup;
-import javax.swing.JProgressBar;
 
 public class Player {
 	protected String name;

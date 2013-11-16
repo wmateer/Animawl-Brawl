@@ -60,6 +60,7 @@ public class Login_Screen extends JPanel {
 		
 		JButton login_Button = new JButton("LOGIN");		
 		login_Button.addActionListener(new ActionListener() {
+		@Override
 		public void actionPerformed(ActionEvent e) {
 			
 			user = new String(userName_field.getText());
@@ -76,6 +77,7 @@ public class Login_Screen extends JPanel {
 /////////////// New User button actions		
 		JButton newUser_button = new JButton("NEW USER");
 		newUser_button.addActionListener(new ActionListener() {
+		@Override
 		public void actionPerformed(ActionEvent e) {
 				//REVIEW OLD LOGIN SCREEN FOR NEW USER HANDLING...SHOULD TAKE TO REGISTER SCREEN
 				//parentFrame.removeAll();

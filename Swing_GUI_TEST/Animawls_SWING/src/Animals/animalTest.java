@@ -5,10 +5,6 @@ package Animals;
 //import Game;
 //import Player;
 
-import java.util.*;
-//import java.lang.*;
-import java.lang.System.*;
-
 import GameEngine.Game;
 import GameEngine.Player;
 public class animalTest {

@@ -143,6 +143,7 @@ public class CharacterSelect_Screen extends JPanel {
 		//define the listener for the list of choices of the animals.
 		//currently it displays the stats and picture/description of the chosen animal
 		availCharChoices_List.addListSelectionListener(new ListSelectionListener() {
+			@Override
 			public void valueChanged(ListSelectionEvent arg0) {
 				String tmp = (String) availCharChoices_List.getSelectedValue();
 				Animal tmpAnimal = TmpList.get(tmp);
@@ -184,6 +185,7 @@ public class CharacterSelect_Screen extends JPanel {
 		
 		JButton confirmCharChoice_Button = new JButton("CONFIRM CHARACTER CHOICE");
 		confirmCharChoice_Button.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				//WHEN BUTTON IS PRESSED SAVE THE CURRENTLY CHOSEN CHAR AND CONTINUE TO THE NEXT JPANEL
 				//WILL LEAD TO GAME ACTUALLY STARTINGGGGGGGGGGG

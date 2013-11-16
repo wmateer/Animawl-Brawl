@@ -9,20 +9,14 @@ import java.awt.BorderLayout;
 //import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.Color;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-
 import javax.swing.JButton;
 import javax.swing.border.EmptyBorder;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.event.MouseWheelListener;
-import java.awt.event.MouseWheelEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.Random;
 
 public class Title_Screen extends JPanel {
 
@@ -74,6 +68,7 @@ public class Title_Screen extends JPanel {
 		
 		JButton Placeholder_Button = new JButton("PLACEHOLDER");
 		Placeholder_Button.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				//IN CASE MOUSE ACTION DOES NOT WORK, USE THIS BUTTON AS PLACEHOLDER FOR GOING BETWEEN STATES
 				//parentFrame.setVisible(false);

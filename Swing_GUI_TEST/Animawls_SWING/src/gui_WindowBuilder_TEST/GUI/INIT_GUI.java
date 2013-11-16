@@ -17,6 +17,7 @@ public class INIT_GUI{ //extends JFrame {
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
+			@Override
 			public void run() {
 				try {
 					//INIT_GUI frame = new INIT_GUI();
