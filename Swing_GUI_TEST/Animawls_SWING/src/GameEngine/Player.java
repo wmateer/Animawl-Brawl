@@ -1,6 +1,8 @@
 package GameEngine;
 
 //imports
+import gui_WindowBuilder_TEST.GUI.playerButtons;
+
 import java.util.*;
 
 import Animals.*;
@@ -8,14 +10,16 @@ import Animals.*;
 import java.awt.Color;
 import java.io.*;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JProgressBar;
 
 public class Player {
 	protected String name;
 	protected Animal active;
 	protected Player opp;
-
+	public playerButtons UI;
 	protected ArrayList<Animal> animalsAvail;
+	protected boolean myTurn=false;
 	public ArrayList<Animal> animalsCur;
 	
 //constructors
@@ -158,5 +162,30 @@ else{
 
 
 }
-}	
+public void showUI(){
+	UI.showButtons(true);
+	while(myTurn==true){
+		if(UI.attackButton.isSelected()==true){
+			UI.showAttack(true);
+		}
+		else{
+			UI.showAttack(false);
+		}
+		if(UI.switchButton.isSelected()==true){
+			UI.showSwitch(true);
+		}
+		else{
+			UI.showSwitch(false);
+		}
+	}
 	
+}
+
+public void hideUI(){
+UI.showButtons(false);
+UI.showAttack(false);
+UI.showSwitch(false);
+}
+
+
+}	

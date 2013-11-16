@@ -41,6 +41,7 @@ public class Bear extends Animal {
 		
 		Knockdown Attack2 = new Knockdown();
 		attacksAvail.add(Attack2);
+		
 		//lvl up statistics for bear
 		hpScaler=8;
 		hpBonus=.25;

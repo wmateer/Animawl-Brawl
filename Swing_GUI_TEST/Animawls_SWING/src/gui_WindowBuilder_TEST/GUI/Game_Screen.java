@@ -622,42 +622,37 @@ inactive=tmp;
 }
 
 public void performSelected(){
-	if(attack0.isSelected()){
-		int ammount = active.getActive().attacksAvail.get(0).useAttack(active.getActive(), inactive.getActive());
-		active.getActive().addExpErnd(ammount);
 	
-
-		//int ammount = pZero.getActive().attacksAvail.get(0).useAttack(pZero.getActive(), pOne.getActive());
-		//pZero.getActive().addExpErnd(ammount);
-		//hpBarr.setValue((int)inactive.getActive().getHpRem());
-		//apBar.setValue((int)active.getActive().getApRem());
-		
-		return;
-		
-    }
 	
-	if(attack0r.isSelected()){
-		int ammount = active.getActive().attacksAvail.get(0).useAttack(active.getActive(), inactive.getActive());
-		active.getActive().addExpErnd(ammount);
-		
-
-		//int ammount = pOne.getActive().attacksAvail.get(0).useAttack(pOne.getActive(), pZero.getActive());
-		//pOne.getActive().addExpErnd(ammount);
-		//hpBar.setValue((int)inactive.getActive().getHpRem());
-		//apBarr.setValue((int)active.getActive().getApRem());
-		
+	
+	
 		return;
 	}
-}
+
 
 
 public class confirmListner implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 	//TODO need to check if active animal is dead and if so present only switch animals buttons
-			if(checkNoneSelected()==false){
-				performSelected();
-		}
-		
+			if(active.UI.moveSelected()==false){
+				System.out.println("Please Select a Valid Move");
+				return;
+			}
+			if(active.UI.attackZero.isSelected()==true){
+				active.getActive().addExpErnd(active.getActive().attacksAvail.get(0).useAttack(active.getActive(), inactive.getActive()));
+				return;
+			}
+			if(active.UI.attackOne.isSelected()==true){
+				active.getActive().addExpErnd(active.getActive().attacksAvail.get(1).useAttack(active.getActive(), inactive.getActive()));
+				return;
+			}
+			
+			if(active.UI.attackTwo.isSelected()==true){
+				active.getActive().addExpErnd(active.getActive().attacksAvail.get(2).useAttack(active.getActive(), inactive.getActive()));
+				return;
+			}
+
+			
 		endTurn();
 		//checks for inactive player loss after active attacks. have not yet tested but should work fine
 		if (inactive.checkLoss()==0){
