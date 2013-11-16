@@ -106,7 +106,7 @@ public class Game_Screen extends JPanel {
 			 //TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		pic.setBounds(208, 126, 132, 126);
+		pic.setBounds(185, 126, 132, 126);
 		add(pic);
 		
 		
@@ -118,7 +118,7 @@ public class Game_Screen extends JPanel {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		picr.setBounds(555, 126, 132, 126);
+		picr.setBounds(587, 126, 132, 126);
 		add(picr);
 		
 		JLabel playAnimawl_title = new JLabel("BATTLE");
@@ -156,11 +156,16 @@ public class Game_Screen extends JPanel {
 		usernameZero = new JLabel(pZero.getName());
 		usernameZero.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
 		usernameZero.setBounds(83, 55, 213, 44);
+		usernameZero.setForeground(Color.white);
+		usernameZero.setHorizontalAlignment( SwingConstants.CENTER );
 		add(usernameZero);
 		//ANIMAL 0 --------------------------------------------
 		
 			animalNameZero = new JLabel(pZero.getActive().getName());
-			animalNameZero.setBounds(198, 98, 80, 16);
+			animalNameZero.setBounds(185, 85, 132, 29);
+			animalNameZero.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+			animalNameZero.setHorizontalAlignment( SwingConstants.CENTER );
+			animalNameZero.setForeground(Color.CYAN);
 			add(animalNameZero);
 		//HP 0 ------------------------------------------------------------
 			
@@ -209,12 +214,18 @@ public class Game_Screen extends JPanel {
 //USER 1----------------------------------------------		
 		
 		userNameOne = new JLabel(pOne.getName());
-		userNameOne.setBounds(669, 64, 139, 35);
+		userNameOne.setBounds(627, 60, 139, 35);
+		userNameOne.setForeground(Color.white);
+		userNameOne.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
+		userNameOne.setHorizontalAlignment( SwingConstants.CENTER );
 		add(userNameOne);		
 		//ANIMAL 1--------------------------------------------	
 		
 			animalNameOne = new JLabel(pOne.getActive().getName());
-			animalNameOne.setBounds(577, 98, 80, 16);
+			animalNameOne.setBounds(627, 98, 80, 16);
+			animalNameOne.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+			animalNameOne.setHorizontalAlignment( SwingConstants.CENTER );
+			animalNameOne.setForeground(Color.CYAN);
 			add(animalNameOne);
 			
 		//HP 1 ------------------------------------------------------------	
@@ -260,7 +271,10 @@ public class Game_Screen extends JPanel {
 		inactive.hideUI();
 		active.UI.showButtons(true);
 		prompt=new JLabel("Begin!");
-		prompt.setBounds(375, 100, 200, 20);
+		prompt.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+		prompt.setForeground(Color.ORANGE);
+		prompt.setHorizontalAlignment( SwingConstants.CENTER ); 
+		prompt.setBounds(340, 100, 220, 40);
 		add(prompt);
 	
 	}
