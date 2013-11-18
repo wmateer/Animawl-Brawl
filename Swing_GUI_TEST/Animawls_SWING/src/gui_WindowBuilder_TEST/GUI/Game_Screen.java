@@ -287,10 +287,7 @@ public class confirmListner implements ActionListener {
 			}
 		
 		endTurn();
-		//checks for inactive player loss after active attacks. have not yet tested but should work fine
-		
-		
-		
+	
 
 	
 	}
@@ -300,10 +297,7 @@ public class confirmListner implements ActionListener {
 		animalDead pickAnimal= new animalDead(inactive);
 		pickAnimal.setVisible(true);
 	}
-	
-	public void updateScreen() {
-	//TODO 
-	}
+
 
 	//to make background image//can use for animations later...
 	@Override

@@ -234,7 +234,31 @@ public void updateAttacks(){
 	}
 
 public void updateAnimals(){
-	//TODO dead animals and selected animals should be null
+	if(myPlayer.getActive()==myPlayer.animalsCur.get(0)){
+		animalZero.setEnabled(false);
+		animalOne.setEnabled(true);
+		animalTwo.setEnabled(true);
+	}
+	if(myPlayer.getActive()==myPlayer.animalsCur.get(1)){
+		animalZero.setEnabled(true);
+		animalOne.setEnabled(false);
+		animalTwo.setEnabled(true);
+	}
+	if(myPlayer.getActive()==myPlayer.animalsCur.get(2)){
+		animalZero.setEnabled(true);
+		animalOne.setEnabled(true);
+		animalTwo.setEnabled(false);
+	}
+	if(myPlayer.animalsCur.get(0).getHpRem()<=0){
+		animalZero.setEnabled(false);
+	}
+	if(myPlayer.animalsCur.get(1).getHpRem()<=0){
+		animalOne.setEnabled(false);
+	}
+	if(myPlayer.animalsCur.get(2).getHpRem()<=0){
+		animalTwo.setEnabled(false);
+	}
+	}
 }
 
 
