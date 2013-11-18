@@ -48,7 +48,7 @@ public class Game_Screen extends JPanel {
 
 		
 
-	public Game_Screen(JFrame masterFrame, User user1) {
+	public Game_Screen(JFrame masterFrame, User user1, String chosenBattleground) {
 		setBackground(Color.DARK_GRAY);
 		setLayout(null);
 

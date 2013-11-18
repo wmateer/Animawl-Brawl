@@ -34,14 +34,9 @@ public class Bear extends Animal {
 		
 		//set attack array for bear
 		attacksAvail=new ArrayList<Attack>();
-		Maul Attack0 = new Maul();
-		attacksAvail.add(Attack0);
-		
-		Claw Attack1 = new Claw();
-		attacksAvail.add(Attack1);
-		
-		Knockdown Attack2 = new Knockdown();
-		attacksAvail.add(Attack2);
+		attacksAvail.add(new Maul());
+		attacksAvail.add(new Claw());
+		attacksAvail.add(new Knockdown());
 		
 		//lvl up statistics for bear
 		hpScaler=8;

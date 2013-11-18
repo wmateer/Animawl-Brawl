@@ -30,17 +30,14 @@ public class Bull extends Animal {
 		evd=80;
 		poisoned=0;
 		
-		//set attack array for elephant
+		//set attack array for bull
 		attacksAvail=new ArrayList<Attack>();
-		Headbutt Attack0 = new Headbutt();
-		attacksAvail.add(Attack0);
+		attacksAvail.add(new Headbutt());
+		attacksAvail.add(new Charge());
+		//PLACEHOLDER THRID ATTACK
+		attacksAvail.add(new Knockdown());
 		
-		attacksAvail=new ArrayList<Attack>();
-		Charge Attack1 = new Charge();
-		attacksAvail.add(Attack1);
-		
-
-		//lvl up statistics for elephant
+		//lvl up statistics for bull
 		hpScaler=8;
 		hpBonus=.25;
 		apScaler=10;

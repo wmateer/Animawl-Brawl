@@ -30,17 +30,15 @@ public class Snake extends Animal {
 		evd=120;
 		poisoned=0;
 		
-		//set attack array for elephant
+		//set attack array for snake
 		attacksAvail=new ArrayList<Attack>();
-		Wrap Attack0 = new Wrap();
-		attacksAvail.add(Attack0);
-		
-		attacksAvail=new ArrayList<Attack>();
-		Poisonbite Attack1 = new Poisonbite();
-		attacksAvail.add(Attack1);
+		attacksAvail.add(new Wrap());
+		attacksAvail.add(new Poisonbite());
+		//PLACEHOLDER THIRD ATTACK
+		attacksAvail.add(new Rest());
 		
 
-		//lvl up statistics for elephant
+		//lvl up statistics for snake
 		hpScaler=8;
 		hpBonus=.25;
 		apScaler=10;

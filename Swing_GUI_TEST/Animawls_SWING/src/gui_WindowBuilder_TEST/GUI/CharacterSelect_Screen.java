@@ -167,8 +167,6 @@ public class CharacterSelect_Screen extends JPanel {
 				catch(Exception ex){
 					ex.printStackTrace();
 				}
-				
-					
 			}
 		});
 		//need to link to animawl list
@@ -188,47 +186,37 @@ public class CharacterSelect_Screen extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				//WHEN BUTTON IS PRESSED SAVE THE CURRENTLY CHOSEN CHAR AND CONTINUE TO THE NEXT JPANEL
-				//WILL LEAD TO GAME ACTUALLY STARTINGGGGGGGGGGG
-				//if chosen animals is = to three then goes to the game screen
-				//int i=0;
-				/*for(String key : tmpUser.getChosen().keySet()){
-					i++;
-				}
-				*/
-				//if(i<=2){
+				//WILL LEAD TO GAME ACTUALLY STARTING
+				//if number of chosen animals is = to three then goes to the game screen
+				
+				String tmp = (String) availCharChoices_List.getSelectedValue();
+				Animal tmpAnimal = TmpList.get(tmp);
 					
-					String tmp = (String) availCharChoices_List.getSelectedValue();
-					Animal tmpAnimal = TmpList.get(tmp);
-					/*
-					if(tmpUser.HasNotChosenAlready(tmpAnimal)){
-						tmpUser.addToChosen(tmp, tmpAnimal);
-						i++;
-					}
-					else{
-						JOptionPane.showMessageDialog(null, "PLEASE CHOOSE ANOTHER ANIMAL. YOU ALREADY HAVE CHOSEN THIS ANIMAL BEFORE","Error", JOptionPane.ERROR_MESSAGE);
-					}
-					*/
-					if(tmpUser.chosenAnimals.size()<3){
-					tmpUser.chosenAnimals.add(tmpAnimal);
-					//if(i<3){
-						JPanel tmp_Screen = new CharacterSelect_Screen(parentFrame,tmpUser);
-						parentFrame.setContentPane(tmp_Screen);
-						parentFrame.setVisible(true);
-						parentFrame.setResizable(true);
-					//}
-					}
-				//}
-				//if(i==3){
-					//if not then it goes to another version of the choose screen
-					//must choose 3 different animals
-					if(tmpUser.chosenAnimals.size()==3){
-					JPanel tmp_Screen = new Game_Screen(parentFrame,tmpUser);
-					parentFrame.setContentPane(tmp_Screen);
-					parentFrame.setVisible(true);
-					parentFrame.setResizable(true);
-					}
-				//}
-			
+				if(tmpUser.HasNotChosenAlready(tmpAnimal)){
+						if(tmpUser.getChosenSize()<3){
+							tmpUser.addToChosen(tmpAnimal);
+						}	
+						//if less than 3 animals already chosen, then repeat for another animal to choose.
+						if(tmpUser.getChosenSize()<3){
+							JPanel tmp_Screen = new CharacterSelect_Screen(parentFrame,tmpUser);
+							parentFrame.setContentPane(tmp_Screen);
+							parentFrame.setVisible(true);
+							parentFrame.setResizable(true);
+						}
+						//if there are already 3chosen animals then it goes to next screen
+						//must choose 3 different animals at this point (can change later)
+						if(tmpUser.getChosenSize()==3)
+						{
+							//JPanel tmp_Screen = new Game_Screen(parentFrame,tmpUser);
+							JPanel tmp_Screen = new BattlegroundSelect_Screen(parentFrame,tmpUser);
+							parentFrame.setContentPane(tmp_Screen);
+							parentFrame.setVisible(true); 
+							parentFrame.setResizable(true);
+						}
+				}
+				else{
+					JOptionPane.showMessageDialog(null, "PLEASE CHOOSE ANOTHER ANIMAL. YOU ALREADY HAVE CHOSEN THIS ANIMAL BEFORE","Error", JOptionPane.ERROR_MESSAGE);
+				}
 			}
 		});
 		confirmCharChoice_Button.setBounds(582, 508, 290, 48);
@@ -260,16 +248,15 @@ public class CharacterSelect_Screen extends JPanel {
 		
 		
 			
-			/*
-				Animal1_AREA.setText(tmpUser.getChosen().get(key).getName());
-			
-			
-				Animal2_AREA.setText(tmpUser.getChosen().get(key).getName());
-			
-			
-				Animal3_AREA.setText(tmpUser.getChosen().get(key).getName());
-			*/
-		
+		if(tmpUser.getChosenSize()>=1){
+			Animal1_AREA.setText(tmpUser.getAnimalAtIndex(0).getName());
+		}
+		if(tmpUser.getChosenSize()>=2){
+			Animal2_AREA.setText(tmpUser.getAnimalAtIndex(1).getName());
+		}
+		if(tmpUser.getChosenSize()==3){
+			Animal3_AREA.setText(tmpUser.getAnimalAtIndex(2).getName());
+		}
 		
 		parentFrame.setSize(900, 600);
 		parentFrame.setLocationRelativeTo(null);
@@ -282,10 +269,10 @@ public class CharacterSelect_Screen extends JPanel {
 		TmpList.put("Bear", new Bear("Bear"));
 		TmpList.put("Bird", new Bird("Bird"));
 		TmpList.put("Bat", new Bat("Bat"));
-		TmpList.put("Bull", new Bull("Bird"));
-		TmpList.put("Dog", new Dog("Bird"));
-		TmpList.put("Elephant", new Elephant("Bird"));
-		TmpList.put("Fighting Frog", new FightingFrog("Bird"));
+		TmpList.put("Bull", new Bull("Bull"));
+		TmpList.put("Dog", new Dog("Dog"));
+		TmpList.put("Elephant", new Elephant("Elephant"));
+		TmpList.put("Fighting Frog", new FightingFrog("FightingFrog"));
 		TmpList.put("Snake", new Snake("Snake"));
 	}
 }
