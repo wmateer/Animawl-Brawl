@@ -26,7 +26,11 @@ public class playerButtons extends ButtonGroup {
 	public JRadioButton animalOne;
 	public JRadioButton animalTwo;
 	
+	//player who buttons belong to
+	private Player myPlayer;
+	
 public playerButtons(Player myPlayer){
+	this.myPlayer=myPlayer;
 	//create buttons and groups & give them their names & listners
 	attackButtons=new ButtonGroup();
 	
@@ -200,6 +204,8 @@ public void showButtons(boolean input){
 		defendButton.setVisible(true);
 		specialButton.setVisible(true);
 		switchButton.setVisible(true);
+		showAttack(false);
+		showSwitch(false);
 		return;
 	}
 	if(input==false){
@@ -208,6 +214,8 @@ public void showButtons(boolean input){
 		defendButton.setVisible(false);
 		specialButton.setVisible(false);
 		switchButton.setVisible(false);
+		showAttack(false);
+		showSwitch(false);
 		return;
 	}
 }
@@ -218,31 +226,15 @@ public boolean  moveSelected(){
 	return false;
 }
 
-public void placePzero(){
-	//place buttons for pZero in proper spot
-	attackButton.setBounds(42, 289, 141, 23);
-	attackZero.setBounds(84, 324, 141, 23);
-	attackOne.setBounds(83, 359, 141, 23);
-	attackTwo.setBounds(84, 394, 141, 23);
-	specialButton.setBounds(42, 429, 141, 23);
-	defendButton.setBounds(42, 479, 141, 23);
-	switchButton.setBounds(42, 514, 141, 23);
-	animalZero.setBounds(130, 536, 141, 23);
-	animalOne.setBounds(130, 560, 141, 23);
-	animalTwo.setBounds(130, 584, 141, 23);
-}
-public void placePone(){
-	//place buttons for pZero in proper spot
-	attackButton.setBounds(712, 289, 141, 23);
-	attackZero.setBounds(753, 327, 141, 23);
-	attackOne.setBounds(753, 359, 141, 23);
-	attackTwo.setBounds(753, 394, 141, 23);
-	specialButton.setBounds(712, 429, 141, 23);
-	defendButton.setBounds(712, 479, 141, 23);
-	switchButton.setBounds(712, 514, 141, 23);
-	animalZero.setBounds(788, 536, 141, 23);
-	animalOne.setBounds(788, 560, 141, 23);
-	animalTwo.setBounds(788, 584, 141, 23);
+public void updateAttacks(){
+	attackZero.setText(myPlayer.getActive().attacksAvail.get(0).getName());
+	attackOne.setText(myPlayer.getActive().attacksAvail.get(1).getName());
+	attackOne.setText(myPlayer.getActive().attacksAvail.get(1).getName());
+	
+	}
+
+public void updateAnimals(){
+	//TODO dead animals and selected animals should be null
 }
 
 

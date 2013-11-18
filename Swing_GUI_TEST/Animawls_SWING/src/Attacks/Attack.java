@@ -147,8 +147,9 @@ public class Attack {
 				dmg = 0;
 			}
 			else{
-				target.subHpRem((int) Math.round(dmg));
-				target.setHpBar((int) Math.round(target.getHpRem()));
+			//	target.subHpRem((int) Math.round(dmg));
+			//	target.setHpBar((int) Math.round(target.getHpRem()));
+				target.subHpRem((int)dmg);
 				System.out.print("\n");
 				System.out.println("Your attack did ");
 				System.out.println(dmg);

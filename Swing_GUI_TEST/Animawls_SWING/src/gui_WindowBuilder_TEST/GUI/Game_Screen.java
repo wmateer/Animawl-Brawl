@@ -51,11 +51,13 @@ public class Game_Screen extends JPanel {
 	public Game_Screen(JFrame masterFrame, User user1) {
 		setBackground(Color.DARK_GRAY);
 		setLayout(null);
-		
+
+		masterFrame.setSize(900, 600);
+		masterFrame.setLocationRelativeTo(null);
 
 		
 //----------------------------------
-		
+	//intilize player objects	
 		
 		Bear Willis= new Bear("Willis");
 		Bear Frank = new Bear("Frank");
@@ -72,7 +74,9 @@ public class Game_Screen extends JPanel {
 		final Player pOne = new Player("bob",Kyle, Mindy, Alex);
 		inactive=pOne;
 //---------------------------------------		
-		
+	//test pop of for dead animal	
+		//animalDead pickAnimal= new animalDead(inactive);
+		//pickAnimal.setVisible(true);
 		
 		//initialize constant screen objects
 
@@ -97,30 +101,7 @@ public class Game_Screen extends JPanel {
 		add(Apr);
 		
 		
-		
-		JLabel pic = new JLabel(pZero.getActive().getName());
-		try {
-			BufferedImage AnimalPicture1 = ImageIO.read(new File(user1.chosenAnimals.get(0).imgPath));
-			pic.setIcon(new ImageIcon(AnimalPicture1));
-		} catch (IOException e1) {
-			 //TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		pic.setBounds(185, 126, 132, 126);
-		add(pic);
-		
-		
-		JLabel picr = new JLabel("Picture Here");
-		try {
-			BufferedImage AnimalPicture2 = ImageIO.read(new File(pOne.getActive().imgPath));
-			picr.setIcon(new ImageIcon(AnimalPicture2));
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		picr.setBounds(587, 126, 132, 126);
-		add(picr);
-		
+
 		JLabel playAnimawl_title = new JLabel("BATTLE");
 		playAnimawl_title.setHorizontalAlignment(SwingConstants.CENTER);
 		playAnimawl_title.setFont(new Font("Zapf Dingbats", Font.PLAIN, 23));
@@ -144,59 +125,24 @@ public class Game_Screen extends JPanel {
 			confirm.addActionListener(new confirmListner());
 			confirm.setBounds(391, 428, 117, 29);
 			add(confirm);
+		
+		prompt=new JLabel("Begin!");
+		prompt.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+		prompt.setForeground(Color.ORANGE);
+		prompt.setHorizontalAlignment( SwingConstants.CENTER ); 
+		prompt.setBounds(340, 100, 220, 40);
+		add(prompt);
+		
+		
+	
 
-			masterFrame.setSize(900, 600);
-			masterFrame.setLocationRelativeTo(null);
 			
+
 			
-			
-			
-/// USER 0````````````````````````
-		
-		usernameZero = new JLabel(pZero.getName());
-		usernameZero.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
-		usernameZero.setBounds(83, 55, 213, 44);
-		usernameZero.setForeground(Color.white);
-		usernameZero.setHorizontalAlignment( SwingConstants.CENTER );
-		add(usernameZero);
-		//ANIMAL 0 --------------------------------------------
-		
-			animalNameZero = new JLabel(pZero.getActive().getName());
-			animalNameZero.setBounds(185, 85, 132, 29);
-			animalNameZero.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
-			animalNameZero.setHorizontalAlignment( SwingConstants.CENTER );
-			animalNameZero.setForeground(Color.CYAN);
-			add(animalNameZero);
-		//HP 0 ------------------------------------------------------------
-			
+		//Player Zero UI------------------------------------------------------		
 	
-			pZero.getActive().getHpBar().setForeground(Color.red);
-			pZero.getActive().getHpBar().setStringPainted(true);
-			pZero.getActive().getHpBar().setBackground(Color.white);
-			pZero.getActive().getHpBar().setBounds(262, 324, 135, 20);
-			add(pZero.getActive().getHpBar());
-		//AP 0 ------------------------------------------------------------
-	
-			pZero.getActive().getApBar().setForeground(Color.blue);
-			pZero.getActive().getApBar().setStringPainted(true);
-			pZero.getActive().getApBar().setBackground(Color.white);
-			pZero.getActive().getApBar().setBounds(262, 356, 135, 20);
-			add(pZero.getActive().getApBar());
-		/*
-			//UIManager.put("ProgressBar.selectionForeground", Color.blue);
-		    apBar = new JProgressBar(0,(int)pZero.getActive().getApTot());
-			apBar.setValue((int)pZero.getActive().getApRem());
-			apBar.setForeground(Color.blue);
-			apBar.setStringPainted(true);
-			apBar.setBackground(Color.white);
-			apBar.setBounds(262, 352, 120, 20);
-			add(apBar);
-		*/	
-			
-		//BUTTONS 0!!------------------------------------------------------		
-			
 			//add pZero's buttons to GUI screen
-			pZero.UI.placePzero();
+			pZero.placePzero();
 			add(pZero.UI.attackButton);
 			add(pZero.UI.specialButton);
 			add(pZero.UI.defendButton);
@@ -207,55 +153,15 @@ public class Game_Screen extends JPanel {
 			add(pZero.UI.animalZero);
 			add(pZero.UI.animalOne);
 			add(pZero.UI.animalTwo);
+			add(pZero.currentAnimalPic);
+			add(pZero.getHpBar());
+			add(pZero.getApBar());
+			add(pZero.userName);
+			add(pZero.animalName);
 		
-			
 		
-		
-//USER 1----------------------------------------------		
-		
-		userNameOne = new JLabel(pOne.getName());
-		userNameOne.setBounds(627, 60, 139, 35);
-		userNameOne.setForeground(Color.white);
-		userNameOne.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
-		userNameOne.setHorizontalAlignment( SwingConstants.CENTER );
-		add(userNameOne);		
-		//ANIMAL 1--------------------------------------------	
-		
-			animalNameOne = new JLabel(pOne.getActive().getName());
-			animalNameOne.setBounds(627, 98, 80, 16);
-			animalNameOne.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
-			animalNameOne.setHorizontalAlignment( SwingConstants.CENTER );
-			animalNameOne.setForeground(Color.CYAN);
-			add(animalNameOne);
-			
-		//HP 1 ------------------------------------------------------------	
-			//UIManager.put("ProgressBar.selectionBackground", Color.red);
-				
-			pOne.getActive().getHpBar().setForeground(Color.red);
-			pOne.getActive().getHpBar().setStringPainted(true);
-			pOne.getActive().getHpBar().setBackground(Color.white);
-			pOne.getActive().getHpBar().setBounds(515, 324, 135, 20);
-			add(pOne.getActive().getHpBar());
-
-		//AP 1 ------------------------------------------------------------				
-				//UIManager.put("ProgressBar.selectionBackground", Color.blue);
-		/*		apBarr = new JProgressBar(0,(int)pOne.getActive().getApTot());
-				apBarr.setValue((int)pOne.getActive().getApRem());
-				apBarr.setForeground(Color.blue);
-				apBarr.setStringPainted(true);
-				apBarr.setBackground(Color.white);
-				apBarr.setBounds(515, 352, 120, 20);
-				add(apBarr);
-				*/
-			
-			pOne.getActive().getApBar().setForeground(Color.blue);
-			pOne.getActive().getApBar().setStringPainted(true);
-			pOne.getActive().getApBar().setBackground(Color.white);
-			pOne.getActive().getApBar().setBounds(515, 356, 135, 20);
-			add(pOne.getActive().getApBar());
-	    //  Right Side buttons		
-		
-			pOne.UI.placePone();
+		//Player One UI----------------------------------------------		
+			pOne.placePone();
 			add(pOne.UI.attackButton);
 			add(pOne.UI.specialButton);
 			add(pOne.UI.defendButton);
@@ -266,16 +172,16 @@ public class Game_Screen extends JPanel {
 			add(pOne.UI.animalZero);
 			add(pOne.UI.animalOne);
 			add(pOne.UI.animalTwo);
+			add(pOne.currentAnimalPic);
+			add(pOne.getHpBar());
+			add(pOne.getApBar());
+			add(pOne.userName);
+			add(pOne.animalName);
 		
 	
 		inactive.hideUI();
-		active.UI.showButtons(true);
-		prompt=new JLabel("Begin!");
-		prompt.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-		prompt.setForeground(Color.ORANGE);
-		prompt.setHorizontalAlignment( SwingConstants.CENTER ); 
-		prompt.setBounds(340, 100, 220, 40);
-		add(prompt);
+		active.showUI();
+
 	
 	}
 //------------------------------------------------------------------ 
@@ -283,10 +189,6 @@ public class Game_Screen extends JPanel {
 
 
 
-
-
-
-	//will fill for other buttons
 
 public void endTurn(){
 if(whoseTurn==1){
@@ -297,11 +199,16 @@ if(whoseTurn==1){
 else if(whoseTurn==0){
 	whoseTurn++;
 }
+
+if(inactive.getActive().getHpRem()<=0){
+	animalDead pickAnimal= new animalDead(inactive);
+	pickAnimal.setVisible(true);
+}
 active.hideUI();
 tmp=active;
 active=inactive;
 inactive=tmp;
-active.UI.showButtons(true);
+active.showUI();
 
 }
 
@@ -326,6 +233,7 @@ public class confirmListner implements ActionListener {
 				int dmg=0;
 				dmg= active.getActive().attacksAvail.get(0).useAttack(active.getActive(), inactive.getActive());
 				active.getActive().addExpErnd(dmg);
+				inactive.hpBar.setValue((int)inactive.getActive().getHpRem());
 				text="Your attack did "+dmg;
 				prompt.setText(text);
 				
@@ -346,18 +254,21 @@ public class confirmListner implements ActionListener {
 				prompt.setText(text);
 			}
 			else if(active.UI.animalZero.isSelected()==true){
-				active.setActive(active.animalsCur.get(0));
-				updateScreen();
+				active.switchAnimalGui(0);
 			}
-
-
-			
+			else if(active.UI.animalOne.isSelected()==true){
+				active.switchAnimalGui(1);
+			}
+			else if(active.UI.animalTwo.isSelected()==true){
+				active.switchAnimalGui(2);
+			}
+			if (inactive.checkLoss()==0){
+				String temp =active.getName() + "Wins!";
+				prompt.setText(temp);
+			}
 		endTurn();
 		//checks for inactive player loss after active attacks. have not yet tested but should work fine
-		if (inactive.checkLoss()==0){
-			String temp =active.getName() + "Wins!";
-			prompt.setText(temp);
-		}
+		
 		
 		
 
@@ -365,7 +276,9 @@ public class confirmListner implements ActionListener {
 	}
 	}
 
-
+public void promptSwitch(){
+	//TODO
+}
 
 public void updateScreen() {
 //TODO 

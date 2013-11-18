@@ -7,16 +7,30 @@ import java.util.*;
 
 import Animals.*;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.image.BufferedImage;
 import java.io.*;
+
+import javax.imageio.ImageIO;
+import javax.swing.*;
 
 public class Player {
 	protected String name;
 	protected Animal active;
 	protected Player opp;
-	public playerButtons UI;
 	protected ArrayList<Animal> animalsAvail;
 	protected boolean myTurn=false;
 	public ArrayList<Animal> animalsCur;
+	
+	//gui objects
+	public JLabel userName;
+	public playerButtons UI;
+	public JLabel animalName;
+	public JLabel currentAnimalPic;
+	public BufferedImage animalPicture;
+	public JProgressBar hpBar;
+	public JProgressBar apBar;
 	
 //constructors
 
@@ -27,8 +41,47 @@ public Player(String input, Animal animal0,Animal animal1, Animal animal2){
 	animalsCur.add(animal1);
 	animalsCur.add(animal2);
 	active=animalsCur.get(0);
+	
+	//establish starting gui objects
 	UI= new playerButtons(this);
 	
+	//create username object
+	userName= new JLabel(name);
+	userName.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
+	userName.setForeground(Color.white);
+	
+	//create animal pic 
+	currentAnimalPic = new JLabel(getActive().getName());
+	try {
+		 animalPicture = ImageIO.read(new File(getActive().imgPath));
+		currentAnimalPic.setIcon(new ImageIcon(animalPicture));
+	} catch (IOException e1) {
+		 //TODO Auto-generated catch block
+		e1.printStackTrace();
+	}
+	currentAnimalPic.setVisible(true);
+	
+	//creat animal name label
+	animalName=new JLabel(active.getName());
+	animalName.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+	animalName.setForeground(Color.CYAN);
+	animalName.setVisible(true);
+	
+	
+	//creat hp bar
+	hpBar = new JProgressBar(0,(int)Math.round(getActive().getHpTot()));
+	hpBar.setValue((int)Math.round(getActive().getHpTot()));
+	hpBar.setForeground(Color.red);
+	hpBar.setStringPainted(true);
+	hpBar.setBackground(Color.white);
+	hpBar.setVisible(true);
+	//creat ap bar
+	apBar= new JProgressBar(0,(int)Math.round(getActive().getApTot()));
+	apBar.setValue((int)Math.round(getActive().getApTot()));
+	apBar.setForeground(Color.blue);
+	apBar.setStringPainted(true);
+	apBar.setBackground(Color.white);
+	apBar.setVisible(true);
 }
 //create hashmap of animals
 
@@ -54,6 +107,20 @@ public String getName(){
 	return name;        
 	}
 	
+public JProgressBar getHpBar(){
+	return hpBar;
+}
+public void  setHpBar(int input){
+	hpBar.setValue(input);
+}
+
+public JProgressBar getApBar(){
+	return apBar;
+}
+
+public void setApBar(int input){
+	apBar.setValue(input);
+}
 
 //TODO move choose animals to USER CLASS and remove animals avail list
 //choose animal functions. 
@@ -104,6 +171,23 @@ public void switchAnimal() {
 	//set active animal to users choice
 	active=animalsCur.get(inInt);
 	System.out.println(active.getName());
+}
+
+public void switchAnimalGui(int animalNumb){
+	active=animalsCur.get(animalNumb);
+	animalName.setText(active.getName());
+	
+	try {
+		 animalPicture = ImageIO.read(new File(getActive().imgPath));
+		currentAnimalPic.setIcon(new ImageIcon(animalPicture));
+	} catch (IOException e1) {
+		 //TODO Auto-generated catch block
+		e1.printStackTrace();
+	}
+	UI.updateAttacks();
+	hpBar.setMaximum((int)active.getHpTot());
+	hpBar.setValue((int)active.getHpRem());
+	
 }
 	
 public String setActive(Animal input){
@@ -161,20 +245,6 @@ else{
 }
 public void showUI(){
 	UI.showButtons(true);
-	while(myTurn==true){
-		if(UI.attackButton.isSelected()==true){
-			UI.showAttack(true);
-		}
-		else{
-			UI.showAttack(false);
-		}
-		if(UI.switchButton.isSelected()==true){
-			UI.showSwitch(true);
-		}
-		else{
-			UI.showSwitch(false);
-		}
-	}
 	
 }
 
@@ -184,5 +254,49 @@ UI.showAttack(false);
 UI.showSwitch(false);
 }
 
+
+public void placePzero(){
+	//place buttons for pZero in proper spot
+	UI.attackButton.setBounds(42, 289, 141, 23);
+	UI.attackZero.setBounds(84, 324, 141, 23);
+	UI.attackOne.setBounds(83, 359, 141, 23);
+	UI.attackTwo.setBounds(84, 394, 141, 23);
+	UI.specialButton.setBounds(42, 429, 141, 23);
+	UI.defendButton.setBounds(42, 479, 141, 23);
+	UI.switchButton.setBounds(42, 514, 141, 23);
+	UI.animalZero.setBounds(130, 536, 141, 23);
+	UI.animalOne.setBounds(130, 560, 141, 23);
+	UI.animalTwo.setBounds(130, 584, 141, 23);
+	//place other player objects
+	currentAnimalPic.setBounds(185, 126, 132, 126);
+	hpBar.setBounds(262, 324, 135, 20);	
+	apBar.setBounds(262, 356, 135, 20);
+	userName.setBounds(83, 55, 213, 44);
+	animalName.setBounds(185, 85, 132, 29);
+
+
+
+
+}
+public void placePone(){
+	//place buttons for pOne in proper spot
+	UI.attackButton.setBounds(712, 289, 141, 23);
+	UI.attackZero.setBounds(753, 327, 141, 23);
+	UI.attackOne.setBounds(753, 359, 141, 23);
+	UI.attackTwo.setBounds(753, 394, 141, 23);
+	UI.specialButton.setBounds(712, 429, 141, 23);
+	UI.defendButton.setBounds(712, 479, 141, 23);
+	UI.switchButton.setBounds(712, 514, 141, 23);
+	UI.animalZero.setBounds(788, 536, 141, 23);
+	UI.animalOne.setBounds(788, 560, 141, 23);
+	UI.animalTwo.setBounds(788, 584, 141, 23);
+	//place other player objects for pOne
+	currentAnimalPic.setBounds(587, 126, 132, 126);
+	hpBar.setBounds(515, 324, 135, 20);
+	apBar.setBounds(515, 352, 135, 20);
+	userName.setBounds(627, 60, 139, 35);
+	animalName.setBounds(627, 98, 80, 16);
+	
+}
 
 }	
