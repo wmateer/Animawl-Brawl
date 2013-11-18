@@ -100,8 +100,6 @@ public class Game_Screen extends JPanel {
 		Apr.setBounds(650, 356, 22, 16);
 		add(Apr);
 		
-		
-
 		JLabel playAnimawl_title = new JLabel("BATTLE");
 		playAnimawl_title.setHorizontalAlignment(SwingConstants.CENTER);
 		playAnimawl_title.setFont(new Font("Zapf Dingbats", Font.PLAIN, 23));
@@ -110,7 +108,6 @@ public class Game_Screen extends JPanel {
 		
 		JToggleButton toggleButton = new JToggleButton("Music");
 		toggleButton.addActionListener(new ActionListener() {
-			@Override
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
@@ -199,10 +196,14 @@ if(whoseTurn==1){
 else if(whoseTurn==0){
 	whoseTurn++;
 }
-
+if(inactive.checkLoss()==0){
+	inactive.hideUI();
+	active.hideUI();
+	prompt.setText(active.getName()+" Wins!");
+	return;
+}
 if(inactive.getActive().getHpRem()<=0){
-	animalDead pickAnimal= new animalDead(inactive);
-	pickAnimal.setVisible(true);
+promptSwitch();
 }
 active.hideUI();
 tmp=active;
@@ -229,31 +230,35 @@ public class confirmListner implements ActionListener {
 			if(active.UI.moveSelected()==false){
 				System.out.println("Please Select a Valid Move");
 			}
-			if(active.UI.attackZero.isSelected()==true){
+			if((active.UI.attackZero.isSelected()==true) |(active.UI.attackOne.isSelected()==true) | (active.UI.attackOne.isSelected()==true)){
 				int dmg=0;
+
+				if(active.UI.attackZero.isSelected()==true){
 				dmg= active.getActive().attacksAvail.get(0).useAttack(active.getActive(), inactive.getActive());
-				active.getActive().addExpErnd(dmg);
-				inactive.hpBar.setValue((int)inactive.getActive().getHpRem());
-				text="Your attack did "+dmg;
-				prompt.setText(text);
 				
-			}
-			else if(active.UI.attackOne.isSelected()==true){
-				int dmg=0;
-				dmg= active.getActive().attacksAvail.get(1).useAttack(active.getActive(), inactive.getActive());
-				active.getActive().addExpErnd(dmg);
-				text="Your attack did "+dmg;
-				prompt.setText(text);
-			}
+				
+				}
+				else if(active.UI.attackOne.isSelected()==true){
+					dmg= active.getActive().attacksAvail.get(1).useAttack(active.getActive(), inactive.getActive());
+					
+				}	
 			
-			else if(active.UI.attackTwo.isSelected()==true){
-				int dmg=0;
-				dmg= active.getActive().attacksAvail.get(2).useAttack(active.getActive(), inactive.getActive());
-				active.getActive().addExpErnd(dmg);
-				text="Your attack did "+dmg;
-				prompt.setText(text);
+				else if(active.UI.attackTwo.isSelected()==true){
+					dmg= active.getActive().attacksAvail.get(2).useAttack(active.getActive(), inactive.getActive());
+			
+				}
+			active.getActive().addExpErnd(dmg);
+			inactive.hpBar.setValue((int)inactive.getActive().getHpRem());
+			text="Your attack did "+dmg;
+			prompt.setText(text);
+			
+			if (inactive.checkLoss()==0){
+				String temp =active.getName() + "Wins!";
+				prompt.setText(temp);
 			}
-			else if(active.UI.animalZero.isSelected()==true){
+			}
+		else{
+			 if(active.UI.animalZero.isSelected()==true){
 				active.switchAnimalGui(0);
 			}
 			else if(active.UI.animalOne.isSelected()==true){
@@ -262,10 +267,15 @@ public class confirmListner implements ActionListener {
 			else if(active.UI.animalTwo.isSelected()==true){
 				active.switchAnimalGui(2);
 			}
-			if (inactive.checkLoss()==0){
-				String temp =active.getName() + "Wins!";
-				prompt.setText(temp);
+		}
+			if(active.UI.specialButton.isSelected()==true){
+				//using as tmp button to allow active player automatic win
+				inactive.animalsCur.get(0).subHpRem((int)inactive.animalsCur.get(0).getHpRem());
+				inactive.animalsCur.get(1).subHpRem((int)inactive.animalsCur.get(1).getHpRem());
+				inactive.animalsCur.get(2).subHpRem((int)inactive.animalsCur.get(2).getHpRem());
+
 			}
+		
 		endTurn();
 		//checks for inactive player loss after active attacks. have not yet tested but should work fine
 		
@@ -277,7 +287,8 @@ public class confirmListner implements ActionListener {
 	}
 
 public void promptSwitch(){
-	//TODO
+	animalDead pickAnimal= new animalDead(inactive);
+	pickAnimal.setVisible(true);
 }
 
 public void updateScreen() {
