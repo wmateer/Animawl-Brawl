@@ -185,7 +185,8 @@ public class Game_Screen extends JPanel {
 			add(pOne.userName);
 			add(pOne.animalName);
 		
-	
+		inactive.UI.updateAnimals();
+		active.UI.updateAnimals();
 		inactive.hideUI();
 		active.showUI();
 
@@ -214,6 +215,7 @@ if(inactive.checkLoss()==0){
 }
 if(inactive.getActive().getHpRem()<=0){
 promptSwitch();
+inactive.UI.updateAnimals();
 }
 active.hideUI();
 tmp=active;
@@ -240,7 +242,7 @@ public class confirmListner implements ActionListener {
 			if(active.UI.moveSelected()==false){
 				System.out.println("Please Select a Valid Move");
 			}
-			if((active.UI.attackZero.isSelected()==true) |(active.UI.attackOne.isSelected()==true) | (active.UI.attackOne.isSelected()==true)){
+			if((active.UI.attackZero.isSelected()==true) |(active.UI.attackOne.isSelected()==true) | (active.UI.attackTwo.isSelected()==true)){
 				int dmg=0;
 
 				if(active.UI.attackZero.isSelected()==true){

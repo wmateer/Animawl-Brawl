@@ -185,6 +185,7 @@ public void switchAnimalGui(int animalNumb){
 		e1.printStackTrace();
 	}
 	UI.updateAttacks();
+	UI.updateAnimals();
 	hpBar.setMaximum((int)active.getHpTot());
 	hpBar.setValue((int)active.getHpRem());
 	
