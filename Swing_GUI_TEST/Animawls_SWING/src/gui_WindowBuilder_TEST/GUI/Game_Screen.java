@@ -11,6 +11,7 @@ import GameEngine.*;
 
 import java.awt.Font;
 import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
@@ -46,14 +47,23 @@ public class Game_Screen extends JPanel {
 	private JLabel animalZeroOne;
 	private JProgressBar apBarr;
 
-		
+	private BufferedImage backgroundPict;
 
 	public Game_Screen(JFrame masterFrame, User user1, String chosenBattleground) {
 		setBackground(Color.DARK_GRAY);
 		setLayout(null);
+		
+		//SET BACKGROUND
+		try {                
+			backgroundPict = ImageIO.read(new File(chosenBattleground));
+		} 
+		catch (Exception ex) {
+		       ex.printStackTrace();
+		}
 
 		masterFrame.setSize(900, 600);
 		masterFrame.setLocationRelativeTo(null);
+		masterFrame.setResizable(false);
 
 		
 //----------------------------------
@@ -69,7 +79,7 @@ public class Game_Screen extends JPanel {
 		
 		
 		
-		final Player pZero = new Player(user1.getName(),user1.chosenAnimals.get(0), user1.chosenAnimals.get(1), user1.chosenAnimals.get(2));
+		final Player pZero = new Player(user1.getName(),user1.getAnimalAtIndex(0), user1.getAnimalAtIndex(1), user1.getAnimalAtIndex(2));
 		active = pZero;
 		final Player pOne = new Player("bob",Kyle, Mindy, Alex);
 		inactive=pOne;
@@ -286,15 +296,21 @@ public class confirmListner implements ActionListener {
 	}
 	}
 
-public void promptSwitch(){
-	animalDead pickAnimal= new animalDead(inactive);
-	pickAnimal.setVisible(true);
-}
+	public void promptSwitch(){
+		animalDead pickAnimal= new animalDead(inactive);
+		pickAnimal.setVisible(true);
+	}
+	
+	public void updateScreen() {
+	//TODO 
+	}
 
-public void updateScreen() {
-//TODO 
-}
-
+	//to make background image//can use for animations later...
+	@Override
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		g.drawImage(backgroundPict, 0, 0, null);            
+	}
 
 }
 

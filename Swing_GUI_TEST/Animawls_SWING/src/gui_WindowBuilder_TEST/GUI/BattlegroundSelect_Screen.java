@@ -150,6 +150,16 @@ public class BattlegroundSelect_Screen extends JPanel {
 		SnowstormButton.setBounds(680, 431, 117, 29);
 		add(SnowstormButton);
 		
+		JButton whiteDefaultBackground_Button = new JButton("WHITE DEFAULT FOR TESTING");
+		whiteDefaultBackground_Button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				setImagesAllBW();
+				currentBattlegroundChoice = "IMAGES/BATTLEGROUND_PICTS/whiteDefault.jpg";
+			}
+		});
+		whiteDefaultBackground_Button.setBounds(639, 519, 237, 29);
+		add(whiteDefaultBackground_Button);
+		
 		parentFrame.setSize(900,600);
 
 	}
