@@ -137,7 +137,7 @@ public class Game_Screen extends JPanel {
 		prompt.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		prompt.setForeground(Color.ORANGE);
 		prompt.setHorizontalAlignment( SwingConstants.CENTER ); 
-		prompt.setBounds(340, 100, 220, 40);
+		prompt.setBounds(263, 499, 371, 40);
 		add(prompt);
 		
 		
@@ -241,6 +241,9 @@ public class confirmListner implements ActionListener {
 	//TODO need to check if active animal is dead and if so present only switch animals buttons
 			if(active.UI.moveSelected()==false){
 				System.out.println("Please Select a Valid Move");
+				text="Please Select a Valid Move";
+				prompt.setText(text);
+				return;
 			}
 			if((active.UI.attackZero.isSelected()==true) |(active.UI.attackOne.isSelected()==true) | (active.UI.attackTwo.isSelected()==true)){
 				int dmg=0;
