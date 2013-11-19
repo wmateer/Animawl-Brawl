@@ -4,12 +4,9 @@ package Animals;
 //import Attack;
 //import Maul;
 
-import java.awt.Color;
 import java.util.ArrayList;
-
-import javax.swing.JProgressBar;
-
 import Attacks.*;
+import Attacks.Maul;
 
 
 public class Bear extends Animal {
@@ -27,17 +24,21 @@ public class Bear extends Animal {
 		hpRem=650;
 		apTot=110;
 		apRem=110;
-		att=125;
+		att=100;
 		def=150;
 		evd=25;
 		poisoned=0;
 		
 		//set attack array for bear
 		attacksAvail=new ArrayList<Attack>();
-		attacksAvail.add(new Maul());
-		attacksAvail.add(new Claw());
-		attacksAvail.add(new Kill());
+		Maul Attack0 = new Maul();
+		attacksAvail.add(Attack0);
 		
+		Claw Attack1 = new Claw();
+		attacksAvail.add(Attack1);
+		
+		Knockdown Attack2 = new Knockdown();
+		attacksAvail.add(Attack2);
 		//lvl up statistics for bear
 		hpScaler=8;
 		hpBonus=.25;
@@ -52,8 +53,6 @@ public class Bear extends Animal {
 		
 		imgPath = "IMAGES/CHAR_PICTS/Bear.jpg";
 		Description = "A TERRIFYING BEAR, HELLBENT ON DESTRUCTION!!!";
-		
-	
 	}
 }
 	

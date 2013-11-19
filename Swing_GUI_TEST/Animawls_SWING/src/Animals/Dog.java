@@ -31,10 +31,8 @@ public class Dog extends Animal {
 		
 		//set attack array for dog
 		attacksAvail=new ArrayList<Attack>();
-		attacksAvail.add(new Bite());
-		//PLACEHOLDER ATTACKS
-		attacksAvail.add(new Maul());
-		attacksAvail.add(new Rest());
+		Bite Attack0 = new Bite();
+		attacksAvail.add(Attack0);
 		//lvl up statistics for dog
 		hpScaler=8;
 		hpBonus=.25;

@@ -30,15 +30,16 @@ public class FightingFrog extends Animal {
 		evd=140;
 		poisoned=0;
 		
-		//set attack array for fighting frog
+		//set attack array for elephant
 		attacksAvail=new ArrayList<Attack>();
-		attacksAvail.add(new Jumppunch());
-		attacksAvail.add(new Jumpkick());
-		//placeholder third attack
-		attacksAvail.add(new Rest());
+		Jumppunch Attack0 = new Jumppunch();
+		attacksAvail.add(Attack0);
+		
+		Jumpkick Attack1 = new Jumpkick();
+		attacksAvail.add(Attack1);
 		
 
-		//lvl up statistics for fighting frog
+		//lvl up statistics for elephant
 		hpScaler=8;
 		hpBonus=.25;
 		apScaler=10;

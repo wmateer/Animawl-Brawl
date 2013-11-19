@@ -4,12 +4,9 @@ package Animals;
 import java.util.*;
 import java.io.*;
 
-import javax.swing.JProgressBar;
-
 import Attacks.Attack;
 
-public class Animal implements Serializable {
-
+public class Animal {
 //Animal Class Protected Variables
 protected String name;
 public String type;
@@ -25,7 +22,6 @@ protected double att;	//animal's attack strength
 protected double def;	//animals defense strength
 protected double evd;	//animals evasiveness 
 protected int poisoned;  //determines if animal is poisoned
-
 
 //lvl up statistics 
 protected double hpScaler;
@@ -66,7 +62,6 @@ def=1;
 evd=1;	
 poisoned=0;
 
-
 //basic lvl up stats
 hpScaler=10;
 hpBonus=0;
@@ -84,7 +79,6 @@ Description = "tmp";
 }
 
 //getters and setter
-
 public String getName(){
 	return name;	
 }

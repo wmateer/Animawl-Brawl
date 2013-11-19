@@ -147,15 +147,11 @@ public class Attack {
 				dmg = 0;
 			}
 			else{
-			//	target.subHpRem((int) Math.round(dmg));
-			//	target.setHpBar((int) Math.round(target.getHpRem()));
-				target.subHpRem((int)dmg);
+				target.subHpRem((int) Math.round(dmg));
 				System.out.print("\n");
 				System.out.println("Your attack did ");
 				System.out.println(dmg);
 				System.out.print("\n");
-				//TODO remove this return statement and figure out why dmg is changing between here and return
-				return (int)Math.round(dmg);	
 			}
 		}
 		//otherwise attack misses
@@ -169,6 +165,14 @@ public class Attack {
 	if(attacker.getPoisoned()==1) {
 		attacker.subHpRem(20);
 	}
-	return (int)Math.round(dmg);	
+	System.out.print("\n AttackerAp");
+	System.out.print(attacker.getApRem());
+	System.out.print("\n TargetAp");
+	System.out.print(target.getApRem());
+	System.out.print("\n AttackerHp");
+	System.out.print(attacker.getHpRem());
+	System.out.print("\n TargetHp");
+	System.out.print(target.getHpRem());
+	return (int) Math.round(dmg);	
 	}
 	}

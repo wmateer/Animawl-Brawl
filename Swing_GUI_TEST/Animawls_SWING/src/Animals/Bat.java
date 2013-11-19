@@ -30,15 +30,16 @@ public class Bat extends Animal {
 		evd=150;
 		poisoned=0;
 		
-		//set attack array for bat
+		//set attack array for elephant
 		attacksAvail=new ArrayList<Attack>();
-		attacksAvail.add(new Bite());
-		attacksAvail.add(new Nightbite());
-		//THIRD ATTACK PLACEHOLDER
-		attacksAvail.add(new Knockdown());
+		Bite Attack0 = new Bite();
+		attacksAvail.add(Attack0);
+		
+		Nightbite Attack1 = new Nightbite();
+		attacksAvail.add(Attack1);
 		
 
-		//lvl up statistics for bat
+		//lvl up statistics for elephant
 		hpScaler=8;
 		hpBonus=.25;
 		apScaler=10;

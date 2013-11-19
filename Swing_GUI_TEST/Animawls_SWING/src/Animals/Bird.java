@@ -4,18 +4,13 @@ package Animals;
 //import Attack;
 //import Peck;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
-import javax.swing.JProgressBar;
-
 import Attacks.Attack;
-import Attacks.Charge;
 import Attacks.Peck;
 import Attacks.Wingattack;
 
-public class Bird extends Animal implements Serializable {
-
+public class Bird extends Animal {
 	public Bird(String name) {
 		super(name);
 // stat set for bird
@@ -37,19 +32,10 @@ public class Bird extends Animal implements Serializable {
 		attacksAvail=new ArrayList<Attack>();
 		Peck Attack0 = new Peck();
 		attacksAvail.add(Attack0);
+		
+		attacksAvail=new ArrayList<Attack>();
 		Wingattack Attack1 = new Wingattack();
 		attacksAvail.add(Attack1);
-		Charge Attack2= new Charge();
-		attacksAvail.add(Attack2);
-		
-		
-		/*	
-		attacksAvail=new ArrayList<Attack>();
-		Whirlwind Attack2 = new Whirlwind();
-		attacksAvail.add(Attack0);
-		*/
-		
-		
 
 //lvl up statistics for bird
 		hpScaler=11;
@@ -65,7 +51,6 @@ public class Bird extends Animal implements Serializable {
 		
 		imgPath = "IMAGES/CHAR_PICTS/Bird.jpg";
 		Description = "A HAPPY LITTLE BIRD. ABSOLUETELY USELESS";
-
 	}
 	
 }
