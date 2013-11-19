@@ -264,7 +264,11 @@ public class confirmListner implements ActionListener {
 				}
 			active.getActive().addExpErnd(dmg);
 			inactive.hpBar.setValue((int)inactive.getActive().getHpRem());
+			if (dmg == 0){
+				text="Your attack missed the target!";
+			}else{
 			text="Your attack did "+dmg;
+			}
 			prompt.setText(text);
 			
 			if (inactive.checkLoss()==0){
