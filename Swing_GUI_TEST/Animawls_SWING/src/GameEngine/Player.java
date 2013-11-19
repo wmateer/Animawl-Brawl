@@ -259,15 +259,25 @@ UI.showSwitch(false);
 public void placePzero(){
 	//place buttons for pZero in proper spot
 	UI.attackButton.setBounds(42, 289, 141, 23);
+	UI.attackButton.setForeground(Color.white);
 	UI.attackZero.setBounds(84, 324, 141, 23);
+	UI.attackZero.setForeground(Color.white);
 	UI.attackOne.setBounds(83, 359, 141, 23);
+	UI.attackOne.setForeground(Color.white);
 	UI.attackTwo.setBounds(84, 394, 141, 23);
+	UI.attackTwo.setForeground(Color.white);
 	UI.specialButton.setBounds(42, 429, 141, 23);
+	UI.specialButton.setForeground(Color.white);
 	UI.defendButton.setBounds(42, 479, 141, 23);
+	UI.defendButton.setForeground(Color.white);
 	UI.switchButton.setBounds(42, 514, 141, 23);
+	UI.switchButton.setForeground(Color.white);
 	UI.animalZero.setBounds(130, 536, 141, 23);
+	UI.animalZero.setForeground(Color.white);
 	UI.animalOne.setBounds(130, 560, 141, 23);
+	UI.animalOne.setForeground(Color.white);
 	UI.animalTwo.setBounds(130, 584, 141, 23);
+	UI.animalTwo.setForeground(Color.white);
 	//place other player objects
 	currentAnimalPic.setBounds(185, 126, 132, 126);
 	hpBar.setBounds(262, 324, 135, 20);	
@@ -282,15 +292,25 @@ public void placePzero(){
 public void placePone(){
 	//place buttons for pOne in proper spot
 	UI.attackButton.setBounds(712, 289, 141, 23);
+	UI.attackButton.setForeground(Color.white);
 	UI.attackZero.setBounds(753, 327, 141, 23);
+	UI.attackZero.setForeground(Color.white);
 	UI.attackOne.setBounds(753, 359, 141, 23);
+	UI.attackOne.setForeground(Color.white);
 	UI.attackTwo.setBounds(753, 394, 141, 23);
+	UI.attackTwo.setForeground(Color.white);
 	UI.specialButton.setBounds(712, 429, 141, 23);
+	UI.specialButton.setForeground(Color.white);
 	UI.defendButton.setBounds(712, 479, 141, 23);
+	UI.defendButton.setForeground(Color.white);
 	UI.switchButton.setBounds(712, 514, 141, 23);
+	UI.switchButton.setForeground(Color.white);
 	UI.animalZero.setBounds(788, 536, 141, 23);
+	UI.animalZero.setForeground(Color.white);
 	UI.animalOne.setBounds(788, 560, 141, 23);
+	UI.animalOne.setForeground(Color.white);
 	UI.animalTwo.setBounds(788, 584, 141, 23);
+	UI.animalTwo.setForeground(Color.white);
 	//place other player objects for pOne
 	currentAnimalPic.setBounds(587, 126, 132, 126);
 	hpBar.setBounds(515, 324, 135, 20);
