@@ -91,13 +91,17 @@ public class Game_Screen extends JPanel {
 		//initialize constant screen objects
 
 		JLabel Hp = new JLabel("HP ");
+		Hp.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+		Hp.setHorizontalAlignment(SwingConstants.CENTER);
 		Hp.setForeground(Color.RED);
-		Hp.setBounds(244, 324, 28, 16);
+		Hp.setBounds(227, 307, 45, 33);
 		add(Hp);
 		
 		JLabel Ap = new JLabel("AP");
+		Ap.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+		Ap.setHorizontalAlignment(SwingConstants.CENTER);
 		Ap.setForeground(Color.blue);
-		Ap.setBounds(244, 356, 22, 16);
+		Ap.setBounds(227, 345, 45, 33);
 		add(Ap);
 		
 		JLabel Hpr = new JLabel("HP");
@@ -314,7 +318,6 @@ public class confirmListner implements ActionListener {
 		super.paintComponent(g);
 		g.drawImage(backgroundPict, 0, 0, null);            
 	}
-
 }
 
 		

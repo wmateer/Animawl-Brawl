@@ -39,7 +39,21 @@ public class Login_Screen extends JPanel {
 		
 		passwordField = new JPasswordField();
 		passwordField.setBounds(233, 167, 134, 28);
+		passwordField.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				user = new String(userName_field.getText());
+				inpassword = new String(passwordField.getPassword());
+				Hashtable data = null;
+				data = LoadTable(data);
+				CheckLogin(user, inpassword, data);
+			
+			}
+			
+		});
 		add(passwordField);
+
 		
 		userName_field = new JTextField();
 		userName_field.setBounds(233, 127, 134, 28);

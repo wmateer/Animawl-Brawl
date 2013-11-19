@@ -282,8 +282,10 @@ public void placePzero(){
 	currentAnimalPic.setBounds(185, 126, 132, 126);
 	hpBar.setBounds(262, 324, 135, 20);	
 	apBar.setBounds(262, 356, 135, 20);
-	userName.setBounds(83, 55, 213, 44);
-	animalName.setBounds(185, 85, 132, 29);
+	userName.setBounds(185, 60, 132, 44);
+	userName.setHorizontalAlignment(SwingConstants.CENTER);
+	animalName.setBounds(185, 90, 132, 29);
+	animalName.setHorizontalAlignment(SwingConstants.CENTER);
 
 
 
@@ -292,32 +294,53 @@ public void placePzero(){
 public void placePone(){
 	//place buttons for pOne in proper spot
 	UI.attackButton.setBounds(712, 289, 141, 23);
+	//UI.attackButton.setBackground(Color.gray);
+	//UI.attackButton.setOpaque(true);
 	UI.attackButton.setForeground(Color.white);
 	UI.attackZero.setBounds(753, 327, 141, 23);
 	UI.attackZero.setForeground(Color.white);
+	//UI.attackZero.setBackground(Color.gray);
+	//UI.attackZero.setOpaque(true);
 	UI.attackOne.setBounds(753, 359, 141, 23);
 	UI.attackOne.setForeground(Color.white);
+	//UI.attackOne.setBackground(Color.gray);
+	//UI.attackOne.setOpaque(true);
 	UI.attackTwo.setBounds(753, 394, 141, 23);
 	UI.attackTwo.setForeground(Color.white);
+	//UI.attackTwo.setBackground(Color.gray);
+	//UI.attackTwo.setOpaque(true);
 	UI.specialButton.setBounds(712, 429, 141, 23);
 	UI.specialButton.setForeground(Color.white);
+	//UI.specialButton.setBackground(Color.gray);
+	//UI.specialButton.setOpaque(true);	
 	UI.defendButton.setBounds(712, 479, 141, 23);
 	UI.defendButton.setForeground(Color.white);
+	//UI.defendButton.setBackground(Color.gray);
+	//UI.defendButton.setOpaque(true);
 	UI.switchButton.setBounds(712, 514, 141, 23);
 	UI.switchButton.setForeground(Color.white);
+	//UI.switchButton.setBackground(Color.gray);
+	//UI.switchButton.setOpaque(true);
 	UI.animalZero.setBounds(788, 536, 141, 23);
 	UI.animalZero.setForeground(Color.white);
+	//UI.animalZero.setBackground(Color.gray);
+	//UI.animalZero.setOpaque(true);
 	UI.animalOne.setBounds(788, 560, 141, 23);
 	UI.animalOne.setForeground(Color.white);
+	//UI.attackOne.setBackground(Color.gray);
+	//UI.attackOne.setOpaque(true);
 	UI.animalTwo.setBounds(788, 584, 141, 23);
 	UI.animalTwo.setForeground(Color.white);
+	//UI.animalTwo.setBackground(Color.gray);
+	//UI.animalTwo.setOpaque(true);
 	//place other player objects for pOne
 	currentAnimalPic.setBounds(587, 126, 132, 126);
 	hpBar.setBounds(515, 324, 135, 20);
 	apBar.setBounds(515, 352, 135, 20);
-	userName.setBounds(627, 60, 139, 35);
-	animalName.setBounds(627, 98, 80, 16);
-	
+	userName.setBounds(587, 60, 132, 44);
+	userName.setHorizontalAlignment(SwingConstants.CENTER);
+	animalName.setBounds(587, 90, 132, 29);
+	animalName.setHorizontalAlignment(SwingConstants.CENTER);
 }
 
 }	

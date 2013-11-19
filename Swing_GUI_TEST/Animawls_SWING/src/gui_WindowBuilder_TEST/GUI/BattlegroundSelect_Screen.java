@@ -1,12 +1,16 @@
 package gui_WindowBuilder_TEST.GUI;
 
 import javax.imageio.ImageIO;
+
+import java.awt.event.*;
+
 import javax.swing.*;
 
 import java.awt.Font;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
@@ -44,19 +48,77 @@ public class BattlegroundSelect_Screen extends JPanel {
 		BattlegroundONE_Picture = new JLabel("PICTURE #1");
 		BattlegroundONE_Picture.setHorizontalAlignment(SwingConstants.CENTER);
 		BattlegroundONE_Picture.setBounds(60, 181, 220, 200);
+		BattlegroundONE_Picture.addMouseListener(new MouseAdapter(){
+			@Override
+			public void mouseClicked(MouseEvent e){
+				currentBattlegroundChoice = "IMAGES/BATTLEGROUND_PICTS/forestBig.jpg";
+				setImagesAllBW();
+				try{
+					BufferedImage BattlePicture = ImageIO.read(new File("IMAGES/BATTLEGROUND_PICTS/forestSmall.jpg"));
+					BattlegroundONE_Picture.setIcon(new ImageIcon(BattlePicture));
+				}
+				catch(Exception ex){
+					ex.printStackTrace();
+				}	
+			}
+		});
 		add(BattlegroundONE_Picture);
+		
+		JLabel Forest_Label = new JLabel("Forest");
+		Forest_Label.setHorizontalAlignment(SwingConstants.CENTER);
+		Forest_Label.setBounds(60, 153, 220, 16);
+		add(Forest_Label);
 		
 		//SECOND BATTLEGROUND PICTURE
 		BattlegroundTWO_Picture = new JLabel("PICTURE #2");
 		BattlegroundTWO_Picture.setHorizontalAlignment(SwingConstants.CENTER);
 		BattlegroundTWO_Picture.setBounds(340, 181, 220, 200);
+		BattlegroundTWO_Picture.addMouseListener(new MouseAdapter(){
+			@Override
+			public void mouseClicked(MouseEvent e){
+				currentBattlegroundChoice = "IMAGES/BATTLEGROUND_PICTS/volcanoBig.jpg";
+				setImagesAllBW();
+				try{
+					BufferedImage BattlePicture = ImageIO.read(new File("IMAGES/BATTLEGROUND_PICTS/volcanoSmall.jpg"));
+					BattlegroundTWO_Picture.setIcon(new ImageIcon(BattlePicture));
+				}
+				catch(Exception ex){
+					ex.printStackTrace();
+				}
+			}
+			
+		});
 		add(BattlegroundTWO_Picture);
+		
+		JLabel Volcano_Label = new JLabel("Volcano");
+		Volcano_Label.setHorizontalAlignment(SwingConstants.CENTER);
+		Volcano_Label.setBounds(340, 153, 220, 16);
+		add(Volcano_Label);
 		
 		//THIRD BATTLEGROUND PICTURE
 		BattlegroundTHREE_Picture = new JLabel("Picture #3");
 		BattlegroundTHREE_Picture.setHorizontalAlignment(SwingConstants.CENTER);
 		BattlegroundTHREE_Picture.setBounds(620, 181, 220, 200);
+		BattlegroundTHREE_Picture.addMouseListener(new MouseAdapter(){
+			@Override
+			public void mouseClicked(MouseEvent e){
+				currentBattlegroundChoice = "IMAGES/BATTLEGROUND_PICTS/snowstormBig.jpg";
+				setImagesAllBW();
+				try{
+					BufferedImage BattlePicture = ImageIO.read(new File("IMAGES/BATTLEGROUND_PICTS/snowstormSmall.jpg"));
+					BattlegroundTHREE_Picture.setIcon(new ImageIcon(BattlePicture));
+				}
+				catch(Exception ex){
+					ex.printStackTrace();
+				}
+			}
+		});
 		add(BattlegroundTHREE_Picture);
+		
+		JLabel Snow_Label = new JLabel("Snow Storm");
+		Snow_Label.setHorizontalAlignment(SwingConstants.CENTER);
+		Snow_Label.setBounds(620, 153, 220, 16);
+		add(Snow_Label);
 		
 		setImagesAllBW();
 		
@@ -95,7 +157,7 @@ public class BattlegroundSelect_Screen extends JPanel {
 		});
 		ConfirmChoice_Button.setBounds(305, 502, 289, 62);
 		add(ConfirmChoice_Button);
-		
+		/*
 		//FOREST BUTTON - CHANGES CURRENT CHOICE TO FOREST
 		JButton ForestButton = new JButton("FOREST");
 		ForestButton.addActionListener(new ActionListener() {
@@ -149,7 +211,7 @@ public class BattlegroundSelect_Screen extends JPanel {
 		});
 		SnowstormButton.setBounds(680, 431, 117, 29);
 		add(SnowstormButton);
-		
+		*/
 		JButton whiteDefaultBackground_Button = new JButton("WHITE DEFAULT FOR TESTING");
 		whiteDefaultBackground_Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -159,6 +221,8 @@ public class BattlegroundSelect_Screen extends JPanel {
 		});
 		whiteDefaultBackground_Button.setBounds(639, 519, 237, 29);
 		add(whiteDefaultBackground_Button);
+		
+
 		
 		parentFrame.setSize(900,600);
 
