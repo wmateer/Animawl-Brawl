@@ -32,12 +32,9 @@ public class Bat extends Animal {
 		
 		//set attack array for elephant
 		attacksAvail=new ArrayList<Attack>();
-		Bite Attack0 = new Bite();
-		attacksAvail.add(Attack0);
-		
-		Nightbite Attack1 = new Nightbite();
-		attacksAvail.add(Attack1);
-		
+		attacksAvail.add(new Bite());
+		attacksAvail.add(new Nightbite());
+		attacksAvail.add(new Claw());
 
 		//lvl up statistics for elephant
 		hpScaler=8;

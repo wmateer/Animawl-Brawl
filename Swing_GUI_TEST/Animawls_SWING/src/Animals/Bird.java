@@ -30,12 +30,8 @@ public class Bird extends Animal {
 		poisoned=0;
 //set up attacks for bird
 		attacksAvail=new ArrayList<Attack>();
-		Peck Attack0 = new Peck();
-		attacksAvail.add(Attack0);
-		
-		attacksAvail=new ArrayList<Attack>();
-		Wingattack Attack1 = new Wingattack();
-		attacksAvail.add(Attack1);
+		attacksAvail.add(new Peck());
+		attacksAvail.add(new Wingattack());
 
 //lvl up statistics for bird
 		hpScaler=11;

@@ -32,12 +32,9 @@ public class FightingFrog extends Animal {
 		
 		//set attack array for elephant
 		attacksAvail=new ArrayList<Attack>();
-		Jumppunch Attack0 = new Jumppunch();
-		attacksAvail.add(Attack0);
-		
-		Jumpkick Attack1 = new Jumpkick();
-		attacksAvail.add(Attack1);
-		
+		attacksAvail.add(new Jumppunch());
+		attacksAvail.add(new Jumpkick());
+		attacksAvail.add(new Knockdown());
 
 		//lvl up statistics for elephant
 		hpScaler=8;

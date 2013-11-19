@@ -32,12 +32,9 @@ public class Elephant extends Animal {
 		
 		//set attack array for elephant
 		attacksAvail=new ArrayList<Attack>();
-		Rest Attack0 = new Rest();
-		attacksAvail.add(Attack0);
-		
-		attacksAvail=new ArrayList<Attack>();
-		Trunkslap Attack1 = new Trunkslap();
-		attacksAvail.add(Attack1);
+		attacksAvail.add(new Rest());
+		attacksAvail.add(new Trunkslap());
+		attacksAvail.add(new Watergun());
 		
 		attacksAvail=new ArrayList<Attack>();
 		Watergun Attack2 = new Watergun();

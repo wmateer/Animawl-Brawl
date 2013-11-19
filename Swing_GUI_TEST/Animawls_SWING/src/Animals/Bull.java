@@ -7,6 +7,7 @@ package Animals;
 //import Watergun;
 
 import java.util.ArrayList;
+
 import Attacks.*;
 
 
@@ -32,13 +33,9 @@ public class Bull extends Animal {
 		
 		//set attack array for elephant
 		attacksAvail=new ArrayList<Attack>();
-		Headbutt Attack0 = new Headbutt();
-		attacksAvail.add(Attack0);
-		
-		attacksAvail=new ArrayList<Attack>();
-		Charge Attack1 = new Charge();
-		attacksAvail.add(Attack1);
-		
+		attacksAvail.add(new Headbutt());
+		attacksAvail.add( new Charge());
+		attacksAvail.add(new Kill());
 
 		//lvl up statistics for elephant
 		hpScaler=8;
