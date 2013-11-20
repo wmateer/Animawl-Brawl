@@ -6,9 +6,7 @@ package Animals;
 
 import java.util.ArrayList;
 
-import Attacks.Attack;
-import Attacks.Peck;
-import Attacks.Wingattack;
+import Attacks.*;
 
 public class Bird extends Animal {
 	public Bird(String name) {
@@ -32,6 +30,8 @@ public class Bird extends Animal {
 		attacksAvail=new ArrayList<Attack>();
 		attacksAvail.add(new Peck());
 		attacksAvail.add(new Wingattack());
+		//NEEDS 3 ATTACKS OR IT BREAKS...
+		attacksAvail.add(new Rest());
 
 //lvl up statistics for bird
 		hpScaler=11;
@@ -47,6 +47,7 @@ public class Bird extends Animal {
 		
 		imgPath = "IMAGES/CHAR_PICTS/Bird.jpg";
 		Description = "A HAPPY LITTLE BIRD. ABSOLUETELY USELESS";
+		soundPath = "SOUNDS/PICK_SOUNDS/ShortBird_PickSound.wav";
 	}
 	
 }

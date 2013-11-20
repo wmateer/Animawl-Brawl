@@ -15,6 +15,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 
 import GameEngine.User;
+import Sound.Sound_Playback;
 
 public class BattlegroundSelect_Screen extends JPanel {
 
@@ -30,6 +31,15 @@ public class BattlegroundSelect_Screen extends JPanel {
 	private JLabel BattlegroundONE_Picture;
 	private JLabel BattlegroundTWO_Picture;
 	private JLabel BattlegroundTHREE_Picture;
+
+	private Sound_Playback ForestSound = new Sound_Playback("SOUNDS/PICK_SOUNDS/ShortForest_Sound.wav");
+	private Sound_Playback VolcanoSound = new Sound_Playback("SOUNDS/PICK_SOUNDS/ShortVolcano_Sound.wav");
+	private Sound_Playback SnowstormSound = new Sound_Playback("SOUNDS/PICK_SOUNDS/ShortSnowstorm_Sound.wav");
+	//private Sound_Playback BattlegroundSound;
+	private Boolean ForestStart = false;
+	private Boolean VolcanoStart = false;
+	private Boolean SnowstormStart = false;
+	
 	
 	public BattlegroundSelect_Screen(JFrame masterFrame,User currentUser) {
 		setBackground(new Color(218, 165, 32));
@@ -59,7 +69,12 @@ public class BattlegroundSelect_Screen extends JPanel {
 				}
 				catch(Exception ex){
 					ex.printStackTrace();
-				}	
+				}
+				//PLAY PICK SOUND//
+				//BattlegroundSound = new Sound_Playback("SOUNDS/PICK_SOUNDS/ShortForest_Sound.wav");
+				stopAllSound();
+				ForestSound.play();
+				ForestStart = true;
 			}
 		});
 		add(BattlegroundONE_Picture);
@@ -85,6 +100,12 @@ public class BattlegroundSelect_Screen extends JPanel {
 				catch(Exception ex){
 					ex.printStackTrace();
 				}
+				//PLAY PICK SOUND//
+				//BattlegroundSound = new Sound_Playback("SOUNDS/PICK_SOUNDS/ShortVolcano_Sound.wav");
+				//BattlegroundSound.play();
+				stopAllSound();
+				VolcanoSound.play();
+				VolcanoStart = true;
 			}
 			
 		});
@@ -111,6 +132,12 @@ public class BattlegroundSelect_Screen extends JPanel {
 				catch(Exception ex){
 					ex.printStackTrace();
 				}
+				//PLAY PICK SOUND//
+				//BattlegroundSound = new Sound_Playback("SOUNDS/PICK_SOUNDS/ShortSnowstorm_Sound.wav");
+				//BattlegroundSound.play();
+				stopAllSound();
+				SnowstormSound.play();
+				SnowstormStart = true;
 			}
 		});
 		add(BattlegroundTHREE_Picture);
@@ -144,6 +171,7 @@ public class BattlegroundSelect_Screen extends JPanel {
 		ConfirmChoice_Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(!currentBattlegroundChoice.equals("NONE")){
+					stopAllSound();
 					JPanel tmp_Screen = new Game_Screen(parentFrame,tmpUser,currentBattlegroundChoice);
 					parentFrame.setContentPane(tmp_Screen);
 					parentFrame.setVisible(true); 
@@ -242,6 +270,24 @@ public class BattlegroundSelect_Screen extends JPanel {
 		}
 		catch(Exception ex){
 			ex.printStackTrace();
+		}
+	}
+	
+	private void stopAllSound(){
+		if(ForestStart == true){
+			ForestSound.stop();
+			ForestSound.close();
+			ForestStart = false;
+		}
+		if(VolcanoStart == true){
+			VolcanoSound.stop();
+			VolcanoSound.close();
+			VolcanoStart = false;
+		}
+		if(SnowstormStart == true){
+			SnowstormSound.stop();
+			SnowstormSound.close();
+			SnowstormStart = false;
 		}
 	}
 }

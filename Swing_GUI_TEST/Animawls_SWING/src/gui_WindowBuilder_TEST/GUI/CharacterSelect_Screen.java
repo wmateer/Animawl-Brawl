@@ -1,30 +1,19 @@
 package gui_WindowBuilder_TEST.GUI;
 
+//BUILT IN LIBRARIES
 import javax.imageio.ImageIO;
 import javax.swing.*;
-
-import java.awt.Color;
-import java.awt.Font;
-
-import javax.swing.event.ListSelectionListener;
-import javax.swing.event.ListSelectionEvent;
-
-import Animals.Animal;
-import Animals.Bat;
-import Animals.Bear;
-import Animals.Bird;
-import Animals.Bull;
-import Animals.Dog;
-import Animals.Elephant;
-import Animals.FightingFrog;
-import Animals.Snake;
-import GameEngine.User;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import java.awt.*;
+import javax.swing.event.*;
+import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.util.HashMap;
 import java.io.*;
+
+//USER CREATED CLASSES
+import Animals.*;
+import GameEngine.User;
+import Sound.Sound_Playback;
 
 
 public class CharacterSelect_Screen extends JPanel {
@@ -35,6 +24,10 @@ public class CharacterSelect_Screen extends JPanel {
 	private JFrame parentFrame;
 	private JList availCharChoices_List;
 	private HashMap <String,Animal> TmpList;
+	private Boolean hasChosenSomething = false;
+	
+	private Sound_Playback AnimalSound;
+	private Boolean soundStarted = false;
 	
 	public CharacterSelect_Screen(JFrame masterFrame, User currentUser) {
 		
@@ -145,6 +138,8 @@ public class CharacterSelect_Screen extends JPanel {
 		availCharChoices_List.addListSelectionListener(new ListSelectionListener() {
 			@Override
 			public void valueChanged(ListSelectionEvent arg0) {
+				hasChosenSomething = true;
+				
 				String tmp = (String) availCharChoices_List.getSelectedValue();
 				Animal tmpAnimal = TmpList.get(tmp);
 
@@ -163,6 +158,12 @@ public class CharacterSelect_Screen extends JPanel {
 					ATTACK_AREA.setText(""+tmpAnimal.getAtt());
 					DEFENSE_AREA.setText(""+tmpAnimal.getDef());
 					EVADE_AREA.setText(""+tmpAnimal.getEvd());
+					
+					//PLAY SOUND OF ANIMAL SELECTED EACH TIME//
+					playAnimalSound(tmpAnimal.soundPath);
+					//Sound_Playback AnimalSound = new Sound_Playback(tmpAnimal.soundPath);
+					//AnimalSound.play();
+					
 				}
 				catch(Exception ex){
 					ex.printStackTrace();
@@ -192,12 +193,13 @@ public class CharacterSelect_Screen extends JPanel {
 				String tmp = (String) availCharChoices_List.getSelectedValue();
 				Animal tmpAnimal = TmpList.get(tmp);
 					
-				if(tmpUser.HasNotChosenAlready(tmpAnimal)){
+				if(!tmpUser.HasChosenAlready(tmpAnimal) && hasChosenSomething){
 						if(tmpUser.getChosenSize()<3){
 							tmpUser.addToChosen(tmpAnimal);
 						}	
 						//if less than 3 animals already chosen, then repeat for another animal to choose.
 						if(tmpUser.getChosenSize()<3){
+							stopAnimalSoundPlayback();
 							JPanel tmp_Screen = new CharacterSelect_Screen(parentFrame,tmpUser);
 							parentFrame.setContentPane(tmp_Screen);
 							parentFrame.setVisible(true);
@@ -205,8 +207,8 @@ public class CharacterSelect_Screen extends JPanel {
 						}
 						//if there are already 3chosen animals then it goes to next screen
 						//must choose 3 different animals at this point (can change later)
-						if(tmpUser.getChosenSize()==3)
-						{
+						if(tmpUser.getChosenSize()==3){
+							stopAnimalSoundPlayback();
 							//JPanel tmp_Screen = new Game_Screen(parentFrame,tmpUser);
 							JPanel tmp_Screen = new BattlegroundSelect_Screen(parentFrame,tmpUser);
 							parentFrame.setContentPane(tmp_Screen);
@@ -215,7 +217,7 @@ public class CharacterSelect_Screen extends JPanel {
 						}
 				}
 				else{
-					JOptionPane.showMessageDialog(null, "PLEASE CHOOSE ANOTHER ANIMAL. YOU ALREADY HAVE CHOSEN THIS ANIMAL BEFORE","Error", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "PLEASE CHOOSE ANOTHER ANIMAL.  YOU MAY ONLY HAVE ONE OF EACH ANIMAl","Error", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
@@ -264,7 +266,7 @@ public class CharacterSelect_Screen extends JPanel {
 		
 	//public HashMap <String,Animal> Choose_Lister_Passer() {
 	public void Choose_Lister_Passer() {
-		//must be updated when new animawls are to be added			
+		//must be updated when new animawls are to be added
 		TmpList = new HashMap<String,Animal>();
 		TmpList.put("Bear", new Bear("Bear"));
 		TmpList.put("Bird", new Bird("Bird"));
@@ -274,5 +276,19 @@ public class CharacterSelect_Screen extends JPanel {
 		TmpList.put("Elephant", new Elephant("Elephant"));
 		TmpList.put("Fighting Frog", new FightingFrog("FightingFrog"));
 		TmpList.put("Snake", new Snake("Snake"));
+	}
+	
+	public void playAnimalSound(String inputPath){
+		stopAnimalSoundPlayback();
+		AnimalSound = new Sound_Playback(inputPath);
+		AnimalSound.play();
+		soundStarted = true;
+	}
+	
+	public void stopAnimalSoundPlayback(){
+		if(soundStarted == true){
+			AnimalSound.stop();
+			AnimalSound.close();
+		}
 	}
 }

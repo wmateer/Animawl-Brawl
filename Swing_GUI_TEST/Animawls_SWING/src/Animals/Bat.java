@@ -14,7 +14,7 @@ public class Bat extends Animal {
 
 	public Bat(String name) {
 		super(name);
-		// stat set for elephant
+		// stat set for Bat
 		type="Bat";
 		this.name=name;
 		lvl=1;
@@ -30,13 +30,13 @@ public class Bat extends Animal {
 		evd=150;
 		poisoned=0;
 		
-		//set attack array for elephant
+		//set attack array for Bat
 		attacksAvail=new ArrayList<Attack>();
 		attacksAvail.add(new Bite());
 		attacksAvail.add(new Nightbite());
 		attacksAvail.add(new Claw());
 
-		//lvl up statistics for elephant
+		//lvl up statistics for Bat
 		hpScaler=8;
 		hpBonus=.25;
 		apScaler=10;
@@ -50,6 +50,7 @@ public class Bat extends Animal {
 		
 		imgPath = "IMAGES/CHAR_PICTS/Bat.jpg";
 		Description = "A STEALTHY NOTCTURNAL AIRBOURNE BEAST!!!";
+		soundPath = "SOUNDS/PICK_SOUNDS/ShortBat_PickSound.wav";
 	}
 }
 	

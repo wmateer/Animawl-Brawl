@@ -51,6 +51,7 @@ public class Bull extends Animal {
 		
 		imgPath = "IMAGES/CHAR_PICTS/Bull.jpg";
 		Description = "A RAMPAGING BULL!!! YEARNS FOR BLOOD ON HIS HEELS AND FLESH IN HIS MOUTH!!!";
+		soundPath = "SOUNDS/PICK_SOUNDS/ShortBull_PickSound.wav";
 	}
 }
 	

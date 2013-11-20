@@ -44,6 +44,8 @@ Random rand= new Random();
 public String imgPath;
 //DESCRIPTION
 public String Description;
+//PICK SOUND EFFECT PATH
+public String soundPath;
 
 //constructor
 public Animal(String name){

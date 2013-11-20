@@ -14,7 +14,7 @@ public class FightingFrog extends Animal {
 
 	public FightingFrog(String name) {
 		super(name);
-		// stat set for elephant
+		// stat set for FightingFrog
 		type="FightingFrog";
 		this.name=name;
 		lvl=1;
@@ -30,13 +30,13 @@ public class FightingFrog extends Animal {
 		evd=140;
 		poisoned=0;
 		
-		//set attack array for elephant
+		//set attack array for FightingFrog
 		attacksAvail=new ArrayList<Attack>();
 		attacksAvail.add(new Jumppunch());
 		attacksAvail.add(new Jumpkick());
 		attacksAvail.add(new Knockdown());
 
-		//lvl up statistics for elephant
+		//lvl up statistics for FightingFrog
 		hpScaler=8;
 		hpBonus=.25;
 		apScaler=10;
@@ -50,6 +50,7 @@ public class FightingFrog extends Animal {
 		
 		imgPath = "IMAGES/CHAR_PICTS/FightingFrog.jpg";
 		Description = "A DEMONIC FROG WISHING ONLY PESTILENCE AND DEATH TO EVERYONE!!!";
+		soundPath = "SOUNDS/PICK_SOUNDS/ShortFrog_PickSound.wav";
 	}
 }
 	

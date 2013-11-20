@@ -46,6 +46,10 @@ public class MultiplayerMenu_Screen extends JPanel {
 				//START A MULTIPLAYER SESSION THAT WAITS UNTIL A PLAYER JOINS
 				//FOR TESTING IT WILL JUST START A LOCAL GAME!!!
 				//parentFrame.removeAll();
+				
+				//TURN OFF TITLE MUSIC//
+				//parentFrame.StopMusic(); need to reform first JFRAME!!!
+				
 				parentFrame.setVisible(false);
 				JPanel tmp_Screen = new CharacterSelect_Screen(parentFrame,tmpUser);
 				parentFrame.setContentPane(tmp_Screen);

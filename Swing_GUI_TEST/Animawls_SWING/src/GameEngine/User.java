@@ -58,12 +58,12 @@ private int losses;
 	
 	//setters and getters
 	
-	public Boolean HasNotChosenAlready(Animal chosenAnimal){
+	public Boolean HasChosenAlready(Animal chosenAnimal){
 		if(chosenAnimals.contains(chosenAnimal)){
-			return false;
+			return true;
 		}
 		else{
-			return true;
+			return false;
 		}
 	}
 	

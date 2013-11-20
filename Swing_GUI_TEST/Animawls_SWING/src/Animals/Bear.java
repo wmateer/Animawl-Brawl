@@ -48,6 +48,7 @@ public class Bear extends Animal {
 		
 		imgPath = "IMAGES/CHAR_PICTS/Bear.jpg";
 		Description = "A TERRIFYING BEAR, HELLBENT ON DESTRUCTION!!!";
+		soundPath = "SOUNDS/PICK_SOUNDS/ShortBear_PickSound.wav";
 	}
 }
 	

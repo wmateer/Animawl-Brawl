@@ -30,14 +30,14 @@ public class Snake extends Animal {
 		evd=120;
 		poisoned=0;
 		
-		//set attack array for elephant
+		//set attack array for snake
 		attacksAvail=new ArrayList<Attack>();
-		attacksAvail.add( new Wrap());
+		attacksAvail.add(new Wrap());
 		attacksAvail.add(new Poisonbite());
 		attacksAvail.add(new Bite());
 		
 		
-		//lvl up statistics for elephant
+		//lvl up statistics for snake
 		hpScaler=8;
 		hpBonus=.25;
 		apScaler=10;
@@ -51,6 +51,7 @@ public class Snake extends Animal {
 		
 		imgPath = "IMAGES/CHAR_PICTS/Snake.jpg";
 		Description = "A SWEET LOVEABLE PLAYMATE, STILL WILL KILL YOU!!!";
+		soundPath = "SOUNDS/PICK_SOUNDS/ShortSnake_PickSound.wav";
 	}
 }
 	

@@ -36,9 +36,6 @@ public class Elephant extends Animal {
 		attacksAvail.add(new Trunkslap());
 		attacksAvail.add(new Watergun());
 		
-		attacksAvail=new ArrayList<Attack>();
-		Watergun Attack2 = new Watergun();
-		attacksAvail.add(Attack2);
 		//lvl up statistics for elephant
 		hpScaler=8;
 		hpBonus=.25;
@@ -53,6 +50,7 @@ public class Elephant extends Animal {
 		
 		imgPath = "IMAGES/CHAR_PICTS/Elephant.jpg";
 		Description = "A BEAST CAPABLE OF REMEMBERING THINGS!!!  CAN ALSO TRAMPLE THINGS!!!";
+		soundPath = "SOUNDS/PICK_SOUNDS/ShortElephant_PickSound.wav";
 	}
 }
 	
