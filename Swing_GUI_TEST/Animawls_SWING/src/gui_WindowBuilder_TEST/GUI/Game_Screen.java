@@ -81,8 +81,10 @@ public class Game_Screen extends JPanel {
 		
 		final Player pZero = new Player(user1.getName(),user1.getAnimalAtIndex(0), user1.getAnimalAtIndex(1), user1.getAnimalAtIndex(2));
 		active = pZero;
+		pZero.setOpp(pOne);
 		final Player pOne = new Player("bob",Kyle, Mindy, Alex);
 		inactive=pOne;
+		pOne.setOpp(pZero);
 //---------------------------------------		
 	//test pop of for dead animal	
 		//animalDead pickAnimal= new animalDead(inactive);
@@ -217,6 +219,13 @@ if(inactive.checkLoss()==0){
 	prompt.setText(active.getName()+" Wins!");
 	return;
 }
+if(active.checkLoss()==0){
+		inactive.hideUI();
+		active.hideUI();
+		prompt.setText(inactive.getName()+" Wins!");
+		return;
+}
+
 if(inactive.getActive().getHpRem()<=0){
 promptSwitch();
 inactive.UI.updateAnimals();
@@ -267,6 +276,7 @@ public class confirmListner implements ActionListener {
 			
 				}
 			inactive.hpBar.setValue((int)inactive.getActive().getHpRem());
+			active.apBar.setValue((int)active.getActive().getApRem());
 			if (dmg == 0){
 				text="Your attack missed the target!";
 			}else{
@@ -291,10 +301,18 @@ public class confirmListner implements ActionListener {
 			}
 		}
 			if(active.UI.specialButton.isSelected()==true){
-				//using as tmp button to allow active player automatic win
+				//uses active animals unique special
 				active.getActive().useSpecial(inactive);
-				inactive.hpBar.setValue((int)inactive.getActive().getHpRem());
+				
+				//update hp bars
 				active.hpBar.setValue((int)active.getActive().getHpRem());
+				inactive.hpBar.setValue((int)inactive.getActive().getHpRem());
+				
+				//update ap bars
+				active.apBar.setValue((int)active.getActive().getApRem());
+				inactive.apBar.setValue((int)inactive.getActive().getApRem());
+				
+				//TODO create better way to display effect of special (maybe own Jpanel?)
 				prompt.setText(active.getActive().getName()+" used thier special!");
 			}
 		

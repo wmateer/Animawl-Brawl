@@ -38,6 +38,8 @@ public class Bat extends Animal {
 		attacksAvail.add(new Nightbite());
 		attacksAvail.add(new Claw());
 
+		//set up special
+		specialZero= new Drain();
 		//lvl up statistics for Bat
 		hpScaler=8;
 		hpBonus=.25;
@@ -55,10 +57,8 @@ public class Bat extends Animal {
 		soundPath = "SOUNDS/PICK_SOUNDS/ShortBat_PickSound.wav";
 	}
 	public void useSpecial(Player inactive){
-		attacksAvail.get(1).useAttack(this, inactive.animalsCur.get(0));
-		attacksAvail.get(1).useAttack(this, inactive.animalsCur.get(1));
-		attacksAvail.get(1).useAttack(this, inactive.animalsCur.get(2));
-
+		specialZero.useAttack(this, inactive.getActive());
+		inactive.getActive().setApRem(0);
 	}
 }
 	

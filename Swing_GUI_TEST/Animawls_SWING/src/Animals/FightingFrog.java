@@ -37,7 +37,9 @@ public class FightingFrog extends Animal {
 		attacksAvail.add(new Jumppunch());
 		attacksAvail.add(new Jumpkick());
 		attacksAvail.add(new Knockdown());
-
+		//set up specials
+		specialZero= new oneTwo();
+		
 		//lvl up statistics for FightingFrog
 		hpScaler=8;
 		hpBonus=.25;
@@ -55,9 +57,8 @@ public class FightingFrog extends Animal {
 		soundPath = "SOUNDS/PICK_SOUNDS/ShortFrog_PickSound.wav";
 	}
 	public void useSpecial( Player inactive){
-			attacksAvail.get(1).useAttack(this, inactive.animalsCur.get(0));
-			attacksAvail.get(1).useAttack(this, inactive.animalsCur.get(1));
-			attacksAvail.get(1).useAttack(this, inactive.animalsCur.get(2));
+	specialZero.useAttack(this, inactive.getActive());
+	specialZero.useAttack(this, inactive.getActive());
 
 		}
 }

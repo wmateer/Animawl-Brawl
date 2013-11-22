@@ -237,6 +237,9 @@ public void subHpRem(int amount){
 
 public void addHpRem(int amount){
 	hpRem=hpRem+amount;	
+	if( hpRem>hpTot){
+		hpRem=hpTot;
+	}
 }
 
 
@@ -259,6 +262,10 @@ public void subApRem(int amount){
 
 public void addApRem(int amount){
 	apRem=apRem+amount;	
+}
+
+public void setApRem(int ammount){
+	apRem= ammount;
 }
 //for att
 public double getAtt() {

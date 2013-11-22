@@ -36,6 +36,9 @@ public class Dog extends Animal {
 		attacksAvail.add(new Maul());
 		attacksAvail.add(new Headbutt());
 		
+		//set special
+		specialZero= new Play();
+		
 		//lvl up statistics for dog
 		hpScaler=8;
 		hpBonus=.25;
@@ -53,9 +56,9 @@ public class Dog extends Animal {
 		soundPath = "SOUNDS/PICK_SOUNDS/ShortDog_PickSound.wav";
 	}
 	public void useSpecial(Player inactive){
-		attacksAvail.get(1).useAttack(this, inactive.animalsCur.get(0));
-		attacksAvail.get(1).useAttack(this, inactive.animalsCur.get(1));
-		attacksAvail.get(1).useAttack(this, inactive.animalsCur.get(2));
+		specialZero.useAttack(inactive.getOpp().animalsCur.get(0),inactive.getActive());
+		specialZero.useAttack(inactive.getOpp().animalsCur.get(1),inactive.getActive());
+		specialZero.useAttack(inactive.getOpp().animalsCur.get(2),inactive.getActive());
 
 	}
 }

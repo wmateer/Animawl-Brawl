@@ -38,6 +38,8 @@ public class Snake extends Animal {
 		attacksAvail.add(new Poisonbite());
 		attacksAvail.add(new Bite());
 		
+		//TEMP SPECIAL
+		specialZero= new Bite();
 		
 		//lvl up statistics for snake
 		hpScaler=8;

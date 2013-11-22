@@ -35,6 +35,10 @@ public class Bear extends Animal {
 		attacksAvail.add(new Maul());
 		attacksAvail.add(new Claw());
 		attacksAvail.add(new Knockdown());
+		//special
+		specialZero= new Kamakazee();
+
+		
 		//lvl up statistics for bear
 		hpScaler=8;
 		hpBonus=.25;
@@ -52,9 +56,8 @@ public class Bear extends Animal {
 		soundPath = "SOUNDS/PICK_SOUNDS/ShortBear_PickSound.wav";
 	}
 	public void useSpecial(Player inactive){
-		attacksAvail.get(1).useAttack(this, inactive.animalsCur.get(0));
-		attacksAvail.get(1).useAttack(this, inactive.animalsCur.get(1));
-		attacksAvail.get(1).useAttack(this, inactive.animalsCur.get(2));
+		int dmg= specialZero.useAttack(this, inactive.getActive());
+		this.subHpRem(dmg/2);
 
 	}
 }

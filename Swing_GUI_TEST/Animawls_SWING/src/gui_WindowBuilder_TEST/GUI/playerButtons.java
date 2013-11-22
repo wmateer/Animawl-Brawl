@@ -91,7 +91,7 @@ public playerButtons(Player myPlayer){
 			
 		}
 	});
-	specialButton= new JRadioButton("Special");
+	specialButton= new JRadioButton(myPlayer.getActive().specialZero.getName());
 	specialButton.addActionListener(new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -230,7 +230,7 @@ public void updateAttacks(){
 	attackZero.setText(myPlayer.getActive().attacksAvail.get(0).getName());
 	attackOne.setText(myPlayer.getActive().attacksAvail.get(1).getName());
 	attackOne.setText(myPlayer.getActive().attacksAvail.get(2).getName());
-	
+	specialButton.setText(myPlayer.getActive().specialZero.getName());
 	}
 
 public void updateAnimals(){

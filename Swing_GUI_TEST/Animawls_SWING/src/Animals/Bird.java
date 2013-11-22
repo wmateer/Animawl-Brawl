@@ -34,6 +34,9 @@ public class Bird extends Animal {
 		//NEEDS 3 ATTACKS OR IT BREAKS...
 		attacksAvail.add(new Rest());
 
+		//set up Special
+		specialZero=new Scavange();
+		
 //lvl up statistics for bird
 		hpScaler=11;
 		hpBonus=0;
@@ -51,10 +54,18 @@ public class Bird extends Animal {
 		soundPath = "SOUNDS/PICK_SOUNDS/ShortBird_PickSound.wav";
 	}
 	public void useSpecial(Player inactive){
-		attacksAvail.get(1).useAttack(this, inactive.animalsCur.get(0));
-		attacksAvail.get(1).useAttack(this, inactive.animalsCur.get(1));
-		attacksAvail.get(1).useAttack(this, inactive.animalsCur.get(2));
-
+		//hits animal with least remaining health
+		int animalNumb=0;
+		
+		if(inactive.animalsCur.get(0).getHpRem()>inactive.animalsCur.get(1).getHpRem()){
+			 animalNumb=1;
+		}
+		
+		if(inactive.animalsCur.get(animalNumb).getHpRem()>inactive.animalsCur.get(2).getHpRem()){
+			animalNumb=2;
+		}
+		specialZero.useAttack(this, inactive.animalsCur.get(animalNumb));
+		
 	}
 }
 

@@ -97,7 +97,9 @@ public ArrayList<Animal> getAnimalsCur(){
 public void setOpp(Player opponent){
 		opp=opponent;
 }
-
+public Player getOpp(){
+	return opp;
+}
 
 public void setName(String myName){
 	name=myName;
@@ -188,6 +190,9 @@ public void switchAnimalGui(int animalNumb){
 	UI.updateAnimals();
 	hpBar.setMaximum((int)active.getHpTot());
 	hpBar.setValue((int)active.getHpRem());
+	
+	apBar.setMaximum((int)active.getApTot());
+	apBar.setValue((int)active.getApRem());
 	
 }
 	

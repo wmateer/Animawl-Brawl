@@ -8,7 +8,7 @@ public class Poisonbite extends Attack{
 	
 public Poisonbite(){
 	this.setName("Poisonbite");	
-	this.setDmg(0);
+	this.setDmg(25);
 	this.setConsist(0);
 	this.setAcc(0);
 	this.setCritHitChance(0);

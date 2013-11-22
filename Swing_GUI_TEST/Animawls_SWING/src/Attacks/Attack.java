@@ -34,6 +34,9 @@ public class Attack {
 	//ap cost
 	protected int apCost;
 	
+	//TODO description
+	protected String description;
+	
 	Random rand= new Random();
 //setters and getters
 	public double getDmg(){
@@ -99,9 +102,8 @@ public class Attack {
 
 	if(dmgDone>5){
 	//if critical hit damage gets up to 30% boost
-		if((1-percentDamage)<=critHitChance & (r<.3)){
-			//percentDamage=percentDamage+(.3*r);
-			percentDamage= .3 + percentDamage;
+		if((1-percentDamage)<=critHitChance){
+			percentDamage= (.2*r+.15) + percentDamage;
 			System.out.print("Critical Hit");
 		}
 	}
@@ -114,22 +116,38 @@ public class Attack {
 
 
 	public int useAttack(Animal attacker, Animal target){
+	double r= Math.random();
+
 	//subrtact ap
 	attacker.subApRem(apCost);
 	int damage=0;
+	//calculate amount of heal
 	if(heal>0){
-		attacker.addHpRem((int) (heal*4));
+		System.out.println("consist is" + consist);
+		double percentHeal= ((consist) + ((1-consist)*r));
+		System.out.println(percentHeal);
+		if((1-percentHeal)<=critHitChance){
+			percentHeal= (int) ((.2*r+.15) + percentHeal);
+			System.out.print("Critical Hit");
+		}
+	
+		int ammountHeal = (int)((heal*attacker.getHpTot())*percentHeal);
+		attacker.addHpRem(ammountHeal);
+		attacker.addExpErnd(ammountHeal);
+		return ammountHeal;
 	}
-
-	else if (poisonchance == 1) {
+	
+	
+	if (poisonchance == 1) {
 		if(target.getPoisoned() == 1)
 			System.out.print("Enemy is already poisoned. No effect.");
-		else
+		else{
 			target.setPoisoned(1);
+		}
 	}
 
-	else{
-		double r=Math.random();
+	
+		 r=Math.random();
 
 		//see if attack hits
 		double missChance=(1-acc);
@@ -151,7 +169,7 @@ public class Attack {
 				attacker.addExpErnd((int)damage);
 				System.out.print("\n");
 				System.out.println("Your attack did ");
-				System.out.println(dmg);
+				System.out.println(damage);
 				System.out.print("\n");
 			}
 		}
@@ -162,7 +180,7 @@ public class Attack {
 			damage = 0;
 		}
 
-		}
+		
 	if(attacker.getPoisoned()==1) {
 		attacker.subHpRem(20);
 	}
