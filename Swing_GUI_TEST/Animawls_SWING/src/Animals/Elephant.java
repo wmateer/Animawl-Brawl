@@ -7,7 +7,9 @@ package Animals;
 //import Watergun;
 
 import java.util.ArrayList;
+
 import Attacks.*;
+import GameEngine.Player;
 
 
 public class Elephant extends Animal {
@@ -25,7 +27,7 @@ public class Elephant extends Animal {
 		hpRem=600;
 		apTot=110;
 		apRem=110;
-		att=80;
+		att=100;
 		def=200;
 		evd=20;
 		poisoned=0;
@@ -36,6 +38,7 @@ public class Elephant extends Animal {
 		attacksAvail.add(new Trunkslap());
 		attacksAvail.add(new Watergun());
 		
+		specialZero= new SuckLife();
 		//lvl up statistics for elephant
 		hpScaler=8;
 		hpBonus=.25;
@@ -51,6 +54,10 @@ public class Elephant extends Animal {
 		imgPath = "IMAGES/CHAR_PICTS/Elephant.jpg";
 		Description = "A BEAST CAPABLE OF REMEMBERING THINGS!!!  CAN ALSO TRAMPLE THINGS!!!";
 		soundPath = "SOUNDS/PICK_SOUNDS/ShortElephant_PickSound.wav";
+	}
+	public void useSpecial(Player inactive){
+		int ammount = specialZero.useAttack(this, inactive.getActive());
+		this.addHpRem(ammount);
 	}
 }
 	

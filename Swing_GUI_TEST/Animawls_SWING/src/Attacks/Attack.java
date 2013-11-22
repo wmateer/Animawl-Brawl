@@ -116,7 +116,7 @@ public class Attack {
 	public int useAttack(Animal attacker, Animal target){
 	//subrtact ap
 	attacker.subApRem(apCost);
-
+	int damage=0;
 	if(heal>0){
 		attacker.addHpRem((int) (heal*4));
 	}
@@ -138,16 +138,17 @@ public class Attack {
 
 		//if random number is > than miss chance attacks hits
 		if(r>=missChance){
-			double dmg=calcDmg(attacker.getAtt(), target.getDef());
+			 damage=calcDmg(attacker.getAtt(), target.getDef());
 		
 			//scale r  
 
-			if(dmg<2){
+			if(damage<2){
 				System.out.print("Attack completely blocked.\n");
-				dmg = 0;
+				damage = 0;
 			}
 			else{
-				target.subHpRem((int) Math.round(dmg));
+				target.subHpRem((int) Math.round(damage));
+				attacker.addExpErnd((int)damage);
 				System.out.print("\n");
 				System.out.println("Your attack did ");
 				System.out.println(dmg);
@@ -158,7 +159,7 @@ public class Attack {
 		else{
 			System.out.print("\n");
 			System.out.println("Your Attack Missed");
-			dmg = 0;
+			damage = 0;
 		}
 
 		}
@@ -173,6 +174,6 @@ public class Attack {
 	System.out.print(attacker.getHpRem());
 	System.out.print("\n TargetHp");
 	System.out.print(target.getHpRem());
-	return (int) Math.round(dmg);	
+	return damage;
 	}
 	}

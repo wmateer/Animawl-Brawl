@@ -5,8 +5,9 @@ package Animals;
 //import Maul;
 
 import java.util.ArrayList;
+
 import Attacks.*;
-import Attacks.Maul;
+import GameEngine.Player;
 
 
 public class Bear extends Animal {
@@ -49,6 +50,12 @@ public class Bear extends Animal {
 		imgPath = "IMAGES/CHAR_PICTS/Bear.jpg";
 		Description = "A TERRIFYING BEAR, HELLBENT ON DESTRUCTION!!!";
 		soundPath = "SOUNDS/PICK_SOUNDS/ShortBear_PickSound.wav";
+	}
+	public void useSpecial(Player inactive){
+		attacksAvail.get(1).useAttack(this, inactive.animalsCur.get(0));
+		attacksAvail.get(1).useAttack(this, inactive.animalsCur.get(1));
+		attacksAvail.get(1).useAttack(this, inactive.animalsCur.get(2));
+
 	}
 }
 	

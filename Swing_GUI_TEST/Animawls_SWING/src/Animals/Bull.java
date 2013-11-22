@@ -6,9 +6,11 @@ package Animals;
 //import Trunkslap;
 //import Watergun;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 import Attacks.*;
+import GameEngine.Player;
 
 
 public class Bull extends Animal {
@@ -36,7 +38,9 @@ public class Bull extends Animal {
 		attacksAvail.add(new Headbutt());
 		attacksAvail.add( new Charge());
 		attacksAvail.add(new Kill());
-
+		
+		//set moves needed for special
+		specialZero=new Rush();		
 		//lvl up statistics for elephant
 		hpScaler=8;
 		hpBonus=.25;
@@ -52,6 +56,15 @@ public class Bull extends Animal {
 		imgPath = "IMAGES/CHAR_PICTS/Bull.jpg";
 		Description = "A RAMPAGING BULL!!! YEARNS FOR BLOOD ON HIS HEELS AND FLESH IN HIS MOUTH!!!";
 		soundPath = "SOUNDS/PICK_SOUNDS/ShortBull_PickSound.wav";
+	}
+	
+	public void useSpecial(Player inactive){
+		specialZero.useAttack(this, inactive.animalsCur.get(0));
+		specialZero.useAttack(this, inactive.animalsCur.get(1));
+		specialZero.useAttack(this, inactive.animalsCur.get(2));
+
+
+
 	}
 }
 	

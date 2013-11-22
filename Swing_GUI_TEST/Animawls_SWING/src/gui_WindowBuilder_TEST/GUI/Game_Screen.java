@@ -266,7 +266,6 @@ public class confirmListner implements ActionListener {
 					dmg= active.getActive().attacksAvail.get(2).useAttack(active.getActive(), inactive.getActive());
 			
 				}
-			active.getActive().addExpErnd(dmg);
 			inactive.hpBar.setValue((int)inactive.getActive().getHpRem());
 			if (dmg == 0){
 				text="Your attack missed the target!";
@@ -293,10 +292,10 @@ public class confirmListner implements ActionListener {
 		}
 			if(active.UI.specialButton.isSelected()==true){
 				//using as tmp button to allow active player automatic win
-				inactive.animalsCur.get(0).subHpRem((int)inactive.animalsCur.get(0).getHpRem());
-				inactive.animalsCur.get(1).subHpRem((int)inactive.animalsCur.get(1).getHpRem());
-				inactive.animalsCur.get(2).subHpRem((int)inactive.animalsCur.get(2).getHpRem());
-
+				active.getActive().useSpecial(inactive);
+				inactive.hpBar.setValue((int)inactive.getActive().getHpRem());
+				active.hpBar.setValue((int)active.getActive().getHpRem());
+				prompt.setText(active.getActive().getName()+" used thier special!");
 			}
 		
 		endTurn();

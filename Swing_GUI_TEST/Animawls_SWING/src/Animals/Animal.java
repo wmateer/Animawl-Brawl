@@ -3,10 +3,12 @@ package Animals;
 //imports
 import java.util.*;
 import java.io.*;
+import java.lang.reflect.Method;
 
 import Attacks.Attack;
+import GameEngine.Player;
 
-public class Animal {
+public abstract class Animal {
 //Animal Class Protected Variables
 protected String name;
 public String type;
@@ -38,8 +40,10 @@ protected double evdBonus;
 public ArrayList<Attack> attacksAvail;
 //all attacks a type can have
 protected ArrayList<Attack> allAttacks;
+//attacks used in special
+public Attack specialZero;
+public Attack specialOne;
 Random rand= new Random();
-
 //PICTURE PATH
 public String imgPath;
 //DESCRIPTION
@@ -344,6 +348,13 @@ public void modEvd(){
 	double r=rand.nextDouble();
 	evdBonus = evdBonus+((r*.35)/evdScaler);	
 }
+
+public void useSpecial(Player inactive){
+	this.useSpecial(inactive);
+}
+
+
+
 
 }
 

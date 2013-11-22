@@ -7,6 +7,7 @@ package Animals;
 import java.util.ArrayList;
 
 import Attacks.*;
+import GameEngine.Player;
 
 public class Bird extends Animal {
 	public Bird(String name) {
@@ -49,6 +50,11 @@ public class Bird extends Animal {
 		Description = "A HAPPY LITTLE BIRD. ABSOLUETELY USELESS";
 		soundPath = "SOUNDS/PICK_SOUNDS/ShortBird_PickSound.wav";
 	}
-	
+	public void useSpecial(Player inactive){
+		attacksAvail.get(1).useAttack(this, inactive.animalsCur.get(0));
+		attacksAvail.get(1).useAttack(this, inactive.animalsCur.get(1));
+		attacksAvail.get(1).useAttack(this, inactive.animalsCur.get(2));
+
+	}
 }
 

@@ -91,7 +91,6 @@ return inactive;
 	
 
 public Player play(){
-	int round=0;
 	int play=1;
 	int whoseTurn=0;
 	while(play == 1){
@@ -115,7 +114,6 @@ public Player play(){
 		whoseTurn++;
 	}
 	if(whoseTurn==1){
-		round++;
 		whoseTurn=0;
 	}
 		

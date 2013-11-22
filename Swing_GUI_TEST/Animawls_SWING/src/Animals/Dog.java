@@ -5,8 +5,9 @@ package Animals;
 //import Bite;
 
 import java.util.ArrayList;
+
 import Attacks.*;
-import Attacks.Bite;
+import GameEngine.Player;
 
 
 public class Dog extends Animal {
@@ -50,6 +51,12 @@ public class Dog extends Animal {
 		imgPath = "IMAGES/CHAR_PICTS/Dog.jpg";
 		Description = "A LOVELY CORGI!!!  KILLS WITH CUTENESS";
 		soundPath = "SOUNDS/PICK_SOUNDS/ShortDog_PickSound.wav";
+	}
+	public void useSpecial(Player inactive){
+		attacksAvail.get(1).useAttack(this, inactive.animalsCur.get(0));
+		attacksAvail.get(1).useAttack(this, inactive.animalsCur.get(1));
+		attacksAvail.get(1).useAttack(this, inactive.animalsCur.get(2));
+
 	}
 }
 	

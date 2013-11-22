@@ -87,7 +87,7 @@ public Player(String input, Animal animal0,Animal animal1, Animal animal2){
 
 //getters and setter
 public Animal getActive(){
-	return active;
+	return  active;
 }
 
 public ArrayList<Animal> getAnimalsCur(){

@@ -7,7 +7,9 @@ package Animals;
 //import Watergun;
 
 import java.util.ArrayList;
+
 import Attacks.*;
+import GameEngine.Player;
 
 
 public class FightingFrog extends Animal {
@@ -52,5 +54,11 @@ public class FightingFrog extends Animal {
 		Description = "A DEMONIC FROG WISHING ONLY PESTILENCE AND DEATH TO EVERYONE!!!";
 		soundPath = "SOUNDS/PICK_SOUNDS/ShortFrog_PickSound.wav";
 	}
+	public void useSpecial( Player inactive){
+			attacksAvail.get(1).useAttack(this, inactive.animalsCur.get(0));
+			attacksAvail.get(1).useAttack(this, inactive.animalsCur.get(1));
+			attacksAvail.get(1).useAttack(this, inactive.animalsCur.get(2));
+
+		}
 }
 	
