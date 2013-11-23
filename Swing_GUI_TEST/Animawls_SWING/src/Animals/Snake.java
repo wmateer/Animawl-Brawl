@@ -31,7 +31,7 @@ public class Snake extends Animal {
 		def=60;
 		evd=120;
 		poisoned=0;
-		
+		apRegen=12;
 		//set attack array for snake
 		attacksAvail=new ArrayList<Attack>();
 		attacksAvail.add(new Wrap());

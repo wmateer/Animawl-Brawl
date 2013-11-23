@@ -21,12 +21,13 @@ public class Bird extends Animal {
 		expToLvl=900;
 		hpTot=400;
 		hpRem=400;
-		apTot=100;
-		apRem=100;
+		apTot=110;
+		apRem=110;
 		att=130;
 		def=80;
-		evd=175;
+		evd=150;
 		poisoned=0;
+		apRegen=15;
 //set up attacks for bird
 		attacksAvail=new ArrayList<Attack>();
 		attacksAvail.add(new Peck());
@@ -65,7 +66,9 @@ public class Bird extends Animal {
 			animalNumb=2;
 		}
 		specialZero.useAttack(this, inactive.animalsCur.get(animalNumb));
-		
+		if(inactive.animalsCur.get(animalNumb).getHpRem()<=0){
+			inactive.UI.updateAnimals();
+		}
 	}
 }
 

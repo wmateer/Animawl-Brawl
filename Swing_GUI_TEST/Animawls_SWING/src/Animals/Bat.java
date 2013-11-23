@@ -31,7 +31,7 @@ public class Bat extends Animal {
 		def=60;
 		evd=150;
 		poisoned=0;
-		
+		apRegen=15;
 		//set attack array for Bat
 		attacksAvail=new ArrayList<Attack>();
 		attacksAvail.add(new Bite());
@@ -57,6 +57,7 @@ public class Bat extends Animal {
 		soundPath = "SOUNDS/PICK_SOUNDS/ShortBat_PickSound.wav";
 	}
 	public void useSpecial(Player inactive){
+		//drains all opp's active's ap
 		specialZero.useAttack(this, inactive.getActive());
 		inactive.getActive().setApRem(0);
 	}

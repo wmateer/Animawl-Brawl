@@ -29,7 +29,7 @@ public class Dog extends Animal {
 		def=100;
 		evd=100;
 		poisoned = 0;
-		
+		apRegen=10;
 		//set attack array for dog
 		attacksAvail=new ArrayList<Attack>();
 		attacksAvail.add(new Bite());
@@ -56,6 +56,7 @@ public class Dog extends Animal {
 		soundPath = "SOUNDS/PICK_SOUNDS/ShortDog_PickSound.wav";
 	}
 	public void useSpecial(Player inactive){
+		//Heals all your animals
 		specialZero.useAttack(inactive.getOpp().animalsCur.get(0),inactive.getActive());
 		specialZero.useAttack(inactive.getOpp().animalsCur.get(1),inactive.getActive());
 		specialZero.useAttack(inactive.getOpp().animalsCur.get(2),inactive.getActive());

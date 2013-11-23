@@ -187,6 +187,7 @@ public void switchAnimalGui(int animalNumb){
 		e1.printStackTrace();
 	}
 	UI.updateAttacks();
+	UI.checkAp();
 	UI.updateAnimals();
 	hpBar.setMaximum((int)active.getHpTot());
 	hpBar.setValue((int)active.getHpRem());
@@ -251,7 +252,7 @@ else{
 }
 public void showUI(){
 	UI.showButtons(true);
-	
+	UI.checkAp();
 }
 
 public void hideUI(){
@@ -346,6 +347,12 @@ public void placePone(){
 	userName.setHorizontalAlignment(SwingConstants.CENTER);
 	animalName.setBounds(587, 90, 132, 29);
 	animalName.setHorizontalAlignment(SwingConstants.CENTER);
+}
+public void regenAp(){
+	for(int animalNumb=0; animalNumb<3; animalNumb++){
+		animalsCur.get(animalNumb).regen();
+	}
+	apBar.setValue((int) active.getApRem());
 }
 
 }	

@@ -31,7 +31,7 @@ public class FightingFrog extends Animal {
 		def=40;
 		evd=140;
 		poisoned=0;
-		
+		apRegen=12;
 		//set attack array for FightingFrog
 		attacksAvail=new ArrayList<Attack>();
 		attacksAvail.add(new Jumppunch());
@@ -57,6 +57,7 @@ public class FightingFrog extends Animal {
 		soundPath = "SOUNDS/PICK_SOUNDS/ShortFrog_PickSound.wav";
 	}
 	public void useSpecial( Player inactive){
+		//hits oppenent twice
 	specialZero.useAttack(this, inactive.getActive());
 	specialZero.useAttack(this, inactive.getActive());
 

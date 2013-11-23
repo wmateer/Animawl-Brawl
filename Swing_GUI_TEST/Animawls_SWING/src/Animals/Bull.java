@@ -32,7 +32,7 @@ public class Bull extends Animal {
 		def=80;
 		evd=80;
 		poisoned=0;
-		
+		apRegen=10;
 		//set attack array for elephant
 		attacksAvail=new ArrayList<Attack>();
 		attacksAvail.add(new Headbutt());
@@ -59,6 +59,7 @@ public class Bull extends Animal {
 	}
 	
 	public void useSpecial(Player inactive){
+		//Rush's all opp's animals
 		specialZero.useAttack(this, inactive.animalsCur.get(0));
 		specialZero.useAttack(this, inactive.animalsCur.get(1));
 		specialZero.useAttack(this, inactive.animalsCur.get(2));

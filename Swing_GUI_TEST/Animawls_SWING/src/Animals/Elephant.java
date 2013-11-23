@@ -25,13 +25,13 @@ public class Elephant extends Animal {
 		expToLvl=1200;
 		hpTot=600;
 		hpRem=600;
-		apTot=110;
-		apRem=110;
+		apTot=90;
+		apRem=90;
 		att=100;
 		def=200;
 		evd=20;
 		poisoned=0;
-		
+		apRegen=9;
 		//set attack array for elephant
 		attacksAvail=new ArrayList<Attack>();
 		attacksAvail.add(new Rest());
@@ -56,6 +56,7 @@ public class Elephant extends Animal {
 		soundPath = "SOUNDS/PICK_SOUNDS/ShortElephant_PickSound.wav";
 	}
 	public void useSpecial(Player inactive){
+		//hits damages opp and adds hp to elephant 
 		int ammount = specialZero.useAttack(this, inactive.getActive());
 		this.addHpRem(ammount);
 	}

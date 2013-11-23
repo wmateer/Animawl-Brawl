@@ -259,6 +259,33 @@ public void updateAnimals(){
 		animalTwo.setEnabled(false);
 	}
 	}
+
+public void checkAp(){
+	if(myPlayer.getActive().getApRem()<myPlayer.getActive().attacksAvail.get(0).getApCost()){
+		attackZero.setEnabled(false);
+	}
+	else{
+		attackZero.setEnabled(true);
+	}
+	if(myPlayer.getActive().getApRem()<myPlayer.getActive().attacksAvail.get(1).getApCost()){
+		attackOne.setEnabled(false);
+	}
+	else{
+		attackOne.setEnabled(true);
+	}
+	if(myPlayer.getActive().getApRem()<myPlayer.getActive().attacksAvail.get(2).getApCost()){
+		attackTwo.setEnabled(false);
+	}
+	else{
+		attackTwo.setEnabled(true);
+	}
+	if(myPlayer.getActive().getApRem()<myPlayer.getActive().specialZero.getApCost()){
+		specialButton.setEnabled(false);
+	}
+	else{
+		specialButton.setEnabled(true);
+	}
+}
 }
 
 

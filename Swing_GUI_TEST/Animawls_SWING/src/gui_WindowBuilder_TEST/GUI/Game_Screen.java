@@ -230,12 +230,13 @@ if(inactive.getActive().getHpRem()<=0){
 promptSwitch();
 inactive.UI.updateAnimals();
 }
+
 active.hideUI();
 tmp=active;
 active=inactive;
 inactive=tmp;
 active.showUI();
-
+active.regenAp();
 }
 
 public void performSelected(){

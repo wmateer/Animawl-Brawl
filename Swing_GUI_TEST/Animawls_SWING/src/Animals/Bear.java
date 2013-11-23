@@ -23,13 +23,13 @@ public class Bear extends Animal {
 		expToLvl=1200;
 		hpTot=650;
 		hpRem=650;
-		apTot=110;
-		apRem=110;
+		apTot=90;
+		apRem=90;
 		att=100;
 		def=150;
 		evd=25;
 		poisoned=0;
-		
+		apRegen=8;
 		//set attack array for bear
 		attacksAvail=new ArrayList<Attack>();
 		attacksAvail.add(new Maul());
@@ -56,6 +56,7 @@ public class Bear extends Animal {
 		soundPath = "SOUNDS/PICK_SOUNDS/ShortBear_PickSound.wav";
 	}
 	public void useSpecial(Player inactive){
+		//very strong attack that also damages bear
 		int dmg= specialZero.useAttack(this, inactive.getActive());
 		this.subHpRem(dmg/2);
 

@@ -24,6 +24,7 @@ protected double att;	//animal's attack strength
 protected double def;	//animals defense strength
 protected double evd;	//animals evasiveness 
 protected int poisoned;  //determines if animal is poisoned
+protected int apRegen; //determens how much ap is regenerated a turn
 
 //lvl up statistics 
 protected double hpScaler;
@@ -262,6 +263,9 @@ public void subApRem(int amount){
 
 public void addApRem(int amount){
 	apRem=apRem+amount;	
+	if(apRem>apTot){
+		apRem=apTot;
+	}
 }
 
 public void setApRem(int ammount){
@@ -289,6 +293,15 @@ public int getPoisoned() {
 
 public void setPoisoned(int amount) {
 	poisoned = amount;
+}
+
+//for apRegen
+public int getApRegen(){
+	return apRegen;
+}
+
+public void setApRegen(int input){
+	apRegen=input;
 }
 
 //Stat Modifier 
@@ -359,8 +372,12 @@ public void modEvd(){
 public void useSpecial(Player inactive){
 	this.useSpecial(inactive);
 }
-
-
+//regan ap
+public void regen(){
+	double r = Math.random();
+	int ammount=(int)((apRegen/2)+((r*apRegen)/2));
+	addApRem(ammount);
+}
 
 
 }
