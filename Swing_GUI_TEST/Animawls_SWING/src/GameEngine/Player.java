@@ -355,4 +355,18 @@ public void regenAp(){
 	apBar.setValue((int) active.getApRem());
 }
 
+public void setEnabled(Boolean input){
+	if (input==false){
+	UI.setEnabledButtons(false);
+	apBar.setEnabled(false);
+	hpBar.setEnabled(false);
+	}
+	if(input==true){
+		UI.setEnabledButtons(true);
+		apBar.setEnabled(true);
+		hpBar.setEnabled(true);
+	}
+	
+}
+	
 }	

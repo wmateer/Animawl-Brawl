@@ -285,7 +285,24 @@ public void checkAp(){
 	else{
 		specialButton.setEnabled(true);
 	}
+}	
+public void setEnabledButtons(Boolean input){
+	if (input==false){
+		attackButton.setEnabled(false);
+		defendButton.setEnabled(false);
+		specialButton.setEnabled(false);
+		switchButton.setEnabled(false);
+
+	}
+	if (input==true){
+		attackButton.setEnabled(true);
+		defendButton.setEnabled(true);
+		specialButton.setEnabled(true);
+		switchButton.setEnabled(true);
+
+	}
 }
+
 }
 
 

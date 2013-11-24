@@ -27,7 +27,6 @@ public class Game_Screen extends JPanel {
 	private Player inactive;
 	private Player tmp;
 	private int round=0;
-	private int  play=1;
 	private int whoseTurn=0;
 	public String newprompt;
 	
@@ -38,14 +37,7 @@ public class Game_Screen extends JPanel {
 	
 
 	//TODO incorperate as variables in player class
-	private JLabel usernameZero;
-	private JLabel animalNameZero;
-	private JLabel animalZeroGraphic;
-	private JProgressBar apBar;
-	private JLabel userNameOne;
-	private JLabel animalNameOne;
-	private JLabel animalZeroOne;
-	private JProgressBar apBarr;
+
 
 	private BufferedImage backgroundPict;
 
@@ -69,23 +61,21 @@ public class Game_Screen extends JPanel {
 //----------------------------------
 	//intilize player objects	
 		
-		Bear Willis= new Bear("Willis");
-		Bear Frank = new Bear("Frank");
-		Bear Cindy = new Bear("Cindy");
-		
-		Bear Kyle = new Bear("Kyle");
-		Bear Mindy= new Bear("Mindy");
-		Bear Alex= new Bear("Alex");
+
+		Bull Kyle = new Bull("Kyle");
+		Bull Mindy= new Bull("Mindy");
+		Bull Alex= new Bull("Alex");
 		
 		
 		
 		final Player pZero = new Player(user1.getName(),user1.getAnimalAtIndex(0), user1.getAnimalAtIndex(1), user1.getAnimalAtIndex(2));
 		active = pZero;
-		pZero.setOpp(pOne);
+
 		final Player pOne = new Player("bob",Kyle, Mindy, Alex);
 		inactive=pOne;
-		pOne.setOpp(pZero);
-//---------------------------------------		
+		active.setOpp(inactive);
+		inactive.setOpp(active);
+	//---------------------------------------		
 	//test pop of for dead animal	
 		//animalDead pickAnimal= new animalDead(inactive);
 		//pickAnimal.setVisible(true);
@@ -226,10 +216,7 @@ if(active.checkLoss()==0){
 		return;
 }
 
-if(inactive.getActive().getHpRem()<=0){
-promptSwitch();
-inactive.UI.updateAnimals();
-}
+
 
 active.hideUI();
 tmp=active;
@@ -237,6 +224,12 @@ active=inactive;
 inactive=tmp;
 active.showUI();
 active.regenAp();
+
+if(active.getActive().getHpRem()<=0){
+promptSwitch();
+active.UI.updateAnimals();
+}
+
 }
 
 public void performSelected(){
@@ -325,7 +318,7 @@ public class confirmListner implements ActionListener {
 	}
 
 	public void promptSwitch(){
-		animalDead pickAnimal= new animalDead(inactive);
+		animalDead pickAnimal= new animalDead(active);
 		pickAnimal.setVisible(true);
 	}
 
