@@ -97,13 +97,15 @@ public class Game_Screen extends JPanel {
 		add(Ap);
 		
 		JLabel Hpr = new JLabel("HP");
+		Hpr.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		Hpr.setForeground(Color.RED);
-		Hpr.setBounds(650, 324, 22, 16);
+		Hpr.setBounds(650, 307, 34, 33);
 		add(Hpr);
 		
 		JLabel Apr = new JLabel("AP");
+		Apr.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		Apr.setForeground(Color.blue);
-		Apr.setBounds(650, 356, 22, 16);
+		Apr.setBounds(650, 339, 34, 33);
 		add(Apr);
 		
 		JLabel playAnimawl_title = new JLabel("BATTLE");
@@ -233,10 +235,6 @@ active.UI.updateAnimals();
 }
 
 public void performSelected(){
-	
-	
-	
-	
 		return;
 	}
 
