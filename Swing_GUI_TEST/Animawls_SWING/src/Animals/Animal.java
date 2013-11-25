@@ -39,11 +39,12 @@ protected double evdScaler;
 protected double evdBonus;
 //attacks unlocked
 public ArrayList<Attack> attacksAvail;
-//all attacks a type can have
-protected ArrayList<Attack> allAttacks;
+
 //attacks used in special
 public Attack specialZero;
 public Attack specialOne;
+public String specialDescription;
+
 Random rand= new Random();
 //PICTURE PATH
 public String imgPath;

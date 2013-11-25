@@ -55,6 +55,8 @@ public class Bat extends Animal {
 		imgPath = "IMAGES/CHAR_PICTS/Bat.jpg";
 		Description = "A STEALTHY NOTCTURNAL AIRBOURNE BEAST!!!";
 		soundPath = "SOUNDS/PICK_SOUNDS/ShortBat_PickSound.wav";
+		
+		specialDescription= "Drains your oppenets AP";
 	}
 	public void useSpecial(Player inactive){
 		//drains all opp's active's ap

@@ -56,6 +56,8 @@ public class Snake extends Animal {
 		imgPath = "IMAGES/CHAR_PICTS/Snake.jpg";
 		Description = "A SWEET LOVEABLE PLAYMATE, STILL WILL KILL YOU!!!";
 		soundPath = "SOUNDS/PICK_SOUNDS/ShortSnake_PickSound.wav";
+		specialDescription= "PLACE HOLDER";
+
 	}
 	public void useSpecial(Player inactive){
 			attacksAvail.get(1).useAttack(this, inactive.animalsCur.get(0));

@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import Animals.Animal;
+import Attacks.Attack;
 import GameEngine.Player;
 
 public class playerButtons extends ButtonGroup {
@@ -29,7 +31,10 @@ public class playerButtons extends ButtonGroup {
 	//player who buttons belong to
 	private Player myPlayer;
 	
+	
 public playerButtons(Player myPlayer){
+	ToolTipManager.sharedInstance().setInitialDelay(1500);
+	
 	this.myPlayer=myPlayer;
 	//create buttons and groups & give them their names & listners
 	attackButtons=new ButtonGroup();
@@ -49,6 +54,7 @@ public playerButtons(Player myPlayer){
 	});
 	
 	attackZero= new JRadioButton(myPlayer.getActive().attacksAvail.get(0).getName());
+	setAttackDescription(myPlayer.getActive().attacksAvail.get(0),attackZero);
 	attackButton.addActionListener(new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -59,6 +65,7 @@ public playerButtons(Player myPlayer){
 	});
 	
 	attackOne= new JRadioButton(myPlayer.getActive().attacksAvail.get(1).getName());
+	setAttackDescription(myPlayer.getActive().attacksAvail.get(1),attackOne);
 	attackOne.addActionListener(new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -69,6 +76,8 @@ public playerButtons(Player myPlayer){
 	});
 	
 	attackTwo= new JRadioButton(myPlayer.getActive().attacksAvail.get(2).getName());
+	setAttackDescription(myPlayer.getActive().attacksAvail.get(2),attackTwo);
+
 	attackTwo.addActionListener(new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -92,6 +101,7 @@ public playerButtons(Player myPlayer){
 		}
 	});
 	specialButton= new JRadioButton(myPlayer.getActive().specialZero.getName());
+	setSpecialDescription( myPlayer.getActive(), specialButton);
 	specialButton.addActionListener(new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -119,6 +129,7 @@ public playerButtons(Player myPlayer){
 		}
 	});
 	animalZero= new JRadioButton(myPlayer.animalsCur.get(0).getName());
+	setAnimalDescription(myPlayer.animalsCur.get(0), animalZero);
 	animalZero.addActionListener(new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -128,6 +139,7 @@ public playerButtons(Player myPlayer){
 		}
 	});
 	animalOne= new JRadioButton(myPlayer.animalsCur.get(1).getName());
+	setAnimalDescription(myPlayer.animalsCur.get(1), animalOne);
 	animalOne.addActionListener(new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -137,6 +149,7 @@ public playerButtons(Player myPlayer){
 		}
 	});
 	animalTwo= new JRadioButton(myPlayer.animalsCur.get(2).getName());
+	setAnimalDescription(myPlayer.animalsCur.get(2), animalTwo);
 	animalTwo.addActionListener(new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -204,6 +217,10 @@ public void showButtons(boolean input){
 		defendButton.setVisible(true);
 		specialButton.setVisible(true);
 		switchButton.setVisible(true);
+		setAnimalDescription(myPlayer.animalsCur.get(0), animalZero);
+		setAnimalDescription(myPlayer.animalsCur.get(1), animalOne);
+		setAnimalDescription(myPlayer.animalsCur.get(2), animalTwo);
+
 		showAttack(false);
 		showSwitch(false);
 		return;
@@ -228,9 +245,16 @@ public boolean  moveSelected(){
 
 public void updateAttacks(){
 	attackZero.setText(myPlayer.getActive().attacksAvail.get(0).getName());
+	setAttackDescription(myPlayer.getActive().attacksAvail.get(0),attackZero);
+	
 	attackOne.setText(myPlayer.getActive().attacksAvail.get(1).getName());
-	attackOne.setText(myPlayer.getActive().attacksAvail.get(2).getName());
+	setAttackDescription(myPlayer.getActive().attacksAvail.get(1),attackOne);
+	
+	attackTwo.setText(myPlayer.getActive().attacksAvail.get(2).getName());
+	setAttackDescription(myPlayer.getActive().attacksAvail.get(2),attackTwo);
+	
 	specialButton.setText(myPlayer.getActive().specialZero.getName());
+	setSpecialDescription( myPlayer.getActive(), specialButton);
 	}
 
 public void updateAnimals(){
@@ -301,6 +325,61 @@ public void setEnabledButtons(Boolean input){
 		switchButton.setEnabled(true);
 
 	}
+}
+
+public void setAttackDescription(Attack input, JRadioButton comp){
+	 String name;
+	 String dmg;
+	 String consist;
+	 String acc; 
+	 String heal;
+	 String poisenChance;
+	 String apCost;
+	 
+	//set up each line
+	name="Name: "+ input.getName();
+	apCost="Ap Cost: " + input.getApCost();
+	dmg= "Dmg: " + input.getDmg();
+	acc= "Acc: " + input.getAcc();
+	consist="Consist: " + input.getApCost();
+	poisenChance="Poisen: "+ input.getPoisonchance();
+	heal= "Heal: "+ input.getHeal();	
+	comp.setToolTipText("<html>"+name+"<br>"+apCost+"<br>"+dmg+"<br>"+acc+"<br>"+consist+"<br>"+poisenChance+"<br>"+heal+"</htl>");
+}
+
+public void setSpecialDescription(Animal input, JRadioButton comp){
+	 String name;
+	 String description;
+	 String apCost;
+	name="Name: "+ input.specialZero.getName();
+	apCost="Ap Cost: " + input.specialZero.getApCost();
+	description="Description: " + input.specialDescription;
+	comp.setToolTipText("<html>"+name+"<br>"+apCost+"<br>"+description+"</html>");
+
+}
+
+public void setAnimalDescription(Animal input, JRadioButton comp){
+	String type;
+	String name;
+	String lvl;	
+	String hp;	
+	String ap;	
+	String apRegen; 
+	String att;	
+    String def;	
+	String evd;	
+	String poisoned;  
+	type = "Type: " + input.type;
+	name="Name: "+ input.getName();
+	lvl= "Level: " + input.getLvl();
+	hp= "Hp: "+ input.getHpRem() + " / " +input.getHpTot();
+	ap= "Ap: " + input.getApRem() + " / " + input.getApTot();
+	apRegen= "Ap Regen: " + input.getApRegen();
+	att= "Att: " + input.getAtt();
+	def= "Def: " + input.getDef();
+	evd= "Evd: " + input.getEvd();
+	poisoned= "Poisened: " + input.getPoisoned();
+   comp.setToolTipText("<html>"+type+"<br>"+name+"<br>"+lvl+"<br>"+hp+"<br>"+ap+"<br>"+apRegen+"<br>"+att+"<br"+def+"<br>"+evd+"<br>"+poisoned+"</html>");
 }
 
 }

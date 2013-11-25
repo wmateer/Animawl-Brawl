@@ -54,6 +54,8 @@ public class Dog extends Animal {
 		imgPath = "IMAGES/CHAR_PICTS/Dog.jpg";
 		Description = "A LOVELY CORGI!!!  KILLS WITH CUTENESS";
 		soundPath = "SOUNDS/PICK_SOUNDS/ShortDog_PickSound.wav";
+		specialDescription= "Prance arround, healing all your animals";
+
 	}
 	public void useSpecial(Player inactive){
 		//Heals all your animals

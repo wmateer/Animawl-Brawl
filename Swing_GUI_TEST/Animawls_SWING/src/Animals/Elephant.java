@@ -54,6 +54,8 @@ public class Elephant extends Animal {
 		imgPath = "IMAGES/CHAR_PICTS/Elephant.jpg";
 		Description = "A BEAST CAPABLE OF REMEMBERING THINGS!!!  CAN ALSO TRAMPLE THINGS!!!";
 		soundPath = "SOUNDS/PICK_SOUNDS/ShortElephant_PickSound.wav";
+		specialDescription= "Suck life from your enemy";
+
 	}
 	public void useSpecial(Player inactive){
 		//hits damages opp and adds hp to elephant 

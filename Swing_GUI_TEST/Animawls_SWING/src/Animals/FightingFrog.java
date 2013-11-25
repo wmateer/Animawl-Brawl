@@ -55,6 +55,8 @@ public class FightingFrog extends Animal {
 		imgPath = "IMAGES/CHAR_PICTS/FightingFrog.jpg";
 		Description = "A DEMONIC FROG WISHING ONLY PESTILENCE AND DEATH TO EVERYONE!!!";
 		soundPath = "SOUNDS/PICK_SOUNDS/ShortFrog_PickSound.wav";
+		specialDescription= "Jab with the left, and swing with the right";
+
 	}
 	public void useSpecial( Player inactive){
 		//hits oppenent twice

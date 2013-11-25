@@ -53,6 +53,8 @@ public class Bird extends Animal {
 		imgPath = "IMAGES/CHAR_PICTS/Bird.jpg";
 		Description = "A HAPPY LITTLE BIRD. ABSOLUETELY USELESS";
 		soundPath = "SOUNDS/PICK_SOUNDS/ShortBird_PickSound.wav";
+		specialDescription= "Attack opp's weakest animal";
+
 	}
 	public void useSpecial(Player inactive){
 		//hits animal with least remaining health
