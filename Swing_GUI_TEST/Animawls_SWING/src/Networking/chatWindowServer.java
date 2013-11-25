@@ -29,6 +29,7 @@ public class chatWindowServer extends JFrame {
 
 		public chatWindowServer(User inZero, User inOne) {
 			this.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+			this.setTitle("Server");
 			this.setBounds(500, 200, 500, 600);
 			getContentPane().setLayout(null);
 
@@ -68,6 +69,7 @@ public class chatWindowServer extends JFrame {
 		    try {
 				ServerSocket myServerSocket = new ServerSocket(1234);
 				mySocket = myServerSocket.accept();
+				System.out.println("connection accepted");
 				out= new PrintWriter(mySocket.getOutputStream());
 				in= new Scanner(mySocket.getInputStream());
 				out.print(8);
@@ -77,7 +79,7 @@ public class chatWindowServer extends JFrame {
 				e.printStackTrace();
 			}
 			
-
+		    out.println("it worked!");
 			
 		}
 	public class submitListner implements ActionListener {

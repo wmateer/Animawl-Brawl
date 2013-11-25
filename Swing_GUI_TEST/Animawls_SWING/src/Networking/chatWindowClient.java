@@ -23,15 +23,16 @@ private User uZero;
 private User uOne;
 private JPanel content;
 private Socket mySocket;
-private PrintWriter out;
+private PrintWriter outWriter;
 private BufferedReader in;
 private BufferedReader stdIn;
 
 public chatWindowClient(User inZero, User inOne) {
 		this.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-		this.setBounds(500, 200, 1000, 600);
+		this.setBounds(500, 200, 500, 600);
+		this.setTitle("Client");
 		getContentPane().setLayout(null);
-
+		
 		uZero=inZero;
 		uOne=inOne;
 		//initialize variables
@@ -67,9 +68,11 @@ public chatWindowClient(User inZero, User inOne) {
 		
 		try {
 			mySocket= new Socket("localhost", 1234);
-			out= new PrintWriter(mySocket.getOutputStream());
+			outWriter= new PrintWriter(mySocket.getOutputStream());
 			in= new BufferedReader(new InputStreamReader(mySocket.getInputStream()));
 			stdIn= new BufferedReader(new InputStreamReader(System.in));
+			System.out.println("hello");
+
 		} catch (UnknownHostException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -77,6 +80,19 @@ public chatWindowClient(User inZero, User inOne) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		try {
+			String fromServer;
+			while((fromServer = in.readLine()) != null){
+			System.out.println(fromServer);
+
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+
 /*
 String serverInput;
 try {
