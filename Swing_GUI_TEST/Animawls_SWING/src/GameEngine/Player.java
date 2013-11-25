@@ -264,25 +264,25 @@ UI.showSwitch(false);
 
 public void placePzero(){
 	//place buttons for pZero in proper spot
-	UI.attackButton.setBounds(42, 269, 141, 23);
+	UI.attackButton.setBounds(42, 289, 141, 23);
 	UI.attackButton.setForeground(Color.white);
-	UI.attackZero.setBounds(84, 304, 141, 23);
+	UI.attackZero.setBounds(84, 324, 141, 23);
 	UI.attackZero.setForeground(Color.white);
-	UI.attackOne.setBounds(83, 339, 141, 23);
+	UI.attackOne.setBounds(83, 359, 141, 23);
 	UI.attackOne.setForeground(Color.white);
-	UI.attackTwo.setBounds(84, 374, 141, 23);
+	UI.attackTwo.setBounds(84, 394, 141, 23);
 	UI.attackTwo.setForeground(Color.white);
-	UI.specialButton.setBounds(42, 409, 141, 23);
+	UI.specialButton.setBounds(42, 429, 141, 23);
 	UI.specialButton.setForeground(Color.white);
-	UI.defendButton.setBounds(42, 459, 141, 23);
+	UI.defendButton.setBounds(42, 479, 141, 23);
 	UI.defendButton.setForeground(Color.white);
-	UI.switchButton.setBounds(42, 494, 141, 23);
+	UI.switchButton.setBounds(42, 514, 141, 23);
 	UI.switchButton.setForeground(Color.white);
-	UI.animalZero.setBounds(130, 506, 141, 23);
+	UI.animalZero.setBounds(130, 536, 141, 23);
 	UI.animalZero.setForeground(Color.white);
-	UI.animalOne.setBounds(130, 530, 141, 23);
+	UI.animalOne.setBounds(130, 560, 141, 23);
 	UI.animalOne.setForeground(Color.white);
-	UI.animalTwo.setBounds(130, 554, 141, 23);
+	UI.animalTwo.setBounds(130, 584, 141, 23);
 	UI.animalTwo.setForeground(Color.white);
 	//place other player objects
 	currentAnimalPic.setBounds(185, 126, 132, 126);
@@ -299,27 +299,46 @@ public void placePzero(){
 }
 public void placePone(){
 	//place buttons for pOne in proper spot
-	UI.attackButton.setBounds(712, 279, 141, 23);
+	UI.attackButton.setBounds(712, 289, 141, 23);
+	//UI.attackButton.setBackground(Color.gray);
+	//UI.attackButton.setOpaque(true);
 	UI.attackButton.setForeground(Color.white);
-	UI.attackZero.setBounds(753, 307, 141, 23);
+	UI.attackZero.setBounds(753, 327, 141, 23);
 	UI.attackZero.setForeground(Color.white);
-	UI.attackOne.setBounds(753, 339, 141, 23);
+	//UI.attackZero.setBackground(Color.gray);
+	//UI.attackZero.setOpaque(true);
+	UI.attackOne.setBounds(753, 359, 141, 23);
 	UI.attackOne.setForeground(Color.white);
-	UI.attackTwo.setBounds(753, 374, 141, 23);
+	//UI.attackOne.setBackground(Color.gray);
+	//UI.attackOne.setOpaque(true);
+	UI.attackTwo.setBounds(753, 394, 141, 23);
 	UI.attackTwo.setForeground(Color.white);
-	UI.specialButton.setBounds(712, 409, 141, 23);
+	//UI.attackTwo.setBackground(Color.gray);
+	//UI.attackTwo.setOpaque(true);
+	UI.specialButton.setBounds(712, 429, 141, 23);
 	UI.specialButton.setForeground(Color.white);
-	UI.defendButton.setBounds(712, 459, 141, 23);
+	//UI.specialButton.setBackground(Color.gray);
+	//UI.specialButton.setOpaque(true);	
+	UI.defendButton.setBounds(712, 479, 141, 23);
 	UI.defendButton.setForeground(Color.white);
-	UI.switchButton.setBounds(712, 494, 141, 23);
+	//UI.defendButton.setBackground(Color.gray);
+	//UI.defendButton.setOpaque(true);
+	UI.switchButton.setBounds(712, 514, 141, 23);
 	UI.switchButton.setForeground(Color.white);
-	UI.animalZero.setBounds(788, 506, 141, 23);
+	//UI.switchButton.setBackground(Color.gray);
+	//UI.switchButton.setOpaque(true);
+	UI.animalZero.setBounds(788, 536, 141, 23);
 	UI.animalZero.setForeground(Color.white);
-	UI.animalOne.setBounds(788, 530, 141, 23);
+	//UI.animalZero.setBackground(Color.gray);
+	//UI.animalZero.setOpaque(true);
+	UI.animalOne.setBounds(788, 560, 141, 23);
 	UI.animalOne.setForeground(Color.white);
-	UI.animalTwo.setBounds(788, 554, 141, 23);
+	//UI.attackOne.setBackground(Color.gray);
+	//UI.attackOne.setOpaque(true);
+	UI.animalTwo.setBounds(788, 584, 141, 23);
 	UI.animalTwo.setForeground(Color.white);
-
+	//UI.animalTwo.setBackground(Color.gray);
+	//UI.animalTwo.setOpaque(true);
 	//place other player objects for pOne
 	currentAnimalPic.setBounds(587, 126, 132, 126);
 	hpBar.setBounds(515, 324, 135, 20);
