@@ -47,7 +47,6 @@ public animalDead(Player input) {
 	this.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 	
 		this.setBounds(300, 200, 640, 480);
-		//this.setLayout(new BorderLayout(0, 0));
 		this.setResizable(false);
 		this.setBackground(Color.BLACK);
 		getContentPane().setLayout(null);
