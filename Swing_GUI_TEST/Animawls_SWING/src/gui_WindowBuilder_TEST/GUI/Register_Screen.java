@@ -78,7 +78,7 @@ public class Register_Screen extends JPanel {
 				newpassword2 = new String(passwordField_TWO.getPassword());
 				//LoadTable
 				Hashtable<String, User> data = new Hashtable<String,User>();
-				//data = LoadTable(data);
+				data = LoadTable(data);
 				register(newusername, newpassword1, newpassword2, data);
 				
 				//call register method

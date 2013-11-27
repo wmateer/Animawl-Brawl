@@ -33,27 +33,12 @@ public class Login_Screen extends JPanel {
 
 		parentFrame = masterFrame;
 		
-		parentFrame.setSize(450, 320);
 		setBackground(new Color(135, 206, 235));
 		setLayout(null);
 		
 		passwordField = new JPasswordField();
 		passwordField.setBounds(233, 167, 134, 28);
-		passwordField.addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				user = new String(userName_field.getText());
-				inpassword = new String(passwordField.getPassword());
-				Hashtable data = null;
-				data = LoadTable(data);
-				CheckLogin(user, inpassword, data);
-			
-			}
-			
-		});
 		add(passwordField);
-
 		
 		userName_field = new JTextField();
 		userName_field.setBounds(233, 127, 134, 28);
@@ -74,12 +59,11 @@ public class Login_Screen extends JPanel {
 		
 		JButton login_Button = new JButton("LOGIN");		
 		login_Button.addActionListener(new ActionListener() {
-		@Override
 		public void actionPerformed(ActionEvent e) {
 			
 			user = new String(userName_field.getText());
 			inpassword = new String(passwordField.getPassword());
-			Hashtable data = null;
+			Hashtable data = new Hashtable<String,User>();
 			data = LoadTable(data);
 			CheckLogin(user, inpassword, data);
 				
@@ -91,16 +75,10 @@ public class Login_Screen extends JPanel {
 /////////////// New User button actions		
 		JButton newUser_button = new JButton("NEW USER");
 		newUser_button.addActionListener(new ActionListener() {
-		@Override
 		public void actionPerformed(ActionEvent e) {
-				//REVIEW OLD LOGIN SCREEN FOR NEW USER HANDLING...SHOULD TAKE TO REGISTER SCREEN
-				//parentFrame.removeAll();
-				//parentFrame.setVisible(false);
+	
 				JPanel tmp_Screen = new Register_Screen(parentFrame);
-				
-		
 				parentFrame.setContentPane(tmp_Screen);
-				
 				parentFrame.setVisible(true);
 				parentFrame.setResizable(false);
 			}
@@ -112,8 +90,6 @@ public class Login_Screen extends JPanel {
 		title_Label.setFont(new Font("Mona Lisa Solid ITC TT", Font.PLAIN, 30));
 		title_Label.setBounds(66, 23, 318, 75);
 		add(title_Label);
-		
-		parentFrame.setLocationRelativeTo(null);
 	}
 		
 	
@@ -131,7 +107,7 @@ public class Login_Screen extends JPanel {
 				
 				if (data.containsKey(user) && password.equals(inpassword)){
 					JOptionPane.showMessageDialog(null, "Login successfull","Success", JOptionPane.INFORMATION_MESSAGE);
-					JPanel tmp_Screen = new MainMenu_Screen(parentFrame, (User) player);
+					JPanel tmp_Screen = new MainMenu_Screen(parentFrame,data.get(user) );
 					parentFrame.setContentPane(tmp_Screen);
 					parentFrame.setVisible(true);
 					parentFrame.setResizable(false);
@@ -178,8 +154,6 @@ public class Login_Screen extends JPanel {
 			e.printStackTrace();
 		}
 	}
-	
-	//parentFrame.setSize(450, 320);
 }
 
 
