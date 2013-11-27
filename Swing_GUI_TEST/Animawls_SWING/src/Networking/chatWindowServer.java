@@ -6,7 +6,9 @@ import javax.swing.*;
 
 import GameEngine.*;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.*;
 import java.util.Scanner;
@@ -23,7 +25,7 @@ public class chatWindowServer extends JFrame {
 	private Socket mySocket;
 	private ServerSocket myServerSocket;
 	private PrintWriter out;
-	private Scanner in;
+	private BufferedReader in;
 
 	
 
@@ -67,28 +69,32 @@ public class chatWindowServer extends JFrame {
 			
 	
 		    try {
-				ServerSocket myServerSocket = new ServerSocket(1234);
+			    myServerSocket = new ServerSocket(4444);
 				mySocket = myServerSocket.accept();
 				System.out.println("connection accepted");
-				out= new PrintWriter(mySocket.getOutputStream());
-				in= new Scanner(mySocket.getInputStream());
-				out.print(8);
-				
+				out= new PrintWriter(mySocket.getOutputStream(), true);
+				in= new BufferedReader(new InputStreamReader(mySocket.getInputStream()));
+				out.println("it worked\n");
+				int i=0;
+				while(i==0){
+				 if (in.ready()) {
+		        chatWindow.append((in.readLine())); // Read one line and output it
+				 }
+				}
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
-		    out.println("it worked!");
-			
+		
 		}
 	public class submitListner implements ActionListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 			String userIn= userInput.getText();
-			String toAdd= uZero.getName()+": "+ userIn+"\n";
+			String toAdd= "\n"+uZero.getName()+": "+ userIn+"\n";
 			userInput.setText("");
 			chatWindow.append(toAdd);
+			out.println(toAdd);
 			}
 			}
 }

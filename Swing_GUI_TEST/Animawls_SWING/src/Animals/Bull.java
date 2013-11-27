@@ -65,6 +65,7 @@ public class Bull extends Animal {
 		specialZero.useAttack(this, inactive.animalsCur.get(0));
 		specialZero.useAttack(this, inactive.animalsCur.get(1));
 		specialZero.useAttack(this, inactive.animalsCur.get(2));
+		this.addApRem(120);
 
 
 

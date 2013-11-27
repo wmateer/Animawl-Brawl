@@ -67,29 +67,32 @@ public chatWindowClient(User inZero, User inOne) {
 		
 		
 		try {
-			mySocket= new Socket("localhost", 1234);
-			outWriter= new PrintWriter(mySocket.getOutputStream());
+			mySocket= new Socket("localhost", 4444);
+			outWriter= new PrintWriter(mySocket.getOutputStream(),true);
 			in= new BufferedReader(new InputStreamReader(mySocket.getInputStream()));
 			stdIn= new BufferedReader(new InputStreamReader(System.in));
-			System.out.println("hello");
-
-		} catch (UnknownHostException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		try {
-			String fromServer;
-			while((fromServer = in.readLine()) != null){
-			System.out.println(fromServer);
-
+			
+			int i=0;
+			while(i==0){
+			 if (in.ready()) {
+	        chatWindow.append((in.readLine())); // Read one line and output it
+			 }
 			}
-		} catch (IOException e) {
+		/*
+			int i=0;
+			while(i==1){
+			try {
+					System.out.println(in.readLine());
+				
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			}
+			*/
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("it didnt work");
 		}
 		
 
@@ -111,9 +114,10 @@ public class submitListner implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 		String userIn= userInput.getText();
-		String toAdd= uZero.getName()+": "+ userIn+"\n";
+		String toAdd= "\n"+uZero.getName()+": "+ userIn+"\n";
 		userInput.setText("");
 		chatWindow.append(toAdd);
+		outWriter.println(toAdd);
 		}
 		}
 }
