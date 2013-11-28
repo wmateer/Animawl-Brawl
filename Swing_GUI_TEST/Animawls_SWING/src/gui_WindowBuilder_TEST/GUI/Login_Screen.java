@@ -4,7 +4,9 @@ import javax.swing.*;
 
 import GameEngine.User;
 
+import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
@@ -26,15 +28,20 @@ public class Login_Screen extends JPanel {
 
 	
 
-	/**
-	 * Create the panel.
-	 */
+
 	public Login_Screen(JFrame masterFrame) {
+		
 
 		parentFrame = masterFrame;
 		
+		parentFrame.setSize(450, 320);
 		setBackground(new Color(135, 206, 235));
 		setLayout(null);
+		
+		//Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+	//	setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+
+
 		
 		passwordField = new JPasswordField();
 		passwordField.setBounds(233, 167, 134, 28);

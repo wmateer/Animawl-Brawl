@@ -27,12 +27,7 @@ public class Title_Screen extends JPanel {
 	private JFrame parentFrame;
 	
 	public Title_Screen(JFrame masterFrame) {
-		/*addMouseWheelListener(new MouseWheelListener() {
-			public void mouseWheelMoved(MouseWheelEvent arg0) {
-				Random tmpTest = new Random();
-				setBackground(new Color(tmpTest.nextInt(256),tmpTest.nextInt(256),tmpTest.nextInt(256)));
-			}
-		});*/
+
 		addMouseListener(new MouseAdapter(){
 			@Override
 			public void mouseClicked(MouseEvent e){
@@ -41,6 +36,9 @@ public class Title_Screen extends JPanel {
 				tmp_Screen.setBorder(new EmptyBorder(5, 5, 5, 5));
 				tmp_Screen.setLayout(new BorderLayout(0, 0));
 				parentFrame.setContentPane(tmp_Screen);
+				Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+				parentFrame.setLocation(dim.width/2-parentFrame.getSize().width/2, dim.height/2-parentFrame.getSize().height/2);
+
 				
 				parentFrame.setVisible(true);
 				parentFrame.setResizable(false);
@@ -49,16 +47,8 @@ public class Title_Screen extends JPanel {
 			
 		});
 		setBackground(Color.gray);
-		//super();
-		//this.addMouseListener(new MouseAdapter() {
-			//@Override
-			//public void mouseClicked(MouseEvent arg0) {
-				//WHAT HAPPENS IF CLICKED, USE BUTTON FOR TIME BEING UP TO US
-			//}
-		//});
 		parentFrame = masterFrame;
 		
-		//setBackground(new Color(0, 191, 255));
 		setLayout(null);
 		
 		JLabel Title_Label = new JLabel("ANIMAWL BRAWL!!!");
@@ -82,37 +72,15 @@ public class Title_Screen extends JPanel {
 		PicturePlaceholder_Label.setIcon(new ImageIcon(Logo));
 		add(PicturePlaceholder_Label);
 		
-		JLabel lblClickAnywhereTo = new JLabel("Click anywhere to continue");
-		lblClickAnywhereTo.setHorizontalAlignment(SwingConstants.CENTER);
-		lblClickAnywhereTo.setBounds(252, 547, 395, 23);
-		add(lblClickAnywhereTo);
-		/*
-		JButton Placeholder_Button = new JButton("PLACEHOLDER");
-		Placeholder_Button.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				//IN CASE MOUSE ACTION DOES NOT WORK, USE THIS BUTTON AS PLACEHOLDER FOR GOING BETWEEN STATES
-				//parentFrame.setVisible(false);
-				//parentFrame.removeAll();
-				parentFrame.setVisible(false);
-				JPanel tmp_Screen = new Login_Screen(parentFrame);
-				tmp_Screen.setBorder(new EmptyBorder(5, 5, 5, 5));
-				tmp_Screen.setLayout(new BorderLayout(0, 0));
-				parentFrame.setContentPane(tmp_Screen);
-				
-				parentFrame.setVisible(true);
-				parentFrame.setResizable(false);
-			}
-		});
-		Placeholder_Button.setBounds(381, 533, 117, 29);
-		add(Placeholder_Button);
-		*/
+		JLabel clickanywhere = new JLabel("Click anywhere to continue");
+		clickanywhere.setHorizontalAlignment(SwingConstants.CENTER);
+		clickanywhere.setBounds(252, 547, 395, 23);
+		add(clickanywhere);
 
-		//parentFrame.pack();
-		//parentFrame.setSize(450, 320);
-		parentFrame.setLocationRelativeTo(null);
+
+
 		parentFrame.setSize(900, 600);
-		//parentFrame.setLocationRelativeTo(null);
+		parentFrame.setLocationRelativeTo(null);
 		parentFrame.setVisible(true);
 	}
 }

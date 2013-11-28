@@ -20,12 +20,9 @@ public class Register_Screen extends JPanel {
 	private String newusername;
 	private String newpassword1;
 	private String newpassword2;
-	//private static Hashtable data;
 	
 	
-	/**
-	 * Create the panel.
-	 */
+	
 	public Register_Screen(JFrame masterFrame) {
 	
 		setBackground(new Color(106, 90, 205));
@@ -81,12 +78,6 @@ public class Register_Screen extends JPanel {
 				data = LoadTable(data);
 				register(newusername, newpassword1, newpassword2, data);
 				
-				//call register method
-				/*JPanel tmp_Screen = new Login_Screen(parentFrame);
-				parentFrame.setContentPane(tmp_Screen);
-				parentFrame.setVisible(true);
-				parentFrame.setResizable(false);
-				*/
 			}
 		});
 		confirmNewUser_button.setBounds(47, 244, 157, 29);
@@ -98,8 +89,6 @@ public class Register_Screen extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				//CANCELS LOGIN, GOES BACK TO MAIN MENU
-				//parentFrame.removeAll();
-				//parentFrame.setVisible(false);
 				JPanel tmp_Screen = new Login_Screen(parentFrame);
 				parentFrame.setContentPane(tmp_Screen);
 				parentFrame.setVisible(true);
