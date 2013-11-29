@@ -32,14 +32,7 @@ public class animalDead extends JDialog {
 	public  JLabel AnimalPic2;
 
 public animalDead(Player input) {
-	/*
-	try {                
-		backgroundPict = ImageIO.read(new File("IMAGES/grim.jpeg"));
-	} 
-	catch (Exception ex) {
-	       ex.printStackTrace();
-	}
-*/
+
 	myPlayer=input;
 	window=this;
 	myPlayer.setEnabled(false);
@@ -151,11 +144,5 @@ public class twoListner implements ActionListener {
 	window.dispose();
 	}
 	}
-/*
-	@Override
-	protected void paintComponent(Graphics g) {
-		super.paintComponent(g);
-		g.drawImage(backgroundPict, 0, 0, null);            
-	}
-	*/
+
 }

@@ -91,6 +91,9 @@ public String getName(){
 	return name;	
 }
 
+public void setName(String animalName){
+	name = animalName;
+}
 //for LVL
 public double getLvl() {
 	return 	lvl;

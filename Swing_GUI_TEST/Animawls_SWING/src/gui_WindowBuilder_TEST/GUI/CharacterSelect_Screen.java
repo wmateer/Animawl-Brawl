@@ -3,8 +3,11 @@ package gui_WindowBuilder_TEST.GUI;
 //BUILT IN LIBRARIES
 import javax.imageio.ImageIO;
 import javax.swing.*;
+
 import java.awt.*;
+
 import javax.swing.event.*;
+
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.util.HashMap;
@@ -192,28 +195,36 @@ public class CharacterSelect_Screen extends JPanel {
 				
 				String tmp = (String) availCharChoices_List.getSelectedValue();
 				Animal tmpAnimal = TmpList.get(tmp);
-					
+				
+				
 				if(!tmpUser.HasChosenAlready(tmpAnimal) && hasChosenSomething){
-						if(tmpUser.getChosenSize()<3){
-							tmpUser.addToChosen(tmpAnimal);
+					String tmpname = tmpAnimal.getName();
+					
+						if(tmpUser.getChosenSize()<3){	
+							animalName nameWindow= new animalName(tmpAnimal);
+							nameWindow.setVisible(true);
+							tmpUser.addToChosen(tmpAnimal);						
 						}	
 						//if less than 3 animals already chosen, then repeat for another animal to choose.
 						if(tmpUser.getChosenSize()<3){
 							stopAnimalSoundPlayback();
+		
 							JPanel tmp_Screen = new CharacterSelect_Screen(parentFrame,tmpUser);
 							parentFrame.setContentPane(tmp_Screen);
 							parentFrame.setVisible(true);
 							parentFrame.setResizable(true);
+								
 						}
 						//if there are already 3chosen animals then it goes to next screen
 						//must choose 3 different animals at this point (can change later)
 						if(tmpUser.getChosenSize()==3){
 							stopAnimalSoundPlayback();
-							//JPanel tmp_Screen = new Game_Screen(parentFrame,tmpUser);
+			
 							JPanel tmp_Screen = new BattlegroundSelect_Screen(parentFrame,tmpUser);
 							parentFrame.setContentPane(tmp_Screen);
 							parentFrame.setVisible(true); 
 							parentFrame.setResizable(true);
+							
 						}
 				}
 				else{
@@ -221,6 +232,11 @@ public class CharacterSelect_Screen extends JPanel {
 				}
 			}
 		});
+		
+
+		
+		
+		
 		confirmCharChoice_Button.setBounds(582, 508, 290, 48);
 		add(confirmCharChoice_Button);
 		

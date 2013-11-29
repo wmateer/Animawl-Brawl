@@ -24,7 +24,7 @@ public class Login_Screen extends JPanel {
 	private JFrame parentFrame;
 	private String user;
 	private String inpassword;
-	//private static Hashtable data;
+	
 
 	
 
@@ -38,13 +38,24 @@ public class Login_Screen extends JPanel {
 		setBackground(new Color(135, 206, 235));
 		setLayout(null);
 		
-		//Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-	//	setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
 
 
 		
 		passwordField = new JPasswordField();
 		passwordField.setBounds(233, 167, 134, 28);
+		passwordField.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				user = new String(userName_field.getText());
+				inpassword = new String(passwordField.getPassword());
+				Hashtable data = null;
+				data = LoadTable(data);
+				CheckLogin(user, inpassword, data);
+			
+			}
+			
+		});
 		add(passwordField);
 		
 		userName_field = new JTextField();
