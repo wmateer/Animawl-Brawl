@@ -369,7 +369,7 @@ public void setAnimalDescription(Animal input, JRadioButton comp){
     String def;	
 	String evd;	
 	String poisoned;  
-	type = "Type: " + input.type;
+	type = "Type: " + input.getType();
 	name="Name: "+ input.getName();
 	lvl= "Level: " + input.getLvl();
 	hp= "Hp: "+ input.getHpRem() + " / " +input.getHpTot();

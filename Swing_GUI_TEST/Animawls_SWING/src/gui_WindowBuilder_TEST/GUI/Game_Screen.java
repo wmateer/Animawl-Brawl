@@ -9,14 +9,11 @@ import javax.swing.*;
 import Animals.*;
 import GameEngine.*;
 
-import java.awt.Font;
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import java.awt.*;
+import java.awt.event.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
+import java.util.Hashtable;
 
 
 public class Game_Screen extends JPanel {
@@ -34,7 +31,7 @@ public class Game_Screen extends JPanel {
 	private JLabel prompt;
 	private String text;
 	
-	
+	private Hashtable<String,User> dataLoadedFromFile;
 
 	//TODO incorperate as variables in player class
 
@@ -201,41 +198,51 @@ public class Game_Screen extends JPanel {
 
 
 public void endTurn(){
-if(whoseTurn==1){
-		round++;
-		whoseTurn=0;
-}
-	
-else if(whoseTurn==0){
-	whoseTurn++;
-}
-if(inactive.checkLoss()==0){
-	inactive.hideUI();
-	active.hideUI();
-	prompt.setText(active.getName()+" Wins!");
-	return;
-}
-if(active.checkLoss()==0){
+	if(whoseTurn==1){
+			round++;
+			whoseTurn=0;
+	}
+		
+	else if(whoseTurn==0){
+		whoseTurn++;
+	}
+	if(inactive.checkLoss()==0){
+		inactive.hideUI();
+		active.hideUI();
+		prompt.setText(active.getName()+" Wins!");
+		//GAME ENDS GO TO END GAME SCREEN?
+		//SAVE USER STATS
+		//HAVE USERS LEVEL UP CHARS
+		//dataLoadedFromFile = LoadTable();
+		
+		
+		
+		return;
+	}
+	if(active.checkLoss()==0){
 		inactive.hideUI();
 		active.hideUI();
 		prompt.setText(inactive.getName()+" Wins!");
+		//GAME ENDS GO TO END GAME SCREEN?
+		//SAVE USER STATS
+		//HAVE USERS LEVEL UP CHARS
+				
+		
+		
 		return;
-}
+	}
 
-
-
-active.hideUI();
-tmp=active;
-active=inactive;
-inactive=tmp;
-active.showUI();
-active.regenAp();
-
-if(active.getActive().getHpRem()<=0){
-promptSwitch();
-active.UI.updateAnimals();
-}
-
+	active.hideUI();
+	tmp=active;
+	active=inactive;
+	inactive=tmp;
+	active.showUI();
+	active.regenAp();
+	
+	if(active.getActive().getHpRem()<=0){
+	promptSwitch();
+	active.UI.updateAnimals();
+	}
 }
 
 public void performSelected(){
@@ -335,6 +342,30 @@ public class confirmListner implements ActionListener {
 		super.paintComponent(g);
 		g.drawImage(backgroundPict, 0, 0, null);            
 	}
+	
+	//USER SAVING
+	/*private Hashtable<String,User> LoadTable(){
+		try{ 
+			Hashtable<String,User> savedDataFromFile;
+			FileInputStream fileIn = new FileInputStream("Savefiles/Saved_users_passwords.ser");
+			ObjectInputStream in = new ObjectInputStream(fileIn);
+			Object objectIN = in.readObject();
+			if(objectIN instanceof Hashtable<?,?>){
+				savedDataFromFile = (Hashtable<String, User>)objectIN;
+			}
+			else{
+				savedDataFromFile = new Hashtable<String, User>();
+			}
+			in.close();
+			fileIn.close();
+			return savedDataFromFile;
+		}
+		catch(Exception ex){
+			ex.printStackTrace();
+			return new Hashtable<String,User>();
+		}
+		
+	}*/
 }
 
 		

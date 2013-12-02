@@ -2,6 +2,7 @@ package GameEngine;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import Animals.*;
 
 
@@ -13,8 +14,8 @@ private String password;
 
 //private HashMap<String, Animal> animalMap;
 //private HashMap<String, Animal> chosenAnimals;
-//private ArrayList<Animal> allAvailAnimalList;
 
+private HashMap<String, Animal> allAvailAnimalList;
 private ArrayList<Animal> chosenAnimals;
 private int wins;
 private int losses;
@@ -38,21 +39,20 @@ private int losses;
 		//chosenAnimals=new HashMap<String, Animal>();
 		
 		chosenAnimals=new ArrayList<Animal>();
-		//animalMap=new HashMap<String, Animal>();
+		allAvailAnimalList=new HashMap<String, Animal>();
 		
 		//allAvailAnimalList = new ArrayList<Animal>();
 		
+		
 		//IF ANIMAL MAP EMPTY NEED TO REPOPULATE IT LATER
-		/*
-		animalMap.put("Bear", new Bear("Bear"));
-		animalMap.put("Bird", new Bird("Bird"));
-		animalMap.put("Bat", new Bat("Bat"));
-		animalMap.put("Bull", new Bull("Bull"));
-		animalMap.put("Dog", new Dog("Dog"));
-		animalMap.put("Elephant", new Elephant("Elephant"));
-		animalMap.put("Fighting Frog", new FightingFrog("FightingFrog"));
-		animalMap.put("Snake", new Snake("Snake"));
-		*/
+		allAvailAnimalList.put("Bear", new Bear("Bear"));
+		allAvailAnimalList.put("Bird", new Bird("Bird"));
+		allAvailAnimalList.put("Bat", new Bat("Bat"));
+		allAvailAnimalList.put("Bull", new Bull("Bull"));
+		allAvailAnimalList.put("Dog", new Dog("Dog"));
+		allAvailAnimalList.put("Elephant", new Elephant("Elephant"));
+		allAvailAnimalList.put("Fighting Frog", new FightingFrog("FightingFrog"));
+		allAvailAnimalList.put("Snake", new Snake("Snake"));
 	}
 	
 	
@@ -90,10 +90,9 @@ private int losses;
 	/*public void addToChosen(String name, Animal chosenAnimal){
 		chosenAnimals.put(name, chosenAnimal);
 	}*/
-	/*public HashMap<String,Animal> getSavedAnimals(){
-		return animalMap;
+	public HashMap<String,Animal> getSavedAnimals(){
+		return allAvailAnimalList;
 	}
-	*/
 	public int getWins() {
 		return wins;
 	}

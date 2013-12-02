@@ -2,13 +2,14 @@ package Attacks;
 
 //import Animal;
 
+import java.io.Serializable;
 import java.util.Random;
 
 import Animals.Animal;
 
 
 //generalized class for all animawl attacks
-public class Attack {
+public class Attack implements Serializable{
 
 //variables for all attacks
 	public String name;

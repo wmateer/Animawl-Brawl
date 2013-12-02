@@ -126,7 +126,7 @@ public class CharacterSelect_Screen extends JPanel {
 		//Set up list to show available character choices for the user.
 		DefaultListModel listModel = new DefaultListModel();
 		//Set up the available characters
-		Choose_Lister_Passer();
+		Choose_Lister_Passer(tmpUser);
 		
 		//iterate to add elements to the visual list
 		for(String key : TmpList.keySet()){
@@ -196,7 +196,6 @@ public class CharacterSelect_Screen extends JPanel {
 				String tmp = (String) availCharChoices_List.getSelectedValue();
 				Animal tmpAnimal = TmpList.get(tmp);
 				
-				
 				if(!tmpUser.HasChosenAlready(tmpAnimal) && hasChosenSomething){
 					String tmpname = tmpAnimal.getName();
 					
@@ -264,16 +263,31 @@ public class CharacterSelect_Screen extends JPanel {
 		Animal3_AREA.setBounds(172, 131, 73, 16);
 		add(Animal3_AREA);
 		
+		JTextArea AnimalNameONE_AREA = new JTextArea();
+		AnimalNameONE_AREA.setBounds(286, 77, 74, 16);
+		add(AnimalNameONE_AREA);
+		
+		JTextArea AnimalNameTWO_AREA = new JTextArea();
+		AnimalNameTWO_AREA.setBounds(286, 103, 74, 16);
+		add(AnimalNameTWO_AREA);
+		
+		JTextArea AnimalNameTHREE_AREA = new JTextArea();
+		AnimalNameTHREE_AREA.setBounds(286, 131, 74, 16);
+		add(AnimalNameTHREE_AREA);
+		
 		
 			
 		if(tmpUser.getChosenSize()>=1){
-			Animal1_AREA.setText(tmpUser.getAnimalAtIndex(0).getName());
+			Animal1_AREA.setText(tmpUser.getAnimalAtIndex(0).getType());
+			AnimalNameONE_AREA.setText(tmpUser.getAnimalAtIndex(0).getName());
 		}
 		if(tmpUser.getChosenSize()>=2){
-			Animal2_AREA.setText(tmpUser.getAnimalAtIndex(1).getName());
+			Animal2_AREA.setText(tmpUser.getAnimalAtIndex(1).getType());
+			AnimalNameTWO_AREA.setText(tmpUser.getAnimalAtIndex(1).getName());
 		}
 		if(tmpUser.getChosenSize()==3){
-			Animal3_AREA.setText(tmpUser.getAnimalAtIndex(2).getName());
+			Animal3_AREA.setText(tmpUser.getAnimalAtIndex(2).getType());
+			AnimalNameTHREE_AREA.setText(tmpUser.getAnimalAtIndex(2).getName());
 		}
 		
 		parentFrame.setSize(900, 600);
@@ -281,17 +295,19 @@ public class CharacterSelect_Screen extends JPanel {
 	}	
 		
 	//public HashMap <String,Animal> Choose_Lister_Passer() {
-	public void Choose_Lister_Passer() {
+	public void Choose_Lister_Passer(User user) {
 		//must be updated when new animawls are to be added
+		//SHOULD BE PASSED USER IN
 		TmpList = new HashMap<String,Animal>();
-		TmpList.put("Bear", new Bear("Bear"));
-		TmpList.put("Bird", new Bird("Bird"));
-		TmpList.put("Bat", new Bat("Bat"));
-		TmpList.put("Bull", new Bull("Bull"));
-		TmpList.put("Dog", new Dog("Dog"));
-		TmpList.put("Elephant", new Elephant("Elephant"));
-		TmpList.put("Fighting Frog", new FightingFrog("FightingFrog"));
-		TmpList.put("Snake", new Snake("Snake"));
+		TmpList.putAll(user.getSavedAnimals());
+		/*TmpList.put("Bear", new Bear("Roger"));
+		TmpList.put("Bird", new Bird("Jemaine"));
+		TmpList.put("Bat", new Bat("Bruce"));
+		TmpList.put("Bull", new Bull("Silvia"));
+		TmpList.put("Dog", new Dog("Doge"));
+		TmpList.put("Elephant", new Elephant("Samwise"));
+		TmpList.put("Fighting Frog", new FightingFrog("BattleToad"));
+		TmpList.put("Snake", new Snake("Stryla"));*/
 	}
 	
 	public void playAnimalSound(String inputPath){

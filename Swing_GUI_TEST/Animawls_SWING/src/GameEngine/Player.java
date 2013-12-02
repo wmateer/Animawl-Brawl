@@ -135,7 +135,7 @@ public Animal chooseAnimal() {
 		
 		System.out.print(animalNumb);
 		System.out.print(": ");
-		System.out.print((animalsAvail.get(animalNumb)).type);
+		System.out.print((animalsAvail.get(animalNumb)).getType());
 		System.out.print(", ");
 		animalNumb++;
 	}
