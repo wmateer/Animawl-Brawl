@@ -267,8 +267,9 @@ public class CharacterSelect_Screen extends JPanel {
 							parentFrame.setVisible(true); 
 							parentFrame.setResizable(true);
 							}
-							if(Animal2_AREA.getText().equals(requestName1.getText()))
+							if(!Animal2_AREA.getText().equals(requestName1.getText())){
 							setName1.setVisible(false);
+							}
 							Animal3_AREA.setText(tmpUser.getAnimalAtIndex(2).getType());
 							requestName2.setText(tmpUser.getAnimalAtIndex(2).getName());
 							if( Animal3_AREA.getText().equals(requestName2.getText())){
@@ -344,6 +345,10 @@ public class CharacterSelect_Screen extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				tmpUser.getChosen().get(0).setName(requestName0.getText());
 				requestName0.setText(tmpUser.getAnimalAtIndex(0).getName());
+				
+				if(Animal1_AREA.getText().equals(requestName0.getText())){
+					
+				}
 				
 			}
 			
