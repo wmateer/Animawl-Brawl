@@ -21,11 +21,14 @@ import java.io.IOException;
 
 public class Title_Screen extends JPanel {
 
-	/**
-	 * Create the panel.
-	 */
 	private MusicFrame parentFrame;
 	
+	/* Class Constructor Creates the title Screen of the Animawl Brawl Game. It displays the Title picture, and is bypassed by 
+	 * clicking anywhere on the screen.
+	 * <p>
+	 * Will Be invoked from the INIT_GUI.java class.
+	 * @param masterFrame a MusicFrame that is passed from each panel to the next.
+	 */
 	public Title_Screen(MusicFrame masterFrame) {
 
 		addMouseListener(new MouseAdapter(){
@@ -38,8 +41,6 @@ public class Title_Screen extends JPanel {
 				parentFrame.setContentPane(tmp_Screen);
 				Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 				parentFrame.setLocation(dim.width/2-parentFrame.getSize().width/2, dim.height/2-parentFrame.getSize().height/2);
-
-				
 				parentFrame.setVisible(true);
 				parentFrame.setResizable(false);
 				

@@ -19,14 +19,9 @@ import Sound.Sound_Playback;
 
 public class BattlegroundSelect_Screen extends JPanel {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private String currentBattlegroundChoice = "NONE";
-	/**
-	 * Create the panel.
-	 */
+	
 	private MusicFrame parentFrame;
 	private JLabel BattlegroundONE_Picture;
 	private JLabel BattlegroundTWO_Picture;
@@ -35,12 +30,17 @@ public class BattlegroundSelect_Screen extends JPanel {
 	private Sound_Playback ForestSound = new Sound_Playback("SOUNDS/PICK_SOUNDS/ShortForest_Sound.wav");
 	private Sound_Playback VolcanoSound = new Sound_Playback("SOUNDS/PICK_SOUNDS/ShortVolcano_Sound.wav");
 	private Sound_Playback SnowstormSound = new Sound_Playback("SOUNDS/PICK_SOUNDS/ShortSnowstorm_Sound.wav");
-	//private Sound_Playback BattlegroundSound;
+	
 	private Boolean ForestStart = false;
 	private Boolean VolcanoStart = false;
 	private Boolean SnowstormStart = false;
 	
-	
+	/**
+	 * The Constructor for the Battle screen.  Takes the MusicFrame to load into as well as the User to save.
+	 * Displays Battleground choices to the user and waits for the choice.
+	 * @param masterFrame The passed MusicFrame that is used to display the panel data.
+	 * @param currentUser The user that is passed to the Game_Screen, and later saved.
+	 */
 	public BattlegroundSelect_Screen(MusicFrame masterFrame,User currentUser) {
 		setBackground(new Color(218, 165, 32));
 		setLayout(null);
@@ -71,7 +71,6 @@ public class BattlegroundSelect_Screen extends JPanel {
 					ex.printStackTrace();
 				}
 				//PLAY PICK SOUND//
-				//BattlegroundSound = new Sound_Playback("SOUNDS/PICK_SOUNDS/ShortForest_Sound.wav");
 				stopAllSound();
 				ForestSound.play();
 				ForestStart = true;
@@ -101,8 +100,6 @@ public class BattlegroundSelect_Screen extends JPanel {
 					ex.printStackTrace();
 				}
 				//PLAY PICK SOUND//
-				//BattlegroundSound = new Sound_Playback("SOUNDS/PICK_SOUNDS/ShortVolcano_Sound.wav");
-				//BattlegroundSound.play();
 				stopAllSound();
 				VolcanoSound.play();
 				VolcanoStart = true;
@@ -133,8 +130,6 @@ public class BattlegroundSelect_Screen extends JPanel {
 					ex.printStackTrace();
 				}
 				//PLAY PICK SOUND//
-				//BattlegroundSound = new Sound_Playback("SOUNDS/PICK_SOUNDS/ShortSnowstorm_Sound.wav");
-				//BattlegroundSound.play();
 				stopAllSound();
 				SnowstormSound.play();
 				SnowstormStart = true;
@@ -149,21 +144,6 @@ public class BattlegroundSelect_Screen extends JPanel {
 		
 		setImagesAllBW();
 		
-		//Try catch to retrieve images
-		/*try{
-			//SET CHOOSE PICTURE
-			BufferedImage BattlePicture = ImageIO.read(new File("IMAGES/BATTLEGROUND_PICTS/forestSmallBW.jpg"));
-			BattlegroundONE_Picture.setIcon(new ImageIcon(BattlePicture));
-			//SET CHOOSE PICTURE 2
-			BattlePicture = ImageIO.read(new File("IMAGES/BATTLEGROUND_PICTS/volcanoSmallBW.jpg"));
-			BattlegroundTWO_Picture.setIcon(new ImageIcon(BattlePicture));
-			//SET CHOOSE PICTURE 3
-			BattlePicture = ImageIO.read(new File("IMAGES/BATTLEGROUND_PICTS/snowstormSmallBW.jpg"));
-			BattlegroundTHREE_Picture.setIcon(new ImageIcon(BattlePicture));
-		}
-		catch(Exception ex){
-			ex.printStackTrace();
-		}*/
 		//BUTTON DEFINITIONS//
 		
 		//CONFIRM BUTTON - CHECKS SELECTION, AND MOVES TO GAME SCREEN
@@ -185,61 +165,7 @@ public class BattlegroundSelect_Screen extends JPanel {
 		});
 		ConfirmChoice_Button.setBounds(305, 502, 289, 62);
 		add(ConfirmChoice_Button);
-		/*
-		//FOREST BUTTON - CHANGES CURRENT CHOICE TO FOREST
-		JButton ForestButton = new JButton("FOREST");
-		ForestButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				currentBattlegroundChoice = "IMAGES/BATTLEGROUND_PICTS/forestBig.jpg";
-				setImagesAllBW();
-				try{
-					BufferedImage BattlePicture = ImageIO.read(new File("IMAGES/BATTLEGROUND_PICTS/forestSmall.jpg"));
-					BattlegroundONE_Picture.setIcon(new ImageIcon(BattlePicture));
-				}
-				catch(Exception ex){
-					ex.printStackTrace();
-				}
-			}
-		});
-		ForestButton.setBounds(113, 431, 117, 29);
-		add(ForestButton);
-
-		//VOLCANO BUTTON - CHANGES CURRENT CHOICE TO VOLCANO
-		JButton VolcanoButton = new JButton("VOLCANO");
-		VolcanoButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				currentBattlegroundChoice = "IMAGES/BATTLEGROUND_PICTS/volcanoBig.jpg";
-				setImagesAllBW();
-				try{
-					BufferedImage BattlePicture = ImageIO.read(new File("IMAGES/BATTLEGROUND_PICTS/volcanoSmall.jpg"));
-					BattlegroundTWO_Picture.setIcon(new ImageIcon(BattlePicture));
-				}
-				catch(Exception ex){
-					ex.printStackTrace();
-				}
-			}
-		});
-		VolcanoButton.setBounds(391, 431, 117, 29);
-		add(VolcanoButton);
 		
-		//SNOWSTORM BUTTON - CHANGES CURRENT CHOICE TO SNOWSTORM
-		JButton SnowstormButton = new JButton("SNOWSTORM");
-		SnowstormButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				currentBattlegroundChoice = "IMAGES/BATTLEGROUND_PICTS/snowstormBig.jpg";
-				setImagesAllBW();
-				try{
-					BufferedImage BattlePicture = ImageIO.read(new File("IMAGES/BATTLEGROUND_PICTS/snowstormSmall.jpg"));
-					BattlegroundTHREE_Picture.setIcon(new ImageIcon(BattlePicture));
-				}
-				catch(Exception ex){
-					ex.printStackTrace();
-				}
-			}
-		});
-		SnowstormButton.setBounds(680, 431, 117, 29);
-		add(SnowstormButton);
-		*/
 		JButton whiteDefaultBackground_Button = new JButton("WHITE DEFAULT FOR TESTING");
 		whiteDefaultBackground_Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -250,12 +176,9 @@ public class BattlegroundSelect_Screen extends JPanel {
 		whiteDefaultBackground_Button.setBounds(639, 519, 237, 29);
 		add(whiteDefaultBackground_Button);
 		
-
-		
 		parentFrame.setSize(900,600);
-
 	}
-	
+	//SETS ALL THE IMAGES TO BLACK AND WHITE BY LOADING DIFF IMAGES. //PRIVATE METHOD
 	private void setImagesAllBW(){
 		try{
 			//SET CHOOSE PICTURE
@@ -273,6 +196,7 @@ public class BattlegroundSelect_Screen extends JPanel {
 		}
 	}
 	
+	//MEHTOD THAT STOPS ALL THE ACTIVE SOUNDS //PRIVATE
 	private void stopAllSound(){
 		if(ForestStart == true){
 			ForestSound.stop();

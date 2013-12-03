@@ -22,7 +22,11 @@ public class Register_Screen extends JPanel {
 	private String newpassword2;
 	
 	
-	
+	/** 
+	 * The constructor, which takes in the passed MusicFrame to load the panel data. 
+	 * 
+	 * @param masterFrame The passed MusicFrame that is used to initialize the panel.
+	 */
 	public Register_Screen(MusicFrame masterFrame) {
 	
 		setBackground(new Color(106, 90, 205));
@@ -101,7 +105,16 @@ public class Register_Screen extends JPanel {
 		
 
 	}
-// register() --------------------------------	
+
+	/** 
+	 * The registration function which takes in the entered user data and checks whether they are useable.
+	 * Will let the user know if the requested username/password combination already exists. 
+	 * 
+	 * @param newusername The username requested by the current user.  Must be unique in the .ser file.
+	 * @param newpassword1 The password requested by the user, must match the second password.
+	 * @param newpassword2 The password requested by the user, must match the first password.
+	 * @param data The hashtable that was created to store the saved data from the .ser file.
+	 */
 	public void register(String newusername, String newpassword1, String newpassword2, Hashtable<String, User> data)
 	{
 		//empty strings check
@@ -131,7 +144,7 @@ public class Register_Screen extends JPanel {
 			
 	}
 	
-//Saves new Users ---------------------
+//Saves new Users ---------------------//PRIVATE METHOD//
 	private void SaveNewUser(String newusername, String newpassword, Hashtable<String, User> data)
 	{
 	
@@ -152,7 +165,7 @@ public class Register_Screen extends JPanel {
 	}
 	}
 	
-// Loads the .ser file into the hash table
+// Loads the .ser file into the hash table//PRIVATE METHOD
 	private static Hashtable<String, User> LoadTable(Hashtable<String, User> data){
 		
 		try{
@@ -176,6 +189,7 @@ public class Register_Screen extends JPanel {
 		
 	}
 	
+//Function to make the .ser file.  //PRIVATE METHOD
 	private static void makefile(){
 		try{
 			FileOutputStream fileOut = new FileOutputStream("Savefiles/Saved_users_passwords.ser");
@@ -185,7 +199,7 @@ public class Register_Screen extends JPanel {
 		}
 	}
 
-	//check for existing users
+	//check for existing users //PRIVATE
 	private static boolean checkExisting(String newusername, Hashtable<String, User> data)
 	{	
 		if ((data.containsKey(newusername))){
