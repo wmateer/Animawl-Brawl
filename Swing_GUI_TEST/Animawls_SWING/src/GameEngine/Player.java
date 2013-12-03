@@ -15,7 +15,8 @@ import java.io.*;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-public class Player {
+public class Player implements Serializable {
+	private static final long serialVersionUID = 2722041087287975845L;
 	protected String name;
 	protected Animal active;
 	protected Player opp;
@@ -28,7 +29,7 @@ public class Player {
 	public playerButtons UI;
 	public JLabel animalName;
 	public JLabel currentAnimalPic;
-	public BufferedImage animalPicture;
+	transient public BufferedImage animalPicture;
 	public JProgressBar hpBar;
 	public JProgressBar apBar;
 	
@@ -300,46 +301,25 @@ public void placePzero(){
 public void placePone(){
 	//place buttons for pOne in proper spot
 	UI.attackButton.setBounds(712, 289, 141, 23);
-	//UI.attackButton.setBackground(Color.gray);
-	//UI.attackButton.setOpaque(true);
 	UI.attackButton.setForeground(Color.white);
 	UI.attackZero.setBounds(753, 327, 141, 23);
 	UI.attackZero.setForeground(Color.white);
-	//UI.attackZero.setBackground(Color.gray);
-	//UI.attackZero.setOpaque(true);
 	UI.attackOne.setBounds(753, 359, 141, 23);
 	UI.attackOne.setForeground(Color.white);
-	//UI.attackOne.setBackground(Color.gray);
-	//UI.attackOne.setOpaque(true);
 	UI.attackTwo.setBounds(753, 394, 141, 23);
 	UI.attackTwo.setForeground(Color.white);
-	//UI.attackTwo.setBackground(Color.gray);
-	//UI.attackTwo.setOpaque(true);
 	UI.specialButton.setBounds(712, 429, 141, 23);
 	UI.specialButton.setForeground(Color.white);
-	//UI.specialButton.setBackground(Color.gray);
-	//UI.specialButton.setOpaque(true);	
 	UI.defendButton.setBounds(712, 479, 141, 23);
 	UI.defendButton.setForeground(Color.white);
-	//UI.defendButton.setBackground(Color.gray);
-	//UI.defendButton.setOpaque(true);
 	UI.switchButton.setBounds(712, 514, 141, 23);
 	UI.switchButton.setForeground(Color.white);
-	//UI.switchButton.setBackground(Color.gray);
-	//UI.switchButton.setOpaque(true);
 	UI.animalZero.setBounds(788, 536, 141, 23);
 	UI.animalZero.setForeground(Color.white);
-	//UI.animalZero.setBackground(Color.gray);
-	//UI.animalZero.setOpaque(true);
 	UI.animalOne.setBounds(788, 560, 141, 23);
 	UI.animalOne.setForeground(Color.white);
-	//UI.attackOne.setBackground(Color.gray);
-	//UI.attackOne.setOpaque(true);
 	UI.animalTwo.setBounds(788, 584, 141, 23);
 	UI.animalTwo.setForeground(Color.white);
-	//UI.animalTwo.setBackground(Color.gray);
-	//UI.animalTwo.setOpaque(true);
-	//place other player objects for pOne
 	currentAnimalPic.setBounds(587, 126, 132, 126);
 	hpBar.setBounds(515, 324, 135, 20);
 	apBar.setBounds(515, 352, 135, 20);
@@ -367,6 +347,12 @@ public void setEnabled(Boolean input){
 		hpBar.setEnabled(true);
 	}
 	
+}
+public void updateInfo(){
+	UI.checkAp();
+	UI.updateAnimals();
+	hpBar.setValue((int)active.getHpRem());
+	apBar.setValue((int)active.getApRem());
 }
 	
 }	
