@@ -2,6 +2,7 @@ package gui_WindowBuilder_TEST.GUI;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.Serializable;
 
 import javax.swing.*;
 
@@ -9,7 +10,7 @@ import Animals.Animal;
 import Attacks.Attack;
 import GameEngine.Player;
 
-public class playerButtons extends ButtonGroup {
+public class playerButtons extends ButtonGroup implements Serializable{
 	//main buttons
 	public JRadioButton attackButton;
 	public JRadioButton defendButton;

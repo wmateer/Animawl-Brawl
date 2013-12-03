@@ -25,7 +25,7 @@ public class MusicFrame extends JFrame {
 	public void StartMusic(int LoopTimes){
 		TitleThemeSound = null;
 		try{
-			File inputFile = new File("SOUNDS/TITLE_MUSIC/SpeedyThemeTemp_TitleSong.wav");
+			File inputFile = new File("SOUNDS/TITLE_MUSIC/LongThemeTemp_TitleSong.wav");
 			AudioInputStream inputStream = AudioSystem.getAudioInputStream(inputFile);
 			TitleThemeSound = new BigClip();
 	        TitleThemeSound.open(inputStream);
@@ -39,7 +39,7 @@ public class MusicFrame extends JFrame {
 	public void LoopCont(){
 		TitleThemeSound = null;
 		try{
-			File inputFile = new File("SOUNDS/TITLE_MUSIC/SpeedyThemeTemp_TitleSong.wav");
+			File inputFile = new File("SOUNDS/TITLE_MUSIC/LongThemeTemp_TitleSong.wav");
 			AudioInputStream inputStream = AudioSystem.getAudioInputStream(inputFile);
 			TitleThemeSound = new BigClip();
 	        TitleThemeSound.open(inputStream);

@@ -9,15 +9,14 @@ import GameEngine.User;
 
 public class MainMenu_Screen extends JPanel {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
-	/**
-	 * Create the panel.
-	 */
 	private MusicFrame parentFrame;
 	
+	/**
+	 * The Constructor, which takes in the MusicFrame and the user and displays the MainMenu_Screen
+	 * @param masterFrame The passed in MusicFrame that is used to display all the panel data.
+	 * @param currentUser The passed in User which is used to save and pass on to the next screen.
+	 */
 	public MainMenu_Screen(MusicFrame masterFrame,User currentUser) {
 		setBackground(new Color(218, 165, 32));
 		setLayout(null);
@@ -80,12 +79,10 @@ public class MainMenu_Screen extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				//GOES TO OPTIONS PAGE??? MAYBE SOUND OR VISUAL OR WINDOW SIZE ADJUSTMENT, OR ACCT REMOVAL???
-				//DOES NOTHIHNG *******
 			}
 		});
 		options_Button.setBounds(275, 249, 117, 29);
 		add(options_Button);
-
 	}
 
 }

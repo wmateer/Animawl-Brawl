@@ -25,26 +25,21 @@ public class Login_Screen extends JPanel {
 	private String user;
 	private String inpassword;
 	
-
+	/** 
+	 * The constructor, which uses the passed MusicFrame to load the panel data. 
+	 * 
+	 * @param masterFrame The passed in MusicFrame that loads the panel.
+	 */
 	
-
-
 	public Login_Screen(MusicFrame masterFrame) {
-		
-
 		parentFrame = masterFrame;
-		
 		parentFrame.setSize(450, 320);
 		setBackground(new Color(135, 206, 235));
 		setLayout(null);
 		
-
-
-		
 		passwordField = new JPasswordField();
 		passwordField.setBounds(233, 167, 134, 28);
 		passwordField.addActionListener(new ActionListener(){
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				user = new String(userName_field.getText());
@@ -52,7 +47,6 @@ public class Login_Screen extends JPanel {
 				Hashtable data = null;
 				data = LoadTable(data);
 				CheckLogin(user, inpassword, data);
-			
 			}
 			
 		});
@@ -111,38 +105,49 @@ public class Login_Screen extends JPanel {
 	}
 		
 	
-//////Checklogin------------------------
-		public void CheckLogin(String user, String inpassword, Hashtable<String,User> data){
-			if (user.isEmpty() || inpassword.isEmpty()){
-				JOptionPane.showMessageDialog(null, "One or more boxes are empty","Error", JOptionPane.ERROR_MESSAGE);
-				return;
-			}
-			
-			if(data.containsKey(user)){
-				
-				Object player = data.get(user);
-				String password = ((User) player).getPassword();
-				
-				if (data.containsKey(user) && password.equals(inpassword)){
-					JOptionPane.showMessageDialog(null, "Login successfull","Success", JOptionPane.INFORMATION_MESSAGE);
-					JPanel tmp_Screen = new MainMenu_Screen(parentFrame,data.get(user) );
-					parentFrame.setContentPane(tmp_Screen);
-					parentFrame.setVisible(true);
-					parentFrame.setResizable(false);
-				}else{
-					JOptionPane.showMessageDialog(null, "incorrect password","Error", JOptionPane.ERROR_MESSAGE);
-				}
-				
-			}else{
-				JOptionPane.showMessageDialog(null, "Username does not exist","Error", JOptionPane.ERROR_MESSAGE);
-			}
-				
-			
-
+	/** 
+	 * Login Checking function that tells the user if the Username and password combination was valid.
+	 * Uses JOptionPane to let the user know what happened.  If successful, will go to the MainMenu_Screen
+	 * 
+	 * @param user Input username that the user submitted.
+	 * @param inpassword Input password that the user submitted.
+	 * @param data A Hashtable that stores the data that is extracted from the saved .ser file.
+	 */
+	public void CheckLogin(String user, String inpassword, Hashtable<String,User> data){
+		if (user.isEmpty() || inpassword.isEmpty()){
+			JOptionPane.showMessageDialog(null, "One or more boxes are empty","Error", JOptionPane.ERROR_MESSAGE);
+			return;
 		}
+		
+		if(data.containsKey(user)){
+			
+			Object player = data.get(user);
+			String password = ((User) player).getPassword();
+			
+			if (data.containsKey(user) && password.equals(inpassword)){
+				JOptionPane.showMessageDialog(null, "Login successfull","Success", JOptionPane.INFORMATION_MESSAGE);
+				JPanel tmp_Screen = new MainMenu_Screen(parentFrame,data.get(user) );
+				parentFrame.setContentPane(tmp_Screen);
+				parentFrame.setVisible(true);
+				parentFrame.setResizable(false);
+			}else{
+				JOptionPane.showMessageDialog(null, "incorrect password","Error", JOptionPane.ERROR_MESSAGE);
+			}
+			
+		}else{
+			JOptionPane.showMessageDialog(null, "Username does not exist","Error", JOptionPane.ERROR_MESSAGE);
+		}
+			
+		
+
+	}
 	
 
-//LoadTable() ---------------------------------
+	/** 
+	 * A function that loads from the .ser file so that the login can check user/password data. 
+	 * 
+	 * @param data A generic Hashtable that loads the .ser file data.
+	 */
 	private static Hashtable LoadTable(Hashtable data){
 		try{
 			FileInputStream fileIn = new FileInputStream("Savefiles/Saved_users_passwords.ser");
@@ -164,7 +169,10 @@ public class Login_Screen extends JPanel {
 		}
 		return data;
 	}
-//makefile() ------------------------------	
+
+	/* 
+	 * Login Checking function that tells the user if the Username and password combination was valid.
+	 */
 	private static void makefile(){
 		try{
 			File tmp = new File("Savefiles/Saved_users_passwords.ser");

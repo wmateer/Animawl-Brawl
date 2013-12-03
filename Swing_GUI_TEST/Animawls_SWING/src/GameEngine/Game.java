@@ -1,9 +1,11 @@
 package GameEngine;
 
+import java.io.Serializable;
+
 //import Player;
 
 
-public class Game {
+public class Game implements Serializable {
 //private variables
 private Player pZero;
 private Player pOne;

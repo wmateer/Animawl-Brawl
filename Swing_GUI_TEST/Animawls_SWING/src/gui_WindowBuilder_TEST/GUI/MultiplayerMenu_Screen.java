@@ -8,12 +8,15 @@ import java.awt.event.ActionEvent;
 import GameEngine.User;
 
 public class MultiplayerMenu_Screen extends JPanel {
-
-	/**
-	 * Create the panel.
-	 */
 	private MusicFrame parentFrame;
 	
+	/**
+	 * The Constructor, which takes the passed MusicFrame and User to make the Multiplayer_Screen.
+	 * On this Screen the user can choose whether to host, join, or back out.
+	 * 
+	 * @param masterFrame The passed MusicFrame that is used to show all the panel data.
+	 * @param currentUser The passed User which is also passed again once the user makes a decision.
+	 */
 	public MultiplayerMenu_Screen(MusicFrame masterFrame, User currentUser) {
 		setBackground(new Color(128, 0, 0));
 		setLayout(null);
@@ -44,11 +47,6 @@ public class MultiplayerMenu_Screen extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				//START A MULTIPLAYER SESSION THAT WAITS UNTIL A PLAYER JOINS
-				//FOR TESTING IT WILL JUST START A LOCAL GAME!!!
-				//parentFrame.removeAll();
-				
-				//TURN OFF TITLE MUSIC//
-				//parentFrame.StopMusic(); need to reform first JFRAME!!!
 				
 				parentFrame.setVisible(false);
 				JPanel tmp_Screen = new CharacterSelect_Screen(parentFrame,tmpUser);
@@ -65,8 +63,6 @@ public class MultiplayerMenu_Screen extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				//GOES TO THE LOGIN SCREEN AND ERASES CURRENT USER INPUTS??
-				//parentFrame.removeAll();
-				//parentFrame.setVisible(false);
 				JPanel tmp_Screen = new Login_Screen(parentFrame);
 				parentFrame.setContentPane(tmp_Screen);
 				parentFrame.setVisible(true);
@@ -80,8 +76,6 @@ public class MultiplayerMenu_Screen extends JPanel {
 		goToMainMenu_Button.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//parentFrame.removeAll();
-				//parentFrame.setVisible(false);
 				JPanel tmp_Screen = new MainMenu_Screen(parentFrame, tmpUser);
 				parentFrame.setContentPane(tmp_Screen);
 				parentFrame.setVisible(true);
