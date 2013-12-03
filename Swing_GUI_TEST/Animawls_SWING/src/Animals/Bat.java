@@ -52,7 +52,7 @@ public class Bat extends Animal {
 		evdScaler=10;
 		evdBonus=-.05;
 		
-		imgPath = "IMAGES/CHAR_PICTS/Bat.jpg";
+		imgPath = "IMAGES/CHAR_PICTS/bat_left.png";
 		Description = "A STEALTHY NOTCTURNAL AIRBOURNE BEAST!!!";
 		soundPath = "SOUNDS/PICK_SOUNDS/ShortBat_PickSound.wav";
 		

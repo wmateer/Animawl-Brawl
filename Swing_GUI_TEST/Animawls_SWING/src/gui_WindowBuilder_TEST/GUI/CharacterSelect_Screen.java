@@ -31,6 +31,15 @@ public class CharacterSelect_Screen extends JPanel {
 	
 	private Sound_Playback AnimalSound;
 	private Boolean soundStarted = false;
+	private JTextArea Animal1_AREA;
+	private JTextArea Animal2_AREA;
+	private JTextArea Animal3_AREA;
+	private JTextArea requestName0;
+	private JTextArea requestName1;
+	private JTextArea requestName2;
+	private JButton   setName2;
+	private JButton   setName1;
+	
 	
 	public CharacterSelect_Screen(MusicFrame masterFrame, User currentUser) {
 		//STOP MUSIC//
@@ -42,6 +51,7 @@ public class CharacterSelect_Screen extends JPanel {
 		setLayout(null);
 		parentFrame = masterFrame;
 		parentFrame.StopMusic();
+		
 		
 		//set tmpUser so we can pass animals to it
 		final User tmpUser = currentUser;
@@ -200,12 +210,41 @@ public class CharacterSelect_Screen extends JPanel {
 				String tmp = (String) availCharChoices_List.getSelectedValue();
 				Animal tmpAnimal = TmpList.get(tmp);
 				
-				if(!tmpUser.HasChosenAlready(tmpAnimal) && hasChosenSomething){
-					String tmpname = tmpAnimal.getName();
+				if(tmpUser.getChosenSize()==3){
+					if(!tmpUser.getChosen().get(2).getName().equals(tmpUser.getChosen().get(2).getType())){
+						stopAnimalSoundPlayback();
+		
+						JPanel tmp_Screen = new BattlegroundSelect_Screen(parentFrame,tmpUser);
+						parentFrame.setContentPane(tmp_Screen);
+						parentFrame.setVisible(true); 
+						parentFrame.setResizable(true);
+						}
+				}else if(!tmpUser.HasChosenAlready(tmpAnimal) && hasChosenSomething){
+					//String tmpname = tmpAnimal.getName();
+						//if there are already 3chosen animals then it goes to next screen
+						//must choose 3 different animals at this point (can change later)
+						if(tmpUser.getChosenSize()==3){
+							
+							if(!tmpUser.getChosen().get(2).getName().equals(tmpUser.getChosen().get(2).getType())){
+							stopAnimalSoundPlayback();
+			
+							JPanel tmp_Screen = new BattlegroundSelect_Screen(parentFrame,tmpUser);
+							parentFrame.setContentPane(tmp_Screen);
+							parentFrame.setVisible(true); 
+							parentFrame.setResizable(true);
+							}
+							Animal3_AREA.setText(tmpUser.getAnimalAtIndex(2).getType());
+							requestName2.setText(tmpUser.getAnimalAtIndex(2).getName());
+							if( Animal3_AREA.getText().equals(requestName2.getText())){
+								setName2.setVisible(true);
+							}
+						
+							
+						}
 					
 						if(tmpUser.getChosenSize()<3){	
-							animalName nameWindow= new animalName(tmpAnimal);
-							nameWindow.setVisible(true);
+							//animalName nameWindow= new animalName(tmpAnimal);
+							//nameWindow.setVisible(true);
 							tmpUser.addToChosen(tmpAnimal);						
 						}	
 						//if less than 3 animals already chosen, then repeat for another animal to choose.
@@ -218,17 +257,27 @@ public class CharacterSelect_Screen extends JPanel {
 							parentFrame.setResizable(true);
 								
 						}
-						//if there are already 3chosen animals then it goes to next screen
-						//must choose 3 different animals at this point (can change later)
 						if(tmpUser.getChosenSize()==3){
+							
+							if(!tmpUser.getChosen().get(2).getName().equals(tmpUser.getChosen().get(2).getType())){
 							stopAnimalSoundPlayback();
 			
 							JPanel tmp_Screen = new BattlegroundSelect_Screen(parentFrame,tmpUser);
 							parentFrame.setContentPane(tmp_Screen);
 							parentFrame.setVisible(true); 
 							parentFrame.setResizable(true);
+							}
+							if(Animal2_AREA.getText().equals(requestName1.getText()))
+							setName1.setVisible(false);
+							Animal3_AREA.setText(tmpUser.getAnimalAtIndex(2).getType());
+							requestName2.setText(tmpUser.getAnimalAtIndex(2).getName());
+							if( Animal3_AREA.getText().equals(requestName2.getText())){
+								setName2.setVisible(true);
+							}
+						
 							
 						}
+
 				}
 				else{
 					JOptionPane.showMessageDialog(null, "PLEASE CHOOSE ANOTHER ANIMAL.  YOU MAY ONLY HAVE ONE OF EACH ANIMAl","Error", JOptionPane.ERROR_MESSAGE);
@@ -255,43 +304,115 @@ public class CharacterSelect_Screen extends JPanel {
 		Animal3_label.setBounds(42, 131, 107, 16);
 		add(Animal3_label);
 		
-		JTextArea Animal1_AREA = new JTextArea();
+		Animal1_AREA = new JTextArea();
 		Animal1_AREA.setBounds(172, 77, 74, 16);
 		add(Animal1_AREA);
 		
-		JTextArea Animal2_AREA = new JTextArea();
+	    Animal2_AREA = new JTextArea();
 		Animal2_AREA.setBounds(172, 103, 74, 16);
 		add(Animal2_AREA);
 		
-		JTextArea Animal3_AREA = new JTextArea();
+		Animal3_AREA = new JTextArea();
 		Animal3_AREA.setBounds(172, 131, 73, 16);
 		add(Animal3_AREA);
 		
-		JTextArea AnimalNameONE_AREA = new JTextArea();
-		AnimalNameONE_AREA.setBounds(286, 77, 74, 16);
-		add(AnimalNameONE_AREA);
+		requestName0 = new JTextArea();
+		requestName0.setBounds(286, 77, 74, 16);
+		add(requestName0);
 		
-		JTextArea AnimalNameTWO_AREA = new JTextArea();
-		AnimalNameTWO_AREA.setBounds(286, 103, 74, 16);
-		add(AnimalNameTWO_AREA);
 		
-		JTextArea AnimalNameTHREE_AREA = new JTextArea();
-		AnimalNameTHREE_AREA.setBounds(286, 131, 74, 16);
-		add(AnimalNameTHREE_AREA);
+		requestName1 = new JTextArea();
+		requestName1.setBounds(286, 103, 74, 16);
+		add(requestName1);
+		
+	    requestName2 = new JTextArea();
+		requestName2.setBounds(286, 131, 74, 16);
+		add(requestName2);
+		
+		JLabel typeLabel = new JLabel("Type");
+		typeLabel.setBounds(184, 52, 48, 16);
+		add(typeLabel);
+		
+		JLabel nameLabel = new JLabel("Name");
+		nameLabel.setBounds(299, 52, 61, 16);
+		add(nameLabel);
+		
+		JButton setName0 = new JButton("Set Name");
+		setName0.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				tmpUser.getChosen().get(0).setName(requestName0.getText());
+				requestName0.setText(tmpUser.getAnimalAtIndex(0).getName());
+				
+			}
+			
+		});
+		setName0.setBounds(362, 72, 117, 29);
+		add(setName0);
+		
+		setName1 = new JButton("Set Name");
+		setName1.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				tmpUser.getChosen().get(1).setName(requestName1.getText());
+				requestName1.setText(tmpUser.getAnimalAtIndex(1).getName());
+				
+			}
+			
+		});
+		setName1.setBounds(362, 100, 117, 29);
+		add(setName1);
+		
+		setName2 = new JButton("Set Name");
+		setName2.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				tmpUser.getChosen().get(2).setName(requestName2.getText());
+				requestName2.setText(tmpUser.getAnimalAtIndex(2).getName());
+				/*
+				stopAnimalSoundPlayback();
+				
+				JPanel tmp_Screen = new BattlegroundSelect_Screen(parentFrame,tmpUser);
+				parentFrame.setContentPane(tmp_Screen);
+				parentFrame.setVisible(true); 
+				parentFrame.setResizable(true);
+				
+				*/
+			}
+			
+		});
+		setName2.setBounds(362, 126, 117, 29);
+		add(setName2);
+		
+		setName0.setVisible(false);
+		setName1.setVisible(false);
+		setName2.setVisible(false);
 		
 		
 			
 		if(tmpUser.getChosenSize()>=1){
 			Animal1_AREA.setText(tmpUser.getAnimalAtIndex(0).getType());
-			AnimalNameONE_AREA.setText(tmpUser.getAnimalAtIndex(0).getName());
+			requestName0.setText(tmpUser.getAnimalAtIndex(0).getName());
+			if( Animal1_AREA.getText().equals(requestName0.getText())){
+				setName0.setVisible(true);
+			}
 		}
 		if(tmpUser.getChosenSize()>=2){
 			Animal2_AREA.setText(tmpUser.getAnimalAtIndex(1).getType());
-			AnimalNameTWO_AREA.setText(tmpUser.getAnimalAtIndex(1).getName());
+			requestName1.setText(tmpUser.getAnimalAtIndex(1).getName());
+			if( Animal2_AREA.getText().equals(requestName1.getText())){
+				setName1.setVisible(true);
+			}
 		}
 		if(tmpUser.getChosenSize()==3){
 			Animal3_AREA.setText(tmpUser.getAnimalAtIndex(2).getType());
-			AnimalNameTHREE_AREA.setText(tmpUser.getAnimalAtIndex(2).getName());
+			requestName2.setText(tmpUser.getAnimalAtIndex(2).getName());
+			if( Animal3_AREA.getText().equals(requestName2.getText())){
+				setName2.setVisible(true);
+			}
 		}
 		
 		parentFrame.setSize(900, 600);
