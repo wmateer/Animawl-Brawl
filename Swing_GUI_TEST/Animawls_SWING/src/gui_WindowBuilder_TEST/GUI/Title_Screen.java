@@ -24,9 +24,9 @@ public class Title_Screen extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	private JFrame parentFrame;
+	private MusicFrame parentFrame;
 	
-	public Title_Screen(JFrame masterFrame) {
+	public Title_Screen(MusicFrame masterFrame) {
 
 		addMouseListener(new MouseAdapter(){
 			@Override

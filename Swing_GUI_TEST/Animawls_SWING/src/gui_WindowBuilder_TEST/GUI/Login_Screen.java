@@ -21,7 +21,7 @@ import java.util.*;
 public class Login_Screen extends JPanel {
 	private JPasswordField passwordField;
 	private JTextField userName_field;
-	private JFrame parentFrame;
+	private MusicFrame parentFrame;
 	private String user;
 	private String inpassword;
 	
@@ -29,7 +29,7 @@ public class Login_Screen extends JPanel {
 	
 
 
-	public Login_Screen(JFrame masterFrame) {
+	public Login_Screen(MusicFrame masterFrame) {
 		
 
 		parentFrame = masterFrame;

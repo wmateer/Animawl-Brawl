@@ -27,7 +27,7 @@ public class BattlegroundSelect_Screen extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	private JFrame parentFrame;
+	private MusicFrame parentFrame;
 	private JLabel BattlegroundONE_Picture;
 	private JLabel BattlegroundTWO_Picture;
 	private JLabel BattlegroundTHREE_Picture;
@@ -41,7 +41,7 @@ public class BattlegroundSelect_Screen extends JPanel {
 	private Boolean SnowstormStart = false;
 	
 	
-	public BattlegroundSelect_Screen(JFrame masterFrame,User currentUser) {
+	public BattlegroundSelect_Screen(MusicFrame masterFrame,User currentUser) {
 		setBackground(new Color(218, 165, 32));
 		setLayout(null);
 		

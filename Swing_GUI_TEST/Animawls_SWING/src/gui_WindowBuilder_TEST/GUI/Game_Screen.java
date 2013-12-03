@@ -31,6 +31,7 @@ public class Game_Screen extends JPanel {
 	private JLabel prompt;
 	private String text;
 	
+	private MusicFrame parentFrame;
 	private Hashtable<String,User> dataLoadedFromFile;
 
 	//TODO incorperate as variables in player class
@@ -38,7 +39,8 @@ public class Game_Screen extends JPanel {
 
 	private BufferedImage backgroundPict;
 
-	public Game_Screen(JFrame masterFrame, User user1, String chosenBattleground) {
+	public Game_Screen(MusicFrame masterFrame, User user1, String chosenBattleground) {
+		parentFrame = masterFrame;
 		setBackground(Color.DARK_GRAY);
 		setLayout(null);
 		
@@ -50,9 +52,9 @@ public class Game_Screen extends JPanel {
 		       ex.printStackTrace();
 		}
 
-		masterFrame.setSize(900, 600);
-		masterFrame.setLocationRelativeTo(null);
-		masterFrame.setResizable(false);
+		parentFrame.setSize(900, 600);
+		parentFrame.setLocationRelativeTo(null);
+		parentFrame.setResizable(false);
 
 		
 //----------------------------------
@@ -109,12 +111,21 @@ public class Game_Screen extends JPanel {
 		playAnimawl_title.setBounds(351, 25, 197, 33);
 		add(playAnimawl_title);
 		
-		JToggleButton toggleButton = new JToggleButton("Music");
+		final JToggleButton toggleButton = new JToggleButton("Music");
 		toggleButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if (toggleButton.isSelected()) 
+				{ 
+					parentFrame.LoopCont();
+					//parentFrame.StartMusic(5);
+				} 
+				else 
+				{ 
+					parentFrame.StopMusic(); 
+				} 
 			}
 		});
-		toggleButton.setSelected(true);
+		toggleButton.setSelected(false);
 		toggleButton.setForeground(Color.BLACK);
 		toggleButton.setBackground(Color.YELLOW);
 		toggleButton.setBounds(797, 36, 72, 16);
@@ -192,7 +203,7 @@ public class Game_Screen extends JPanel {
 	
 	}
 //------------------------------------------------------------------ 
-	//Start Implimentation
+	//Start Implementation
 
 
 

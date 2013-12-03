@@ -16,14 +16,14 @@ public class Register_Screen extends JPanel {
 	private JPasswordField passwordField_ONE;
 	private JPasswordField passwordField_TWO;
 	private JTextField userName_field;
-	private JFrame parentFrame;
+	private MusicFrame parentFrame;
 	private String newusername;
 	private String newpassword1;
 	private String newpassword2;
 	
 	
 	
-	public Register_Screen(JFrame masterFrame) {
+	public Register_Screen(MusicFrame masterFrame) {
 	
 		setBackground(new Color(106, 90, 205));
 		setForeground(new Color(0, 0, 0));

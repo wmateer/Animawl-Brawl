@@ -15,9 +15,9 @@ import Sound.BigClip;
 
 public class INIT_GUI{ //extends JFrame {
 
-	protected JFrame masterFrame;
+	private MusicFrame masterFrame;
 	private JPanel current_Screen;
-	private BigClip TitleThemeSound;
+	//public BigClip TitleThemeSound;
 
 	/**
 	 * Launch the application.
@@ -27,9 +27,6 @@ public class INIT_GUI{ //extends JFrame {
 			@Override
 			public void run() {
 				try {
-					//INIT_GUI frame = new INIT_GUI();
-					//frame.setVisible(true);
-					//frame.setResizable(false);
 					new INIT_GUI();
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -43,34 +40,48 @@ public class INIT_GUI{ //extends JFrame {
 	 */
 	public INIT_GUI() {
 		//INIT_GUI frame = new INIT_GUI();
-		masterFrame = new JFrame();
+		masterFrame = new MusicFrame();
 		
 		masterFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//setBounds(100, 100, 450, 300);
-		//masterFrame.setBounds(400, 250, 450, 320);
 		masterFrame.setBounds(200, 150, 900, 600);
 		current_Screen = new Title_Screen(masterFrame);
 		current_Screen.setBorder(new EmptyBorder(5, 5, 5, 5));
 		current_Screen.setLayout(new BorderLayout(0, 0));
 		masterFrame.setContentPane(current_Screen);
+		masterFrame.StartMusic(1);
 		
+		
+		//TitleThemeSound = null;
 		//START TITLE MUSIC//
 		//TitleThemeSound = new Sound_Playback("SOUNDS/TITLE_MUSIC/LongThemeTemp_TitleSong.wav");
 		//TitleThemeSound.play();
-		/*try{
-			File inputFile = new File("SOUNDS/TITLE_MUSIC/LongThemeTemp_TitleSong.wav");
-	        Clip runningSound = AudioSystem.getClip();
+		//try{
+			//Clip runningSound = AudioSystem.getClip();
 	        // getAudioInputStream() also accepts a File or InputStream
-	        AudioInputStream inputStream = AudioSystem.getAudioInputStream(inputFile);
+			//AudioInputStream inputStream = AudioSystem.getAudioInputStream(getClass().getResource("SOUNDS/TITLE_MUSIC/LongThemeTemp_TitleSong.wav"));
+			//AudioInputStream inputStream = AudioSystem.getAudioInputStream(getClass().getResource("SOUNDS/PICK_SOUNDS/ShortBat_PickSound.wav"));
+	        //TitleThemeSound = new BigClip(runningSound);
+	        //TitleThemeSound = AudioSystem.getClip(inputFile);
+	        //TitleThemeSound = new BigClip(AudioSystem.getClip()); 
+			
+			//File inputFile = new File("SOUNDS/TITLE_MUSIC/SpeedyThemeTemp_TitleSong.wav");
+			//AudioInputStream inputStream = AudioSystem.getAudioInputStream(inputFile);
+			//TitleThemeSound = new BigClip();
+	        //TitleThemeSound.open(inputStream);
+	        //TitleThemeSound.start();
+	        //TitleThemeSound.loop(1);
 	        
-	       TitleThemeSound = new BigClip(runningSound);
-	       TitleThemeSound.open(inputStream);
-	       TitleThemeSound.start();
+	        /*
+	         * 	AudioInputStream stream = AudioSystem.getAudioInputStream(getClass().getResource("sound.wav"));
+				Clip music = AudioSystem.getClip();
+				music.open(stream);
+				music.start();
+	         */
 	        //AudioFormat littleEndianFormat = inputStream.getFormat();
 	        //AudioInputStream converted = AudioSystem.getAudioInputStream(littleEndianFormat,inputStream);
 	        ////NEED PCM 16 bit most likely
-	        runningSound.open(inputStream);
-	        runningSound.start();
+	        //runningSound.open(inputStream);
+	        //runningSound.start();
 	        /*SwingUtilities.invokeLater(new Runnable() {
 	            public void run() {
 	                // A GUI element to prevent the Clip's daemon Thread
@@ -78,18 +89,13 @@ public class INIT_GUI{ //extends JFrame {
 	                JOptionPane.showMessageDialog(null, "Close to exit!");
 	            }
 	        }); *///TEST WITHOUT FIRST
-		/*}
-		catch(Exception ex){
-			ex.printStackTrace();
-		}*/
+		/*}*/
+		//}
+		//catch(Exception ex){
+			//ex.printStackTrace();
+		//}
 		
 		masterFrame.setVisible(true);
 		masterFrame.setResizable(false);
 	}
-	
-	public void StopMusic(){
-		TitleThemeSound.stop();
-		TitleThemeSound.close();
-	}
-
 }

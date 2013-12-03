@@ -12,9 +12,9 @@ public class MultiplayerMenu_Screen extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	private JFrame parentFrame;
+	private MusicFrame parentFrame;
 	
-	public MultiplayerMenu_Screen(JFrame masterFrame, User currentUser) {
+	public MultiplayerMenu_Screen(MusicFrame masterFrame, User currentUser) {
 		setBackground(new Color(128, 0, 0));
 		setLayout(null);
 		

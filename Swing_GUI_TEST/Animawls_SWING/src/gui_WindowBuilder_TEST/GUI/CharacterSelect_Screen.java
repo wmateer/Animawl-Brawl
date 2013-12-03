@@ -24,7 +24,7 @@ public class CharacterSelect_Screen extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	private JFrame parentFrame;
+	private MusicFrame parentFrame;
 	private JList availCharChoices_List;
 	private HashMap <String,Animal> TmpList;
 	private Boolean hasChosenSomething = false;
@@ -32,12 +32,16 @@ public class CharacterSelect_Screen extends JPanel {
 	private Sound_Playback AnimalSound;
 	private Boolean soundStarted = false;
 	
-	public CharacterSelect_Screen(JFrame masterFrame, User currentUser) {
+	public CharacterSelect_Screen(MusicFrame masterFrame, User currentUser) {
+		//STOP MUSIC//
+		//TitleThemeSound.stop();
+		//TitleThemeSound.close();
 		
 		//set up frame
 		setBackground(new Color(60, 179, 113));
 		setLayout(null);
 		parentFrame = masterFrame;
+		parentFrame.StopMusic();
 		
 		//set tmpUser so we can pass animals to it
 		final User tmpUser = currentUser;

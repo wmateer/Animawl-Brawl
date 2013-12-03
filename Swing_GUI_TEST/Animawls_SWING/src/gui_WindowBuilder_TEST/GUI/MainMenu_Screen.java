@@ -16,9 +16,9 @@ public class MainMenu_Screen extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	private JFrame parentFrame;
+	private MusicFrame parentFrame;
 	
-	public MainMenu_Screen(JFrame masterFrame,User currentUser) {
+	public MainMenu_Screen(MusicFrame masterFrame,User currentUser) {
 		setBackground(new Color(218, 165, 32));
 		setLayout(null);
 		
