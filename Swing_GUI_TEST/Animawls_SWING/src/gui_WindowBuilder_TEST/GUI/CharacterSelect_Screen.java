@@ -31,21 +31,36 @@ public class CharacterSelect_Screen extends JPanel {
 	
 	private Sound_Playback AnimalSound;
 	private Boolean soundStarted = false;
-	private JTextArea animalType0;
-	private JTextArea animalType1;
-	private JTextArea animalType2;
+	private JLabel animalType0;
+	private JLabel animalType1;
+	private JLabel animalType2;
 	private JTextArea animalName0;
 	private JTextArea animalName1;
 	private JTextArea animalName2;
 	private JButton   setName2;
 	private JButton   setName1;
 	private JButton   setName0;
+	private Bear Willis = new Bear("Willis");
+	private Bird Toby= new Bird("Toby");
+	private Bat Nathaniel= new Bat("Nathaniel");
 	
 	private boolean checkNamed(){
 		if(animalType0.getText().equals(animalName0.getText()) && animalType1.getText().equals(animalName1.getText()) && animalType2.getText().equals(animalName2.getText()) ){
 			return false;
 		}
 		return true;
+	}
+	
+	private void skiptogamescreen(User tmpUser){
+		stopAnimalSoundPlayback();
+		tmpUser.addToChosen(Willis);
+		tmpUser.addToChosen(Toby);
+		tmpUser.addToChosen(Nathaniel);
+		JPanel tmp_Screen = new BattlegroundSelect_Screen(parentFrame,tmpUser);
+		parentFrame.setContentPane(tmp_Screen);
+		parentFrame.setVisible(true); 
+		parentFrame.setResizable(true);
+		
 	}
 	
 	
@@ -65,7 +80,7 @@ public class CharacterSelect_Screen extends JPanel {
 		final User tmpUser = currentUser;
 		
 		//set up various labels and textarea components
-		final JLabel selectedCharPict_Label = new JLabel("\n");
+		final JLabel selectedCharPict_Label = new JLabel("");
 		selectedCharPict_Label.setFont(new Font("Lucida Grande", Font.BOLD | Font.ITALIC, 15));
 		selectedCharPict_Label.setForeground(new Color(255, 255, 0));
 		selectedCharPict_Label.setBackground(Color.WHITE);
@@ -317,15 +332,15 @@ public class CharacterSelect_Screen extends JPanel {
 		Animal3_label.setBounds(42, 131, 107, 16);
 		add(Animal3_label);
 		
-		animalType0 = new JTextArea();
+		animalType0 = new JLabel();
 		animalType0.setBounds(172, 77, 74, 16);
 		add(animalType0);
 		
-	    animalType1 = new JTextArea();
+	    animalType1 = new JLabel();
 		animalType1.setBounds(172, 103, 74, 16);
 		add(animalType1);
 		
-		animalType2 = new JTextArea();
+		animalType2 = new JLabel();
 		animalType2.setBounds(172, 131, 73, 16);
 		add(animalType2);
 		
@@ -409,6 +424,15 @@ public class CharacterSelect_Screen extends JPanel {
 		});
 		setName2.setBounds(362, 126, 117, 29);
 		add(setName2);
+		
+		JButton skipButton = new JButton("next screen");
+		skipButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				skiptogamescreen(tmpUser);
+			}
+		});
+		skipButton.setBounds(18, 187, 142, 29);
+		add(skipButton);
 		
 		setName0.setVisible(false);
 		setName1.setVisible(false);
