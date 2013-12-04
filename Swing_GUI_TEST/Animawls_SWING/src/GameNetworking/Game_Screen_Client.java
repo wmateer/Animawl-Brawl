@@ -98,6 +98,7 @@ public Game_Screen_Client (JFrame masterFrame, User user1, String chosenBattlegr
 				if(readState.inactive==pZero | readState.inactive==pOne){
 					gameState.inactive=readState.inactive;
 				}
+				System.out.println(gameState.inactive.getName());
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -181,12 +182,7 @@ public Game_Screen_Client (JFrame masterFrame, User user1, String chosenBattlegr
 				if(pZero!=gameState.active){
 					pZero.UI.setEnabledButtons(false);
 					findTurn.start();
-					try {
-						//turnFinder.doInBackground(this);
-					} catch (Exception e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
+					
 				}
 
 

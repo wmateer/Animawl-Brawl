@@ -15,14 +15,15 @@ public class checkTurn implements Runnable {
 	public void run() {
 		int i=0;
 		while(i==0){
-			//system.out.print("checking");
 					try {
-						if(myGame.oisNetworkGame.available()!=0){
-						System.out.print("found an update");
-						myGame.readState= (networkGame)myGame.oisNetworkGame.readObject();
-						myGame.gameState.updateGame(myGame.readState);
-						if(myGame.gameState.active.getName()==myGame.pZero.getName()){
+						
+						myGame.readState = (networkGame)myGame.oisNetworkGame.readObject();	
+						myGame.gameState=myGame.readState;
+						System.out.println("found input");
+						
+
 							i=1;
+							System.out.println("active player is"+ myGame.gameState.active.getName());
 							if(myGame.type=='s'){
 								myGame.pZero=myGame.gameState.host;
 								myGame.pOne=myGame.gameState.client;
@@ -34,11 +35,13 @@ public class checkTurn implements Runnable {
 						
 							myGame.startTurn();
 							
-						}
+						
 					}
-					}
+					
+					
 					 catch (Exception e) {
-							// TODO Auto-generated catch block
+							
+							System.out.println("no input found");
 							e.printStackTrace();
 						}
 		}	

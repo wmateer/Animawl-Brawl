@@ -175,6 +175,7 @@ public abstract class Network_Game_Screen extends JPanel {
 				gameState.active=gameState.inactive;
 				gameState.inactive=gameState.tmp;
 
+				System.out.println("inactive player sent is "+ gameState.inactive.getName());
 				try {
 					oosNetworkGame.writeObject(gameState);
 					System.out.println("wrote to socket");
