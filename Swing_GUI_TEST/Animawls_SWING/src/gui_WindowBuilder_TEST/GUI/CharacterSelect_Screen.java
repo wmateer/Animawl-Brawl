@@ -40,9 +40,9 @@ public class CharacterSelect_Screen extends JPanel {
 	private JButton   setName2;
 	private JButton   setName1;
 	private JButton   setName0;
-	private Bear Willis = new Bear("Willis");
-	private Bird Toby= new Bird("Toby");
-	private Bat Nathaniel= new Bat("Nathaniel");
+	private Elephant Willis = new Elephant("Willis");
+	private Elephant Toby= new Elephant("Toby");
+	private Elephant Nathaniel= new Elephant("Nathaniel");
 	
 	private boolean checkNamed(){
 		if(animalType0.getText().equals(animalName0.getText()) && animalType1.getText().equals(animalName1.getText()) && animalType2.getText().equals(animalName2.getText()) ){
@@ -51,8 +51,17 @@ public class CharacterSelect_Screen extends JPanel {
 		return true;
 	}
 	
+	private BufferedImage resizeImage(BufferedImage originalImage, int width, int height, int type) throws IOException {  
+        BufferedImage resizedImage = new BufferedImage(width, height, type);  
+        Graphics2D g = resizedImage.createGraphics();  
+        g.drawImage(originalImage, 0, 0, width, height, null);  
+        g.dispose();  
+        return resizedImage;  
+    }  
+	
 	private void skiptogamescreen(User tmpUser){
 		stopAnimalSoundPlayback();
+		tmpUser.setName("Anthony");
 		tmpUser.addToChosen(Willis);
 		tmpUser.addToChosen(Toby);
 		tmpUser.addToChosen(Nathaniel);
@@ -187,8 +196,9 @@ public class CharacterSelect_Screen extends JPanel {
 				selectedCharSelectInfo_TextArea.setText(tmpAnimal.Description);
 				try{
 					//SET PICTURE
-					BufferedImage AnimalPicture = ImageIO.read(new File(tmpAnimal.imgPath));
-					selectedCharPict_Label.setIcon(new ImageIcon(AnimalPicture));
+					BufferedImage unsizedAnimalPicture = ImageIO.read(new File(tmpAnimal.imgPath));
+					BufferedImage sizedAnimalPicture = resizeImage(unsizedAnimalPicture,200,200, unsizedAnimalPicture.getType());
+					selectedCharPict_Label.setIcon(new ImageIcon(sizedAnimalPicture));
 					//SET ANIMAL STATS
 					LEVEL_AREA.setText(""+tmpAnimal.getLvl());
 					EXP_EARNED_AREA.setText(""+tmpAnimal.getExp());

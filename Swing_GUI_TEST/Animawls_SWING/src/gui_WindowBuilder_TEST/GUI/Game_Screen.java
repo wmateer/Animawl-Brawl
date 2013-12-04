@@ -38,6 +38,14 @@ public class Game_Screen extends JPanel {
 
 
 	private BufferedImage backgroundPict;
+	
+	private BufferedImage resizeImage(BufferedImage originalImage, int width, int height, int type) throws IOException {  
+        BufferedImage resizedImage = new BufferedImage(width, height, type);  
+        Graphics2D g = resizedImage.createGraphics();  
+        g.drawImage(originalImage, 0, 0, width, height, null);  
+        g.dispose();  
+        return resizedImage;  
+    }  
 
 	public Game_Screen(MusicFrame masterFrame, User user1, String chosenBattleground) {
 		parentFrame = masterFrame;
@@ -62,7 +70,7 @@ public class Game_Screen extends JPanel {
 		
 
 		Bull Kyle = new Bull("Kyle");
-		Bull Mindy= new Bull("Mindy");
+		Bat Mindy= new Bat("Mindy");
 		Bull Alex= new Bull("Alex");
 		
 		
@@ -85,14 +93,14 @@ public class Game_Screen extends JPanel {
 		Hp.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		Hp.setHorizontalAlignment(SwingConstants.CENTER);
 		Hp.setForeground(Color.RED);
-		Hp.setBounds(227, 307, 45, 33);
+		Hp.setBounds(227, 324, 45, 33);
 		add(Hp);
 		
 		JLabel Ap = new JLabel("AP");
 		Ap.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		Ap.setHorizontalAlignment(SwingConstants.CENTER);
 		Ap.setForeground(Color.blue);
-		Ap.setBounds(227, 345, 45, 33);
+		Ap.setBounds(227, 354, 45, 33);
 		add(Ap);
 		
 		JLabel Hpr = new JLabel("HP");

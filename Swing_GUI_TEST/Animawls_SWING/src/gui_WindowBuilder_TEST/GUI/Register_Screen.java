@@ -179,7 +179,7 @@ public class Register_Screen extends JPanel {
 			e.printStackTrace();
 		}
 		catch(FileNotFoundException e){
-			e.printStackTrace();
+			//e.printStackTrace();
 			makefile();
 		}
 		catch(IOException e){

@@ -52,7 +52,7 @@ public class FightingFrog extends Animal {
 		evdScaler=10;
 		evdBonus=-.05;
 		
-		imgPath = "IMAGES/CHAR_PICTS/FightingFrog.jpg";
+		imgPath = "IMAGES/CHAR_PICTS/frog_left.png";
 		Description = "A DEMONIC FROG WISHING ONLY PESTILENCE AND DEATH TO EVERYONE!!!";
 		soundPath = "SOUNDS/PICK_SOUNDS/ShortFrog_PickSound.wav";
 		specialDescription= "Jab with the left, and swing with the right";

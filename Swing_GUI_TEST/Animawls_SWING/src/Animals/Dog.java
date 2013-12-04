@@ -51,7 +51,7 @@ public class Dog extends Animal {
 		evdScaler=10;
 		evdBonus=-.05;
 		
-		imgPath = "IMAGES/CHAR_PICTS/Dog.jpg";
+		imgPath = "IMAGES/CHAR_PICTS/dog_left.png";
 		Description = "A LOVELY CORGI!!!  KILLS WITH CUTENESS";
 		soundPath = "SOUNDS/PICK_SOUNDS/ShortDog_PickSound.wav";
 		specialDescription= "Prance arround, healing all your animals";

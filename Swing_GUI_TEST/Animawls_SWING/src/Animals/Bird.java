@@ -50,7 +50,7 @@ public class Bird extends Animal {
 		evdScaler=7.5;
 		evdBonus=.45;
 		
-		imgPath = "IMAGES/CHAR_PICTS/Bird.jpg";
+		imgPath = "IMAGES/CHAR_PICTS/bird_left.png";
 		Description = "A HAPPY LITTLE BIRD. ABSOLUETELY USELESS";
 		soundPath = "SOUNDS/PICK_SOUNDS/ShortBird_PickSound.wav";
 		specialDescription= "Attack opp's weakest animal";
@@ -61,7 +61,7 @@ public class Bird extends Animal {
 		int animalNumb=0;
 		
 		if(inactive.animalsCur.get(0).getHpRem()>inactive.animalsCur.get(1).getHpRem()){
-			 animalNumb=1;
+			animalNumb=1;
 		}
 		
 		if(inactive.animalsCur.get(animalNumb).getHpRem()>inactive.animalsCur.get(2).getHpRem()){
