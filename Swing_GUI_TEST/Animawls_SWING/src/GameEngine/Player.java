@@ -26,7 +26,7 @@ public class Player implements Serializable {
 	
 	//gui objects
 	public JLabel userName;
-	public playerButtons UI;
+	transient public playerButtons UI;
 	public JLabel animalName;
 	public JLabel currentAnimalPic;
 	transient public BufferedImage animalPicture;

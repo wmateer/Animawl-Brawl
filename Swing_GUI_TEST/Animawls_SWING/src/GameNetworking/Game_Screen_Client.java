@@ -178,14 +178,15 @@ public Game_Screen_Client (JFrame masterFrame, User user1, String chosenBattlegr
 				findTurn= new Thread(new checkTurn(this));
 				gameState.inactive.UI.updateAnimals();
 				gameState.active.UI.updateAnimals();
+				
+			
 				pZero.showUI();
 				if(pZero!=gameState.active){
 					pZero.UI.setEnabledButtons(false);
+					confirm.setEnabled(false);
 					findTurn.start();
 					
 				}
-
-
 		}
 	//------------------------------------------------------------------ 
 		//Start Implimentation
@@ -214,6 +215,19 @@ public void connect(){
 		}
 }
 
+public void startTurn(){
+	System.out.println("GOT HERE");
+	System.out.println(pZero.getName());
+
+	pZero.UI.setEnabledButtons(false);
+	confirm.setEnabled(true);
+	//pZero.updateInfo();
+	//pOne.updateInfo();
+	if(pZero.getActive().getHpRem()<=0){
+		promptSwitch();
+		pZero.UI.updateAnimals();
+		}
+	}
 
 
 }

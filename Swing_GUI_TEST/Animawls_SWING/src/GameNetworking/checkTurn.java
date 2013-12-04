@@ -1,6 +1,7 @@
 package GameNetworking;
 
 import javax.swing.JButton;
+import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
 
 import GameEngine.Player;
@@ -13,27 +14,34 @@ public class checkTurn implements Runnable {
 	
 	//checkTurn
 	public void run() {
-		int i=0;
-		while(i==0){
-					try {
-						
-						myGame.readState = (networkGame)myGame.oisNetworkGame.readObject();	
-						myGame.gameState=myGame.readState;
-						System.out.println("found input");
-						
-
-							i=1;
+		
+		System.out.println("host in checkturn "+ myGame.gameState.host.getName());
+		System.out.println("client in checkturn "+ myGame.gameState.client.getName());
+		System.out.println("active in checkturn "+ myGame.gameState.active.getName());
+		System.out.println("inactive in checkturn "+ myGame.gameState.inactive.getName() +"\n");
+ 					try {
+						myGame.readState = (networkGame)myGame.oisNetworkGame.readObject();
+					
+						myGame.gameState.host=myGame.readState.host;
+						myGame.gameState.client=myGame.readState.client;
+						myGame.gameState.active=myGame.readState.active;
+						myGame.gameState.inactive=myGame.readState.inactive;
+						myGame.pZero.UI.showButtons(false);
 							System.out.println("active player is"+ myGame.gameState.active.getName());
 							if(myGame.type=='s'){
 								myGame.pZero=myGame.gameState.host;
 								myGame.pOne=myGame.gameState.client;
 							}
 							if(myGame.type=='c'){
+								System.out.println("set client");
 								myGame.pZero=myGame.gameState.client;
 								myGame.pOne=myGame.gameState.host;
 							}
-						
-							myGame.startTurn();
+							
+
+						   myGame.startTurn();
+							
+							return;
 							
 						
 					}
@@ -45,7 +53,7 @@ public class checkTurn implements Runnable {
 							e.printStackTrace();
 						}
 		}	
-	}
+	
 
 
 

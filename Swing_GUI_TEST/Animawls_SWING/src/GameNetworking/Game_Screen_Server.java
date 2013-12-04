@@ -87,7 +87,7 @@ public Game_Screen_Server (JFrame masterFrame, User user1, String chosenBattlegr
 					try {
 						readState= (networkGame)oisNetworkGame.readObject();
 						pOne=readState.client;
-						gameState.updateGame(readState);
+						gameState.client=pOne;
 						
 					} catch (Exception e1) {
 						// TODO Auto-generated catch block
@@ -182,6 +182,7 @@ public Game_Screen_Server (JFrame masterFrame, User user1, String chosenBattlegr
 			if(pZero!=gameState.active){
 				pZero.UI.setEnabledButtons(false);
 				findTurn.start();
+				confirm.setEnabled(false);
 			}
 			
 

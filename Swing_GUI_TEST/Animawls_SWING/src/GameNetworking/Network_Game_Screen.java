@@ -174,30 +174,39 @@ public abstract class Network_Game_Screen extends JPanel {
 				gameState.tmp=gameState.active;
 				gameState.active=gameState.inactive;
 				gameState.inactive=gameState.tmp;
-
-				System.out.println("inactive player sent is "+ gameState.inactive.getName());
+				
+			
 				try {
+					System.out.println("host "+ gameState.host.getName());
+					System.out.println("client "+ gameState.client.getName());
+					System.out.println("active "+ gameState.active.getName());
+					System.out.println("inactive "+ gameState.inactive.getName());
+					gameState=new networkGame(gameState.host,gameState.client,gameState.active,gameState.inactive);
 					oosNetworkGame.writeObject(gameState);
 					System.out.println("wrote to socket");
+
+
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				//TODO update screen here
-				pZero.setEnabled(false);
+				pZero.UI.setEnabledButtons(false);
 				confirm.setEnabled(false);
 				findTurn.start();
 				}
 
 	public void startTurn(){
-		pZero.updateInfo();
-		pOne.updateInfo();
+		System.out.println("GOT HERE");
+		System.out.println(pZero.getName());
+		pZero.UI.setEnabledButtons(true);
+		confirm.setEnabled(true);
+		//pZero.updateInfo();
+		//pOne.updateInfo();
 		if(pZero.getActive().getHpRem()<=0){
 			promptSwitch();
 			pZero.UI.updateAnimals();
 			}
-		pZero.UI.setEnabledButtons(true);
-		confirm.setEnabled(true);
 		}
 	
 }
