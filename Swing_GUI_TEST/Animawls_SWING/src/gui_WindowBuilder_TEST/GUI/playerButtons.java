@@ -317,6 +317,8 @@ public void setEnabledButtons(Boolean input){
 		defendButton.setEnabled(false);
 		specialButton.setEnabled(false);
 		switchButton.setEnabled(false);
+		showAttack(false);
+		showSwitch(false);
 
 	}
 	if (input==true){

@@ -1,63 +1,58 @@
 package GameNetworking;
 
+import javax.swing.JButton;
+import javax.swing.SwingWorker;
+
 import GameEngine.Player;
 
-public class checkTurn extends Thread {
-public void run(Game_Screen_Server myGame){
-	int i=0;
+public class checkTurn implements Runnable {
+	private Network_Game_Screen myGame;
+	public checkTurn(Network_Game_Screen input){
+		myGame=input;
+	}
+	
+	//checkTurn
+	public void run() {
+		int i=0;
 		while(i==0){
-			try {
-				System.out.println("stuck in loop");
-				if(myGame.oisActivePlayer.available()!=0){
-				myGame.active= (Player)myGame.oisActivePlayer.readObject();
-				if(myGame.active==myGame.pZero){
-					i=1;
-						myGame.pZero=(Player)myGame.oisHostPlayer.readObject();
-						myGame.pOne=(Player)myGame.oisClientPlayer.readObject();
-						myGame.pZero.updateInfo();
-						myGame.pOne.updateInfo();
-						if(myGame.pZero.getActive().getHpRem()<=0){
-							myGame.promptSwitch();
-							myGame.pZero.UI.updateAnimals();
-							}
-						myGame.pZero.UI.setEnabledButtons(true);
-					}
-				}
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			}
-			
-		}
+					try {
+						
+						myGame.readState = (networkGame)myGame.oisNetworkGame.readObject();	
+						myGame.gameState=myGame.readState;
+						System.out.println("found input");
+						
 
-public void run(Game_Screen_Client myGame){
-	int i=0;
-		while(i==0){
-			try {
-				System.out.println("stuck in loop");
-				if(myGame.oisActivePlayer.available()!=0){
-				myGame.active= (Player)myGame.oisActivePlayer.readObject();
-				if(myGame.active==myGame.pZero){
-					i=1;
-						myGame.pZero=(Player)myGame.oisHostPlayer.readObject();
-						myGame.pOne=(Player)myGame.oisClientPlayer.readObject();
-						myGame.pZero.updateInfo();
-						myGame.pOne.updateInfo();
-						if(myGame.pZero.getActive().getHpRem()<=0){
-							myGame.promptSwitch();
-							myGame.pZero.UI.updateAnimals();
+							i=1;
+							System.out.println("active player is"+ myGame.gameState.active.getName());
+							if(myGame.type=='s'){
+								myGame.pZero=myGame.gameState.host;
+								myGame.pOne=myGame.gameState.client;
 							}
-						myGame.pZero.UI.setEnabledButtons(true);
+							if(myGame.type=='c'){
+								myGame.pZero=myGame.gameState.client;
+								myGame.pOne=myGame.gameState.host;
+							}
+						
+							myGame.startTurn();
+							
+						
 					}
-				}
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			}
-			
-		}
+					
+					
+					 catch (Exception e) {
+							
+							System.out.println("no input found");
+							e.printStackTrace();
+						}
+		}	
+	}
+
+
+
+
+
+
+
+
 }
-
 
