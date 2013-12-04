@@ -298,8 +298,8 @@ public void placePzero(){
 	//place other player objects
 	//currentAnimalPic.setBounds(185, 126, 132, 126);
 	currentAnimalPic.setBounds(185, 126, 200, 200);
-	hpBar.setBounds(262, 324, 135, 20);	
-	apBar.setBounds(262, 356, 135, 20);
+	hpBar.setBounds(262, 324, 180, 50);	
+	apBar.setBounds(262, 356, 180, 50);
 	userName.setBounds(185, 60, 132, 44);
 	userName.setHorizontalAlignment(SwingConstants.CENTER);
 	animalName.setBounds(185, 90, 132, 29);
@@ -331,9 +331,9 @@ public void placePone(){
 	UI.animalOne.setForeground(Color.white);
 	UI.animalTwo.setBounds(788, 584, 141, 23);
 	UI.animalTwo.setForeground(Color.white);
-	currentAnimalPic.setBounds(587, 126, 132, 126);
-	hpBar.setBounds(515, 324, 135, 20);
-	apBar.setBounds(515, 352, 135, 20);
+	currentAnimalPic.setBounds(557, 126, 200, 200);
+	hpBar.setBounds(515, 324, 180, 50);
+	apBar.setBounds(515, 352, 180, 50);
 	userName.setBounds(587, 60, 132, 44);
 	userName.setHorizontalAlignment(SwingConstants.CENTER);
 	animalName.setBounds(587, 90, 132, 29);

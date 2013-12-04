@@ -30,6 +30,14 @@ public class animalDead extends JDialog {
 	public  JLabel AnimalPic0;
 	public  JLabel AnimalPic1;
 	public  JLabel AnimalPic2;
+	
+	private BufferedImage resizeImage(BufferedImage originalImage, int width, int height, int type) throws IOException {  
+        BufferedImage resizedImage = new BufferedImage(width, height, type);  
+        Graphics2D g = resizedImage.createGraphics();  
+        g.drawImage(originalImage, 0, 0, width, height, null);  
+        g.dispose();  
+        return resizedImage;  
+    }  
 
 public animalDead(Player input) {
 
@@ -68,7 +76,8 @@ public animalDead(Player input) {
 			AnimalPic0 = new JLabel();
 			try {
 				 BufferedImage animalPicture = ImageIO.read(new File(myPlayer.animalsCur.get(0).imgPath));
-				AnimalPic0.setIcon(new ImageIcon(animalPicture));
+				 BufferedImage animalPicturen = resizeImage(animalPicture,132,126, animalPicture.getType());
+				AnimalPic0.setIcon(new ImageIcon(animalPicturen));
 			} catch (IOException e1) {
 				 //TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -87,7 +96,8 @@ public animalDead(Player input) {
 			AnimalPic1 = new JLabel();
 			try {
 				 BufferedImage animalPicture = ImageIO.read(new File(myPlayer.animalsCur.get(1).imgPath));
-				AnimalPic1.setIcon(new ImageIcon(animalPicture));
+				 BufferedImage animalPicturen = resizeImage(animalPicture,132,126, animalPicture.getType());
+				AnimalPic1.setIcon(new ImageIcon(animalPicturen));
 			} catch (IOException e1) {
 				 //TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -105,7 +115,8 @@ public animalDead(Player input) {
 			AnimalPic2 = new JLabel();
 			try {
 				 BufferedImage animalPicture = ImageIO.read(new File(myPlayer.animalsCur.get(2).imgPath));
-				AnimalPic2.setIcon(new ImageIcon(animalPicture));
+				 BufferedImage animalPicturen = resizeImage(animalPicture,132,126, animalPicture.getType());
+				AnimalPic2.setIcon(new ImageIcon(animalPicturen));
 			} catch (IOException e1) {
 				 //TODO Auto-generated catch block
 				e1.printStackTrace();
