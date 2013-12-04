@@ -1,7 +1,9 @@
 package GameNetworking;
 
 import gui_WindowBuilder_TEST.GUI.animalDead;
+import gui_WindowBuilder_TEST.GUI.playerButtons;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -53,7 +55,7 @@ public abstract class Network_Game_Screen extends JPanel {
 			//left player
 			public JLabel Hp;
 			public JLabel Ap ;
-			
+			public playerButtons UI;
 			//right player
 			public JLabel Hpr;
 			public JLabel Apr;
@@ -72,26 +74,26 @@ public abstract class Network_Game_Screen extends JPanel {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 				//TODO need to check if active animal is dead and if so present only switch animals buttons
-						if(gameState.active.UI.moveSelected()==false){
+						if(UI.moveSelected()==false){
 							System.out.println("Please Select a Valid Move");
 							text="Please Select a Valid Move";
 							prompt.setText(text);
 							return;
 						}
-						if((gameState.active.UI.attackZero.isSelected()==true) |(gameState.active.UI.attackOne.isSelected()==true) | (gameState.active.UI.attackTwo.isSelected()==true)){
+						if((UI.attackZero.isSelected()==true) |(UI.attackOne.isSelected()==true) | (UI.attackTwo.isSelected()==true)){
 							int dmg=0;
 
-							if(gameState.active.UI.attackZero.isSelected()==true){
+							if(UI.attackZero.isSelected()==true){
 							dmg= gameState.active.getActive().attacksAvail.get(0).useAttack(gameState.active.getActive(), gameState.inactive.getActive());
 							
 							
 							}
-							else if(gameState.active.UI.attackOne.isSelected()==true){
+							else if(UI.attackOne.isSelected()==true){
 								dmg= gameState.active.getActive().attacksAvail.get(1).useAttack(gameState.active.getActive(), gameState.inactive.getActive());
 								
 							}	
 						
-							else if(gameState.active.UI.attackTwo.isSelected()==true){
+							else if(UI.attackTwo.isSelected()==true){
 								dmg= gameState.active.getActive().attacksAvail.get(2).useAttack(gameState.active.getActive(), gameState.inactive.getActive());
 						
 							}
@@ -110,17 +112,17 @@ public abstract class Network_Game_Screen extends JPanel {
 						}
 						}
 					else{
-						 if(gameState.active.UI.animalZero.isSelected()==true){
+						 if(UI.animalZero.isSelected()==true){
 							gameState.active.switchAnimalGui(0);
 						}
-						else if(gameState.active.UI.animalOne.isSelected()==true){
+						else if(UI.animalOne.isSelected()==true){
 							gameState.active.switchAnimalGui(1);
 						}
-						else if(gameState.active.UI.animalTwo.isSelected()==true){
+						else if(UI.animalTwo.isSelected()==true){
 							gameState.active.switchAnimalGui(2);
 						}
 					}
-						if(gameState.active.UI.specialButton.isSelected()==true){
+						if(UI.specialButton.isSelected()==true){
 							//uses active animals unique special
 							gameState.active.getActive().useSpecial(gameState.inactive);
 							
@@ -159,16 +161,15 @@ public abstract class Network_Game_Screen extends JPanel {
 					whoseTurn++;
 				}
 				if(pZero.checkLoss()==0){
-					pZero.UI.setEnabledButtons(false);
+					UI.setEnabledButtons(false);
 					prompt.setText(pOne.getName()+" Wins!");
 					return;
 				}
 				if(pOne.checkLoss()==0){
-						pZero.UI.setEnabledButtons(false);
+						UI.setEnabledButtons(false);
 						prompt.setText(pZero.getName()+" Wins!");
 						return;
 				}
-				pZero.UI.setEnabledButtons(false);
 				pZero.regenAp();
 
 				gameState.tmp=gameState.active;
@@ -191,22 +192,50 @@ public abstract class Network_Game_Screen extends JPanel {
 					e.printStackTrace();
 				}
 				//TODO update screen here
-				pZero.UI.setEnabledButtons(false);
+				UI.setEnabledButtons(false);
 				confirm.setEnabled(false);
+				findTurn= new Thread(new checkTurn(this));
 				findTurn.start();
 				}
 
 	public void startTurn(){
 		System.out.println("GOT HERE");
 		System.out.println(pZero.getName());
-		pZero.UI.setEnabledButtons(true);
+		UI.showButtons(true);
 		confirm.setEnabled(true);
-		//pZero.updateInfo();
-		//pOne.updateInfo();
+		pZero.updateInfo();
+		pOne.updateInfo();
+		UI.checkAp();
+		UI.updateAnimals();
 		if(pZero.getActive().getHpRem()<=0){
 			promptSwitch();
-			pZero.UI.updateAnimals();
+			UI.updateAnimals();
+			
 			}
 		}
+	public void placeButtons(){
+		UI.attackButton.setBounds(42, 289, 141, 23);
+		UI.attackButton.setForeground(Color.white);
+		UI.attackZero.setBounds(84, 324, 141, 23);
+		UI.attackZero.setForeground(Color.white);
+		UI.attackOne.setBounds(83, 359, 141, 23);
+		UI.attackOne.setForeground(Color.white);
+		UI.attackTwo.setBounds(84, 394, 141, 23);
+		UI.attackTwo.setForeground(Color.white);
+		UI.specialButton.setBounds(42, 429, 141, 23);
+		UI.specialButton.setForeground(Color.white);
+		UI.defendButton.setBounds(42, 479, 141, 23);
+		UI.defendButton.setForeground(Color.white);
+		UI.switchButton.setBounds(42, 514, 141, 23);
+		UI.switchButton.setForeground(Color.white);
+		UI.animalZero.setBounds(130, 536, 141, 23);
+		UI.animalZero.setForeground(Color.white);
+		UI.animalOne.setBounds(130, 560, 141, 23);
+		UI.animalOne.setForeground(Color.white);
+		UI.animalTwo.setBounds(130, 584, 141, 23);
+		UI.animalTwo.setForeground(Color.white);
+	}
+
+	
 	
 }

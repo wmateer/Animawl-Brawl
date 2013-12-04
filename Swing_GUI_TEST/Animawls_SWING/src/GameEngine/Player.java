@@ -309,8 +309,18 @@ public void placePzero(){
 
 
 }
+public void placeNetworkPlayer(){
+	currentAnimalPic.setBounds(557, 126, 200, 200);
+	hpBar.setBounds(515, 324, 180, 50);
+	apBar.setBounds(515, 352, 180, 50);
+	userName.setBounds(587, 60, 132, 44);
+	userName.setHorizontalAlignment(SwingConstants.CENTER);
+	animalName.setBounds(587, 90, 132, 29);
+	animalName.setHorizontalAlignment(SwingConstants.CENTER);
+}
 public void placePone(){
 	//place buttons for pOne in proper spot
+	/*
 	UI.attackButton.setBounds(712, 289, 141, 23);
 	UI.attackButton.setForeground(Color.white);
 	UI.attackZero.setBounds(753, 327, 141, 23);
@@ -331,6 +341,7 @@ public void placePone(){
 	UI.animalOne.setForeground(Color.white);
 	UI.animalTwo.setBounds(788, 584, 141, 23);
 	UI.animalTwo.setForeground(Color.white);
+	*/
 	currentAnimalPic.setBounds(557, 126, 200, 200);
 	hpBar.setBounds(515, 324, 180, 50);
 	apBar.setBounds(515, 352, 180, 50);
@@ -360,8 +371,6 @@ public void setEnabled(Boolean input){
 	
 }
 public void updateInfo(){
-	UI.checkAp();
-	UI.updateAnimals();
 	hpBar.setValue((int)active.getHpRem());
 	apBar.setValue((int)active.getApRem());
 }

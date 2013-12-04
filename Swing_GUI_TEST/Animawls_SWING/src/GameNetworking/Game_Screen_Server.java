@@ -120,18 +120,20 @@ public Game_Screen_Server (JFrame masterFrame, User user1, String chosenBattlegr
 	
 			//add pZero's buttons to GUI screen
 			pZero.placePzero();
-			add(pZero.UI.attackButton);
-			add(pZero.UI.specialButton);
-			add(pZero.UI.defendButton);
-			add(pZero.UI.switchButton);
+			UI=new playerButtons(pZero);
+			placeButtons();
+			add(UI.attackButton);
+			add(UI.specialButton);
+			add(UI.defendButton);
+			add(UI.switchButton);
 			
-			add(pZero.UI.attackZero);
-			add(pZero.UI.attackOne);
-			add(pZero.UI.attackTwo);
+			add(UI.attackZero);
+			add(UI.attackOne);
+			add(UI.attackTwo);
 			
-			add(pZero.UI.animalZero);
-			add(pZero.UI.animalOne);
-			add(pZero.UI.animalTwo);
+			add(UI.animalZero);
+			add(UI.animalOne);
+			add(UI.animalTwo);
 			
 			add(pZero.currentAnimalPic);
 			add(pZero.getHpBar());
@@ -155,7 +157,7 @@ public Game_Screen_Server (JFrame masterFrame, User user1, String chosenBattlegr
 			
 			
 		//Player One UI----------------------------------------------		
-			pOne.placePone();
+			pOne.placeNetworkPlayer();
 			
 			
 			add(pOne.currentAnimalPic);
@@ -176,11 +178,11 @@ public Game_Screen_Server (JFrame masterFrame, User user1, String chosenBattlegr
 			
 		//set up game
 			findTurn= new Thread(new checkTurn(this));
-			gameState.inactive.UI.updateAnimals();
-			gameState.active.UI.updateAnimals();
-			pZero.showUI();
+			UI.updateAnimals();
+
+			UI.showButtons(true);
 			if(pZero!=gameState.active){
-				pZero.UI.setEnabledButtons(false);
+				UI.setEnabledButtons(false);
 				findTurn.start();
 				confirm.setEnabled(false);
 			}

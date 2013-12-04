@@ -26,7 +26,6 @@ public class checkTurn implements Runnable {
 						myGame.gameState.client=myGame.readState.client;
 						myGame.gameState.active=myGame.readState.active;
 						myGame.gameState.inactive=myGame.readState.inactive;
-						myGame.pZero.UI.showButtons(false);
 							System.out.println("active player is"+ myGame.gameState.active.getName());
 							if(myGame.type=='s'){
 								myGame.pZero=myGame.gameState.host;
