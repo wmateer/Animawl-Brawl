@@ -39,8 +39,10 @@ public class checkTurn implements Runnable {
 							
 
 						   myGame.startTurn();
-							
-							return;
+						   System.out.println("active ap "+ myGame.gameState.active.getActive().getApRem()+'/'+ myGame.gameState.active.getActive().getApTot());
+						   System.out.println("active hp "+ myGame.gameState.active.getActive().getHpRem()+'/'+ myGame.gameState.active.getActive().getHpTot());
+
+						   return;
 							
 						
 					}
