@@ -53,7 +53,7 @@ public class Snake extends Animal {
 		evdScaler=10;
 		evdBonus=-.05;
 		
-		imgPath = "IMAGES/CHAR_PICTS/Snake.jpg";
+		imgPath = "IMAGES/CHAR_PICTS/snake_left.png";
 		Description = "A SWEET LOVEABLE PLAYMATE, STILL WILL KILL YOU!!!";
 		soundPath = "SOUNDS/PICK_SOUNDS/ShortSnake_PickSound.wav";
 		specialDescription= "PLACE HOLDER";

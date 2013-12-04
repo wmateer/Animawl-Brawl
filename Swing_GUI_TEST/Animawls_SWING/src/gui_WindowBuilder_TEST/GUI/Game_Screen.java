@@ -38,6 +38,14 @@ public class Game_Screen extends JPanel {
 
 
 	private BufferedImage backgroundPict;
+	
+	private BufferedImage resizeImage(BufferedImage originalImage, int width, int height, int type) throws IOException {  
+        BufferedImage resizedImage = new BufferedImage(width, height, type);  
+        Graphics2D g = resizedImage.createGraphics();  
+        g.drawImage(originalImage, 0, 0, width, height, null);  
+        g.dispose();  
+        return resizedImage;  
+    }  
 
 	public Game_Screen(MusicFrame masterFrame, User user1, String chosenBattleground) {
 		parentFrame = masterFrame;

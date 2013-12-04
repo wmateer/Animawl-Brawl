@@ -51,7 +51,7 @@ public class Elephant extends Animal {
 		evdScaler=10;
 		evdBonus=-.05;
 		
-		imgPath = "IMAGES/CHAR_PICTS/Elephant.jpg";
+		imgPath = "IMAGES/CHAR_PICTS/elephant_left.png";
 		Description = "A BEAST CAPABLE OF REMEMBERING THINGS!!!  CAN ALSO TRAMPLE THINGS!!!";
 		soundPath = "SOUNDS/PICK_SOUNDS/ShortElephant_PickSound.wav";
 		specialDescription= "Suck life from your enemy";
