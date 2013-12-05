@@ -58,14 +58,15 @@ public class Game_Screen extends JPanel {
 		setLayout(null);
 		
 		//SET BACKGROUND
-		try {                
+		try {               
+			
 			backgroundPict = ImageIO.read(new File(chosenBattleground));
 		} 
 		catch (Exception ex) {
 		       ex.printStackTrace();
 		}
 
-		parentFrame.setSize(900, 600);
+		parentFrame.setSize(900, 635);
 		parentFrame.setLocationRelativeTo(null);
 		parentFrame.setResizable(false);
 
