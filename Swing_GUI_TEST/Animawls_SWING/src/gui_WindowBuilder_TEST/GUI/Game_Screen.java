@@ -358,7 +358,8 @@ public class confirmListner implements ActionListener {
 			if(active.UI.specialButton.isSelected()==true){
 				//uses active animals unique special
 				active.getActive().useSpecial(inactive);
-				add( new attackmover(active.getActive().imgPath, 200, 200, 50, 0, 1, 1, 80) );
+				//add( new attackmover(active.getActive().imgPath, 200, 200, 50, 0, 1, 1, 80) );
+				
 				//update hp bars
 				active.hpBar.setValue((int)active.getActive().getHpRem());
 				inactive.hpBar.setValue((int)inactive.getActive().getHpRem());
