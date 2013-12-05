@@ -283,6 +283,9 @@ public void updateAnimals(){
 	if(myPlayer.animalsCur.get(2).getHpRem()<=0){
 		animalTwo.setEnabled(false);
 	}
+	setAnimalDescription(myPlayer.animalsCur.get(0), animalZero);
+	setAnimalDescription(myPlayer.animalsCur.get(1), animalOne);
+	setAnimalDescription(myPlayer.animalsCur.get(2), animalTwo);
 	}
 
 public void checkAp(){
