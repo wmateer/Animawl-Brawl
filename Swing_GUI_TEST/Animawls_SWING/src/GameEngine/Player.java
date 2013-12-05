@@ -1,11 +1,13 @@
 package GameEngine;
 
 //imports
+import Animation.*;
 import gui_WindowBuilder_TEST.GUI.playerButtons;
 
 import java.util.*;
 
 import Animals.*;
+import Animation.mover;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -69,9 +71,14 @@ public Player(String input, Animal animal0,Animal animal1, Animal animal2){
 	//create animal pic 
 	currentAnimalPic = new JLabel(getActive().getName());
 	try {
+		//add( new attackmover("IMAGES/CHAR_PICTS/bird_left.png", 0, 200, 5, 0, 1, 1, 80) );
 		BufferedImage unsizedAnimalPicture = ImageIO.read(new File(getActive().imgPath));
 		BufferedImage sizedAnimalPicture = resizeImage(unsizedAnimalPicture,200,200, unsizedAnimalPicture.getType());
 		currentAnimalPic.setIcon(new ImageIcon(sizedAnimalPicture));
+		//currentAnimalPic.setIcon( new attackmover(getActive().imgPath, 0, 200, 5, 0, 1, 1, 80) );
+		//currentAnimalPic.setIcon(new attackmover(sizedAnimalPicture, 0, 200, 5, 0, 1, 1, 80) );
+		
+		
 		
 	} catch (IOException e1) {
 		 //TODO Auto-generated catch block

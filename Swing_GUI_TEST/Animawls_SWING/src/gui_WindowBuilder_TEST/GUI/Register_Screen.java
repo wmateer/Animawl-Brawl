@@ -3,6 +3,7 @@ package gui_WindowBuilder_TEST.GUI;
 
 import javax.swing.*;
 
+import Animation.mover;
 import GameEngine.User;
 
 import java.awt.Font;
@@ -102,7 +103,7 @@ public class Register_Screen extends JPanel {
 		backToLogin_button.setBounds(251, 244, 150, 29);
 		add(backToLogin_button);
 	
-		
+		add( new mover("IMAGES/CHAR_PICTS/elephant_left.png", 150, 200, 5, 2, 1, 1, 80) );
 
 	}
 

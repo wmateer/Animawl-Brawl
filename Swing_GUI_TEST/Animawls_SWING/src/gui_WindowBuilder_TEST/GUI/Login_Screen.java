@@ -2,6 +2,7 @@ package gui_WindowBuilder_TEST.GUI;
 
 import javax.swing.*;
 
+import Animation.mover;
 import GameEngine.User;
 
 import java.awt.Dimension;
@@ -36,6 +37,8 @@ public class Login_Screen extends JPanel {
 		parentFrame.setSize(450, 320);
 		setBackground(new Color(135, 206, 235));
 		setLayout(null);
+		
+		
 		
 		passwordField = new JPasswordField();
 		passwordField.setBounds(233, 167, 134, 28);
@@ -102,6 +105,8 @@ public class Login_Screen extends JPanel {
 		title_Label.setFont(new Font("Mona Lisa Solid ITC TT", Font.PLAIN, 30));
 		title_Label.setBounds(66, 23, 318, 75);
 		add(title_Label);
+		
+		add( new mover("IMAGES/CHAR_PICTS/rabbit_left.png", 150, 200, 0, 20, 1, 1, 80) );
 	}
 		
 	
@@ -179,6 +184,8 @@ public class Login_Screen extends JPanel {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
+		
+		
 	}
 }
 
