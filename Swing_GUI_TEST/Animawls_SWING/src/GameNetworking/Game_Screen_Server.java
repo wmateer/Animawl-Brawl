@@ -34,7 +34,7 @@ public Game_Screen_Server (JFrame masterFrame, User user1, String chosenBattlegr
 		       ex.printStackTrace();
 		}
 
-		masterFrame.setSize(900, 600);
+		masterFrame.setSize(900, 635);
 		masterFrame.setLocationRelativeTo(null);
 		masterFrame.setResizable(false);
 		
@@ -146,7 +146,7 @@ public Game_Screen_Server (JFrame masterFrame, User user1, String chosenBattlegr
 	
 	//creat hp bar
 	hpBarZero = new JProgressBar(0,(int)Math.round(pZero.getActive().getHpTot()));
-	hpBarZero.setValue((int)Math.round(pZero.getActive().getHpTot()));
+	hpBarZero.setValue((int)Math.round(pZero.getActive().getHpRem()));
 	hpBarZero.setForeground(Color.red);
 	hpBarZero.setStringPainted(true);
 	hpBarZero.setBackground(Color.white);
@@ -154,7 +154,7 @@ public Game_Screen_Server (JFrame masterFrame, User user1, String chosenBattlegr
 	
 	//creat ap bar
 	apBarZero= new JProgressBar(0,(int)Math.round(pZero.getActive().getApTot()));
-	apBarZero.setValue((int)Math.round(pZero.getActive().getApTot()));
+	apBarZero.setValue((int)Math.round(pZero.getActive().getApRem()));
 	apBarZero.setForeground(Color.blue);
 	apBarZero.setStringPainted(true);
 	apBarZero.setBackground(Color.white);
@@ -228,7 +228,7 @@ public Game_Screen_Server (JFrame masterFrame, User user1, String chosenBattlegr
 		
 		//creat hp bar
 		hpBarOne = new JProgressBar(0,(int)Math.round(pOne.getActive().getHpTot()));
-		hpBarOne.setValue((int)Math.round(pOne.getActive().getHpTot()));
+		hpBarOne.setValue((int)Math.round(pOne.getActive().getHpRem()));
 		hpBarOne.setForeground(Color.red);
 		hpBarOne.setStringPainted(true);
 		hpBarOne.setBackground(Color.white);
@@ -236,7 +236,7 @@ public Game_Screen_Server (JFrame masterFrame, User user1, String chosenBattlegr
 		
 		//creat ap bar
 		apBarOne= new JProgressBar(0,(int)Math.round(pOne.getActive().getApTot()));
-		apBarOne.setValue((int)Math.round(pOne.getActive().getApTot()));
+		apBarOne.setValue((int)Math.round(pOne.getActive().getApRem()));
 		apBarOne.setForeground(Color.blue);
 		apBarOne.setStringPainted(true);
 		apBarOne.setBackground(Color.white);

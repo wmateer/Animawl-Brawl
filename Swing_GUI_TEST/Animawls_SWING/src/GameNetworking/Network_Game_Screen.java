@@ -157,8 +157,8 @@ public abstract class Network_Game_Screen extends JPanel {
 						hpBarOne.setValue((int)pOne.getActive().getHpRem());
 						
 						//update ap bars
-						apBarZero.setValue((int)gameState.active.getActive().getApRem());
-						apBarOne.setValue((int)gameState.inactive.getActive().getApRem());
+						apBarZero.setValue((int)pZero.getActive().getApRem());
+						apBarOne.setValue((int)pOne.getActive().getApRem());
 					try {
 						endTurn();
 					} catch (Exception e1) {
@@ -190,22 +190,23 @@ public abstract class Network_Game_Screen extends JPanel {
 						prompt.setText(pZero.getName()+" Wins!");
 						return;
 				}
-				pZero.regenAp();
 				
 				
 				gameState.active.updatePlayer(pZero);
+				System.out.println("active's ap "+ gameState.active.getActive().getApRem());
+
 				gameState.inactive.updatePlayer(pOne);
+				
+				/*
 				gameState.tmp=gameState.active;
 				gameState.active=gameState.inactive;
 				gameState.inactive=gameState.tmp;
+	*/
 				
 			
 				try {
-					System.out.println("host "+ gameState.host.getName());
-					System.out.println("client "+ gameState.client.getName());
-					System.out.println("active "+ gameState.active.getName());
-					System.out.println("inactive "+ gameState.inactive.getName());
-					gameState=new networkGame(gameState.host,gameState.client,gameState.active,gameState.inactive);
+					
+					gameState=new networkGame(gameState.host,gameState.client,gameState.inactive, gameState.active);
 					oosNetworkGame.writeObject(gameState);
 					System.out.println("wrote to socket");
 
@@ -223,6 +224,7 @@ public abstract class Network_Game_Screen extends JPanel {
 				}
 
 	public void startTurn(){
+				pZero.regenAp();
 		 		UI.setEnabledButtons(true);
 		 		UI.updateAttacks();
 				UI.updateAnimals();
@@ -293,7 +295,7 @@ public abstract class Network_Game_Screen extends JPanel {
 		apBarZero.setMaximum((int)pZero.getActive().getApTot());
 		apBarZero.setValue((int)pZero.getActive().getApRem());
 		
-		animalNameZero.setText(pZero.getName());
+		animalNameZero.setText(pZero.getActive().getName());
 		
 		try {
 			animalPictureZero = ImageIO.read(new File(pZero.getActive().imgPath));
@@ -307,9 +309,12 @@ public abstract class Network_Game_Screen extends JPanel {
 		//update network players info
 		hpBarOne.setMaximum((int)pOne.getActive().getHpTot());
 		hpBarOne.setValue((int)pOne.getActive().getHpRem());
+		
 		apBarOne.setMaximum((int)pOne.getActive().getApTot());
 		apBarOne.setValue((int)pOne.getActive().getApRem());
-		animalNameOne.setText(pOne.getName());
+		
+		animalNameOne.setText(pOne.getActive().getName());
+		
 		try {
 			animalPictureOne = ImageIO.read(new File(pOne.getActive().imgPath));
 			currentAnimalPicOne.setIcon(new ImageIcon(animalPictureOne));

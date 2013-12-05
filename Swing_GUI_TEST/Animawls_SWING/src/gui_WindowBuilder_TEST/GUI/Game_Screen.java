@@ -254,7 +254,7 @@ public void endTurn(){
 		//dataLoadedFromFile = LoadTable();
 		
 
-		passedUser = updateUser (passedUser, pZero);
+		//passedUser = updateUser (passedUser, pZero);
 		GameResults_Screen tmp_Screen = new GameResults_Screen(parentFrame,passedUser,active.getName(),AniLevONE,AniLevTWO,AniLevTHREE);
 		parentFrame.setContentPane(tmp_Screen);
 		parentFrame.setVisible(true);
@@ -269,7 +269,7 @@ public void endTurn(){
 		//GAME ENDS GO TO END GAME SCREEN?
 		//SAVE USER STATS
 		//HAVE USERS LEVEL UP CHARS
-		passedUser = updateUser (passedUser, pZero);
+		//passedUser = updateUser (passedUser, pZero);
 		GameResults_Screen tmp_Screen = new GameResults_Screen(parentFrame,passedUser,inactive.getName(),AniLevONE,AniLevTWO,AniLevTHREE);
 		parentFrame.setContentPane(tmp_Screen);
 		parentFrame.setVisible(true);
