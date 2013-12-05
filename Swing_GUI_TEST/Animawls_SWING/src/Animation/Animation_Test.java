@@ -19,7 +19,7 @@ public class Animation_Test extends JPanel implements ActionListener{
 		public Animation_Test() {
 			imageArray = new ImageIcon[totalFrames];
 			for (int i = 0; i<imageArray.length; i++){
-				imageArray[i] = new ImageIcon("IMAGES/ANIMATION_TEST/frame" + i + ".png");
+				imageArray[i] = new ImageIcon("frame" + i + ".png");
 				
 			}
 			animator = new Timer(delay, this);
