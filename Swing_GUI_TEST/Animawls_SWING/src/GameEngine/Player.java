@@ -53,7 +53,7 @@ public Player(String input, Animal animal0,Animal animal1, Animal animal2){
 	
 	//establish starting gui objects
 	UI= new playerButtons(this);
-/*	
+	
 	//create username object
 	userName= new JLabel(name);
 	userName.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
@@ -93,9 +93,9 @@ public Player(String input, Animal animal0,Animal animal1, Animal animal2){
 	apBar.setStringPainted(true);
 	apBar.setBackground(Color.white);
 	apBar.setVisible(true);
-	*/
+	
 }
-//create hashmap of animals
+
 
 //getters and setter
 public Animal getActive(){
@@ -192,8 +192,10 @@ public void switchAnimalGui(int animalNumb){
 	animalName.setText(active.getName());
 	
 	try {
-		 animalPicture = ImageIO.read(new File(getActive().imgPath));
-		currentAnimalPic.setIcon(new ImageIcon(animalPicture));
+		animalPicture = ImageIO.read(new File(getActive().imgPath));
+		 BufferedImage sizedAnimalPicture = resizeImage(animalPicture,200,200, animalPicture.getType());
+		 
+		currentAnimalPic.setIcon(new ImageIcon(sizedAnimalPicture));
 	} catch (IOException e1) {
 		 //TODO Auto-generated catch block
 		e1.printStackTrace();
@@ -299,18 +301,49 @@ public void placePzero(){
 	//place other player objects
 	//currentAnimalPic.setBounds(185, 126, 132, 126);
 	currentAnimalPic.setBounds(185, 126, 200, 200);
-	hpBar.setBounds(262, 324, 180, 50);	
-	apBar.setBounds(262, 356, 180, 50);
+	hpBar.setBounds(222, 324, 180, 50);	
+	apBar.setBounds(222, 356, 180, 50);
 	userName.setBounds(185, 60, 132, 44);
 	userName.setHorizontalAlignment(SwingConstants.CENTER);
 	animalName.setBounds(185, 90, 132, 29);
 	animalName.setHorizontalAlignment(SwingConstants.CENTER);
 
-
-
-
 }
+
 public void placeNetworkPlayer(){
+	currentAnimalPic.setBounds(557, 126, 200, 200);
+	hpBar.setBounds(515, 324, 180, 50);
+	apBar.setBounds(515, 352, 180, 50);
+	userName.setBounds(587, 60, 132, 44);
+	userName.setHorizontalAlignment(SwingConstants.CENTER);
+	animalName.setBounds(587, 90, 132, 29);
+	animalName.setHorizontalAlignment(SwingConstants.CENTER);
+}
+
+public void placePone(){
+	//place buttons for pOne in proper spot
+	
+	UI.attackButton.setBounds(712, 289, 141, 23);
+	UI.attackButton.setForeground(Color.white);
+	UI.attackZero.setBounds(753, 327, 141, 23);
+	UI.attackZero.setForeground(Color.white);
+	UI.attackOne.setBounds(753, 359, 141, 23);
+	UI.attackOne.setForeground(Color.white);
+	UI.attackTwo.setBounds(753, 394, 141, 23);
+	UI.attackTwo.setForeground(Color.white);
+	UI.specialButton.setBounds(712, 429, 141, 23);
+	UI.specialButton.setForeground(Color.white);
+	UI.defendButton.setBounds(712, 479, 141, 23);
+	UI.defendButton.setForeground(Color.white);
+	UI.switchButton.setBounds(712, 514, 141, 23);
+	UI.switchButton.setForeground(Color.white);
+	UI.animalZero.setBounds(788, 536, 141, 23);
+	UI.animalZero.setForeground(Color.white);
+	UI.animalOne.setBounds(788, 560, 141, 23);
+	UI.animalOne.setForeground(Color.white);
+	UI.animalTwo.setBounds(788, 584, 141, 23);
+	UI.animalTwo.setForeground(Color.white);
+	
 	currentAnimalPic.setBounds(557, 126, 200, 200);
 	hpBar.setBounds(515, 324, 180, 50);
 	apBar.setBounds(515, 352, 180, 50);
