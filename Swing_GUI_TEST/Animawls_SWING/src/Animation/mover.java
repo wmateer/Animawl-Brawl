@@ -3,6 +3,11 @@ package Animation;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class mover extends JLabel implements ActionListener
@@ -11,19 +16,34 @@ public class mover extends JLabel implements ActionListener
     int deltaY = 3;
     int directionX = 1;
     int directionY = 1;
+    
+    private BufferedImage resizeImage(BufferedImage originalImage, int width, int height, int type) throws IOException {  
+        BufferedImage resizedImage = new BufferedImage(width, height, type);  
+        Graphics2D g = resizedImage.createGraphics();  
+        g.drawImage(originalImage, 0, 0, width, height, null);  
+        g.dispose();  
+        return resizedImage;  
+    }  
 
-    public mover(
-        int startX, int startY,
-        int deltaX, int deltaY,
-        int directionX, int directionY,
-        int delay)
+
+    public mover(String imgPath,int startX, int startY,int deltaX, int deltaY,int directionX, int directionY,int delay)
     {
         this.deltaX = deltaX;
         this.deltaY = deltaY;
         this.directionX = directionX;
         this.directionY = directionY;
 
-        setIcon( new ImageIcon("IMAGES/ANIMATION_TEST/frame0.png") );
+        try{
+        	BufferedImage unsizedAnimalPicture = ImageIO.read(new File(imgPath));
+    		BufferedImage sizedAnimalPicture = resizeImage(unsizedAnimalPicture,200,200, unsizedAnimalPicture.getType());
+    		setIcon(new ImageIcon(sizedAnimalPicture));
+        }
+        catch(Exception purple){
+        	purple.printStackTrace();
+        }
+        
+       // setIcon( new ImageIcon("IMAGES/ANIMATION_TEST/frame0.png") );
+        //setIcon( new ImageIcon(imgPath) );
 
         setSize( getPreferredSize() );
         setLocation(startX, startY);
@@ -40,7 +60,9 @@ public class mover extends JLabel implements ActionListener
 
         if (nextX < 0)
         {
+        	
             nextX = 0;
+            //directionX *= 0;
             directionX *= -1;
         }
 
@@ -71,6 +93,7 @@ public class mover extends JLabel implements ActionListener
         setLocation(nextX, nextY);
     }
 
+    
     public static void main(String[] args)
     {
         JPanel panel = new JPanel();
@@ -82,11 +105,13 @@ public class mover extends JLabel implements ActionListener
 //      frame.getContentPane().add( new TimerAnimation(10, 10, 2, 3, 1, 1, 10) );
         //frame.getContentPane().add( new mover(300, 100, 3, 2, -1, 1, 20) );
 //      frame.getContentPane().add( new TimerAnimation(0, 000, 5, 0, 1, 1, 20) );
-        frame.getContentPane().add( new mover(0, 200, 5, 0, 1, 1, 80) );
+        frame.getContentPane().add( new mover("IMAGES/ANIMATION_TEST/frame0.png",0, 200, 5, 0, 1, 1, 80) );
         frame.setSize(400, 400);
         frame.setLocationRelativeTo( null );
         frame.setVisible(true);
 //      frame.getContentPane().add( new TimerAnimation(10, 10, 2, 3, 1, 1, 10) );
 //      frame.getContentPane().add( new TimerAnimation(10, 10, 3, 0, 1, 1, 10) );
     }
+   
+    
 }

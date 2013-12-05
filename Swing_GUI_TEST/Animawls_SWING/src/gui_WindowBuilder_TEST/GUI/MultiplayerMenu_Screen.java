@@ -7,6 +7,7 @@ import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+import Animation.mover;
 import GameEngine.User;
 import GameNetworking.Game_Screen_Client;
 
@@ -109,5 +110,7 @@ public class MultiplayerMenu_Screen extends JPanel {
 		});
 		goToMainMenu_Button.setBounds(229, 236, 164, 29);
 		add(goToMainMenu_Button);
+		
+		add( new mover("IMAGES/CHAR_PICTS/bat_left.png", 0, 200, 5, 0, 1, 1, 80) );
 	}
 }
