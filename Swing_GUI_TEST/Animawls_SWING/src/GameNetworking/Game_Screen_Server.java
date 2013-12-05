@@ -228,7 +228,7 @@ public Game_Screen_Server (JFrame masterFrame, User user1, String chosenBattlegr
 		
 		//creat hp bar
 		hpBarOne = new JProgressBar(0,(int)Math.round(pOne.getActive().getHpTot()));
-		hpBarOne.setValue((int)Math.round(pZero.getActive().getHpTot()));
+		hpBarOne.setValue((int)Math.round(pOne.getActive().getHpTot()));
 		hpBarOne.setForeground(Color.red);
 		hpBarOne.setStringPainted(true);
 		hpBarOne.setBackground(Color.white);
@@ -236,7 +236,7 @@ public Game_Screen_Server (JFrame masterFrame, User user1, String chosenBattlegr
 		
 		//creat ap bar
 		apBarOne= new JProgressBar(0,(int)Math.round(pOne.getActive().getApTot()));
-		apBarOne.setValue((int)Math.round(pZero.getActive().getApTot()));
+		apBarOne.setValue((int)Math.round(pOne.getActive().getApTot()));
 		apBarOne.setForeground(Color.blue);
 		apBarOne.setStringPainted(true);
 		apBarOne.setBackground(Color.white);

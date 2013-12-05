@@ -59,35 +59,30 @@ public class CharacterSelect_Screen extends JPanel {
         return resizedImage;  
     }  
 	
-	private void skiptogamescreen(User tmpUser){
+	private void skiptogamescreen(User tmpUser, int gameConnectionType){
 		stopAnimalSoundPlayback();
 		tmpUser.setName("Anthony");
 		tmpUser.addToChosen(Willis);
 		tmpUser.addToChosen(Toby);
 		tmpUser.addToChosen(Nathaniel);
-		JPanel tmp_Screen = new BattlegroundSelect_Screen(parentFrame,tmpUser);
+		JPanel tmp_Screen = new BattlegroundSelect_Screen(parentFrame,tmpUser,gameConnectionType);
 		parentFrame.setContentPane(tmp_Screen);
 		parentFrame.setVisible(true); 
 		parentFrame.setResizable(true);
-		
 	}
 	
-	
-	public CharacterSelect_Screen(MusicFrame masterFrame, User currentUser) {
-		//STOP MUSIC//
-		//TitleThemeSound.stop();
-		//TitleThemeSound.close();
-		
+	//gameConnectionType is: 0 for local, 1 for client, 2 for server.
+	public CharacterSelect_Screen(MusicFrame masterFrame, User currentUser, int gameConnectionType) 
+	{
 		//set up frame
 		setBackground(new Color(60, 179, 113));
 		setLayout(null);
 		parentFrame = masterFrame;
 		parentFrame.StopMusic();
 		
-		
 		//set tmpUser so we can pass animals to it
 		final User tmpUser = currentUser;
-		
+		final int tmpConnectType = gameConnectionType;
 		//set up various labels and textarea components
 		final JLabel selectedCharPict_Label = new JLabel("");
 		selectedCharPict_Label.setFont(new Font("Lucida Grande", Font.BOLD | Font.ITALIC, 15));
@@ -248,7 +243,7 @@ public class CharacterSelect_Screen extends JPanel {
 					if(checkNamed()){
 						stopAnimalSoundPlayback();
 						
-						JPanel tmp_Screen = new BattlegroundSelect_Screen(parentFrame,tmpUser);
+						JPanel tmp_Screen = new BattlegroundSelect_Screen(parentFrame,tmpUser,tmpConnectType);
 						parentFrame.setContentPane(tmp_Screen);
 						parentFrame.setVisible(true); 
 						parentFrame.setResizable(true);
@@ -266,7 +261,7 @@ public class CharacterSelect_Screen extends JPanel {
 							if(!tmpUser.getChosen().get(2).getName().equals(tmpUser.getChosen().get(2).getType())){
 							stopAnimalSoundPlayback();
 			
-							JPanel tmp_Screen = new BattlegroundSelect_Screen(parentFrame,tmpUser);
+							JPanel tmp_Screen = new BattlegroundSelect_Screen(parentFrame,tmpUser,tmpConnectType);
 							parentFrame.setContentPane(tmp_Screen);
 							parentFrame.setVisible(true); 
 							parentFrame.setResizable(true);
@@ -289,7 +284,7 @@ public class CharacterSelect_Screen extends JPanel {
 						if(tmpUser.getChosenSize()<3){
 							stopAnimalSoundPlayback();
 		
-							JPanel tmp_Screen = new CharacterSelect_Screen(parentFrame,tmpUser);
+							JPanel tmp_Screen = new CharacterSelect_Screen(parentFrame,tmpUser,tmpConnectType);
 							parentFrame.setContentPane(tmp_Screen);
 							parentFrame.setVisible(true);
 							parentFrame.setResizable(true);
@@ -300,7 +295,7 @@ public class CharacterSelect_Screen extends JPanel {
 							if(!tmpUser.getChosen().get(2).getName().equals(tmpUser.getChosen().get(2).getType())){
 							stopAnimalSoundPlayback();
 			
-							JPanel tmp_Screen = new BattlegroundSelect_Screen(parentFrame,tmpUser);
+							JPanel tmp_Screen = new BattlegroundSelect_Screen(parentFrame,tmpUser,tmpConnectType);
 							parentFrame.setContentPane(tmp_Screen);
 							parentFrame.setVisible(true); 
 							parentFrame.setResizable(true);
@@ -438,7 +433,7 @@ public class CharacterSelect_Screen extends JPanel {
 		JButton skipButton = new JButton("next screen");
 		skipButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				skiptogamescreen(tmpUser);
+				skiptogamescreen(tmpUser,tmpConnectType);
 			}
 		});
 		skipButton.setBounds(18, 187, 142, 29);

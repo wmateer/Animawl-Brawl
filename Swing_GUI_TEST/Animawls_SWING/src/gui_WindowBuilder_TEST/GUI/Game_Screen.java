@@ -344,7 +344,7 @@ public class confirmListner implements ActionListener {
 				inactive.apBar.setValue((int)inactive.getActive().getApRem());
 				
 				//TODO create better way to display effect of special (maybe own Jpanel?)
-				prompt.setText(active.getActive().getName()+" used thier special!");
+				prompt.setText(active.getActive().getName()+" used their special!");
 			}
 		
 		endTurn();

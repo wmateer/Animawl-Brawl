@@ -15,6 +15,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 
 import GameEngine.User;
+import GameNetworking.Game_Screen_Client;
+import GameNetworking.Game_Screen_Server;
 import Sound.Sound_Playback;
 
 public class BattlegroundSelect_Screen extends JPanel {
@@ -41,11 +43,12 @@ public class BattlegroundSelect_Screen extends JPanel {
 	 * @param masterFrame The passed MusicFrame that is used to display the panel data.
 	 * @param currentUser The user that is passed to the Game_Screen, and later saved.
 	 */
-	public BattlegroundSelect_Screen(MusicFrame masterFrame,User currentUser) {
+	public BattlegroundSelect_Screen(MusicFrame masterFrame,User currentUser,int gameConnectionType) {
 		setBackground(new Color(218, 165, 32));
 		setLayout(null);
 		
 		final User tmpUser = currentUser;
+		final int tmpConnectType = gameConnectionType;
 		parentFrame = masterFrame;
 		
 		JLabel BattlegroundSelectTitle_Label = new JLabel("Choose a Battleground");
@@ -152,10 +155,31 @@ public class BattlegroundSelect_Screen extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				if(!currentBattlegroundChoice.equals("NONE")){
 					stopAllSound();
-					JPanel tmp_Screen = new Game_Screen(parentFrame,tmpUser,currentBattlegroundChoice);
-					parentFrame.setContentPane(tmp_Screen);
-					parentFrame.setVisible(true); 
-					parentFrame.setResizable(true);
+					
+					if(tmpConnectType == 0) //LOCAL
+					{
+						JPanel tmp_Screen = new Game_Screen(parentFrame,tmpUser,currentBattlegroundChoice);
+						parentFrame.setContentPane(tmp_Screen);
+						parentFrame.setVisible(true); 
+						parentFrame.setResizable(true);
+					}
+					if(tmpConnectType == 1) //CLIENT
+					{
+						JPanel myPanel=new Game_Screen_Client(parentFrame,tmpUser,currentBattlegroundChoice);
+						myPanel.setSize(900,600);
+						parentFrame.setContentPane(myPanel);
+						parentFrame.setVisible(true);
+						myPanel.setVisible(true);
+					}
+					if(tmpConnectType == 2)	//SERVER
+					{
+						parentFrame.getContentPane().setLayout(null);
+						JPanel myPanel=new Game_Screen_Server(parentFrame,tmpUser,currentBattlegroundChoice);
+						myPanel.setSize(900,600);
+						parentFrame.setContentPane(myPanel);
+						parentFrame.setVisible(true);
+						myPanel.setVisible(true);
+					}
 				}
 				else{
 					//PLEASE MAKE A CHOICE
