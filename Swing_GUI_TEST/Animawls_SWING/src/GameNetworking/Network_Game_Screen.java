@@ -91,7 +91,7 @@ public abstract class Network_Game_Screen extends JPanel {
 			}
 			
 			public void promptSwitch(){
-				animalDead pickAnimal= new animalDead(gameState.active);
+				deadAnimalPrompt pickAnimal= new deadAnimalPrompt(this);
 				pickAnimal.setVisible(true);
 			}
 			
@@ -119,7 +119,7 @@ public abstract class Network_Game_Screen extends JPanel {
 							}	
 						
 							else if(UI.attackTwo.isSelected()==true){
-								dmg= pOne.getActive().attacksAvail.get(2).useAttack(pZero.getActive(), pOne.getActive());
+								dmg= pZero.getActive().attacksAvail.get(2).useAttack(pZero.getActive(), pOne.getActive());
 							}
 						if (dmg == 0){
 							text="Your attack missed the target!";
@@ -135,13 +135,13 @@ public abstract class Network_Game_Screen extends JPanel {
 						}
 					else{
 						 if(UI.animalZero.isSelected()==true){
-							pZero.switchAnimalGui(0);
+							pZero.switchAnimalNetwork(0);
 						}
 						else if(UI.animalOne.isSelected()==true){
-							pZero.switchAnimalGui(1);
+							pZero.switchAnimalNetwork(1);
 						}
 						else if(UI.animalTwo.isSelected()==true){
-							pZero.switchAnimalGui(2);
+							pZero.switchAnimalNetwork(2);
 						}
 					}
 						if(UI.specialButton.isSelected()==true){
@@ -232,7 +232,6 @@ public abstract class Network_Game_Screen extends JPanel {
 				
 				if(pZero.getActive().getHpRem()<=0){
 					promptSwitch();
-					UI.updateAnimals();
 					}
 				}
 	
