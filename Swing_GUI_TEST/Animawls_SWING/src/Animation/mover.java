@@ -23,8 +23,8 @@ public class mover extends JLabel implements ActionListener
         this.directionX = directionX;
         this.directionY = directionY;
 
-        setIcon( new ImageIcon("frame0.png") );
-//      setIcon( new ImageIcon("copy16.gif") );
+        setIcon( new ImageIcon("IMAGES/ANIMATION_TEST/frame0.png") );
+
         setSize( getPreferredSize() );
         setLocation(startX, startY);
         new javax.swing.Timer(delay, this).start();

@@ -37,7 +37,7 @@ public class rotater extends JPanel {
     }  
   
     public static void main(String[] args) throws IOException {  
-        File file = new File("frame0.png");  
+        File file = new File("IMAGES/ANIMATION_TEST/frame0.png");  
         BufferedImage image = javax.imageio.ImageIO.read(file);  
         JFrame f = new JFrame();  
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
