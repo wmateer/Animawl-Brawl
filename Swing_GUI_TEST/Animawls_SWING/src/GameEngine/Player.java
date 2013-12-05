@@ -193,6 +193,10 @@ public void switchAnimal() {
 	active=animalsCur.get(inInt);
 	System.out.println(active.getName());
 }
+public void  switchAnimalNetwork(int animalNumb){
+	active=animalsCur.get(animalNumb);
+	animalName.setText(active.getName());
+}
 
 public void switchAnimalGui(int animalNumb){
 	active=animalsCur.get(animalNumb);
