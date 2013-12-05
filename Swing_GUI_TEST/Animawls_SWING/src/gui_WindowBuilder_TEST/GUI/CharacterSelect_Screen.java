@@ -15,6 +15,7 @@ import java.io.*;
 
 //USER CREATED CLASSES
 import Animals.*;
+import Animation.mover;
 import GameEngine.User;
 import Sound.Sound_Playback;
 
@@ -194,6 +195,7 @@ public class CharacterSelect_Screen extends JPanel {
 					BufferedImage unsizedAnimalPicture = ImageIO.read(new File(tmpAnimal.imgPath));
 					BufferedImage sizedAnimalPicture = resizeImage(unsizedAnimalPicture,200,200, unsizedAnimalPicture.getType());
 					selectedCharPict_Label.setIcon(new ImageIcon(sizedAnimalPicture));
+					//add( new mover(tmpAnimal.imgPath, 0, 200, 5, 0, 1, 1, 80) );
 					//SET ANIMAL STATS
 					LEVEL_AREA.setText(""+tmpAnimal.getLvl());
 					EXP_EARNED_AREA.setText(""+tmpAnimal.getExp());
@@ -499,5 +501,7 @@ public class CharacterSelect_Screen extends JPanel {
 			AnimalSound.stop();
 			AnimalSound.close();
 		}
+		
 	}
+	
 }

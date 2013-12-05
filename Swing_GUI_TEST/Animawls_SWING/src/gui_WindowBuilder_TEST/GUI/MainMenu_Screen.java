@@ -1,16 +1,22 @@
 package gui_WindowBuilder_TEST.GUI;
 
 import javax.swing.*;
+
+import java.awt.*;
+import java.awt.event.*;
 import java.awt.Font;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import Animation.mover;
 import GameEngine.User;
+import GameNetworking.checkTurn;
 
 public class MainMenu_Screen extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private MusicFrame parentFrame;
+	public Thread horse;
 	
 	/**
 	 * The Constructor, which takes in the MusicFrame and the user and displays the MainMenu_Screen
@@ -83,6 +89,26 @@ public class MainMenu_Screen extends JPanel {
 		});
 		options_Button.setBounds(275, 249, 117, 29);
 		add(options_Button);
+		
+		
+		//animation test
+		
+		
+		
+		 // JPanel panel = new JPanel();
+	        //JFrame frame = new JFrame();
+
+		add( new mover("IMAGES/CHAR_PICTS/bird_left.png", 0, 200, 5, 0, 1, 1, 80) );
+		//add( new mover("IMAGES/CHAR_PICTS/bird_right.png", 200, 0, 5, 0, 1, 1, 80) );
+	        
+		//parentFrame.getContentPane().setLayout(null);
+		 //parentFrame.getContentPane().add( new mover(0, 200, 5, 0, 1, 1, 80) );
+        //parentFrame.add( new mover(0, 200, 5, 0, 1, 1, 80) );
+        //parentFrame.setLocationRelativeTo( null );
+       // parentFrame.setVisible(true);
+
+		//horse= new Thread(new horse(this));
+		//horse.start();
 	}
 
 }
