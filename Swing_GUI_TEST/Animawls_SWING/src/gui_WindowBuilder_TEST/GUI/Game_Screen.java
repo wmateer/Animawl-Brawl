@@ -28,6 +28,10 @@ public class Game_Screen extends JPanel {
 	private int whoseTurn=0;
 	public String newprompt;
 	
+	private double AniLevONE;
+	private double AniLevTWO;
+	private double AniLevTHREE;
+	
 	private User passedUser;
 	
 	
@@ -53,6 +57,10 @@ public class Game_Screen extends JPanel {
 	public Game_Screen(MusicFrame masterFrame, User user1, String chosenBattleground) {
 		
 		passedUser = user1;
+		
+		AniLevONE = passedUser.getChosen().get(0).getLvl();
+		AniLevTWO = passedUser.getChosen().get(1).getLvl();
+		AniLevTHREE = passedUser.getChosen().get(2).getLvl();
 		
 		parentFrame = masterFrame;
 		setBackground(Color.DARK_GRAY);
@@ -244,8 +252,10 @@ public void endTurn(){
 		//SAVE USER STATS
 		//HAVE USERS LEVEL UP CHARS
 		//dataLoadedFromFile = LoadTable();
+		
+
 		passedUser = updateUser (passedUser, pZero);
-		GameResults_Screen tmp_Screen = new GameResults_Screen(parentFrame,passedUser,active.getName());
+		GameResults_Screen tmp_Screen = new GameResults_Screen(parentFrame,passedUser,active.getName(),AniLevONE,AniLevTWO,AniLevTHREE);
 		parentFrame.setContentPane(tmp_Screen);
 		parentFrame.setVisible(true);
 		parentFrame.setResizable(true);
@@ -260,7 +270,7 @@ public void endTurn(){
 		//SAVE USER STATS
 		//HAVE USERS LEVEL UP CHARS
 		passedUser = updateUser (passedUser, pZero);
-		GameResults_Screen tmp_Screen = new GameResults_Screen(parentFrame,passedUser,inactive.getName());
+		GameResults_Screen tmp_Screen = new GameResults_Screen(parentFrame,passedUser,inactive.getName(),AniLevONE,AniLevTWO,AniLevTHREE);
 		parentFrame.setContentPane(tmp_Screen);
 		parentFrame.setVisible(true);
 		parentFrame.setResizable(true);
