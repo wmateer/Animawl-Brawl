@@ -1,11 +1,14 @@
 package gui_WindowBuilder_TEST.GUI;
 
 import javax.swing.*;
+
 import java.awt.Font;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import GameEngine.User;
+import GameNetworking.Game_Screen_Client;
 
 public class MultiplayerMenu_Screen extends JPanel {
 	private MusicFrame parentFrame;
@@ -27,37 +30,58 @@ public class MultiplayerMenu_Screen extends JPanel {
 		JLabel multiplayerTitle_label = new JLabel("MULTIPLAYER MENU");
 		multiplayerTitle_label.setForeground(new Color(255, 255, 255));
 		multiplayerTitle_label.setHorizontalAlignment(SwingConstants.CENTER);
-		multiplayerTitle_label.setFont(new Font("Monospaced", Font.BOLD | Font.ITALIC, 23));
-		multiplayerTitle_label.setBounds(84, 6, 282, 57);
+		multiplayerTitle_label.setFont(new Font("Trajan Pro", Font.BOLD, 25));
+		multiplayerTitle_label.setBounds(70, 6, 310, 57);
 		add(multiplayerTitle_label);
 		
-		JButton findDuel_Button = new JButton("FIND DUEL");
+		JButton findDuel_Button = new JButton("LOCAL DUEL");
 		findDuel_Button.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//GO TO THE DISPLAY AVAILABLE DUELS OR SHOW "TYPE IN IP DESTINATION"???
-				//*****DOES NOTHING
-			}
-		});
-		findDuel_Button.setBounds(166, 106, 117, 29);
-		add(findDuel_Button);
-		
-		JButton createDuel_Button = new JButton("CREATE DUEL");
-		createDuel_Button.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				//START A MULTIPLAYER SESSION THAT WAITS UNTIL A PLAYER JOINS
-				
 				parentFrame.setVisible(false);
-				JPanel tmp_Screen = new CharacterSelect_Screen(parentFrame,tmpUser);
+				JPanel tmp_Screen = new CharacterSelect_Screen(parentFrame,tmpUser,0);
 				parentFrame.setContentPane(tmp_Screen);
 				parentFrame.setVisible(true);
 				parentFrame.setResizable(false);
 			}
 		});
-		createDuel_Button.setBounds(166, 173, 117, 29);
-		add(createDuel_Button);
+		findDuel_Button.setBounds(140, 64, 170, 40);
+		add(findDuel_Button);
 		
+		//STARTS A SERVER FOR HOSTING ANOTHER CLIENT
+		JButton createMultiplayerMatch_Button = new JButton("CREATE MULTIPLAYER MATCH");
+		createMultiplayerMatch_Button.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				//START A MULTIPLAYER SESSION THAT WAITS UNTIL A PLAYER JOINS
+				//CREATE A NEW SERVER SESSION//
+				
+				parentFrame.setVisible(false);
+				JPanel tmp_Screen = new CharacterSelect_Screen(parentFrame,tmpUser,2);
+				parentFrame.setContentPane(tmp_Screen);
+				parentFrame.setVisible(true);
+				parentFrame.setResizable(false);
+			}
+		});
+		createMultiplayerMatch_Button.setBounds(140, 172, 170, 40);
+		add(createMultiplayerMatch_Button);
+		
+		//JOINS A MATCH AS A CLIENT TO THE SERVER//HARDCODED SOCKETS
+				JButton JoinExistingGame_Button = new JButton("JOIN EXISTING GAME");
+				JoinExistingGame_Button.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						parentFrame.setVisible(false);
+						JPanel tmp_Screen = new CharacterSelect_Screen(parentFrame,tmpUser,1);
+						parentFrame.setContentPane(tmp_Screen);
+						parentFrame.setVisible(true);
+						parentFrame.setResizable(false);
+					}
+				});
+				JoinExistingGame_Button.setBounds(140, 121, 170, 40);
+				add(JoinExistingGame_Button);
+		
+		//GOES ALL THE WAY BACK TO THE LOGIN SCREEN
 		JButton logout_Button = new JButton("LOGOUT");
 		logout_Button.addActionListener(new ActionListener() {
 			@Override
@@ -72,6 +96,7 @@ public class MultiplayerMenu_Screen extends JPanel {
 		logout_Button.setBounds(56, 236, 117, 29);
 		add(logout_Button);
 		
+		//GOES BACK TO THE MAIN MENU
 		JButton goToMainMenu_Button = new JButton("GO TO MAIN MENU");
 		goToMainMenu_Button.addActionListener(new ActionListener() {
 			@Override
@@ -84,7 +109,5 @@ public class MultiplayerMenu_Screen extends JPanel {
 		});
 		goToMainMenu_Button.setBounds(229, 236, 164, 29);
 		add(goToMainMenu_Button);
-
 	}
-
 }
