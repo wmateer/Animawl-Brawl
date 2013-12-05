@@ -117,9 +117,52 @@ public Game_Screen_Client (JFrame masterFrame, User user1, String chosenBattlegr
 	//Player Zero UI------------------------------------------------------		
 		
 				//add pZero's buttons to GUI screen
-				pZero.placePzero();
-				UI=new playerButtons(pZero);
-				placeButtons();
+			//create username object
+			userNameZero= new JLabel(pZero.getName());
+			userNameZero.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
+			userNameZero.setForeground(Color.white);
+			userNameZero.setVisible(true);
+			
+			//create animal pic 
+			currentAnimalPicZero = new JLabel(pZero.getActive().getName());
+			try {
+				BufferedImage unsizedAnimalPicture = ImageIO.read(new File(pZero.getActive().imgPath));
+				BufferedImage sizedAnimalPicture = resizeImage(unsizedAnimalPicture,200,200, unsizedAnimalPicture.getType());
+				currentAnimalPicZero.setIcon(new ImageIcon(sizedAnimalPicture));
+				
+			} catch (IOException e1) {
+				 //TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			currentAnimalPicZero.setVisible(true);
+			
+			//create animal name label
+			animalNameZero=new JLabel(pZero.getActive().getName());
+			animalNameZero.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+			animalNameZero.setForeground(Color.CYAN);
+			animalNameZero.setVisible(true);
+			
+			//creat hp bar
+			hpBarZero = new JProgressBar(0,(int)Math.round(pZero.getActive().getHpTot()));
+			hpBarZero.setValue((int)Math.round(pZero.getActive().getHpTot()));
+			hpBarZero.setForeground(Color.red);
+			hpBarZero.setStringPainted(true);
+			hpBarZero.setBackground(Color.white);
+			hpBarZero.setVisible(true);
+			
+			//creat ap bar
+			apBarZero= new JProgressBar(0,(int)Math.round(pZero.getActive().getApTot()));
+			apBarZero.setValue((int)Math.round(pZero.getActive().getApTot()));
+			apBarZero.setForeground(Color.blue);
+			apBarZero.setStringPainted(true);
+			apBarZero.setBackground(Color.white);
+			apBarZero.setVisible(true);
+				
+			UI=new playerButtons(pZero);
+				//add pOne Gui object to screen
+			
+				
+				placePzero();
 				add(UI.attackButton);
 				add(UI.specialButton);
 				add(UI.defendButton);
@@ -133,11 +176,11 @@ public Game_Screen_Client (JFrame masterFrame, User user1, String chosenBattlegr
 				add(UI.animalOne);
 				add(UI.animalTwo);
 				
-				add(pZero.currentAnimalPic);
-				add(pZero.getHpBar());
-				add(pZero.getApBar());
-				add(pZero.userName);
-				add(pZero.animalName);
+				add(currentAnimalPicZero);
+				add(hpBarZero);
+				add(apBarZero);
+				add(userNameZero);
+				add(animalNameZero);
 			
 				Hp = new JLabel("HP ");
 				Hp.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
@@ -155,14 +198,55 @@ public Game_Screen_Client (JFrame masterFrame, User user1, String chosenBattlegr
 				
 				
 			//Player One UI----------------------------------------------		
-				pOne.placeNetworkPlayer();
 				
+				//create username object
+				userNameOne= new JLabel(pOne.getName());
+				userNameOne.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
+				userNameOne.setForeground(Color.white);
+				userNameOne.setVisible(true);
 				
-				add(pOne.currentAnimalPic);
-				add(pOne.getHpBar());
-				add(pOne.getApBar());
-				add(pOne.userName);
-				add(pOne.animalName);
+				//create animal pic 
+				currentAnimalPicOne = new JLabel(pOne.getActive().getName());
+				try {
+					BufferedImage unsizedAnimalPicture = ImageIO.read(new File(pOne.getActive().imgPath));
+					BufferedImage sizedAnimalPicture = resizeImage(unsizedAnimalPicture,200,200, unsizedAnimalPicture.getType());
+					currentAnimalPicOne.setIcon(new ImageIcon(sizedAnimalPicture));
+					
+				} catch (IOException e1) {
+					 //TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				currentAnimalPicOne.setVisible(true);
+				
+				//create animal name label
+				animalNameOne=new JLabel(pOne.getActive().getName());
+				animalNameOne.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+				animalNameOne.setForeground(Color.CYAN);
+				animalNameOne.setVisible(true);
+				
+				//creat hp bar
+				hpBarOne = new JProgressBar(0,(int)Math.round(pOne.getActive().getHpTot()));
+				hpBarOne.setValue((int)Math.round(pOne.getActive().getHpTot()));
+				hpBarOne.setForeground(Color.red);
+				hpBarOne.setStringPainted(true);
+				hpBarOne.setBackground(Color.white);
+				hpBarOne.setVisible(true);
+				
+				//creat ap bar
+				apBarOne= new JProgressBar(0,(int)Math.round(pOne.getActive().getApTot()));
+				apBarOne.setValue((int)Math.round(pOne.getActive().getApTot()));
+				apBarOne.setForeground(Color.blue);
+				apBarOne.setStringPainted(true);
+				apBarOne.setBackground(Color.white);
+				apBarOne.setVisible(true);
+				
+				placePone();
+
+				add(currentAnimalPicOne);
+				add(hpBarOne);
+				add(apBarOne);
+				add(userNameOne);
+				add(animalNameOne);
 				
 				Hpr = new JLabel("HP");
 				Hpr.setForeground(Color.RED);
@@ -174,14 +258,14 @@ public Game_Screen_Client (JFrame masterFrame, User user1, String chosenBattlegr
 				Apr.setBounds(650, 356, 22, 16);
 				add(Apr);
 				
+
 		
 		
 				//set up game
 				findTurn= new Thread(new checkTurn(this));
-				pZero.UI.updateAnimals();
+				UI.updateAnimals();
 				
 			
-				pZero.showUI();
 				if(pZero!=gameState.active){
 					UI.setEnabledButtons(false);
 					confirm.setEnabled(false);
@@ -216,19 +300,7 @@ public void connect(){
 		}
 }
 
-public void startTurn(){
-	System.out.println("GOT HERE");
-	System.out.println(pZero.getName());
 
-	UI.setEnabledButtons(true);
-	confirm.setEnabled(true);
-	pZero.updateInfo();
-	pOne.updateInfo();
-	if(pZero.getActive().getHpRem()<=0){
-		promptSwitch();
-		pZero.UI.updateAnimals();
-		}
-	}
 
 
 }

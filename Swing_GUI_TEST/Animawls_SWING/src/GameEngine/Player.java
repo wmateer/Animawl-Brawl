@@ -42,6 +42,13 @@ public class Player implements Serializable {
         return resizedImage;  
     }  
 //constructors
+	
+public void updatePlayer(Player input){
+	this.active=input.getActive();
+	this.animalsCur.set(0, input.animalsCur.get(0));
+	this.animalsCur.set(1, input.animalsCur.get(1));
+	this.animalsCur.set(2, input.animalsCur.get(2));
+}
 
 public Player(String input, Animal animal0,Animal animal1, Animal animal2){
 	setName(input);
@@ -93,8 +100,9 @@ public Player(String input, Animal animal0,Animal animal1, Animal animal2){
 	apBar.setStringPainted(true);
 	apBar.setBackground(Color.white);
 	apBar.setVisible(true);
+	
 }
-//create hashmap of animals
+
 
 //getters and setter
 public Animal getActive(){
@@ -191,8 +199,10 @@ public void switchAnimalGui(int animalNumb){
 	animalName.setText(active.getName());
 	
 	try {
-		 animalPicture = ImageIO.read(new File(getActive().imgPath));
-		currentAnimalPic.setIcon(new ImageIcon(animalPicture));
+		animalPicture = ImageIO.read(new File(getActive().imgPath));
+		 BufferedImage sizedAnimalPicture = resizeImage(animalPicture,200,200, animalPicture.getType());
+		 
+		currentAnimalPic.setIcon(new ImageIcon(sizedAnimalPicture));
 	} catch (IOException e1) {
 		 //TODO Auto-generated catch block
 		e1.printStackTrace();
@@ -298,17 +308,15 @@ public void placePzero(){
 	//place other player objects
 	//currentAnimalPic.setBounds(185, 126, 132, 126);
 	currentAnimalPic.setBounds(185, 126, 200, 200);
-	hpBar.setBounds(262, 324, 180, 50);	
-	apBar.setBounds(262, 356, 180, 50);
+	hpBar.setBounds(222, 324, 180, 50);	
+	apBar.setBounds(222, 356, 180, 50);
 	userName.setBounds(185, 60, 132, 44);
 	userName.setHorizontalAlignment(SwingConstants.CENTER);
 	animalName.setBounds(185, 90, 132, 29);
 	animalName.setHorizontalAlignment(SwingConstants.CENTER);
 
-
-
-
 }
+
 public void placeNetworkPlayer(){
 	currentAnimalPic.setBounds(557, 126, 200, 200);
 	hpBar.setBounds(515, 324, 180, 50);
@@ -318,9 +326,10 @@ public void placeNetworkPlayer(){
 	animalName.setBounds(587, 90, 132, 29);
 	animalName.setHorizontalAlignment(SwingConstants.CENTER);
 }
+
 public void placePone(){
 	//place buttons for pOne in proper spot
-	/*
+	
 	UI.attackButton.setBounds(712, 289, 141, 23);
 	UI.attackButton.setForeground(Color.white);
 	UI.attackZero.setBounds(753, 327, 141, 23);
@@ -341,7 +350,7 @@ public void placePone(){
 	UI.animalOne.setForeground(Color.white);
 	UI.animalTwo.setBounds(788, 584, 141, 23);
 	UI.animalTwo.setForeground(Color.white);
-	*/
+	
 	currentAnimalPic.setBounds(557, 126, 200, 200);
 	hpBar.setBounds(515, 324, 180, 50);
 	apBar.setBounds(515, 352, 180, 50);
@@ -350,11 +359,11 @@ public void placePone(){
 	animalName.setBounds(587, 90, 132, 29);
 	animalName.setHorizontalAlignment(SwingConstants.CENTER);
 }
+
 public void regenAp(){
 	for(int animalNumb=0; animalNumb<3; animalNumb++){
 		animalsCur.get(animalNumb).regen();
 	}
-	apBar.setValue((int) active.getApRem());
 }
 
 public void setEnabled(Boolean input){

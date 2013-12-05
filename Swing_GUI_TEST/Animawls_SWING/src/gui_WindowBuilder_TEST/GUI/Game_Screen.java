@@ -93,24 +93,28 @@ public class Game_Screen extends JPanel {
 		Hp.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		Hp.setHorizontalAlignment(SwingConstants.CENTER);
 		Hp.setForeground(Color.RED);
-		Hp.setBounds(227, 324, 45, 33);
+		Hp.setBounds(189, 331, 45, 33);
 		add(Hp);
 		
 		JLabel Ap = new JLabel("AP");
 		Ap.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		Ap.setHorizontalAlignment(SwingConstants.CENTER);
 		Ap.setForeground(Color.blue);
-		Ap.setBounds(227, 354, 45, 33);
+		Ap.setBounds(187, 364, 45, 33);
 		add(Ap);
 		
 		JLabel Hpr = new JLabel("HP");
+		Hpr.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+		Hpr.setHorizontalAlignment(SwingConstants.CENTER);
 		Hpr.setForeground(Color.RED);
-		Hpr.setBounds(650, 324, 22, 16);
+		Hpr.setBounds(690, 334, 45, 33);
 		add(Hpr);
 		
 		JLabel Apr = new JLabel("AP");
+		Apr.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+		Apr.setHorizontalAlignment(SwingConstants.CENTER);
 		Apr.setForeground(Color.blue);
-		Apr.setBounds(650, 356, 22, 16);
+		Apr.setBounds(690, 361, 45, 33);
 		add(Apr);
 		
 		JLabel playAnimawl_title = new JLabel("BATTLE");

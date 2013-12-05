@@ -26,22 +26,20 @@ public class checkTurn implements Runnable {
 						myGame.gameState.client=myGame.readState.client;
 						myGame.gameState.active=myGame.readState.active;
 						myGame.gameState.inactive=myGame.readState.inactive;
+						
 							System.out.println("active player is"+ myGame.gameState.active.getName());
 							if(myGame.type=='s'){
-								myGame.pZero=myGame.gameState.host;
-								myGame.pOne=myGame.gameState.client;
+								myGame.pZero.updatePlayer(myGame.gameState.host);
+								myGame.pOne.updatePlayer(myGame.gameState.client);
 							}
 							if(myGame.type=='c'){
-								System.out.println("set client");
-								myGame.pZero=myGame.gameState.client;
-								myGame.pOne=myGame.gameState.host;
+								myGame.pZero.updatePlayer(myGame.gameState.client);
+								myGame.pOne.updatePlayer(myGame.gameState.host);
 							}
 							
 
 						   myGame.startTurn();
-						   System.out.println("active ap "+ myGame.gameState.active.getActive().getApRem()+'/'+ myGame.gameState.active.getActive().getApTot());
-						   System.out.println("active hp "+ myGame.gameState.active.getActive().getHpRem()+'/'+ myGame.gameState.active.getActive().getHpTot());
-
+						  
 						   return;
 							
 						
