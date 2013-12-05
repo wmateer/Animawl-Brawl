@@ -167,7 +167,7 @@ public class BattlegroundSelect_Screen extends JPanel {
 					{
 						JPanel myPanel=new Game_Screen_Client(parentFrame,tmpUser,currentBattlegroundChoice);
 						myPanel.setSize(900,600);
-						parentFrame.add(myPanel);
+						parentFrame.setContentPane(myPanel);
 						parentFrame.setVisible(true);
 						myPanel.setVisible(true);
 					}
@@ -176,7 +176,7 @@ public class BattlegroundSelect_Screen extends JPanel {
 						parentFrame.getContentPane().setLayout(null);
 						JPanel myPanel=new Game_Screen_Server(parentFrame,tmpUser,currentBattlegroundChoice);
 						myPanel.setSize(900,600);
-						parentFrame.add(myPanel);
+						parentFrame.setContentPane(myPanel);
 						parentFrame.setVisible(true);
 						myPanel.setVisible(true);
 					}
