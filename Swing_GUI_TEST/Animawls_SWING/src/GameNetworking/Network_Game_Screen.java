@@ -225,15 +225,16 @@ public abstract class Network_Game_Screen extends JPanel {
 				}
 
 	public void startTurn(){
-		 System.out.println("active ap "+ gameState.active.getActive().getApRem()+'/'+ gameState.active.getActive().getApTot());
-		 System.out.println("active hp "+ gameState.active.getActive().getHpRem()+'/'+ gameState.active.getActive().getHpTot());
-
-				UI.setEnabledButtons(true);
+		 		UI.setEnabledButtons(true);
+		 		//UI.updateAttacks();
+				//UI.updateAnimals();
+				UI.checkAp();
 				confirm.setEnabled(true);
 				updateGUI();
+				
 				if(pZero.getActive().getHpRem()<=0){
 					promptSwitch();
-					pZero.UI.updateAnimals();
+					UI.updateAnimals();
 					}
 				}
 	
@@ -291,8 +292,10 @@ public abstract class Network_Game_Screen extends JPanel {
 		//update local players info
 		hpBarZero.setMaximum((int)pZero.getActive().getHpTot());
 		hpBarZero.setValue((int)pZero.getActive().getHpRem());
+		
 		apBarZero.setMaximum((int)pZero.getActive().getApTot());
 		apBarZero.setValue((int)pZero.getActive().getApRem());
+		
 		animalNameZero.setText(pZero.getName());
 		
 		try {
@@ -302,9 +305,7 @@ public abstract class Network_Game_Screen extends JPanel {
 			 //TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		UI.updateAttacks();
-		UI.checkAp();
-		UI.updateAnimals();
+		
 		
 		//update network players info
 		hpBarOne.setMaximum((int)pOne.getActive().getHpTot());
