@@ -129,8 +129,10 @@ public deadAnimalPrompt(Network_Game_Screen input) {
 public class zeroListner implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 	myGame.pZero.switchAnimalNetwork(0);
-	myGame.UI.setEnabledButtons(true);;
+	myGame.UI.setEnabledButtons(true);
 	myGame.updateGUI();
+	myGame.UI.updateAnimals();
+	myGame.UI.updateAttacks();
 	window.dispose();
 	}
 	}
@@ -141,6 +143,8 @@ public class oneListner implements ActionListener {
 	myGame.pZero.switchAnimalNetwork(1);
 	myGame.UI.setEnabledButtons(true);
 	myGame.updateGUI();
+	myGame.UI.updateAnimals();
+	myGame.UI.updateAttacks();
 	window.dispose();
 	}
 	}
@@ -151,6 +155,8 @@ public class twoListner implements ActionListener {
 	myGame.pZero.switchAnimalNetwork(2);
 	myGame.UI.setEnabledButtons(true);
 	myGame.updateGUI();
+	myGame.UI.updateAnimals();
+	myGame.UI.updateAttacks();
 	window.dispose();
 	}
 	}
