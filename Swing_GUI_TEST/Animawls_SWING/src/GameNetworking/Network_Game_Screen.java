@@ -109,21 +109,18 @@ public abstract class Network_Game_Screen extends JPanel {
 							int dmg=0;
 
 							if(UI.attackZero.isSelected()==true){
-							dmg= gameState.active.getActive().attacksAvail.get(0).useAttack(gameState.active.getActive(), gameState.inactive.getActive());
+							dmg= pZero.getActive().attacksAvail.get(0).useAttack(pZero.getActive(), pOne.getActive());
 							
 							
 							}
 							else if(UI.attackOne.isSelected()==true){
-								dmg= gameState.active.getActive().attacksAvail.get(1).useAttack(gameState.active.getActive(), gameState.inactive.getActive());
+								dmg= pZero.getActive().attacksAvail.get(1).useAttack(pZero.getActive(), pOne.getActive());
 								
 							}	
 						
 							else if(UI.attackTwo.isSelected()==true){
-								dmg= gameState.active.getActive().attacksAvail.get(2).useAttack(gameState.active.getActive(), gameState.inactive.getActive());
-						
+								dmg= pOne.getActive().attacksAvail.get(2).useAttack(pZero.getActive(), pOne.getActive());
 							}
-						hpBarOne.setValue((int)gameState.inactive.getActive().getHpRem());
-						apBarZero.setValue((int)gameState.active.getActive().getApRem());
 						if (dmg == 0){
 							text="Your attack missed the target!";
 						}else{
@@ -138,32 +135,30 @@ public abstract class Network_Game_Screen extends JPanel {
 						}
 					else{
 						 if(UI.animalZero.isSelected()==true){
-							gameState.active.switchAnimalGui(0);
+							pZero.switchAnimalGui(0);
 						}
 						else if(UI.animalOne.isSelected()==true){
-							gameState.active.switchAnimalGui(1);
+							pZero.switchAnimalGui(1);
 						}
 						else if(UI.animalTwo.isSelected()==true){
-							gameState.active.switchAnimalGui(2);
+							pZero.switchAnimalGui(2);
 						}
 					}
 						if(UI.specialButton.isSelected()==true){
 							//uses active animals unique special
-							gameState.active.getActive().useSpecial(gameState.inactive);
+							pZero.getActive().useSpecial(gameState.inactive);
 							
-							//update hp bars
-							gameState.active.hpBar.setValue((int)gameState.active.getActive().getHpRem());
-							gameState.inactive.hpBar.setValue((int)gameState.inactive.getActive().getHpRem());
-							
-							//update ap bars
-							gameState.active.apBar.setValue((int)gameState.active.getActive().getApRem());
-							gameState.inactive.apBar.setValue((int)gameState.inactive.getActive().getApRem());
 							
 							//TODO create better way to display effect of special (maybe own Jpanel?)
 							prompt.setText(gameState.active.getActive().getName()+" used thier special!");
 						}
-						System.out.println("made it here");
-
+						//update hp bars
+						hpBarZero.setValue((int)pZero.getActive().getHpRem());
+						hpBarOne.setValue((int)pOne.getActive().getHpRem());
+						
+						//update ap bars
+						apBarZero.setValue((int)gameState.active.getActive().getApRem());
+						apBarOne.setValue((int)gameState.inactive.getActive().getApRem());
 					try {
 						endTurn();
 					} catch (Exception e1) {
@@ -196,7 +191,10 @@ public abstract class Network_Game_Screen extends JPanel {
 						return;
 				}
 				pZero.regenAp();
-
+				
+				
+				gameState.active.updatePlayer(pZero);
+				gameState.inactive.updatePlayer(pOne);
 				gameState.tmp=gameState.active;
 				gameState.active=gameState.inactive;
 				gameState.inactive=gameState.tmp;
@@ -226,8 +224,8 @@ public abstract class Network_Game_Screen extends JPanel {
 
 	public void startTurn(){
 		 		UI.setEnabledButtons(true);
-		 		//UI.updateAttacks();
-				//UI.updateAnimals();
+		 		UI.updateAttacks();
+				UI.updateAnimals();
 				UI.checkAp();
 				confirm.setEnabled(true);
 				updateGUI();

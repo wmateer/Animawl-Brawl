@@ -42,6 +42,13 @@ public class Player implements Serializable {
         return resizedImage;  
     }  
 //constructors
+	
+public void updatePlayer(Player input){
+	this.active=input.getActive();
+	this.animalsCur.set(0, input.animalsCur.get(0));
+	this.animalsCur.set(1, input.animalsCur.get(1));
+	this.animalsCur.set(2, input.animalsCur.get(2));
+}
 
 public Player(String input, Animal animal0,Animal animal1, Animal animal2){
 	setName(input);
