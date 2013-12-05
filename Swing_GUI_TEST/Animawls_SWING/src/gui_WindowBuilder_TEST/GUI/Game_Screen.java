@@ -13,6 +13,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Hashtable;
 
 
@@ -26,6 +27,12 @@ public class Game_Screen extends JPanel {
 	private int round=0;
 	private int whoseTurn=0;
 	public String newprompt;
+	
+	private double AniLevONE;
+	private double AniLevTWO;
+	private double AniLevTHREE;
+	
+	private User passedUser;
 	
 	
 	private JLabel prompt;
@@ -48,6 +55,13 @@ public class Game_Screen extends JPanel {
     }  
 
 	public Game_Screen(MusicFrame masterFrame, User user1, String chosenBattleground) {
+		
+		passedUser = user1;
+		
+		AniLevONE = passedUser.getChosen().get(0).getLvl();
+		AniLevTWO = passedUser.getChosen().get(1).getLvl();
+		AniLevTHREE = passedUser.getChosen().get(2).getLvl();
+		
 		parentFrame = masterFrame;
 		setBackground(Color.DARK_GRAY);
 		setLayout(null);
@@ -239,7 +253,12 @@ public void endTurn(){
 		//HAVE USERS LEVEL UP CHARS
 		//dataLoadedFromFile = LoadTable();
 		
-		
+
+		//passedUser = updateUser (passedUser, pZero);
+		GameResults_Screen tmp_Screen = new GameResults_Screen(parentFrame,passedUser,active.getName(),AniLevONE,AniLevTWO,AniLevTHREE);
+		parentFrame.setContentPane(tmp_Screen);
+		parentFrame.setVisible(true);
+		parentFrame.setResizable(true);
 		
 		return;
 	}
@@ -250,8 +269,11 @@ public void endTurn(){
 		//GAME ENDS GO TO END GAME SCREEN?
 		//SAVE USER STATS
 		//HAVE USERS LEVEL UP CHARS
-				
-		
+		//passedUser = updateUser (passedUser, pZero);
+		GameResults_Screen tmp_Screen = new GameResults_Screen(parentFrame,passedUser,inactive.getName(),AniLevONE,AniLevTWO,AniLevTHREE);
+		parentFrame.setContentPane(tmp_Screen);
+		parentFrame.setVisible(true);
+		parentFrame.setResizable(true);
 		
 		return;
 	}
@@ -348,10 +370,7 @@ public class confirmListner implements ActionListener {
 			}
 		
 		endTurn();
-	
-
-	
-	}
+		}
 	}
 
 	public void promptSwitch(){
@@ -365,6 +384,24 @@ public class confirmListner implements ActionListener {
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.drawImage(backgroundPict, 0, 0, null);            
+	}
+	
+	private User updateUser (User userToUpdate, Player playerToUpdateWith)
+	{
+		ArrayList<Animal> tmpAniArray = playerToUpdateWith.getAnimalsCur();
+		userToUpdate.clearChosen();
+		for(Animal tmpAni : tmpAniArray){
+			userToUpdate.addToChosen(tmpAni);
+		}
+		
+		for(Animal tmpAni : tmpAniArray){
+			if(userToUpdate.getSavedAnimals().containsKey(tmpAni.getType())){
+				userToUpdate.removeFromSaved(tmpAni.getType());
+				userToUpdate.addToSaved(tmpAni.getType(),tmpAni);
+			}
+		}
+		
+		return userToUpdate;
 	}
 	
 	//USER SAVING
