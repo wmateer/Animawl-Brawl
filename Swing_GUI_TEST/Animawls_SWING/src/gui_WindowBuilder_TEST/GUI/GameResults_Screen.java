@@ -13,7 +13,7 @@ import java.awt.image.BufferedImage;
 import java.awt.event.*;
 import java.io.File;
 import java.io.IOException;
-
+import GameEngine.*;
 
 public class GameResults_Screen extends JPanel{
 
@@ -29,7 +29,7 @@ public class GameResults_Screen extends JPanel{
 	private JTextField textField_7;
 	private JTextField textField_8;
 	
-	public GameResults_Screen(JFrame masterFrame) {
+	public GameResults_Screen(JFrame masterFrame,User currentUser, String gameWinner) {
 		parentFrame = masterFrame;
 		setBackground(Color.gray);
 		setLayout(null);

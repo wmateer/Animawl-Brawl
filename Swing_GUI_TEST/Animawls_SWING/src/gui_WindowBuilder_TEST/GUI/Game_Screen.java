@@ -27,6 +27,8 @@ public class Game_Screen extends JPanel {
 	private int whoseTurn=0;
 	public String newprompt;
 	
+	private User passedUser;
+	
 	
 	private JLabel prompt;
 	private String text;
@@ -48,6 +50,9 @@ public class Game_Screen extends JPanel {
     }  
 
 	public Game_Screen(MusicFrame masterFrame, User user1, String chosenBattleground) {
+		
+		passedUser = user1;
+		
 		parentFrame = masterFrame;
 		setBackground(Color.DARK_GRAY);
 		setLayout(null);
@@ -237,8 +242,10 @@ public void endTurn(){
 		//SAVE USER STATS
 		//HAVE USERS LEVEL UP CHARS
 		//dataLoadedFromFile = LoadTable();
-		
-		
+		GameResults_Screen tmp_Screen = new GameResults_Screen(parentFrame,passedUser,active.getName());
+		parentFrame.setContentPane(tmp_Screen);
+		parentFrame.setVisible(true);
+		parentFrame.setResizable(true);
 		
 		return;
 	}
@@ -249,8 +256,11 @@ public void endTurn(){
 		//GAME ENDS GO TO END GAME SCREEN?
 		//SAVE USER STATS
 		//HAVE USERS LEVEL UP CHARS
-				
-		
+		pZero.getAnimalsCur();
+		GameResults_Screen tmp_Screen = new GameResults_Screen(parentFrame,passedUser,inactive.getName());
+		parentFrame.setContentPane(tmp_Screen);
+		parentFrame.setVisible(true);
+		parentFrame.setResizable(true);
 		
 		return;
 	}
@@ -347,10 +357,7 @@ public class confirmListner implements ActionListener {
 			}
 		
 		endTurn();
-	
-
-	
-	}
+		}
 	}
 
 	public void promptSwitch(){
