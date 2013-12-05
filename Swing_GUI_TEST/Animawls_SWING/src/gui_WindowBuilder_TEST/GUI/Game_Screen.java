@@ -183,7 +183,7 @@ public class Game_Screen extends JPanel {
 		
 		
 		//Player One UI----------------------------------------------		
-			pOne.placePone();
+			//pOne.placePone();
 			add(pOne.UI.attackButton);
 			add(pOne.UI.specialButton);
 			add(pOne.UI.defendButton);

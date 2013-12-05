@@ -5,9 +5,12 @@ import gui_WindowBuilder_TEST.GUI.playerButtons;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -15,10 +18,14 @@ import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JProgressBar;
 import javax.swing.JToggleButton;
+import javax.swing.SwingConstants;
 
 import GameEngine.Player;
 
@@ -37,9 +44,31 @@ public abstract class Network_Game_Screen extends JPanel {
 	public Thread findTurn;
 	//game info
 			//local player
+			public JLabel userNameZero;
 			public Player pZero;
+			public JLabel Hp;
+			public JLabel Ap ;
+			public playerButtons UI;
+			public JLabel currentAnimalPicZero;
+			public BufferedImage animalPictureZero;
+			public JProgressBar hpBarZero;
+			public JProgressBar apBarZero;
+			public JLabel animalNameZero;
+
+			
 			//network player
+			public JLabel userNameOne;
 			public Player pOne;
+			public JLabel Hpr;
+			public JLabel Apr;
+			public JLabel currentAnimalPicOne;
+			transient public BufferedImage animalPictureOne;		
+			public JProgressBar hpBarOne;
+			public JProgressBar apBarOne;
+			public JLabel animalNameOne;
+
+			
+			
 			public int round=0;
 			public int whoseTurn=0;
 			public String newprompt;
@@ -52,13 +81,9 @@ public abstract class Network_Game_Screen extends JPanel {
 			public JToggleButton music;
 			public JButton confirm;
 			
-			//left player
-			public JLabel Hp;
-			public JLabel Ap ;
-			public playerButtons UI;
+				
 			//right player
-			public JLabel Hpr;
-			public JLabel Apr;
+			
 			
 			public void paintComponent(Graphics g) {
 				super.paintComponent(g);
@@ -97,8 +122,8 @@ public abstract class Network_Game_Screen extends JPanel {
 								dmg= gameState.active.getActive().attacksAvail.get(2).useAttack(gameState.active.getActive(), gameState.inactive.getActive());
 						
 							}
-						gameState.inactive.hpBar.setValue((int)gameState.inactive.getActive().getHpRem());
-						gameState.active.apBar.setValue((int)gameState.active.getActive().getApRem());
+						hpBarOne.setValue((int)gameState.inactive.getActive().getHpRem());
+						apBarZero.setValue((int)gameState.active.getActive().getApRem());
 						if (dmg == 0){
 							text="Your attack missed the target!";
 						}else{
@@ -194,26 +219,36 @@ public abstract class Network_Game_Screen extends JPanel {
 				//TODO update screen here
 				UI.setEnabledButtons(false);
 				confirm.setEnabled(false);
+				updateGUI();
 				findTurn= new Thread(new checkTurn(this));
 				findTurn.start();
 				}
 
 	public void startTurn(){
-		System.out.println("GOT HERE");
-		System.out.println(pZero.getName());
-		UI.showButtons(true);
-		confirm.setEnabled(true);
-		pZero.updateInfo();
-		pOne.updateInfo();
-		UI.checkAp();
-		UI.updateAnimals();
-		if(pZero.getActive().getHpRem()<=0){
-			promptSwitch();
-			UI.updateAnimals();
-			
-			}
-		}
-	public void placeButtons(){
+		 System.out.println("active ap "+ gameState.active.getActive().getApRem()+'/'+ gameState.active.getActive().getApTot());
+		 System.out.println("active hp "+ gameState.active.getActive().getHpRem()+'/'+ gameState.active.getActive().getHpTot());
+
+				UI.setEnabledButtons(true);
+				confirm.setEnabled(true);
+				updateGUI();
+				if(pZero.getActive().getHpRem()<=0){
+					promptSwitch();
+					pZero.UI.updateAnimals();
+					}
+				}
+	
+	public void placePone(){
+		//place buttons for pOne in proper spot
+		currentAnimalPicOne.setBounds(557, 126, 200, 200);
+		hpBarOne.setBounds(515, 324, 180, 50);
+		apBarOne.setBounds(515, 352, 180, 50);
+		userNameOne.setBounds(587, 60, 132, 44);
+		userNameOne.setHorizontalAlignment(SwingConstants.CENTER);
+		animalNameOne.setBounds(587, 90, 132, 29);
+		animalNameOne.setHorizontalAlignment(SwingConstants.CENTER);
+	}
+	
+	public void placePzero(){
 		UI.attackButton.setBounds(42, 289, 141, 23);
 		UI.attackButton.setForeground(Color.white);
 		UI.attackZero.setBounds(84, 324, 141, 23);
@@ -234,8 +269,58 @@ public abstract class Network_Game_Screen extends JPanel {
 		UI.animalOne.setForeground(Color.white);
 		UI.animalTwo.setBounds(130, 584, 141, 23);
 		UI.animalTwo.setForeground(Color.white);
+		currentAnimalPicZero.setBounds(185, 126, 200, 200);
+		hpBarZero.setBounds(262, 324, 180, 50);	
+		apBarZero.setBounds(262, 356, 180, 50);
+		userNameZero.setBounds(185, 60, 132, 44);
+		userNameZero.setHorizontalAlignment(SwingConstants.CENTER);
+		animalNameZero.setBounds(185, 90, 132, 29);
+		animalNameZero.setHorizontalAlignment(SwingConstants.CENTER);
+
 	}
 
+	public BufferedImage resizeImage(BufferedImage originalImage, int width, int height, int type) throws IOException {  
+        BufferedImage resizedImage = new BufferedImage(width, height, type);  
+        Graphics2D g = resizedImage.createGraphics();  
+        g.drawImage(originalImage, 0, 0, width, height, null);  
+        g.dispose();  
+        return resizedImage;  
+    }  
 	
+	public void updateGUI(){
+		//update local players info
+		hpBarZero.setMaximum((int)pZero.getActive().getHpTot());
+		hpBarZero.setValue((int)pZero.getActive().getHpRem());
+		apBarZero.setMaximum((int)pZero.getActive().getApTot());
+		apBarZero.setValue((int)pZero.getActive().getApRem());
+		animalNameZero.setText(pZero.getName());
+		
+		try {
+			animalPictureZero = ImageIO.read(new File(pZero.getActive().imgPath));
+			currentAnimalPicZero.setIcon(new ImageIcon(animalPictureZero));
+		} catch (IOException e1) {
+			 //TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		UI.updateAttacks();
+		UI.checkAp();
+		UI.updateAnimals();
+		
+		//update network players info
+		hpBarOne.setMaximum((int)pOne.getActive().getHpTot());
+		hpBarOne.setValue((int)pOne.getActive().getHpRem());
+		apBarOne.setMaximum((int)pOne.getActive().getApTot());
+		apBarOne.setValue((int)pOne.getActive().getApRem());
+		animalNameOne.setText(pOne.getName());
+		try {
+			animalPictureOne = ImageIO.read(new File(pOne.getActive().imgPath));
+			currentAnimalPicOne.setIcon(new ImageIcon(animalPictureOne));
+		} catch (IOException e1) {
+			 //TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		
+	}
 	
 }

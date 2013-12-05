@@ -116,66 +116,155 @@ public Game_Screen_Server (JFrame masterFrame, User user1, String chosenBattlegr
 		
 
 		  			
-//Player Zero UI------------------------------------------------------		
-	
-			//add pZero's buttons to GUI screen
-			pZero.placePzero();
-			UI=new playerButtons(pZero);
-			placeButtons();
-			add(UI.attackButton);
-			add(UI.specialButton);
-			add(UI.defendButton);
-			add(UI.switchButton);
-			
-			add(UI.attackZero);
-			add(UI.attackOne);
-			add(UI.attackTwo);
-			
-			add(UI.animalZero);
-			add(UI.animalOne);
-			add(UI.animalTwo);
-			
-			add(pZero.currentAnimalPic);
-			add(pZero.getHpBar());
-			add(pZero.getApBar());
-			add(pZero.userName);
-			add(pZero.animalName);
+		//Player Zero UI------------------------------------------------------		
 		
-			Hp = new JLabel("HP ");
-			Hp.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-			Hp.setHorizontalAlignment(SwingConstants.CENTER);
-			Hp.setForeground(Color.RED);
-			Hp.setBounds(227, 307, 45, 33);
-			add(Hp);
+		//add pZero's buttons to GUI screen
+	//create username object
+	userNameZero= new JLabel(pZero.getName());
+	userNameZero.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
+	userNameZero.setForeground(Color.white);
+	userNameZero.setVisible(true);
+	
+	//create animal pic 
+	currentAnimalPicZero = new JLabel(pZero.getActive().getName());
+	try {
+		BufferedImage unsizedAnimalPicture = ImageIO.read(new File(pZero.getActive().imgPath));
+		BufferedImage sizedAnimalPicture = resizeImage(unsizedAnimalPicture,200,200, unsizedAnimalPicture.getType());
+		currentAnimalPicZero.setIcon(new ImageIcon(sizedAnimalPicture));
+		
+	} catch (IOException e1) {
+		 //TODO Auto-generated catch block
+		e1.printStackTrace();
+	}
+	currentAnimalPicZero.setVisible(true);
+	
+	//create animal name label
+	animalNameZero=new JLabel(pZero.getActive().getName());
+	animalNameZero.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+	animalNameZero.setForeground(Color.CYAN);
+	animalNameZero.setVisible(true);
+	
+	//creat hp bar
+	hpBarZero = new JProgressBar(0,(int)Math.round(pZero.getActive().getHpTot()));
+	hpBarZero.setValue((int)Math.round(pZero.getActive().getHpTot()));
+	hpBarZero.setForeground(Color.red);
+	hpBarZero.setStringPainted(true);
+	hpBarZero.setBackground(Color.white);
+	hpBarZero.setVisible(true);
+	
+	//creat ap bar
+	apBarZero= new JProgressBar(0,(int)Math.round(pZero.getActive().getApTot()));
+	apBarZero.setValue((int)Math.round(pZero.getActive().getApTot()));
+	apBarZero.setForeground(Color.blue);
+	apBarZero.setStringPainted(true);
+	apBarZero.setBackground(Color.white);
+	apBarZero.setVisible(true);
+		
+	UI=new playerButtons(pZero);
+		//add pOne Gui object to screen
+	
+		
+		placePzero();
+		add(UI.attackButton);
+		add(UI.specialButton);
+		add(UI.defendButton);
+		add(UI.switchButton);
+		
+		add(UI.attackZero);
+		add(UI.attackOne);
+		add(UI.attackTwo);
+		
+		add(UI.animalZero);
+		add(UI.animalOne);
+		add(UI.animalTwo);
+		
+		add(currentAnimalPicZero);
+		add(hpBarZero);
+		add(apBarZero);
+		add(userNameZero);
+		add(animalNameZero);
+	
+		Hp = new JLabel("HP ");
+		Hp.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+		Hp.setHorizontalAlignment(SwingConstants.CENTER);
+		Hp.setForeground(Color.RED);
+		Hp.setBounds(227, 307, 45, 33);
+		add(Hp);
+		
+		Ap = new JLabel("AP");
+		Ap.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+		Ap.setHorizontalAlignment(SwingConstants.CENTER);
+		Ap.setForeground(Color.blue);
+		Ap.setBounds(227, 345, 45, 33);
+		add(Ap);
+		
+		
+	//Player One UI----------------------------------------------		
+		
+		//create username object
+		userNameOne= new JLabel(pOne.getName());
+		userNameOne.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
+		userNameOne.setForeground(Color.white);
+		userNameOne.setVisible(true);
+		
+		//create animal pic 
+		currentAnimalPicOne = new JLabel(pOne.getActive().getName());
+		try {
+			BufferedImage unsizedAnimalPicture = ImageIO.read(new File(pOne.getActive().imgPath));
+			BufferedImage sizedAnimalPicture = resizeImage(unsizedAnimalPicture,200,200, unsizedAnimalPicture.getType());
+			currentAnimalPicOne.setIcon(new ImageIcon(sizedAnimalPicture));
 			
-			Ap = new JLabel("AP");
-			Ap.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-			Ap.setHorizontalAlignment(SwingConstants.CENTER);
-			Ap.setForeground(Color.blue);
-			Ap.setBounds(227, 345, 45, 33);
-			add(Ap);
-			
-			
-		//Player One UI----------------------------------------------		
-			pOne.placeNetworkPlayer();
-			
-			
-			add(pOne.currentAnimalPic);
-			add(pOne.getHpBar());
-			add(pOne.getApBar());
-			add(pOne.userName);
-			add(pOne.animalName);
-			
-			Hpr = new JLabel("HP");
-			Hpr.setForeground(Color.RED);
-			Hpr.setBounds(650, 324, 22, 16);
-			add(Hpr);
-			
-			Apr = new JLabel("AP");
-			Apr.setForeground(Color.blue);
-			Apr.setBounds(650, 356, 22, 16);
-			add(Apr);
-			
+		} catch (IOException e1) {
+			 //TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		currentAnimalPicOne.setVisible(true);
+		
+		//create animal name label
+		animalNameOne=new JLabel(pOne.getActive().getName());
+		animalNameOne.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+		animalNameOne.setForeground(Color.CYAN);
+		animalNameOne.setVisible(true);
+		
+		//creat hp bar
+		hpBarOne = new JProgressBar(0,(int)Math.round(pOne.getActive().getHpTot()));
+		hpBarOne.setValue((int)Math.round(pZero.getActive().getHpTot()));
+		hpBarOne.setForeground(Color.red);
+		hpBarOne.setStringPainted(true);
+		hpBarOne.setBackground(Color.white);
+		hpBarOne.setVisible(true);
+		
+		//creat ap bar
+		apBarOne= new JProgressBar(0,(int)Math.round(pOne.getActive().getApTot()));
+		apBarOne.setValue((int)Math.round(pZero.getActive().getApTot()));
+		apBarOne.setForeground(Color.blue);
+		apBarOne.setStringPainted(true);
+		apBarOne.setBackground(Color.white);
+		apBarOne.setVisible(true);
+		
+		placePone();
+		add(currentAnimalPicOne);
+		add(hpBarOne);
+		add(apBarOne);
+		add(userNameOne);
+		add(animalNameOne);
+		
+		Hpr = new JLabel("HP");
+		Hpr.setForeground(Color.RED);
+		Hpr.setBounds(650, 324, 22, 16);
+		add(Hpr);
+		
+		Apr = new JLabel("AP");
+		Apr.setForeground(Color.blue);
+		Apr.setBounds(650, 356, 22, 16);
+		add(Apr);
+		
+
+
+		//set up game
+		findTurn= new Thread(new checkTurn(this));
+		UI.updateAnimals();
+		
 		//set up game
 			findTurn= new Thread(new checkTurn(this));
 			UI.updateAnimals();
