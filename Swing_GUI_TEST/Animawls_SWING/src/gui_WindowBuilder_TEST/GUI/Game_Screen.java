@@ -13,6 +13,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Hashtable;
 
 
@@ -243,6 +244,7 @@ public void endTurn(){
 		//SAVE USER STATS
 		//HAVE USERS LEVEL UP CHARS
 		//dataLoadedFromFile = LoadTable();
+		passedUser = updateUser (passedUser, pZero);
 		GameResults_Screen tmp_Screen = new GameResults_Screen(parentFrame,passedUser,active.getName());
 		parentFrame.setContentPane(tmp_Screen);
 		parentFrame.setVisible(true);
@@ -257,7 +259,7 @@ public void endTurn(){
 		//GAME ENDS GO TO END GAME SCREEN?
 		//SAVE USER STATS
 		//HAVE USERS LEVEL UP CHARS
-		pZero.getAnimalsCur();
+		passedUser = updateUser (passedUser, pZero);
 		GameResults_Screen tmp_Screen = new GameResults_Screen(parentFrame,passedUser,inactive.getName());
 		parentFrame.setContentPane(tmp_Screen);
 		parentFrame.setVisible(true);
@@ -372,6 +374,24 @@ public class confirmListner implements ActionListener {
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.drawImage(backgroundPict, 0, 0, null);            
+	}
+	
+	private User updateUser (User userToUpdate, Player playerToUpdateWith)
+	{
+		ArrayList<Animal> tmpAniArray = playerToUpdateWith.getAnimalsCur();
+		userToUpdate.clearChosen();
+		for(Animal tmpAni : tmpAniArray){
+			userToUpdate.addToChosen(tmpAni);
+		}
+		
+		for(Animal tmpAni : tmpAniArray){
+			if(userToUpdate.getSavedAnimals().containsKey(tmpAni.getType())){
+				userToUpdate.removeFromSaved(tmpAni.getType());
+				userToUpdate.addToSaved(tmpAni.getType(),tmpAni);
+			}
+		}
+		
+		return userToUpdate;
 	}
 	
 	//USER SAVING

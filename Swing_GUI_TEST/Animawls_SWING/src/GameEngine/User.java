@@ -122,5 +122,14 @@ private int losses;
 	public void setPassword(String password){
 		this.password=password;
 	}
+	public void clearChosen(){
+		chosenAnimals.clear();
+	}
+	public void removeFromSaved(String removeType){
+		allAvailAnimalList.remove(removeType);
+	}
+	public void addToSaved(String addType, Animal addAni){
+		allAvailAnimalList.put(addType,addAni);
+	}
 
 }
