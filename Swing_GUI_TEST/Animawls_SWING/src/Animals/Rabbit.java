@@ -13,22 +13,22 @@ import Attacks.*;
 import GameEngine.Player;
 
 
-public class Bull extends Animal {
+public class Rabbit extends Animal {
 
-	public Bull(String name) {
+	public Rabbit(String name) {
 		super(name);
 		// stat set for elephant
-		type="Rabbit";
+		type="Bull";
 		this.name=name;
 		lvl=1;
 		expTot=0;
 		expErnd=0;
 		expToLvl=1200;
-		hpTot=900;
-		hpRem=900;
-		apTot=910;
-		apRem=910;
-		att=240;
+		hpTot=500;
+		hpRem=500;
+		apTot=110;
+		apRem=110;
+		att=140;
 		def=80;
 		evd=80;
 		poisoned=0;
@@ -53,9 +53,9 @@ public class Bull extends Animal {
 		evdScaler=10;
 		evdBonus=-.05;
 		
-		imgPath = "IMAGES/CHAR_PICTS/rabbit_right.png";
-		Description = "A RAMPAGING Rabbit!!! YEARNS FOR BLOOD ON HIS HEELS AND FLESH IN HIS MOUTH!!!";
-		soundPath = "SOUNDS/PICK_SOUNDS/ShortBear_PickSound.wav";
+		imgPath = "IMAGES/CHAR_PICTS/Bull.jpg";
+		Description = "A RAMPAGING BULL!!! YEARNS FOR BLOOD ON HIS HEELS AND FLESH IN HIS MOUTH!!!";
+		soundPath = "SOUNDS/PICK_SOUNDS/ShortBull_PickSound.wav";
 		specialDescription= "Rush all three opp's animals";
 
 	}
@@ -71,4 +71,13 @@ public class Bull extends Animal {
 
 	}
 }
+	
+
+
+
+
+
+
+
+
 	

@@ -229,6 +229,7 @@ public abstract class Network_Game_Screen extends JPanel {
 		 		UI.updateAttacks();
 				UI.updateAnimals();
 				UI.checkAp();
+				
 				confirm.setEnabled(true);
 				updateGUI();
 				

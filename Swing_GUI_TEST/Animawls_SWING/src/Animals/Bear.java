@@ -51,7 +51,7 @@ public class Bear extends Animal {
 		evdScaler=10;
 		evdBonus=-.05;
 		
-		imgPath = "IMAGES/CHAR_PICTS/Bear.jpg";
+		imgPath = "IMAGES/CHAR_PICTS/bear_left.png";
 		Description = "A TERRIFYING BEAR, HELLBENT ON DESTRUCTION!!!";
 		soundPath = "SOUNDS/PICK_SOUNDS/ShortBear_PickSound.wav";
 		specialDescription= "So powerfull it damages himself";

@@ -7,6 +7,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import Animals.*;
+import Animation.attackmover;
 import GameEngine.*;
 
 import java.awt.*;
@@ -195,6 +196,7 @@ public class Game_Screen extends JPanel {
 			add(pZero.UI.animalTwo);
 			
 			add(pZero.currentAnimalPic);
+			//add( new attackmover(pZero.getActive().imgPath, 0, 200, 50, 0, 1, 1, 80) );
 			add(pZero.getHpBar());
 			add(pZero.getApBar());
 			add(pZero.userName);
@@ -334,7 +336,7 @@ public class confirmListner implements ActionListener {
 			
 				else if(active.UI.attackTwo.isSelected()==true){
 					dmg= active.getActive().attacksAvail.get(2).useAttack(active.getActive(), inactive.getActive());
-			
+					//add( new attackmover(pZero.getActive().imgPath, 0, 200, 50, 0, 1, 1, 80) );
 				}
 			inactive.hpBar.setValue((int)inactive.getActive().getHpRem());
 			active.apBar.setValue((int)active.getActive().getApRem());
@@ -364,6 +366,7 @@ public class confirmListner implements ActionListener {
 			if(active.UI.specialButton.isSelected()==true){
 				//uses active animals unique special
 				active.getActive().useSpecial(inactive);
+				//add( new attackmover(active.getActive().imgPath, 200, 200, 50, 0, 1, 1, 80) );
 				
 				//update hp bars
 				active.hpBar.setValue((int)active.getActive().getHpRem());
