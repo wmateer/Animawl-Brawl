@@ -236,6 +236,8 @@ public class Game_Screen extends JPanel {
 
 
 public void endTurn(){
+	Hashtable<String, User> data = new Hashtable<String,User>();
+	data = LoadTable(data);
 	if(whoseTurn==1){
 			round++;
 			whoseTurn=0;
@@ -253,8 +255,10 @@ public void endTurn(){
 		//HAVE USERS LEVEL UP CHARS
 		//dataLoadedFromFile = LoadTable();
 		
-
-		//passedUser = updateUser (passedUser, pZero);
+		passedUser = updateUser (passedUser, active);
+		data.put(passedUser.getName(), passedUser);
+		saveUpdates(data);
+		
 		GameResults_Screen tmp_Screen = new GameResults_Screen(parentFrame,passedUser,active.getName(),AniLevONE,AniLevTWO,AniLevTHREE);
 		parentFrame.setContentPane(tmp_Screen);
 		parentFrame.setVisible(true);
@@ -269,7 +273,10 @@ public void endTurn(){
 		//GAME ENDS GO TO END GAME SCREEN?
 		//SAVE USER STATS
 		//HAVE USERS LEVEL UP CHARS
-		//passedUser = updateUser (passedUser, pZero);
+		passedUser = updateUser (passedUser, inactive);
+		data.put(passedUser.getName(), passedUser);
+		
+		saveUpdates(data);
 		GameResults_Screen tmp_Screen = new GameResults_Screen(parentFrame,passedUser,inactive.getName(),AniLevONE,AniLevTWO,AniLevTHREE);
 		parentFrame.setContentPane(tmp_Screen);
 		parentFrame.setVisible(true);
@@ -289,6 +296,7 @@ public void endTurn(){
 	promptSwitch();
 	active.UI.updateAnimals();
 	}
+	
 }
 
 public void performSelected(){
@@ -388,6 +396,7 @@ public class confirmListner implements ActionListener {
 	
 	private User updateUser (User userToUpdate, Player playerToUpdateWith)
 	{
+		/*
 		ArrayList<Animal> tmpAniArray = playerToUpdateWith.getAnimalsCur();
 		userToUpdate.clearChosen();
 		for(Animal tmpAni : tmpAniArray){
@@ -402,7 +411,56 @@ public class confirmListner implements ActionListener {
 		}
 		
 		return userToUpdate;
+		*/
+		
+		
+		userToUpdate.getSavedAnimals().put(playerToUpdateWith.getAnimalsCur().get(0).getType(),playerToUpdateWith.getAnimalsCur().get(0)); 
+		userToUpdate.getSavedAnimals().put(playerToUpdateWith.getAnimalsCur().get(1).getType(),playerToUpdateWith.getAnimalsCur().get(1)); 
+		userToUpdate.getSavedAnimals().put(playerToUpdateWith.getAnimalsCur().get(2).getType(),playerToUpdateWith.getAnimalsCur().get(2)); 
+		return userToUpdate;
 	}
+	// Loads the .ser file into the hash table//PRIVATE METHOD
+		private static Hashtable<String, User> LoadTable(Hashtable<String, User> data){
+			
+			try{
+				FileInputStream fileIn = new FileInputStream("Savefiles/Saved_users_passwords.ser");
+				ObjectInputStream in = new ObjectInputStream(fileIn);
+				data = (Hashtable<String, User>)in.readObject();
+				in.close();
+				fileIn.close();
+			}
+			catch(ClassNotFoundException e){
+				e.printStackTrace();
+			}
+			catch(FileNotFoundException e){
+				//e.printStackTrace();
+				//makefile();
+			}
+			catch(IOException e){
+				e.printStackTrace();
+			}
+			return data;
+			
+		}
+		
+		//Saves Users ---------------------//PRIVATE METHOD//
+		private void saveUpdates(Hashtable<String, User> data)
+		{
+		
+		
+		try{
+		FileOutputStream fileOut = new FileOutputStream("Savefiles/Saved_users_passwords.ser");
+		ObjectOutputStream out = new ObjectOutputStream(fileOut);
+		out.writeObject(data);
+		out.close();
+		fileOut.close();
+		}catch(FileNotFoundException e){
+			e.printStackTrace();
+		}
+		catch(IOException e){
+		e.printStackTrace();
+		}
+		}
 	
 	//USER SAVING
 	/*private Hashtable<String,User> LoadTable(){

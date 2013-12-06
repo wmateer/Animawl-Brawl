@@ -15,7 +15,13 @@ import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
 import java.awt.event.*;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.Hashtable;
 
 
 public class GameResults_Screen extends JPanel{
@@ -34,6 +40,8 @@ public class GameResults_Screen extends JPanel{
 		parentFrame = masterFrame;
 		setBackground(Color.gray);
 		setLayout(null);
+		Hashtable<String, User> data = new Hashtable<String,User>();
+		data = LoadTable(data);
 		
 		//get different between animals lvls after battle and before
 		double lvld0 = user.getAnimalAtIndex(0).getLvl() - lvl0;
@@ -43,7 +51,7 @@ public class GameResults_Screen extends JPanel{
 		
 		
 		
-		JLabel title = new JLabel("Winner has defeated the loser!");
+		JLabel title = new JLabel("The winner is " +gameWinner);
 		title.setHorizontalAlignment(SwingConstants.CENTER);
 		title.setFont(new Font("Lao Sangam MN", Font.PLAIN, 24));
 		title.setBounds(85, 55, 730, 59);
@@ -114,6 +122,7 @@ public class GameResults_Screen extends JPanel{
 		add(animalName2);
 		
 		JLabel lvlPrompt0 = new JLabel("New label");
+		lvlPrompt0.setHorizontalAlignment(SwingConstants.CENTER);
 		if(lvld0 == 0){
 			lvlPrompt0.setText("Level is "+(user.getAnimalAtIndex(0).getLvl()));		
 		}else{
@@ -123,6 +132,7 @@ public class GameResults_Screen extends JPanel{
 		add(lvlPrompt0);
 		
 		JLabel lvlPrompt1 = new JLabel("New label");
+		lvlPrompt1.setHorizontalAlignment(SwingConstants.CENTER);
 		if(lvld1 == 0){
 			lvlPrompt1.setText("Level is "+(user.getAnimalAtIndex(1).getLvl()));		
 		}else{
@@ -132,6 +142,7 @@ public class GameResults_Screen extends JPanel{
 		add(lvlPrompt1);
 		
 		JLabel lvlPrompt2 = new JLabel("New label");
+		lvlPrompt2.setHorizontalAlignment(SwingConstants.CENTER);
 		if(lvld2 == 0){
 			lvlPrompt2.setText("Level is "+(user.getAnimalAtIndex(2).getLvl()));		
 		}else{
@@ -142,5 +153,51 @@ public class GameResults_Screen extends JPanel{
 		parentFrame.setLocationRelativeTo(null);
 		parentFrame.setSize(900, 600);
 		parentFrame.setVisible(true);
+		
+		user.removeAllChosen();
+		data.put(user.getName(), user);
+		saveUpdates(data);
 	}
+	
+	//Saves Users ---------------------//PRIVATE METHOD//
+			private void saveUpdates(Hashtable<String, User> data)
+			{
+			
+			
+			try{
+			FileOutputStream fileOut = new FileOutputStream("Savefiles/Saved_users_passwords.ser");
+			ObjectOutputStream out = new ObjectOutputStream(fileOut);
+			out.writeObject(data);
+			out.close();
+			fileOut.close();
+			}catch(FileNotFoundException e){
+				e.printStackTrace();
+			}
+			catch(IOException e){
+			e.printStackTrace();
+			}
+			}
+			// Loads the .ser file into the hash table//PRIVATE METHOD
+			private static Hashtable<String, User> LoadTable(Hashtable<String, User> data){
+				
+				try{
+					FileInputStream fileIn = new FileInputStream("Savefiles/Saved_users_passwords.ser");
+					ObjectInputStream in = new ObjectInputStream(fileIn);
+					data = (Hashtable<String, User>)in.readObject();
+					in.close();
+					fileIn.close();
+				}
+				catch(ClassNotFoundException e){
+					e.printStackTrace();
+				}
+				catch(FileNotFoundException e){
+					//e.printStackTrace();
+					//makefile();
+				}
+				catch(IOException e){
+					e.printStackTrace();
+				}
+				return data;
+				
+			}	
 }
