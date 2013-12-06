@@ -13,6 +13,7 @@ author: Will Mateer -->
    <property name="javadocDest" value="${webRoot}/${projectName}/javadoc" />
    <property name="javadocURL" value="${webBaseURL}/${projectName}/javadoc" />
    <property name="javadocLink" value="http://java.sun.com/javase/7/docs/api/" />
+   <property name="env.ANT_OPTS" value="-Xmx1024m"  />
    <path id="project.class.path">
          <pathelement location="build"/>
          <pathelement location="lib/junit-4.8.2.jar"/>
@@ -60,14 +61,29 @@ author: Will Mateer -->
     <mkdir dir="Savefiles" />
  </target>
   
- <target name="run" depends="compile" description="run my GUI main in AnimawlBrawlGUI">
-    <java fork="true" classpathref="project.class.path"
+ <target name="run" depends="compile" description="run the GUI main in AnimawlBrawlGUI">
+ 	<java fork="true" classpathref="project.class.path"     			
                 classname="${myPackage}.INIT_GUI"/>
  </target>
- 
- <target name="animalTest" depends="compile" description="run my animalTest main in animalTest">
+	
+<target name="chat_Client" depends="compile" description="run test main in networkTestClient for the chat window">
     <java fork="true" classpathref="project.class.path"
-                classname="Animals.animalTest"/>
+                classname="Networking.networkTestClient"/>
+ </target>
+	
+<target name="chat_Server" depends="compile" description="run test main in networkTestServer for the chat window">
+    <java fork="true" classpathref="project.class.path"
+                classname="Networking.networkTestServer"/>
+ </target>
+	
+<target name="gameScreen_Server" depends="compile" description="run the GameScreen server test main">
+    <java fork="true" classpathref="project.class.path"
+                classname="GameNetworking.Launch_Server"/>
  </target>
 
+<target name="gameScreen_Client" depends="compile" description="run the GameScreen client test main">
+    <java fork="true" classpathref="project.class.path"
+                classname="GameNetworking.Launch_Client"/>
+ </target>
+	
 </project>
