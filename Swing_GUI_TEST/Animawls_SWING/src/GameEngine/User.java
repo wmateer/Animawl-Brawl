@@ -20,7 +20,12 @@ private ArrayList<Animal> chosenAnimals;
 private int wins;
 private int losses;
 
-//new user constructor
+/** 
+* new user constructor. Makes a user and sets his name and password.
+* initializes win and loses to 0.
+* @param inName is the user's desired name
+* @param inPass is the user's password
+*/
 	public User(String inName,String inPass){
 		name=inName;
 		password=inPass;
@@ -55,9 +60,12 @@ private int losses;
 		allAvailAnimalList.put("Snake", new Snake("Snake"));
 	}
 	
-	
-	//setters and getters
-	
+
+	/** 
+	 * if the user selects a animal that he already picked before, returns true.
+	 * 
+	 * @param paramter
+	 */	
 	public Boolean HasChosenAlready(Animal chosenAnimal){
 		if(chosenAnimals.contains(chosenAnimal)){
 			return true;
@@ -87,9 +95,7 @@ private int losses;
 		return chosenAnimals.size();
 	}
 	
-	/*public void addToChosen(String name, Animal chosenAnimal){
-		chosenAnimals.put(name, chosenAnimal);
-	}*/
+
 	public HashMap<String,Animal> getSavedAnimals(){
 		return allAvailAnimalList;
 	}

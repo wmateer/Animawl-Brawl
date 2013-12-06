@@ -36,6 +36,14 @@ public class Player implements Serializable {
 	public JProgressBar hpBar;
 	public JProgressBar apBar;
 	
+	/** 
+	 * method that takes in a buffered image and resizes it to the inputted dimensions
+	 * 
+	 * @param originalImage the buffered image to be resized
+	 * @param width the width the resize image will be
+	 * @param height the height of the resized image
+	 * @type  the type of the inputted buffered image
+	 */
 	private BufferedImage resizeImage(BufferedImage originalImage, int width, int height, int type) throws IOException {  
         BufferedImage resizedImage = new BufferedImage(width, height, type);  
         Graphics2D g = resizedImage.createGraphics();  
@@ -44,7 +52,11 @@ public class Player implements Serializable {
         return resizedImage;  
     }  
 //constructors
-	
+	/** 
+	 * The copy constructor, which sets up a player with animals that belong to the player passed in. 
+	 * 
+	 * @param input the player that is passed in with his/her animals.
+	 */
 public void updatePlayer(Player input){
 	this.active=input.getActive();
 	this.animalsCur.set(0, input.animalsCur.get(0));
@@ -52,6 +64,16 @@ public void updatePlayer(Player input){
 	this.animalsCur.set(2, input.animalsCur.get(2));
 }
 
+/** 
+ * constructor for the player. Sets his name, and animals 0-2 into an array list
+ * Also initializes the active animal to the first one in array list.
+ * Creates the buttons for the player that will be used by the game screen.
+ * 
+ * @param input the player name
+ * @param animal0 first animal
+ * @param animal1 second animal
+ * @param animal2 third animal
+ */
 public Player(String input, Animal animal0,Animal animal1, Animal animal2){
 	setName(input);
 	animalsCur=new ArrayList<Animal>();
@@ -150,8 +172,12 @@ public void setApBar(int input){
 	apBar.setValue(input);
 }
 
-//TODO move choose animals to USER CLASS and remove animals avail list
-//choose animal functions. 
+
+/** 
+* chooseAnimal() method was made for command line game, no longer used.
+* 
+* @param paramter
+*/
 public Animal chooseAnimal() {
 	System.out.print("Current animawls available are  ");
 	int animalNumb=0;
@@ -181,8 +207,11 @@ public Animal chooseAnimal() {
 	return animalsAvail.get(inInt);
 	}
 	
-
-// function to switch animals	
+/** 
+* method to switch animals for command line game. not used in main project anymore
+* 
+* @param paramter
+*/
 public void switchAnimal() {
 	Scanner in = new Scanner(System.in);
 	//read input
@@ -200,11 +229,23 @@ public void switchAnimal() {
 	active=animalsCur.get(inInt);
 	System.out.println(active.getName());
 }
+
+/** 
+* Switches to the animals that correspond to the input paramter
+* 
+* @param animalNumb the number of the chosen animal to be switched to.
+*/
 public void  switchAnimalNetwork(int animalNumb){
 	active=animalsCur.get(animalNumb);
 	animalName.setText(active.getName());
 }
 
+/** 
+* Switches the animals for the local game. Also updates all the switch animal buttons and
+* the animal picture. Also switches the HP bar and AP bars
+* 
+* @param animalNumb the number that corresponds to the animal to switch to
+*/
 public void switchAnimalGui(int animalNumb){
 	active=animalsCur.get(animalNumb);
 	animalName.setText(active.getName());
@@ -234,7 +275,11 @@ public String setActive(Animal input){
 	return active.getName();
 }
 
-
+/** 
+* method for choosing attack in command line game
+* 
+* @param paramter
+*/
 public void chooseAttack(){
 	Scanner in = new Scanner(System.in);
 
@@ -271,7 +316,11 @@ public void chooseAttack(){
 	
 }
 
-//check if all animals are dead
+/** 
+* checks all animal's HP level and returns 0 if dead and 1 if one of them is alive.
+* 
+* 
+*/
 public int checkLoss(){
 if(animalsCur.get(0).getHpRem()<=0 & animalsCur.get(1).getHpRem()<=0 & animalsCur.get(2).getHpRem()<=0){
 	return 0;
@@ -282,18 +331,31 @@ else{
 
 
 }
+
+/** 
+* Shows the all the buttons for the player.
+* 
+*/
 public void showUI(){
 	UI.showButtons(true);
 	UI.checkAp();
 }
-
+/** 
+* Hides the buttons for the player
+* 
+* 
+*/
 public void hideUI(){
 UI.showButtons(false);
 UI.showAttack(false);
 UI.showSwitch(false);
 }
 
-
+/** 
+* places all of the first players buttons and pictures on the screen.
+* also edits the formats 
+* 
+*/
 public void placePzero(){
 	//place buttons for pZero in proper spot
 	UI.attackButton.setBounds(42, 289, 141, 23);
@@ -328,6 +390,10 @@ public void placePzero(){
 
 }
 
+/** 
+* places the player on the network screen.
+* 
+*/
 public void placeNetworkPlayer(){
 	currentAnimalPic.setBounds(557, 126, 200, 200);
 	hpBar.setBounds(515, 324, 180, 50);
@@ -338,6 +404,11 @@ public void placeNetworkPlayer(){
 	animalName.setHorizontalAlignment(SwingConstants.CENTER);
 }
 
+/** 
+* Places all of player 2's buttons on the screen for the local game
+* 
+* 
+*/
 public void placePone(){
 	//place buttons for pOne in proper spot
 	
@@ -371,12 +442,22 @@ public void placePone(){
 	animalName.setHorizontalAlignment(SwingConstants.CENTER);
 }
 
+/** 
+*
+* regenerates AP for all the player's animal
+* 
+*/
 public void regenAp(){
 	for(int animalNumb=0; animalNumb<3; animalNumb++){
 		animalsCur.get(animalNumb).regen();
 	}
 }
 
+/** 
+*
+* used to set the buttons enabled when its the player's turn or disabled if not.
+* 
+*/
 public void setEnabled(Boolean input){
 	if (input==false){
 	UI.setEnabledButtons(false);
@@ -390,6 +471,10 @@ public void setEnabled(Boolean input){
 	}
 	
 }
+
+/** 
+* updates the ap/hp bars
+*/
 public void updateInfo(){
 	hpBar.setValue((int)active.getHpRem());
 	apBar.setValue((int)active.getApRem());

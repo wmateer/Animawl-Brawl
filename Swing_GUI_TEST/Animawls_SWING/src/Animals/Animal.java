@@ -53,7 +53,11 @@ public abstract class Animal implements Serializable{
 	//PICK SOUND EFFECT PATH
 	public String soundPath;
 
-	//constructor
+	/** 
+	 * constructor for a new animal
+	 * 
+	 * @param name the animals desired name
+	 */
 	public Animal(String name){
 		//basic animal stats
 		this.name=name;
@@ -104,6 +108,20 @@ public abstract class Animal implements Serializable{
 		return 	lvl;
 	}
 	
+	/** 
+	 * updates the animals LVL and stats so that it has increased.
+	 * 
+	 * @param hpScaler scale for the hp increase
+	 * @param hpBonus the amount to increase the hp if selected every 5 lvls
+	 * @param apScaler scale for the ap increase
+	 * @param apBonus the amount to increase ap if selected every 5 levels
+	 * @param attScaler scale for the attack increase
+	 * @param attBonus amount to increase if selected every 5 levels
+	 * @param defScale scale for def increase
+	 * @param defBonus amount to increase if selected every 5 level
+	 * @param evdScaler scaler for evasiveness increase
+	 * @param evdBonus amount to increase if selected every 5 levels
+	 */
 	public void addLvl(double hpScaler , double hpBonus, double apScaler, double apBonus,double attScaler, double attBonus, double defScaler, double defBonus, double evdScaler, double evdBonus){
 			lvl++;
 			
@@ -171,7 +189,11 @@ public abstract class Animal implements Serializable{
 	public double getExp() {
 		return 	expTot;
 	}
-	
+	/** 
+	 * Adds exp to animals that battled
+	 * 
+	 * @param amount the amount to increase exp by 
+	 */
 	public void addExpTot(double amount ) {
 		expTot=expTot+amount;
 		//print info to screen
